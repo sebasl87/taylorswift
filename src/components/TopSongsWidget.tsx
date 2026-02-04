@@ -17,9 +17,10 @@ export default function TopSongsWidget() {
   const t = useTranslations("topSongs");
 
   // Convertir objeto a array y ordenar por veces tocadas
-  const topSongs = Object.entries(songsCountsData)
+  const counts = songsCountsData as unknown as Record<string, number>;
+  const topSongs = Object.entries(counts)
     .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count)
+    .sort((a, b) => (b.count || 0) - (a.count || 0))
     .slice(0, 10);
 
   return (

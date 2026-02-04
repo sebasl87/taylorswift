@@ -4,7 +4,7 @@ import { getLocale } from "next-intl/server";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
-  return songsData.map((song) => ({ songId: song.id }));
+  return (songsData as unknown as { id: string }[]).map((song) => ({ songId: song.id }));
 }
 
 interface Props {
@@ -16,7 +16,14 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
   const locale = await getLocale();
-  const song = songsData.find((s) => s.id === resolvedParams.songId);
+  const list = songsData as unknown as {
+    id: string;
+    title: string;
+    album: { title: string; year: number; cover: string };
+    theme: { es: string; en: string };
+    credits: { musicians: { name: string }[] };
+  }[];
+  const song = list.find((s) => s.id === resolvedParams.songId);
   if (!song) return { title: "Song not found" };
 
   const title = song.title;

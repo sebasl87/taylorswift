@@ -168,5 +168,42 @@
         }
       }
     }
+  },
+  "footer": {
+    "music": "Music",
+    "band": "The Band",
+    "live": "Live",
+    "info": "Information",
+    "discography": "Discography",
+    "songs": "Songs",
+    "videos": "Videos",
+    "dvds": "DVDs",
+    "history": "History",
+    "members": "Members",
+    "lineups": "Lineups",
+    "interviews": "Interviews",
+    "tour": "Tour",
+    "shows": "Shows",
+    "bootlegs": "Bootlegs",
+    "news": "News",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "seoDescription": "Taylor Swift Fan Site is the most complete source of information about Taylor Swift in Latin America. Discography, videography, biography, tour dates, news and much more. Updated daily by fans for fans.",
+    "siteDescription": "Taylor Swift Fan Site • Created by fans for fans",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "disclaimer": "© {year} Taylor Swift Fan Site. All rights reserved. This is a non-profit fan site. Taylor Swift, the Taylor Swift logo and related marks are registered trademarks of TAS Rights Management, LLC."
+  },
+  "search": {
+    "placeholder": "Search songs, albums, shows...",
+    "typeToSearch": "Type to search...",
+    "noResults": "No results found for",
+    "tryWith": "Try searching for a song, album, or show name.",
+    "songs": "Songs",
+    "albums": "Albums",
+    "shows": "Shows",
+    "news": "News",
+    "members": "Members",
+    "interviews": "Interviews"
   }
 }

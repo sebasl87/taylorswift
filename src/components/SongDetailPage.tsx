@@ -36,7 +36,16 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
   const tb = useTranslations("breadcrumb");
   const [showEs, setShowEs] = useState(false);
   const locale = useLocale();
-  const song = songsData.find((s) => s.id === songId);
+  const songsList = songsData as unknown as {
+    id: string;
+    title: string;
+    album: { title: string; year: number; cover: string; songArtwork?: string };
+    details?: { duration?: string; track_number?: number };
+    theme: { es: string; en: string };
+    credits: { writers: { lyrics: string[]; music: string[] }; musicians: { name: string; instrument?: string | { es: string; en: string } }[] };
+    lyrics?: { es?: string; en?: string };
+  }[];
+  const song = songsList.find((s) => s.id === songId);
   const songsCounts: Record<string, number> = songsCountData;
 
   // Obtener top 10 canciones más tocadas
@@ -51,7 +60,7 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
   // Obtener otras canciones del mismo álbum (solo si song existe)
   const albumSongs = useMemo(() => {
     if (!song) return [];
-    return songsData
+    return songsList
       .filter((s) => s.album.title === song.album.title && s.id !== song.id)
       .sort(
         (a, b) =>
@@ -297,10 +306,10 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
               />
             </Box>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-              {t("duration")}: {song.details.duration}
+              {t("duration")}: {song.details?.duration ?? ""}
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-              {t("track")}: {song.details.track_number}
+              {t("track")}: {song.details?.track_number ?? ""}
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
               {t("timesPlayedLive")}: <strong>{timesPlayed}</strong>
@@ -393,12 +402,10 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
             <Grid container spacing={2} sx={{ mt: 1 }}>
               {song.credits.musicians.map((m) => {
                 const memberId = slugify(m.name);
-                const memberObj = (
-                  membersData.members as Record<
-                    string,
-                    (typeof membersData.members)[keyof typeof membersData.members]
-                  >
-                )[memberId];
+                const membersMap = Array.isArray(membersData as unknown)
+                  ? {}
+                  : ((membersData as unknown as { members?: Record<string, { image?: string }> }).members || {});
+                const memberObj = membersMap[memberId];
                 return (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={m.name}>
                     <Link

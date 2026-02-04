@@ -56,17 +56,21 @@ export default function AlbumDetail({ album }: AlbumDetailProps) {
   // Determinar tipo de álbum y obtener álbumes relacionados
   const relatedAlbums = useMemo(() => {
     // Determinar qué tipo de álbum es el actual
-    const isStudio = discographyData.some((a) => a.id === album.id);
-    const isLive = liveAlbumsData.some((a) => a.id === album.id);
-    const isCompilation = compilationsData.some((a) => a.id === album.id);
-    const isEP = epsData.some((a) => a.id === album.id);
+    const studioList = discographyData as unknown as Album[];
+    const liveList = liveAlbumsData as unknown as Album[];
+    const compList = compilationsData as unknown as Album[];
+    const epList = epsData as unknown as Album[];
+    const isStudio = studioList.some((a) => a.id === album.id);
+    const isLive = liveList.some((a) => a.id === album.id);
+    const isCompilation = compList.some((a) => a.id === album.id);
+    const isEP = epList.some((a) => a.id === album.id);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let sourceData: any[] = [];
-    if (isStudio) sourceData = discographyData;
-    else if (isLive) sourceData = liveAlbumsData;
-    else if (isCompilation) sourceData = compilationsData;
-    else if (isEP) sourceData = epsData;
+    let sourceData: Album[] = [];
+    if (isStudio) sourceData = studioList;
+    else if (isLive) sourceData = liveList;
+    else if (isCompilation) sourceData = compList;
+    else if (isEP) sourceData = epList;
 
     // Filtrar álbumes (excluir el actual) y seleccionar 3 aleatorios
     const filtered = sourceData.filter((a) => a.id !== album.id);

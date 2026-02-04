@@ -18,7 +18,7 @@ interface NewsPageProps {
 }
 
 export async function generateStaticParams() {
-  return newsData.map((article) => ({
+  return (newsData as unknown as { id: string }[]).map((article) => ({
     id: article.id,
   }));
 }
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: NewsPageProps) {
   const resolvedParams = await params;
   const locale = (await getLocale()) as "es" | "en";
-  const article = newsData.find((a) => a.id === resolvedParams.id) as
+  const list = newsData as unknown as NewsArticle[];
+  const article = list.find((a) => a.id === resolvedParams.id) as
     | NewsArticle
     | undefined;
 
@@ -80,7 +81,8 @@ export default async function NoticiaPage({ params }: NewsPageProps) {
   const locale = (await getLocale()) as "es" | "en";
   const tb = await getTranslations("breadcrumb");
 
-  const article = newsData.find((a) => a.id === resolvedParams.id) as
+  const list2 = newsData as unknown as NewsArticle[];
+  const article = list2.find((a) => a.id === resolvedParams.id) as
     | NewsArticle
     | undefined;
 

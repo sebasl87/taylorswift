@@ -59,7 +59,13 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
     const searchTerm = query.toLowerCase();
 
     // Buscar canciones
-    const songs = songsData
+    const songsList = songsData as unknown as {
+      id: string;
+      title: string;
+      album: { title: string; year: number; cover: string };
+      credits?: { writers?: { lyrics?: string[]; music?: string[] } };
+    }[];
+    const songs = songsList
       .filter(
         (song) =>
           song.title.toLowerCase().includes(searchTerm) ||
@@ -75,10 +81,10 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
 
     // Buscar álbumes
     const allAlbums = [
-      ...discographyData,
-      ...liveAlbumsData,
-      ...compilationsData,
-      ...epsData,
+      ...(discographyData as unknown as { id: string; title: string; year: number; cover: string }[]),
+      ...(liveAlbumsData as unknown as { id: string; title: string; year: number; cover: string }[]),
+      ...(compilationsData as unknown as { id: string; title: string; year: number; cover: string }[]),
+      ...(epsData as unknown as { id: string; title: string; year: number; cover: string }[]),
     ];
     const albums = allAlbums
       .filter(
@@ -89,7 +95,7 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
       .slice(0, 5);
 
     // Buscar shows
-    const shows = showsData
+    const shows = (showsData as unknown as { id: string; city: string; venue: string; country: string; era: string; date: string }[])
       .filter(
         (show) =>
           show.city.toLowerCase().includes(searchTerm) ||
@@ -100,7 +106,7 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
       .slice(0, 5);
 
     // Buscar noticias
-    const news = newsData
+    const news = (newsData as unknown as { id: string; title: Record<"es"|"en", string>; description: Record<"es"|"en", string> }[])
       .filter(
         (article) =>
           article.title[locale].toLowerCase().includes(searchTerm) ||
@@ -109,12 +115,15 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
       .slice(0, 5);
 
     // Buscar miembros
-    const members = Object.values(membersData.members)
+    const membersMap = Array.isArray(membersData as unknown)
+      ? {}
+      : ((membersData as unknown as { members?: Record<string, { id: string; name: string }> }).members || {});
+    const members = Object.values(membersMap)
       .filter((member) => member.name.toLowerCase().includes(searchTerm))
       .slice(0, 5);
 
     // Buscar entrevistas
-    const interviews = interviewsData
+    const interviews = (interviewsData as unknown as { id: string; interviewees?: { name?: string }[]; media?: { name?: string }; date?: string }[])
       .filter(
         (interview) =>
           interview.interviewees?.some((person) =>
