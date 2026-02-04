@@ -1,9 +1,5 @@
 {
-  "name": "taylorswift-site",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sebasl87/taylorswift.git"
-  },
+  "name": "taylor-swift-site",
   "version": "0.1.0",
   "private": true,
   "scripts": {
