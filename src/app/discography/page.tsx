@@ -1,8 +1,8 @@
 import DiscographyGrid from "@/components/DiscographyGrid";
-import studioAlbums from "../../constants/taylor_discography.json";
-const liveAlbums: any[] = [];
-const compilations: any[] = [];
-const eps: any[] = [];
+import studioAlbums from "../../constants/discography.json";
+import liveAlbums from "../../constants/liveAlbums.json";
+import compilations from "../../constants/compilations.json";
+import eps from "../../constants/eps.json";
 import { Typography, Box } from "@mui/material";
 import type { Album } from "@/types/album";
 import { useTranslations } from "next-intl";
@@ -16,43 +16,71 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
 
   const titleByLocale = {
-    es: "Discografía Completa de Taylor Swift | Álbumes de estudio y Taylor's Version",
-    en: "Complete Taylor Swift Discography | Studio Albums and Taylor's Version",
+    es: "Discografía Completa de Megadeth | 16 Álbumes de Estudio + En Vivo y Compilaciones",
+    en: "Complete Megadeth Discography | 16 Studio Albums + Live & Compilations",
   };
 
   const descriptionByLocale = {
-    es: "Discografía completa de Taylor Swift: desde Taylor Swift (2006) hasta Midnights (2022), incluyendo Taylor's Version. Portadas, años, sellos y enlaces.",
-    en: "Complete Taylor Swift discography: from Taylor Swift (2006) to Midnights (2022), including Taylor's Version releases. Covers, years, labels and links.",
+    es: "Discografía completa de Megadeth (1985-2022): 16 álbumes de estudio desde Killing Is My Business hasta The Sick, The Dying and the Dead, más álbumes en vivo, compilaciones y EPs. Información detallada, portadas, productores, músicos y enlaces a streaming.",
+    en: "Complete Megadeth discography (1985-2022): 16 studio albums from Killing Is My Business to The Sick, The Dying and the Dead, plus live albums, compilations and EPs. Detailed information, covers, producers, musicians and streaming links.",
   };
 
   const keywordsByLocale = {
     es: [
-      "Taylor Swift discografía",
-      "álbumes Taylor Swift",
-      "Fearless",
-      "Speak Now",
-      "Red",
-      "1989",
-      "Reputation",
-      "Lover",
-      "Folklore",
-      "Evermore",
-      "Midnights",
-      "Taylor's Version",
+      "Megadeth discografía",
+      "álbumes Megadeth",
+      "Killing Is My Business",
+      "Peace Sells",
+      "So Far So Good So What",
+      "Rust in Peace",
+      "Countdown to Extinction",
+      "Youthanasia",
+      "Cryptic Writings",
+      "Risk",
+      "The World Needs a Hero",
+      "The System Has Failed",
+      "United Abominations",
+      "Endgame",
+      "Thirteen",
+      "Super Collider",
+      "Dystopia",
+      "The Sick, The Dying and the Dead",
+      "Dave Mustaine",
+      "Marty Friedman",
+      "thrash metal",
+      "metal discografía",
+      "big four thrash",
+      "álbumes de estudio",
+      "compilaciones metal",
+      "streaming Megadeth",
     ],
     en: [
-      "Taylor Swift discography",
-      "Taylor Swift albums",
-      "Fearless",
-      "Speak Now",
-      "Red",
-      "1989",
-      "Reputation",
-      "Lover",
-      "Folklore",
-      "Evermore",
-      "Midnights",
-      "Taylor's Version",
+      "Megadeth discography",
+      "Megadeth albums",
+      "Killing Is My Business",
+      "Peace Sells",
+      "So Far So Good So What",
+      "Rust in Peace",
+      "Countdown to Extinction",
+      "Youthanasia",
+      "Cryptic Writings",
+      "Risk",
+      "The World Needs a Hero",
+      "The System Has Failed",
+      "United Abominations",
+      "Endgame",
+      "Thirteen",
+      "Super Collider",
+      "Dystopia",
+      "The Sick, The Dying and the Dead",
+      "Dave Mustaine",
+      "Marty Friedman",
+      "thrash metal",
+      "metal discography",
+      "big four thrash",
+      "studio albums",
+      "metal compilations",
+      "Megadeth streaming",
     ],
   };
 
@@ -65,9 +93,9 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords:
       keywordsByLocale[locale as keyof typeof keywordsByLocale] ||
       keywordsByLocale.es,
-    authors: [{ name: "Taylor Swift Fan Site" }],
-    creator: "Taylor Swift Fan Site",
-    publisher: "Taylor Swift Fan Site",
+    authors: [{ name: "Megadeth Fan Site" }],
+    creator: "Megadeth Fan Site",
+    publisher: "Megadeth Fan Site",
     alternates: {
       canonical: "/discography",
       languages: {
@@ -82,7 +110,7 @@ export async function generateMetadata(): Promise<Metadata> {
         descriptionByLocale[locale as keyof typeof descriptionByLocale] ||
         descriptionByLocale.es,
       url: "/discography",
-      siteName: "Taylor Swift Fan Site",
+      siteName: "Megadeth Fan Site",
       locale: locale === "es" ? "es_ES" : "en_US",
       type: "website",
       images: [
@@ -92,8 +120,8 @@ export async function generateMetadata(): Promise<Metadata> {
           height: 630,
           alt:
             locale === "es"
-              ? "Discografía de Taylor Swift"
-              : "Taylor Swift Discography",
+              ? "Discografía de Megadeth - 16 álbumes de estudio desde Killing Is My Business hasta The Sick, The Dying and the Dead"
+              : "Megadeth Discography - 16 studio albums from Killing Is My Business to The Sick, The Dying and the Dead",
         },
       ],
     },
@@ -105,7 +133,7 @@ export async function generateMetadata(): Promise<Metadata> {
         descriptionByLocale[locale as keyof typeof descriptionByLocale] ||
         descriptionByLocale.es,
       images: ["/og-discography.jpg"],
-      creator: "@TaylorSwiftFanSite",
+      creator: "@MegadethFanSite",
     },
     robots: {
       index: true,

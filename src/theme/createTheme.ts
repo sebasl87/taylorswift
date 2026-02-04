@@ -14,10 +14,10 @@ export const getDesignTokens = (mode: 'light' | 'dark', era?: Era): ThemeOptions
     mode,
     ...(mode === 'light'
       ? {
-        primary: { main: '#B57EDC' }, // lavanda elegante
-        secondary: { main: '#FFB7C5' }, // rosa suave
-        background: { default: '#FFF8F0', paper: '#FFFFFF' }, // crema cálido
-      }
+          primary: { main: '#D32F2F' }, // rojo “metal”
+          secondary: { main: '#FF6F00' },
+          background: { default: '#fafafa', paper: '#ffffff' },
+        }
       : {
         primary: { main: '#C3A6E8' },
         secondary: { main: '#FFC2CF' },

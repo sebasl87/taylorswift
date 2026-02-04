@@ -1,9 +1,9 @@
-import TaylorHero from "@/components/TaylorHero";
+import Hero from "@/components/Hero";
 
 export default function HomePage() {
   return (
     <>
-      <TaylorHero />
+      <Hero />
     </>
   );
 }
