@@ -58,9 +58,6 @@ export default function Header() {
   }, []);
 
   const mediaItems = [
-    { label: t("discography"), href: "/discography" },
-    { label: t("videos"), href: "/videos" },
-    { label: t("dvds"), href: "/dvds" },
     { label: t("shows"), href: "/shows" },
     { label: t("bootlegs"), href: "/bootlegs" },
   ];
@@ -71,9 +68,6 @@ export default function Header() {
     { label: t("media"), href: "#", hasSubmenu: true },
     { label: t("news"), href: "/noticias" },
     { label: t("interviews"), href: "/entrevistas" },
-    { label: t("history"), href: "/historia" },
-    { label: t("lineups"), href: "/formaciones" },
-    { label: t("members"), href: "/miembros" },
     { label: t("songs"), href: "/songs" },
   ];
 
@@ -100,7 +94,7 @@ export default function Header() {
   };
 
   const isMediaActive = mediaItems.some((item) =>
-    pathname.startsWith(item.href)
+    pathname.startsWith(item.href),
   );
 
   // Función para obtener el color de fondo basado en scroll y modo
@@ -135,21 +129,18 @@ export default function Header() {
                 href="/"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <Box
+                <Typography
+                  variant="h4"
+                  component="div"
                   sx={{
-                    position: "relative",
-                    width: { xs: "150px", sm: "200px" },
-                    height: { xs: "35px", sm: "47px" },
+                    fontWeight: "bold",
+                    color: mode === "dark" ? "white" : "black",
+                    fontFamily: "var(--font-geist-sans)",
+                    letterSpacing: "-0.05em",
                   }}
                 >
-                  <Image
-                    src="/logo-megadeth.png"
-                    alt="Megadeth"
-                    fill
-                    style={{ objectFit: "contain" }}
-                    priority
-                  />
-                </Box>
+                  TAYLOR SWIFT
+                </Typography>
               </Link>
             </Typography>
 
@@ -166,8 +157,8 @@ export default function Header() {
                   const isActive = item.hasSubmenu
                     ? isMediaActive
                     : item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
+                      ? pathname === "/"
+                      : pathname.startsWith(item.href);
 
                   if (item.hasSubmenu) {
                     return (
@@ -230,7 +221,7 @@ export default function Header() {
                               onClick={handleMediaMouseLeave}
                               sx={{
                                 backgroundColor: pathname.startsWith(
-                                  mediaItem.href
+                                  mediaItem.href,
                                 )
                                   ? "primary.main"
                                   : "transparent",
@@ -239,7 +230,7 @@ export default function Header() {
                                   : "text.primary",
                                 "&:hover": {
                                   backgroundColor: pathname.startsWith(
-                                    mediaItem.href
+                                    mediaItem.href,
                                   )
                                     ? "primary.dark"
                                     : "action.hover",
@@ -369,12 +360,18 @@ export default function Header() {
         >
           <Box sx={{ p: 2 }}>
             <Box width="100%" display="flex" justifyContent="center" mb={2}>
-              <Image
-                src="/logo-megadeth.png"
-                alt="Megadeth"
-                width={150}
-                height={30}
-              />
+              <Typography
+                variant="h4"
+                component="div"
+                sx={{
+                  fontWeight: "bold",
+                  color: mode === "dark" ? "white" : "black",
+                  fontFamily: "var(--font-geist-sans)",
+                  letterSpacing: "-0.05em",
+                }}
+              >
+                TAYLOR SWIFT
+              </Typography>
             </Box>
 
             {/* Botones de acción para mobile */}

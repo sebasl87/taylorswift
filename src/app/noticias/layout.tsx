@@ -8,20 +8,20 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("pageTitle"),
     description: t("pageDescription"),
     keywords:
-      "Megadeth, noticias, news, metal, thrash metal, Dave Mustaine, actualidad, últimas noticias, tour, conciertos",
+      "Taylor Swift, noticias, news, pop, country, Eras Tour, actualidad, últimas noticias, tour, conciertos",
     openGraph: {
       title: t("pageTitle"),
       description: t("pageDescription"),
-      url: "https://megadeth.com.ar/noticias",
-      siteName: "Megadeth Argentina",
+      url: "https://taylorswiftfan.com/noticias",
+      siteName: "Taylor Swift Fan Site",
       locale: "es_AR",
       type: "website",
       images: [
         {
-          url: "https://megadeth.com.ar/logo-megadeth.png",
+          url: "https://taylorswiftfan.com/logo-taylor.png",
           width: 1200,
           height: 630,
-          alt: "Megadeth",
+          alt: "Taylor Swift",
         },
       ],
     },
@@ -29,13 +29,13 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: t("pageTitle"),
       description: t("pageDescription"),
-      images: ["https://megadeth.com.ar/logo-megadeth.png"],
+      images: ["https://taylorswiftfan.com/logo-taylor.png"],
     },
     alternates: {
-      canonical: "https://megadeth.com.ar/noticias",
+      canonical: "https://taylorswiftfan.com/noticias",
       languages: {
-        es: "https://megadeth.com.ar/noticias",
-        en: "https://megadeth.com.ar/noticias",
+        es: "https://taylorswiftfan.com/noticias",
+        en: "https://taylorswiftfan.com/noticias",
       },
     },
     robots: {

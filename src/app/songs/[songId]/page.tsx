@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     album,
     year.toString(),
-    "Megadeth",
+    "Taylor Swift",
     "lyrics",
     "letra",
     ...song.credits.musicians.map((m) => m.name),
@@ -37,14 +37,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalUrl = `/songs/${song.id}`;
 
   return {
-    title: `${title} | Megadeth`,
+    title: `${title} | Taylor Swift`,
     description,
     keywords,
     openGraph: {
-      title: `${title} | Megadeth`,
+      title: `${title} | Taylor Swift`,
       description,
       url: `/songs/${song.id}`,
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       locale: locale === "es" ? "es_ES" : "en_US",
       type: "article",
       images: [
@@ -58,10 +58,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | Megadeth`,
+      title: `${title} | Taylor Swift`,
       description,
       images: [song.album.cover],
-      creator: "@MegadethFanSite",
+      creator: "@taylorswift13",
     },
     alternates: {
       canonical: canonicalUrl,

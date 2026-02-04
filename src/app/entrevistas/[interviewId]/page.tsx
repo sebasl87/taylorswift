@@ -45,15 +45,16 @@ export async function generateMetadata({
   const date = new Date(interview.date);
   const year = date.getFullYear();
 
-  const fullTitle = `${title} | ${mediaName} ${year} | Megadeth`;
+  const fullTitle = `${title} | ${mediaName} ${year} | Taylor Swift`;
   const keywords = [
     title,
     mediaName,
     year.toString(),
-    "Megadeth",
+    "Taylor Swift",
     "entrevista",
     "interview",
-    ...interview.interviewees.map((i) => i.name),
+    "pop",
+    "music",
   ];
 
   return {
@@ -64,7 +65,7 @@ export async function generateMetadata({
       title: fullTitle,
       description,
       url: `/entrevistas/${interviewId}`,
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       locale: locale === "es" ? "es_ES" : "en_US",
       type: "article",
       publishedTime: interview.date,
@@ -72,7 +73,7 @@ export async function generateMetadata({
       images: [
         {
           url:
-            interview.content?.cover_image || "/images/entrevistas/rp1992.jpg",
+            interview.content?.cover_image || "/images/entrevistas/taylor-default.jpg",
           width: 1200,
           height: 630,
           alt: `${title} - ${mediaName} ${year}`,
@@ -85,8 +86,8 @@ export async function generateMetadata({
       description,
       images: interview.content?.cover_image
         ? [interview.content.cover_image]
-        : ["/images/entrevistas/rp1992.jpg"],
-      creator: "@MegadethFanSite",
+        : ["/images/entrevistas/taylor-default.jpg"],
+      creator: "@TaylorSwiftFanSite",
     },
     alternates: {
       canonical: `/entrevistas/${interviewId}`,

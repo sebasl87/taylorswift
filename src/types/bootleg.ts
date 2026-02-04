@@ -4,7 +4,7 @@ export interface BootlegDescription {
   en: string;
 }
 
-// Estructura principal para un bootleg de Megadeth
+// Estructura principal para un bootleg
 export interface Bootleg {
   id: string;
   title: string; // Título del bootleg

@@ -81,10 +81,10 @@ export async function generateMetadata(): Promise<Metadata> {
       modifiedTime: "2026-02-02T00:00:00Z",
       images: [
         {
-          url: "/images/meg-argentina.jpg",
+          url: "/images/taylor-argentina.jpg",
           width: 1200,
           height: 630,
-          alt: "Megadeth Argentina",
+          alt: "Taylor Swift Argentina",
         },
       ],
     },
@@ -114,38 +114,23 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "MusicGroup",
-              name: "Megadeth",
-              genre: ["Heavy Metal", "Thrash Metal", "Speed Metal"],
-              foundingDate: "1983",
+              name: "Taylor Swift",
+              genre: ["Pop", "Country", "Alternative"],
+              foundingDate: "2006",
               foundingLocation: {
                 "@type": "Place",
                 address: {
                   "@type": "PostalAddress",
-                  addressLocality: "Los Angeles",
-                  addressRegion: "CA",
+                  addressLocality: "West Reading",
+                  addressRegion: "PA",
                   addressCountry: "US",
                 },
               },
               member: [
                 {
                   "@type": "Person",
-                  name: "Dave Mustaine",
-                  roleName: "Lead Vocals, Rhythm & Lead Guitar",
-                },
-                {
-                  "@type": "Person",
-                  name: "James LoMenzo",
-                  roleName: "Bass",
-                },
-                {
-                  "@type": "Person",
-                  name: "Dirk Verbeuren",
-                  roleName: "Drums",
-                },
-                {
-                  "@type": "Person",
-                  name: "Teemu Mäntysaari",
-                  roleName: "Lead Guitar",
+                  name: "Taylor Swift",
+                  roleName: "Vocals, Guitar, Piano",
                 },
               ],
               url: "https://taylorswift.com",

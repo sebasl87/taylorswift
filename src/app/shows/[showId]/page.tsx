@@ -39,9 +39,9 @@ export async function generateMetadata({
   const date = new Date(show.date);
   const year = date.getFullYear();
 
-  const fullTitle = `${title} (${year}) | Megadeth Shows`;
+  const fullTitle = `${title} (${year}) | Taylor Swift Shows`;
   const keywords = [
-    "Megadeth",
+    "Taylor Swift",
     show.venue,
     show.city,
     show.country,
@@ -63,13 +63,13 @@ export async function generateMetadata({
       title: fullTitle,
       description,
       url: `/shows/${showId}`,
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       locale: locale === "es" ? "es_ES" : "en_US",
       type: "article",
       publishedTime: show.date,
       images: [
         {
-          url: show.image || "/images/shows/1994.jpg",
+          url: show.image || "/images/shows/default-show.jpg",
           width: 1200,
           height: 630,
           alt: `${title} - ${formatShowDate(show.date, locale)}`,
@@ -80,8 +80,8 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [show.image || "/images/shows/1994.jpg"],
-      creator: "@MegadethFanSite",
+      images: [show.image || "/images/shows/default-show.jpg"],
+      creator: "@TaylorSwiftFanSite",
     },
     alternates: {
       canonical: `/shows/${showId}`,

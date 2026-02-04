@@ -44,9 +44,9 @@ export async function generateMetadata({
     locale === "es" ? bootleg.description.es : bootleg.description.en;
   const year = getBootlegYear(bootleg);
 
-  const fullTitle = `${title} (${year}) | Megadeth Bootlegs`;
+  const fullTitle = `${title} (${year}) | Taylor Swift Bootlegs`;
   const keywords = [
-    "Megadeth",
+    "Taylor Swift",
     "bootleg",
     bootleg.title,
     bootleg.venue,
@@ -68,7 +68,7 @@ export async function generateMetadata({
       title: fullTitle,
       description,
       url: `/bootlegs/${bootlegId}`,
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       locale: locale === "es" ? "es_ES" : "en_US",
       type: "article",
       publishedTime: bootleg.date,
@@ -86,7 +86,7 @@ export async function generateMetadata({
       title: fullTitle,
       description,
       images: [bootleg.image || "/images/bootlegs/default-bootleg.jpg"],
-      creator: "@MegadethFanSite",
+      creator: "@TaylorSwiftFanSite",
     },
     alternates: {
       canonical: `/bootlegs/${bootlegId}`,

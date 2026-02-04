@@ -67,7 +67,7 @@
   "shows": {
     "title": "Shows Históricos",
     "listTitle": "Shows Históricos",
-    "listDescription": "Colección de los shows más emblemáticos e históricos de Megadeth desde 1988 hasta 2023. Fechas que marcaron la historia del thrash metal.",
+    "listDescription": "Colección de los shows más emblemáticos e históricos de Taylor Swift. Fechas que marcaron la historia del pop.",
     "search": "Buscar show, ciudad, venue, era, canción...",
     "date": "Fecha",
     "venue": "Venue",
@@ -87,8 +87,8 @@
   },
   "bootlegs": {
     "titlePage": "Bootlegs",
-    "listTitle": "Bootlegs de Megadeth",
-    "listDescription": "Colección de bootlegs y grabaciones no oficiales de Megadeth disponibles en YouTube. Conciertos completos ordenados por año.",
+    "listTitle": "Bootlegs de Taylor Swift",
+    "listDescription": "Colección de bootlegs y grabaciones no oficiales de Taylor Swift disponibles en YouTube. Conciertos completos ordenados por año.",
     "search": "Buscar bootleg, ciudad, venue, era, canción...",
     "year": "Año",
     "title": "Título",
@@ -109,7 +109,7 @@
     "preSubtitle": "¿Hay algún Bootleg que recuerdes y nos quieras compartir?, ¡déjanoslo en los comentarios!"
   },
   "header": {
-    "fanSite": "Megadeth • Fan",
+    "fanSite": "Taylor Swift • Fan",
     "changeTheme": "Cambiar tema",
     "changeLanguage": "Cambiar idioma"
   },
@@ -131,569 +131,42 @@
   },
   "news": {
     "title": "Noticias",
-    "description": "Mantente al día con las últimas noticias, anuncios y actualizaciones de Megadeth.",
-    "pageTitle": "Noticias - Megadeth",
-    "pageDescription": "Últimas noticias, anuncios y actualizaciones de Megadeth. Entérate de todo sobre la banda, giras, lanzamientos y más.",
+    "description": "Mantente al día con las últimas noticias, anuncios y actualizaciones de Taylor Swift.",
+    "pageTitle": "Noticias - Taylor Swift",
+    "pageDescription": "Últimas noticias, anuncios y actualizaciones de Taylor Swift. Entérate de todo sobre la artista, giras, lanzamientos y más.",
     "latestNews": "Últimas Noticias",
     "viewAllNews": "Ver todas las noticias"
   },
   "history": {
     "activeYears": "Años activos",
     "studioAlbums": "Álbumes de estudio",
-    "lineupChanges": "Cambios de formación",
+    "lineupChanges": "Eras Musicales",
     "worldwideSales": "Ventas mundiales",
-    "includingFinal": "Incluyendo el final",
+    "includingFinal": "Incluyendo regrabaciones",
     "multipleEras": "Múltiples eras",
     "recordsSold": "Discos vendidos",
     "interactiveTimeline": "Timeline Interactivo",
-    "timelineDescription": "Explora cuatro décadas de historia a través de nuestro timeline interactivo. Haz clic en cualquier período para conocer los detalles.",
-    "epicChapters": "6 Capítulos épicos",
-    "yearsOfHistory": "43 años de historia",
+    "timelineDescription": "Explora la historia musical a través de nuestro timeline interactivo.",
+    "epicChapters": "Capítulos épicos",
+    "yearsOfHistory": "Años de historia",
     "multimediaContent": "Contenido multimedia",
     "transcendentHistory": "Una historia que trasciende generaciones",
-    "finalDescription": "Desde los humildes comienzos en 1983 hasta el anunciado adiós en 2026, Megadeth ha sido testigo y protagonista de la evolución del metal. Esta es más que una biografía: es el relato de cómo una banda cambió para siempre el panorama musical mundial.",
+    "finalDescription": "Desde sus inicios en la música country hasta convertirse en una estrella pop global.",
     "startHistory": "Comenzar la historia",
-    "seeEnding": "Ver el final",
+    "seeEnding": "Ver actualidad",
     "chapters": "Capítulo"
   },
   "chapters": {
     "origenes": {
       "title": "Los orígenes",
-      "subtitle": "El nacimiento de una leyenda",
-      "summary": "Dave Mustaine fue expulsado de Metallica y fundó Megadeth con una sed de venganza musical. Junto a David Ellefson, crearon una banda destinada a ser \"la más rápida y pesada del mundo\".",
+      "subtitle": "El comienzo",
+      "summary": "Los inicios de Taylor Swift en la música country y su rápido ascenso a la fama.",
       "sections": {
-        "expulsion-metallica": {
-          "title": "La expulsión de Metallica",
-          "content": "Dave Mustaine fue originalmente el primer guitarrista líder de Metallica en sus comienzos, pero en 1983 –antes de que la banda grabara su álbum debut– fue expulsado debido a abusos de alcohol y drogas, además de constantes conflictos con James Hetfield y Lars Ulrich. Humillado pero determinado a vengarse musicalmente, Mustaine regresó a Los Ángeles en bus y casi de inmediato se propuso formar \"la banda más rápida y pesada del mundo\", capaz de superar a Metallica."
-        },
-        "fundacion-megadeth": {
-          "title": "El nacimiento de Megadeth",
-          "content": "Junto al joven bajista David Ellefson (a quien Mustaine conoció cuando este tocaba a todo volumen en el apartamento de al lado), fundó Megadeth en 1983. El nombre proviene de un panfleto político que Mustaine encontró tirado en aquel autobús de regreso: en el folleto se leía la frase \"No podemos deshacernos del arsenal de megamuerte (megadeath), independientemente de cómo evolucionen los tratados de paz\". A Mustaine le gustó la palabra Megadeath (que en inglés designa un millón de muertes nucleares) pero le quitó la segunda \"a\", creando Megadeth como un símbolo de aniquilación del orden establecido."
-        },
-        "primera-formacion": {
-          "title": "Completando la formación",
-          "content": "Lleno de entusiasmo pero con pocos recursos, Mustaine enfrentó dificultades para completar la formación. Él y Ellefson audicionaron a decenas de bateristas sin éxito; incluso contaron brevemente con Kerry King de Slayer como segundo guitarrista en algunos shows locales, una colaboración que mostraba la fraternidad temprana de la escena thrash. Finalmente reclutaron al baterista de jazz-fusión Gar Samuelson y al guitarrista Chris Poland a finales de 1984, músicos que aportarían complejidad técnica y sofisticación al sonido brutal que Mustaine buscaba. Con Mustaine ocupándose también de las voces (al no encontrar un cantante adecuado), el cuarteto empezó a componer material de altísima velocidad y complejidad técnica que elevaría los estándares del thrash metal emergente."
-        },
-        "killing-is-my-business": {
-          "title": "Killing Is My Business… and Business Is Good!",
-          "content": "En 1984 grabaron un demo de tres canciones –\"Last Rites/Loved to Death\", \"Skull Beneath the Skin\" y \"Mechanix\"– que circuló en la escena underground y llamó la atención de sellos discográficos. Mustaine firmó con Combat Records, un sello independiente que les ofreció $8,000 para grabar su primer álbum. El presupuesto se esfumó rápidamente en drogas, alcohol y diversión, reflejando el estilo de vida desenfrenado del joven grupo. Tras despedir al productor original, Megadeth terminó de producir el álbum por su cuenta con calidad lo-fi, pero aun así su debut Killing Is My Business… and Business Is Good! (1985) se convirtió en un éxito del metal underground. El disco, lanzado en verano de 1985, mostró una técnica feroz que elevó el estándar del thrash metal emergente. Incluyó \"Mechanix\", un tema que Mustaine había compuesto en Metallica y que esa banda re-grabó (más lento) como \"The Four Horsemen\" en Kill 'Em All, marcando una de las primeras venganzas musicales de Dave. También presentó la primera aparición de Vic Rattlehead, la ahora famosa mascota calavérica de Megadeth, en la portada. Con canciones agresivas y veloces, Killing Is My Business... puso a Megadeth en el mapa y les consiguió un contrato con el gigante Capitol Records para su siguiente lanzamiento."
-        }
-      }
-    },
-    "ascenso-y-caos": {
-      "title": "Ascenso y caos",
-      "subtitle": "El éxito acompañado de turbulencia",
-      "summary": "Con Capitol Records, Megadeth alcanzó fama mundial con 'Peace Sells', pero las adicciones devastaron la banda. Múltiples cambios de formación marcaron una era de éxito externo y caos interno.",
-      "sections": {
-        "peace-sells": {
-          "title": "Peace Sells... but Who's Buying?",
-          "content": "Ya con Capitol Records, Megadeth tuvo la oportunidad de llevar su música a un público mayor, pero el ascenso vino acompañado de caos interno. Su segundo álbum, Peace Sells... but Who's Buying? (1986), marcó un antes y un después en su carrera: con himnos como \"Peace Sells\", la banda se volvió una de las más populares del thrash estadounidense, vendiendo más de un millón de copias en su país natal. El disco presentó un sonido más maduro y técnicamente superior al debut, con riffs complejos y solos virtuosos que definirían el estilo distintivo de Megadeth. El sencillo \"Peace Sells\" contó con un video rotado en MTV que se convirtió en icónico: presentaba a Vic Rattlehead frente a las ruinas de las Naciones Unidas, una imagen que capturó perfectamente el espíritu rebelde y político del metal ochentero. La exposición en MTV fue crucial para expandir su audiencia más allá del underground."
-        },
-        "adicciones-despidos": {
-          "title": "Adicciones y despidos",
-          "content": "Sin embargo, pese al éxito externo, la adicción a la heroína de Mustaine, Poland y Samuelson empeoraba dramáticamente. El consumo de drogas alcanzó niveles destructivos que amenazaban la supervivencia misma de la banda. Los problemas de puntualidad, rendimiento errático en vivo y comportamientos impredecibles se volvieron constantes durante las giras. Tras la gira del álbum Peace Sells, Mustaine tomó la difícil decisión de despedir a Poland y Gar Samuelson por sus graves drogodependencias, acusándolos incluso de vender equipo de la banda para costear sus hábitos destructivos. La situación había llegado a un punto insostenible donde la adicción superaba cualquier compromiso profesional. Era finales de 1987 y Megadeth perdía a dos miembros clave –arquitectos del sonido que los había llevado al éxito– justo cuando su fama crecía exponencialmente."
-        },
-        "so-far-so-good": {
-          "title": "So Far, So Good... So What!",
-          "content": "Con la banda desestabilizada, Mustaine y Ellefson se apresuraron a reclutar reemplazos: el guitarrista Jeff Young y el baterista Chuck Behler (quien había sido técnico de batería de Gar y conocía bien el material) se unieron apenas seis semanas antes de entrar al estudio a grabar el tercer disco. Esta urgencia marcó tanto las fortalezas como las debilidades del resultado. So Far, So Good... So What! (1988) emergió como un álbum furioso y crudo, con destellos de brillantez genuina –como \"In My Darkest Hour\", emotiva y melancólica pieza que Mustaine compuso tras enterarse de la muerte de Cliff Burton de Metallica, mostrando una faceta más introspectiva– pero también reflejando el caos en su producción acelerada. Entre las canciones destacaba un cover frenético y acelerado de \"Anarchy in the U.K.\" de los Sex Pistols, que capturaba perfectamente el espíritu destructivo del momento que vivía la banda."
-        },
-        "monsters-of-rock": {
-          "title": "Monsters of Rock y más caos",
-          "content": "Aunque So Far, So Good... logró buenas ventas y mantuvo a Megadeth en una intensa gira mundial durante 1988, el comportamiento cada vez más errático de Mustaine –entonces en el pico absoluto de sus adicciones– causó serios problemas logísticos y artísticos. En verano de 1988, Megadeth logró una exposición masiva al participar en el prestigioso festival Monsters of Rock en Donington Park (Inglaterra) frente a más de 100.000 personas, compartiendo cartel con gigantes como Iron Maiden, Kiss y Guns N' Roses. Fue una oportunidad dorada para consolidar su estatus internacional, pero el caos interno seguía creciendo. Inmediatamente después del festival, en una decisión impulsiva que ejemplificaba su estado mental deteriorado, Mustaine despidió también a Behler y Young, cancelando abruptamente la gira programada que tenían por Australia y dejando a la banda nuevamente desmantelada en pleno momento de éxito."
-        },
-        "nueva-formacion": {
-          "title": "Reinvención desde el caos",
-          "content": "Reconociendo finalmente la gravedad de la situación, Ellefson ingresó a rehabilitación tras ese turbulento tour, y Mustaine hizo lo mismo (aunque este último sufrió una recaída semanas después, evidenciando lo profundo de su batalla personal). A finales de 1988, Megadeth se encontraba prácticamente destrozado por los excesos: Mustaine enfrentaba su adicción en clínica, la formación estaba otra vez incompleta y el futuro de la banda era completamente incierto. Los años de éxito habían sido eclipsados por la autodestrucción. Sin embargo, de ese caos total surgiría la reinvención más importante en la historia de Megadeth. En 1989, ya más sobrio y determinado, Mustaine conoció al extraordinariamente talentoso guitarrista Marty Friedman –ex virtuoso de la banda de metal neoclásico Cacophony– y decidió integrarlo a la banda tras considerar varios candidatos (entre ellos nada menos que Dimebag Darrell de Pantera). Junto con Nick Menza (ex técnico de batería de la banda que conocía perfectamente el repertorio, ascendido a baterista oficial tras demostrar su talento durante la salida de Chuck), Megadeth se preparó para lo que sería su reinvención más exitosa. Recién salido de rehabilitación y con una formación renovada que combinaba experiencia y virtuosismo técnico, Mustaine entró al estudio a mediados de 1990 con una determinación feroz y una claridad mental recuperada. El resultado sería histórico."
-        }
-      }
-    },
-    "exito-masivo": {
-      "title": "Éxito masivo",
-      "subtitle": "La era dorada del thrash",
-      "summary": "Con la formación clásica Mustaine-Friedman-Ellefson-Menza, Megadeth alcanzó su pico creativo y comercial. 'Rust in Peace' y 'Countdown to Extinction' los establecieron como gigantes del metal mundial.",
-      "sections": {
-        "rust-in-peace": {
-          "title": "Rust in Peace: La obra cumbre",
-          "content": "Recién salido de rehabilitación y con una formación renovada, Mustaine entró al estudio a mediados de 1990 con una determinación feroz. El resultado sería histórico. En septiembre de 1990 Megadeth lanzó Rust in Peace, considerado por muchos su obra cumbre y uno de los mejores álbumes de thrash metal de todos los tiempos. Con la virtuosa dupla Mustaine–Friedman en guitarras, la potencia de Ellefson en el bajo y la técnica fulminante de Nick Menza en batería, Rust in Peace entregó temas complejos y emblemáticos como \"Holy Wars... The Punishment Due\" y \"Hangar 18\", que mostraban un Megadeth más preciso y en estado de gracia creativo."
-        },
-        "clash-of-titans": {
-          "title": "Clash of the Titans",
-          "content": "El disco fue aclamado por la crítica y certificado Oro en EE.UU., consolidando la alineación \"clásica\" de la banda. En 1991 Megadeth se embarcó en la gira Clash of the Titans, co-encabezando con Slayer, Anthrax y Testament, arrasando escenarios en Europa y Estados Unidos y demostrando que el thrash metal podía llenar arenas. También abrieron shows para Judas Priest en su gira Painkiller ese año, aprendiendo de los veteranos del metal. Los años de caos parecían haber quedado atrás: Megadeth ahora funcionaba como una máquina bien aceitada, compitiendo de igual a igual con Metallica en popularidad e impacto."
-        },
-        "countdown-to-extinction": {
-          "title": "Countdown to Extinction: Mainstream",
-          "content": "El siguiente álbum llevó a Megadeth del estatus de culto al mainstream absoluto. Countdown to Extinction (1992) debutó en el #2 del Billboard estadounidense (solo por detrás de Billy Ray Cyrus), fue certificado Doble Platino y obtuvo una nominación al Grammy. Canciones como \"Symphony of Destruction\", \"Sweating Bullets\" y \"Countdown to Extinction\" se volvieron himnos metaleros de los 90 y ampliaron dramáticamente la audiencia de la banda más allá del thrash tradicional. Countdown... presentaba un sonido algo más accesible y pulido, sin sacrificar la furia ni el contenido crítico (el tema título denuncia la matanza de especies animales). La banda filmó videos populares que dominaron MTV y realizó una gira mundial masiva en estadios y festivales, tocando junto a grupos como Pantera y Suicidal Tendencies. Para esta época Megadeth ya acumulaba seis discos de Oro/Platino consecutivos en EE.UU., confirmando que su éxito era sostenido y no una casualidad. Mustaine y sus compañeros recibieron elogios mediáticos e incluso se involucraron en eventos de alto perfil, como cuando Dave fue corresponsal de MTV en la Convención Demócrata de 1992, mostrando que Megadeth había trascendido completamente la esfera del metal underground para convertirse en iconos culturales."
-        },
-        "youthanasia": {
-          "title": "Youthanasia: Madurez creativa",
-          "content": "En 1994 el grupo siguió evolucionando con Youthanasia, un álbum más melódico y mid-tempo que reflejó la madurez compositiva de Mustaine. Lanzado en Halloween de 1994, Youthanasia (con portada mostrando a ancianas colgando bebés en un tendedero) causó impacto visual y vendió muy bien, destacando temas como \"Train of Consequences\" y la balada \"À Tout Le Monde\". Aunque algunos fans extrañaron la velocidad de trabajos previos, Megadeth mostró su versatilidad sin perder su filo. El disco fue certificado Platino y su gira mundial los llevó por primera vez a Sudamérica a fines de 1994, donde tocaron ante multitudes apasionadas que los recibieron como verdaderas estrellas de rock. En 1995 publicaron el EP Hidden Treasures, compilando canciones hasta entonces dispersas en soundtracks (como \"Angry Again\" del filme Last Action Hero y el cover \"Paranoid\" de Black Sabbath), demostrando la calidad constante de su material. Ese mismo año, encabezaron el prestigioso Monsters of Rock en Argentina y Brasil junto a leyendas como Alice Cooper y Ozzy Osbourne, confirmando definitivamente su lugar en la cima del metal mundial y su capacidad de liderar festivales masivos."
-        },
-        "cryptic-writings": {
-          "title": "Cryptic Writings: Éxito radial",
-          "content": "Para 1997, ya con 14 años de carrera, Megadeth era un gigante establecido del metal mundial. Ese año lanzaron Cryptic Writings, disco que continuó la senda más accesible e incluso coqueteó audazmente con el hard rock moderno. El sencillo \"Trust\" se convirtió en su canción de mayor éxito en radio, alcanzando el #5 en la lista Mainstream Rock de Billboard (su posición más alta en ese chart hasta la fecha). Cryptic Writings fue certificado Oro rápidamente, impulsado también por otros temas destacados como \"Almost Honest\" y \"Secret Place\". La banda ganó en 1997 el premio Metal Edge Readers' Choice a Mejor Banda en Vivo, reflejo de su potente actuación en escenarios que seguía siendo impecable. Sin embargo, bajo la superficie del éxito había señales preocupantes de problemas internos: durante la gira de Cryptic Writings, el baterista Nick Menza descubrió un tumor en su rodilla que requirió cirugía inmediata y debió abandonar abruptamente la gira. Mustaine, siempre temiendo por la estabilidad del grupo después de tantos cambios pasados, tomó la controvertida decisión de reemplazar a Menza definitivamente en lugar de esperarlo. En julio de 1998 anunció la incorporación del baterista Jimmy DeGrasso (ex Alice Cooper, Suicidal Tendencies), marcando el primer cambio de integrante en la exitosa era noventera y anticipando una fase más inestable por venir. Poco después, Marty Friedman empezó a expresar abiertamente su creciente descontento con la dirección musical más comercial que la banda estaba tomando, sembrando las semillas de futuras tensiones creativas."
-        }
-      }
-    },
-    "crisis-reinvencion": {
-      "title": "Crisis y reinvención",
-      "subtitle": "Experimentación, disolución y regreso",
-      "summary": "Una era turbulenta marcada por 'Risk', la partida de Marty Friedman, la lesión de Mustaine que llevó a la disolución temporal, y el eventual renacimiento con 'The System Has Failed'.",
-      "sections": {
-        "risk-album": {
-          "title": "Risk: El experimento controversial",
-          "content": "Hacia el final de los 90, la racha dorada de Megadeth tropezó. Mustaine, siempre inquieto, quiso experimentar más allá del thrash. El resultado fue Risk (1999), un álbum que, tal como su nombre indicaba, fue un \"riesgo\" estilístico: incorporó elementos de rock alternativo y pop metal que desconcertaron a muchos fans. Risk (producido por Dann Huff) contenía sencillos como \"Crush 'Em\" –pensado para sonar en estadios deportivos– y baladas más suaves, alejándose del sonido agresivo tradicional. La recepción fue mixta tirando a negativa; aunque vendió decentemente y llegó a Disco de Oro, Risk es recordado como el disco más controvertido de Megadeth."
-        },
-        "marty-friedman-departure": {
-          "title": "Despedida de Marty Friedman",
-          "content": "La tensión creativa alcanzó su pico: Marty Friedman dejó la banda en diciembre de 1999, citando \"diferencias musicales\" con Mustaine. Tras casi diez años, Megadeth perdía a su aclamado guitarrista líder. Mustaine contrató al experimentado Al Pitrelli (ex Savatage, Alice Cooper) para cubrir la vacante en 2000, y la banda se apresuró a componer material nuevo para reencontrarse con sus raíces metálicas y reconectar con el público más antiguo."
-        },
-        "world-needs-hero": {
-          "title": "World Needs a Hero",
-          "content": "El nuevo milenio trajo un intento de corrección de rumbo con World Needs a Hero (2001). Este álbum buscó recuperar el tono heavy clásico de la banda tras las críticas a Risk. Con Mustaine nuevamente a cargo de casi todas las composiciones, World Needs a Hero ofreció temas como \"Moto Psycho\" y \"Dread and the Fugitive Mind\", que si bien no alcanzaron el brillo de los clásicos, sí mostraban a Megadeth intentando revitalizar su identidad metalera. Durante 2001 realizaron giras más modestas, pero muy memorables en ciertos lugares. Tambien sacaron su primer disco en vivo 'Rude Awakening'. El álbum estaba planeado para ser grabado en directo en un concierto en Argentina, pero debido a los atentados del 11 de septiembre en el 2001, la banda decidió grabarlo en directo en los Estados Unidos. El álbum fue un rechazo total de mucho del material suave de Megadeth (como el álbum Risk, del cual no se incluyeron pistas) y fue visto como el regreso a sus días más 'pesados' de los 80 y de principios de los 90. (Mucho del material escogido, si no es que todo, fue elegido por seguidores que votaron por ellos en Megadeth.com)."
-        },
-        "disolucion": {
-          "title": "Disolución temporal",
-          "content": "Sin embargo, justo cuando parecía que Megadeth navegaba de nuevo en buena dirección, ocurrió una catástrofe personal: en abril de 2002, Dave Mustaine sufrió una grave lesión en un nervio de su brazo izquierdo (una neuropatía radial causada, increíblemente, por quedarse dormido con el brazo en mala posición). Incapaz de tocar la guitarra temporalmente y enfrentando una recuperación incierta, Mustaine decidió disolver Megadeth. El anuncio de separación tomó por sorpresa al mundo del metal. David Ellefson, el bajista cofundador, también se apartó (no sin antes entablar acciones legales contra Mustaine en disputas de royalties, lo que enfrió su relación durante un tiempo). Se editó en 2002 el álbum en vivo Rude Awakening –grabado poco antes– como despedida para los fans, capturando la potencia de la banda en directo en sus últimos shows de esa era."
-        },
-        "renacimiento": {
-          "title": "The System Has Failed: El renacimiento",
-          "content": "Afortunadamente, Mustaine no tardó en recuperarse más de lo esperado. Tras meses de terapia intensiva, volvió a aprender a tocar la guitarra. En 2004, con renovada fe (Mustaine se había vuelto cristiano devoto en este periodo y abandonado los excesos), decidió resucitar Megadeth –inicialmente concebido como un proyecto solista, pero finalmente usando el nombre de la banda por su peso histórico. Ese año se lanzó The System Has Failed (2004), álbum que marcó un verdadero renacimiento. Grabado con músicos de sesión –incluyendo el ex guitarrista Chris Poland como invitado en solos–, The System Has Failed fue aclamado como el mejor disco de Megadeth en muchos años, con canciones afiladas como \"Kick the Chair\" y \"Die Dead Enough\" que recordaban la gloria noventera."
-        },
-        "nueva-era": {
-          "title": "Nueva formación y Gigantour",
-          "content": "Mustaine, ahora el único miembro original, armó una nueva alineación para la gira mundial: reclutó al guitarrista Glen Drover, al bajista James MacDonough (ex Iced Earth) y al baterista Shawn Drover (hermano de Glen). Curiosamente, Nick Menza había intentado volver a la batería al inicio de la gira 2004, pero tras unos ensayos se vio incapaz físicamente de cumplir con el tour y Shawn Drover tomó su lugar permanentemente a los pocos días de iniciado el recorrido. Con esta formación, Megadeth se embarcó en la gira Blackmail the Universe Tour (2004-2005), demostrando que estaban de vuelta. En paralelo, Mustaine fundó ese año su propio festival itinerante, la Gigantour, convocando a legendarias y nuevas bandas de metal para girar juntos. La primera edición en 2005 incluyó a Dream Theater, Nevermore, Anthrax y, por supuesto, Megadeth como cierre. Mustaine se estableció como curador visionario de la comunidad metalera, seleccionando cuidadosamente un line-up que abarcaba desde veteranos respetados hasta nuevas promesas del género. La segunda edición en 2006 amplió su alcance con Lamb of God, Opeth, Arch Enemy y Overkill, demostrando el compromiso de Mustaine con la diversidad estilística dentro del metal. El concepto de Gigantour revolucionó la forma en que las bandas de metal podían colaborar y promover el género, estableciendo un legado que influenciaría futuros festivales itinerantes."
-        },
-        "united-abominations": {
-          "title": "United Abominations: Crítica política",
-          "content": "En 2006, el bajista original Ellefson seguía ausente (aún distanciado de Mustaine), así que James LoMenzo –veterano de Black Label Society y White Lion– entró al bajo, reemplazando a MacDonough. Con Glen y Shawn Drover más LoMenzo, Megadeth grabó United Abominations (2007) bajo el sello Roadrunner. Este álbum retomó temáticas político-sociales (Mustaine criticaba abiertamente a las Naciones Unidas en la canción título) y presentó colaboraciones interesantes, como la voz invitada de Cristina Scabbia (Lacuna Coil) en una nueva versión de \"À Tout Le Monde\". United Abominations recibió críticas positivas y se ubicó en el Top 10 de Billboard, señal de que la banda mantenía relevancia. La gira mundial 2007-08 fue exitosa, pero nuevamente hubo cambios: a inicios de 2008, Glen Drover se retiró alegando querer dedicar más tiempo a su familia y cierta insatisfacción personal."
-        },
-        "chris-broderick-llega": {
-          "title": "La llegada de Chris Broderick",
-          "content": "Mustaine aplaudió la honestidad de Glen Drover y rápidamente encontró un reemplazo formidable: Chris Broderick, virtuoso ex guitarrista de Nevermore y Jag Panzer. Broderick debutó en vivo con Megadeth en febrero de 2008 y encajó a la perfección, aportando precisión técnica y energía renovada. Su incorporación marcó el inicio de una nueva etapa creativa para la banda, que se prepararía para uno de sus álbumes más aclamados en años."
-        },
-        "endgame": {
-          "title": "Endgame: Regreso al thrash feroz",
-          "content": "Con Broderick en filas, Megadeth lanzó Endgame en 2009, álbum que muchos fans celebraron como un regreso pleno al thrash metal vertiginoso. Canciones como \"Head Crusher\" y \"This Day We Fight!\" mostraban a un Mustaine furibundo, inspirado en temas socio-políticos contemporáneos. Endgame recibió elogios por su ferocidad –incluso Dave Ellefson comentó que le recordaba a la agresividad de Rust in Peace–. Comercialmente se ubicó Top 10 en varios países. Tras su lanzamiento, ocurrió algo que los seguidores añoraban: en febrero de 2010, David Ellefson (tras reconciliarse con Mustaine después de años de alejamiento) regresó al bajo de Megadeth. Shawn Drover contactó a Ellefson cuando supo que LoMenzo planeaba irse, y Mustaine y Ellefson aprovecharon la oportunidad para dejar atrás viejas rencillas. Así, al cerrar la década 2000, Megadeth se reinventaba nuevamente, combinando sangre nueva (Broderick, Shawn) con la química clásica Mustaine–Ellefson."
-        }
-      }
-    },
-    "renacimiento-madurez": {
-      "title": "Renacimiento y madurez",
-      "subtitle": "Los Big Four y la estabilidad encontrada",
-      "summary": "El regreso de Ellefson, los históricos conciertos de los Big Four, un Grammy finalmente ganado con 'Dystopia', y la superación del cáncer de Mustaine. Una era de triunfos y estabilidad.",
-      "sections": {
-        "ellefson-regresa": {
-          "title": "El regreso de David Ellefson",
-          "content": "El año 2010 fue muy significativo para Megadeth. Con Dave Ellefson de vuelta en el bajo después de 8 años, la banda no solo continuó la gira de Endgame sino que también participó en un acontecimiento histórico: la reunión de los \"Big Four\" del thrash metal en un mismo escenario. En junio de 2010, Megadeth, Metallica, Slayer y Anthrax realizaron conciertos conjuntos como parte del festival Sonisphere, primero en Europa y luego en Estados Unidos."
-        },
-        "big-four-reunion": {
-          "title": "Los Big Four se reúnen",
-          "content": "El momento cumbre llegó en Sofía (Bulgaria), donde todas las bandas tocaron juntas el clásico \"Am I Evil?\" de Diamond Head. Ver a Mustaine compartiendo abrazos y escenario con sus antiguos compañeros de Metallica fue emotivo para los fans y simbólico: las rencillas de décadas parecían haber sanado. Mustaine declaró que las diferencias quedaban atrás y disfrutó la camaradería renovada. Los conciertos de los Big Four fueron inmortalizados en el DVD The Big Four: Live from Sofia, Bulgaria (2010), añadiendo otro hito documental a la historia de Megadeth."
-        },
-        "rust-in-peace-anniversary": {
-          "title": "20º aniversario de Rust in Peace",
-          "content": "Ese mismo año, Megadeth celebró el 20º aniversario de Rust in Peace tocando el álbum completo en una gira especial, cuyo show final en Los Ángeles quedó plasmado en el CD/DVD Rust in Peace Live (2010). Con la formación Mustaine–Ellefson–Broderick–Drover, la banda demostró que los clásicos seguían sonando poderosos después de dos décadas, reviviendo la magia de su obra cumbre ante audiencias extasiadas."
-        },
-        "th1rt3en": {
-          "title": "TH1RT3EN: Superstición y renovación",
-          "content": "Con la formación estabilizada, lanzaron TH1RT3EN (2011), decimotercer álbum de estudio titulado así en parte por superstición (Mustaine, nacido un 13 de septiembre, le dio simbolismo al número) y porque incluía 13 canciones. Thirteen combinó temas nuevos con algunos rescatados de años anteriores (por ejemplo \"Sudden Death\", compuesto para un videojuego de Guitar Hero). El disco fue bien recibido: destacó la pegadiza \"Public Enemy No. 1\" (nominada al Grammy) y \"Whose Life (Is It Anyways?)\". Megadeth giró intensamente en 2011-2012, incluyendo su participación como acto de apertura en la gira \"Maiden England\" de Iron Maiden en 2013, mostrando humildad al apoyar a otra leyenda del metal."
-        },
-        "super-collider": {
-          "title": "Super Collider: Experimentación polémica",
-          "content": "En 2013 llegó Super Collider, un álbum donde Mustaine buscó expandir su sonido con influencias de hard rock e incluso country en algunos riffs. Fue lanzado bajo su propio sello Tradecraft (en alianza con Universal) y tuvo colaboraciones inesperadas, como el guitarrista country-legendario en un solo. Super Collider polarizó a los fans y críticos: algunos apreciaron la experimentación en canciones como \"Kingmaker\", pero otros extrañaron la agresividad. Aun así, debutó en el Top 10 de Billboard, lo que demostraba la leal base de seguidores de la banda."
-        },
-        "broderick-drover-departure": {
-          "title": "Éxodo masivo y renovación",
-          "content": "Tras la gira de Super Collider, ocurrió otra sacudida: en noviembre de 2014, el guitarrista Chris Broderick y el baterista Shawn Drover anunciaron simultáneamente su salida de Megadeth, citando diferencias artísticas y ganas de perseguir proyectos propios. De un plumazo, Mustaine y Ellefson se quedaron solos al frente del grupo (por segunda vez en la historia, la primera fue en 2002). Lejos de amilanarse, Mustaine vio esto como una oportunidad de renovación. El 2015 trajo refuerzos de alto calibre: Kiko Loureiro, virtuoso guitarrista brasileño de la banda Angra, se unió oficialmente a Megadeth, aportando su maestría técnica y aire fresco a la composición."
-        },
-        "dystopia-grammy": {
-          "title": "Dystopia y el primer Grammy",
-          "content": "Asimismo, Mustaine reclutó al baterista Chris Adler (de Lamb of God) para grabar el próximo álbum –Adler participó como miembro oficial invitado, ya que continuaba con Lamb of God paralelamente. Con esta potente formación, Megadeth grabó Dystopia (2016). El disco resultante fue aclamado como una vuelta triunfal al thrash agresivo y complejo. Canciones como \"The Threat Is Real\", \"Fatal Illusion\" y la titular \"Dystopia\" mostraron a Mustaine inspirado por temáticas distópicas y riffs demoledores, mientras que Kiko Loureiro contribuyó con solos melódicos y arreglos exquisitos. Dystopia revitalizó totalmente la imagen de Megadeth y recibió numerosos premios. De hecho, en la 59ª entrega de los Grammy Awards (2017), Megadeth finalmente ganó su primer Grammy tras 12 nominaciones previas, llevándose el trofeo a Mejor Interpretación de Metal por la canción \"Dystopia\". Cuando Mustaine subió al escenario a recoger el Grammy, la house band de la ceremonia insólitamente tocó \"Master of Puppets\" de Metallica como música de fondo, a lo que Dave reaccionó con humor haciendo air guitar mientras sonreía. El momento, muy comentado, simbolizó con ironía la larga sombra de Metallica en la historia de Mustaine, pero ahora este finalmente tenía un Grammy con el nombre de Megadeth grabado en él."
-        },
-        "dirk-verbeuren-joins": {
-          "title": "Dirk Verbeuren y la consolidación",
-          "content": "Durante la gira mundial de Dystopia (2016-2017), Megadeth incorporó al baterista belga Dirk Verbeuren (ex Soilwork) para sustituir a Chris Adler, quien debía volver a sus compromisos con Lamb of God. Verbeuren se convirtió en miembro permanente a mediados de 2016, consolidando una alineación sumamente técnica con Mustaine, Ellefson, Loureiro y Dirk. La banda se mantuvo muy activa: organizaron el Megacruise (crucero temático de heavy metal) en 2019 e ingresaron a estudio ese año para trabajar en el siguiente álbum."
-        },
-        "cancer-recovery": {
-          "title": "Batalla contra el cáncer",
-          "content": "Sin embargo, nuevas adversidades golpearon: en junio de 2019, Dave Mustaine fue diagnosticado con cáncer de garganta, una noticia que estremeció a la comunidad metalera. El líder de Megadeth se sometió a más de 50 sesiones de radiación y quimioterapia, afrontando la enfermedad con la determinación guerrera que siempre lo caracterizó. Durante su tratamiento, la banda entró en pausa y varias fechas fueron canceladas, aunque Mustaine prometió a los fans que regresaría más fuerte que nunca. Afortunadamente, en enero de 2020 Mustaine anunció que estaba \"100% libre de cáncer\" y listo para volver a los escenarios."
-        },
-        "ellefson-departure": {
-          "title": "La controversia de Ellefson",
-          "content": "En paralelo, otro golpe llegó en mayo de 2021: el bajista David Ellefson fue expulsado de Megadeth tras un escándalo público. Se filtraron acusaciones de conducta sexual inapropiada en línea por parte de Ellefson (que luego él negaría o explicaría como consensuadas); independientemente de los detalles, Mustaine decidió que era insostenible mantenerlo en la banda. Fue una decisión dolorosa dado el largo historial compartido, pero Mustaine declaró que era por el bien del grupo. Para completar el casi terminado nuevo álbum, Mustaine convocó al bajista Steve Di Giorgio (Testament) como músico de sesión y eliminó las pistas grabadas por Ellefson. Asimismo, reincorporó a James LoMenzo –quien había sido bajista de Megadeth de 2006 a 2010– como miembro de gira y luego permanente en el bajo."
-        },
-        "sick-dying-dead": {
-          "title": "The Sick, the Dying... and the Dead!",
-          "content": "A pesar de estos obstáculos, Mustaine perseveró y consiguió finalizar el decimosexto álbum de estudio de Megadeth. Finalmente, en septiembre de 2022, los metaleros pudieron escuchar The Sick, the Dying... and the Dead!, primer álbum de Megadeth tras seis años. El disco aborda temáticas oscuras (plagas, guerra, corrupción) muy en línea con los tiempos pandémicos recientes. Musicalmente combina el virtuosismo de Loureiro y Verbeuren con la inconfundible agresión de Mustaine. Destacan temas como \"We'll Be Back\", \"Night Stalkers\" (con un cameo del rapero Ice-T) y \"Soldier On!\". The Sick, the Dying... recibió críticas positivas y demostró que, a sus casi 60 años, Mustaine seguía \"disfrutando su trabajo\" y sonando revitalizado. El álbum debutó en el Top 5 del Billboard 200, alzándose como otro éxito comercial tardío para la banda. Además, el sencillo \"We'll Be Back\" fue nominado al Grammy 2023 a Mejor Canción de Metal, manteniendo la presencia de Megadeth en premiaciones."
-        },
-        "marty-reunion-moments": {
-          "title": "Reuniones especiales con Marty Friedman",
-          "content": "Durante 2022 y 2023, Megadeth salió de gira bajo el lema \"Crush the World\", llevando su show a Norteamérica, Europa, Asia y Latinoamérica. En este periodo ocurrieron algunos eventos notables para los fans de la vieja escuela: en febrero de 2023, durante un concierto en el mítico Budokan de Tokio, Marty Friedman –el ex guitarrista de la época dorada– se unió como invitado sorpresa para tocar varios clásicos tras 23 años de ausencia. La emotiva reunión con Friedman se repitió en agosto de 2023 en el festival Wacken Open Air en Alemania, donde Marty volvió a tocar junto a Megadeth en cuatro canciones (incluyendo \"Holy Wars\" y \"Trust\") ante una ovación masiva. Estas apariciones alimentaron esperanzas de algunos fanáticos sobre una posible colaboración más extensa, pero Friedman dejó claro que fueron participaciones especiales y amistosas."
-        },
-        "kiko-departure-teemu-arrival": {
-          "title": "Cambio de guitarrista: de Kiko a Teemu",
-          "content": "Por otra parte, el guitarrista Kiko Loureiro anunció en septiembre de 2023 que no podría continuar las giras de Megadeth por el momento, ya que necesitaba dedicar tiempo a su familia (acababa de tener gemelos). Inicialmente se comunicó que sería una ausencia temporal, con el finlandés Teemu Mäntysaari (de Wintersun) cubriendo su puesto en conciertos; sin embargo, en noviembre de 2023 Kiko confirmó que extendía indefinidamente su ausencia y dejaba vacante su puesto de forma amistosa. En agosto de 2024, Mustaine oficializó que Loureiro efectivamente salía de Megadeth en buenos términos para enfocarse en proyectos personales, y a la vez anunció a Teemu Mäntysaari como miembro oficial y nuevo guitarrista líder de la banda. Con ello, Megadeth incorporaba sangre joven a sus filas una vez más, preparando el terreno para la que sería su etapa final."
-        }
-      }
-    },
-    "actualidad-despedida": {
-      "title": "Actualidad y despedida",
-      "subtitle": "El final de una era legendaria",
-      "summary": "Los últimos años activos de Megadeth, el anuncio de su retiro, el álbum final homónimo y la gira mundial de despedida que cerrará cuatro décadas de thrash metal.",
-      "sections": {
-        "giras-recientes": {
-          "title": "Crush The World",
-          "content": "Tras la salida de The Sick, the Dying... y con nueva formación, Megadeth mantuvo su vigencia en la actualidad. En 2023-2024 realizaron extensas giras, incluyendo la etapa norteamericana \"Crush The World\" (coincidiendo con festivales y un tour junto a Five Finger Death Punch en EE.UU.) y un aclamado regreso a Latinoamérica en 2024 con fechas sold-out en Brasil, Chile, Argentina (sus shows en Buenos Aires de abril 2024 se transmitieron vía streaming a todo el mundo). Durante este período, Dave Mustaine empezó a insinuar que el final de la banda podía estar cerca, haciendo comentarios en entrevistas sobre su legado y su deseo de retirarse en la cima."
-        },
-        "anuncio-despedida": {
-          "title": "El anuncio del final",
-          "content": "Estas sospechas se confirmaron en agosto de 2025: el día 14, a través de un dramático video en redes sociales protagonizado por Vic Rattlehead (la mascota), Megadeth anunció que lanzaría un último álbum de estudio en 2026 y emprendería una última gira mundial de despedida. Poco después, Dave Mustaine envió un emotivo comunicado a los fans diciendo: \"La mayoría [de las bandas] no logra retirarse en sus propios términos y en la cima, y ese es el punto en el que me encuentro ahora mismo. He viajado por el mundo y ganado millones de fans, y lo más difícil de todo es despedirme de ellos… No se enojen, no se entristezcan, estén felices por nosotros, vengan a celebrar conmigo estos próximos años.\""
-        },
-        "album-final": {
-          "title": "Megadeth: El álbum homónimo final",
-          "content": "El álbum final de Megadeth, aún sin título revelado en ese momento (posteriormente se ha confirmado que será un disco homónimo, es decir, titulado Megadeth), está programado para lanzarse el 23 de enero de 2026. Como anticipo, el 3 de octubre de 2025 la banda publicó el primer sencillo, \"Tipping Point\", un tema thrasher furioso que los críticos alabaron por recordar el estilo clásico del grupo. \"Tipping Point\" es la primera grabación de estudio de Megadeth que presenta al nuevo guitarrista Teemu Mäntysaari (en lugar de Kiko) y marca también el retorno de James LoMenzo en bajo en un disco desde Endgame (2009). El video musical de la canción muestra a Mustaine y compañía tocando en una prisión abandonada, con elementos simbólicos como Dave en la silla eléctrica siendo acosado por demonios."
-        },
-        "gira-despedida": {
-          "title": "Gira mundial de despedida",
-          "content": "La gira de despedida mundial de Megadeth comenzará a inicios de 2026, bajo un nombre aún por anunciar. Mustaine ha indicado que será una gira extensa de varios años, para poder llegar con Megadeth a todos los rincones del planeta. \"Hemos hecho muchos amigos a lo largo de los años y espero verlos a todos en nuestra gira global de despedida\", declaró Dave, invitando a los fans a celebrar en vez de lamentar el final. La promesa es ofrecer shows especiales, llenos de clásicos que abarcarán toda su discografía, e incluso tocar canciones poco habituales para complacer a los seguidores más fieles."
-        },
-        "legado-eterno": {
-          "title": "Un legado eterno",
-          "content": "A medida que Megadeth se acerca al ocaso de su historia, el legado que deja es impresionante. Con casi cuatro décadas de música, 16 álbumes de estudio (pronto 17), varios en vivo, compilatorios que resumen su impacto, y documentales oficiales que narran sus altibajos, la banda de Dave Mustaine se consagra como una de las más importantes en la historia del metal. Pocos grupos han sobrevivido a tantos cambios y crisis manteniendo su esencia. Megadeth inspiró a generaciones de músicos y deja un arsenal de canciones inmortales. Desde la furia técnica de Rust in Peace hasta la madurez combativa de Dystopia, cada capítulo de su discografía refleja la personalidad indomable de Mustaine y su búsqueda de la excelencia en el metal. Dave Mustaine, el General de esta revolución del thrash, podrá retirarse sabiendo que cumplió su misión: \"cambiar el mundo\" a través de la música metal."
+        "early-years": {
+          "title": "Primeros años",
+          "content": "Taylor Swift comenzó su carrera en la música country a una edad temprana, firmando con Big Machine Records y lanzando su álbum debut homónimo en 2006."
         }
       }
     }
-  },
-  "historyPage": {
-    "title": "Megadeth: Historia",
-    "description": "Historia completa de Megadeth desde 1983 hasta 2026. Cuatro décadas de thrash metal, cambios de formación, éxitos y controversias de una de las bandas más influyentes del metal.",
-    "imageAlt": "Historia completa de Megadeth 1983-2026",
-    "keywords": "Megadeth historia, Dave Mustaine biografía, thrash metal historia, Big Four, Metallica, timeline Megadeth, cronología metal, historia del metal, 1983-2026, Rust in Peace, Countdown to Extinction, Peace Sells, Dystopia"
-  },
-  "chapterPage": {
-    "notFoundTitle": "Capítulo no encontrado | Historia Megadeth",
-    "notFoundDescription": "El capítulo solicitado no existe.",
-    "historyMegadeth": "Historia Megadeth",
-    "megadethHistory": "Historia de Megadeth"
-  },
-  "hero": {
-    "title": "Último disco \"Megadeth\"  · Ya disponible",
-    "description": "Noticias, fechas y discografía de Megadeth. Curado para fans. Rápido, simple y full responsive.",
-    "viewDates": "Ver fechas",
-    "listenSingle": "Escuchar single",
-    "latestVideo": "Último video de Megadeth",
-    "newVideoTitle": "Nuevo video: \"Tipping Point\"",
-    "countdownTitle": "Cuenta regresiva para I DON'T CARE",
-    "countdownDescription": "Mañana a las 13:00 PM hora argentina se estrena el nuevo single de Megadeth 'I Don't Care' en todas las plataformas digitales. ¡No te lo pierdas!",
-    "videoTitle": "Nuevo video I DON'T CARE"
-  },
-  "album": {
-    "finalAlbumTitle": "Álbum 17 / Final de Megadeth",
-    "albumName": "Megadeth",
-    "releaseDate": "Ya a la venta",
-    "releaseDateValue": "",
-    "firstSingle": "Singles",
-    "firstSingleValue": "Tipping Point, I Don't Care y Let There Be Shred — ya lanzados",
-    "producedBy": "Producido por",
-    "producedByValue": "Mustaine + Chris Rakestraw",
-    "finalLineup": "Line-up final",
-    "finalLineupValue": "Dave Mustaine, Dirk Verbeuren, Teemu Mäntysaari y James LoMenzo",
-    "includes": "Incluye",
-    "includesValue": "Gira de despedida y libro de Mustaine",
-    "updatedSections": "Actualizadas las secciones",
-    "discography": "Discografía",
-    "songs": "Canciones",
-    "withAllNews": "con todas las novedades del nuevo disco",
-    "preOrder": "Compralo ahora",
-    "officialStore": "Tienda oficial de Megadeth"
-  },
-  "countdown": {
-    "title": "Tiempo restante hasta el lanzamiento",
-    "days": "Días",
-    "hours": "Horas",
-    "minutes": "Minutos",
-    "seconds": "Segundos",
-    "daysShort": "D",
-    "hoursShort": "H",
-    "minutesShort": "Min",
-    "secondsShort": "Seg"
-  },
-  "argentinaConcert": {
-    "title": "Megadeth en Argentina",
-    "venue": "Tecnópolis",
-    "date": "30 de Abril de 2026 - 21:00hs",
-    "countdownTitle": "Cuenta regresiva para el show",
-    "imageAlt": "Megadeth en Argentina - Tecnópolis 2026",
-    "buyTicketsText": "Comprá tus tickets en",
-    "fullticket": "Fullticket"
-  },
-  "video": {
-    "defaultTitle": "Video de YouTube",
-    "loading": "Cargando video...",
-    "error": "Error al cargar el video"
-  },
-  "home": {
-    "welcome": "Bienvenido",
-    "comingSoon": "Pronto: noticias, fechas y discos."
-  },
-  "tour": {
-    "title": "Gira Mundial",
-    "subtitle": "No te pierdas los próximos conciertos de Megadeth",
-    "moreInfo": "Más fechas serán anunciadas próximamente. ¡Mantente atento!",
-    "buyTickets": "Comprar entradas",
-    "soldOut": "Agotado",
-    "upcoming": "Próximos conciertos",
-    "past": "Conciertos pasados"
-  },
-  "albumTeasers": {
-    "title": "Adelantos del Álbum",
-    "subtitle": "Adelantos exclusivos y filtraciones del próximo álbum final",
-    "credits": "Créditos:"
-  },
-  "shorts": {
-    "title": "Adelantos del Nuevo Álbum"
-  },
-  "albumDetail": {
-    "upcoming": "Próximo",
-    "details": "Detalles",
-    "label": "Sello",
-    "producers": "Productores",
-    "releaseDate": "Fecha de lanzamiento",
-    "tracklist": "Lista de canciones",
-    "duration": "Duración",
-    "writers": "Compositores",
-    "noLyrics": "Letras no disponibles",
-    "close": "Cerrar",
-    "lineup": "Formación",
-    "viewLyrics": "Ver letra",
-    "viewSongDetails": "Ver detalles de la canción",
-    "relatedAlbums": "Álbumes relacionados"
-  },
-  "footer": {
-    "siteDescription": "Noticias, fechas y discografía de Megadeth.",
-    "faq": "Preguntas frecuentes",
-    "terms": "Términos y condiciones",
-    "privacy": "Política de privacidad",
-    "contact": "Contacto",
-    "disclaimer": "Fan site no oficial. © {year}",
-    "music": "Música",
-    "discography": "Discografía",
-    "songs": "Canciones",
-    "videos": "Videos",
-    "dvds": "DVDs",
-    "band": "La Banda",
-    "history": "Historia",
-    "members": "Miembros",
-    "lineups": "Formaciones",
-    "interviews": "Entrevistas",
-    "live": "En Vivo",
-    "tour": "Gira",
-    "shows": "Shows",
-    "bootlegs": "Bootlegs",
-    "info": "Información",
-    "news": "Noticias",
-    "legal": "Legal",
-    "seoDescription": "Megadeth es una banda pionera del thrash metal fundada por Dave Mustaine en 1983. Este sitio de fans reúne la discografía completa de Megadeth, incluyendo álbumes clásicos como Rust in Peace, Peace Sells... but Who's Buying?, y Countdown to Extinction. Explora la historia de la banda, biografías de miembros legendarios como Marty Friedman, Nick Menza y David Ellefson, además de la formación actual con James LoMenzo, Dirk Verbeuren y Teemu Mäntysaari. Encuentra fechas de conciertos, setlists de shows en vivo, bootlegs, videoclips oficiales, entrevistas exclusivas y las últimas noticias sobre giras mundiales y nuevos lanzamientos.",
-    "sitemap": "Mapa del Sitio"
-  },
-  "videos": {
-    "title": "Videos",
-    "subtitle": "Videoclips oficiales, performances en vivo y contenido exclusivo de Megadeth",
-    "comment": "¿Nos falta algun video?, ¿Cuales son tus favoritos?, ¡Déjanos tu comentario!"
-  },
-  "dvds": {
-    "title": "DVDs",
-    "subtitle": "Videos musicales, documentales y conciertos en vivo de Megadeth",
-    "totalCount": "{count, plural, =1 {1 DVD} other {# DVDs}} en la colección"
-  },
-  "discography": {
-    "title": "Discografía",
-    "studioAlbums": "Álbumes de Estudio",
-    "liveAlbums": "Álbumes en Vivo",
-    "compilations": "Compilaciones",
-    "eps": "EPs"
-  },
-  "lineups": {
-    "title": "Formaciones",
-    "subtitle": "Evolución de la alineación de Megadeth a través de 40 años",
-    "timeline": "Línea de Tiempo",
-    "members": "Miembros",
-    "membersSubtitle": "Conoce a todos los músicos que han formado parte de Megadeth a lo largo de su historia",
-    "currentLineup": "Formación Actual",
-    "classicLineup": "Formación Clásica",
-    "formerMembers": "Miembros Anteriores",
-    "currentPeriod": "2023 – presente",
-    "classicPeriod": "1990 – 1998",
-    "currentMembersNames": "Dave Mustaine, James LoMenzo, Dirk Verbeuren, Teemu Mäntysaari",
-    "classicMembersNames": "Dave Mustaine, David Ellefson, Marty Friedman, Nick Menza",
-    "meet": "Conoce a todos los músicos que han formado parte de Megadeth a lo largo de su historia",
-    "member": {
-      "biography": "Biografía",
-      "albums": "Álbumes con Megadeth",
-      "otherProjects": "Otros Proyectos",
-      "instruments": "Instrumentos",
-      "period": "Período",
-      "role": "Rol",
-      "birthYear": "Nacido en",
-      "deathYear": "Fallecido en",
-      "country": "País",
-      "nickname": "Apodo",
-      "personalInfo": "Información Personal"
-    },
-    "formation": {
-      "period": "Período",
-      "albums": "Álbumes",
-      "members": "Miembros",
-      "description": "Descripción"
-    },
-    "classifications": {
-      "founder": "Fundador",
-      "leader": "Líder",
-      "founding": "Miembro Fundador",
-      "first": "Primer Miembro",
-      "core": "Miembro Principal",
-      "guest": "Invitado",
-      "session": "Músico de Sesión",
-      "touring": "Músico de Gira",
-      "temporary": "Temporal",
-      "new": "Nuevo",
-      "virtuoso": "Virtuoso",
-      "returning": "Regresando",
-      "stable": "Estable",
-      "international": "Internacional",
-      "veteran": "Veterano",
-      "precision": "Precisión",
-      "eternal": "Eterno",
-      "current": "Actual",
-      "powerhouse": "Fuerza",
-      "continuing": "Continuando"
-    }
-  },
-  "faq": {
-    "title": "Preguntas frecuentes",
-    "q1": "¿Este sitio es oficial de Megadeth?",
-    "a1": "No, es un fan site no oficial dedicado a la banda Megadeth.",
-    "q2": "¿Dónde puedo encontrar fechas de la gira?",
-    "a2": "Las fechas se actualizan en la sección 'Gira' y en la página principal.",
-    "q3": "¿Cómo puedo contactar al equipo del sitio?",
-    "a3": "Puedes usar el formulario de contacto o escribir a megadethargentina77@gmail.com."
-  },
-  "terms": {
-    "title": "Términos y condiciones",
-    "body": "Este sitio es un fan site no oficial de Megadeth. El contenido es solo informativo y no representa a la banda ni a sus miembros. No se recopilan datos personales ni se realiza venta de productos. El uso del sitio implica la aceptación de estos términos."
-  },
-  "privacy": {
-    "title": "Política de privacidad",
-    "body": "Este sitio no recopila datos personales de los usuarios. No se utilizan cookies ni se realiza seguimiento de actividad. El único medio de contacto es el correo electrónico proporcionado en la sección de contacto."
-  },
-  "contact": {
-    "title": "Contacto",
-    "description": "¿Tienes dudas, sugerencias o quieres colaborar? Escríbenos a nuestro correo y te responderemos a la brevedad.",
-    "emailButton": "Enviar correo a megadethargentina77@gmail.com"
-  },
-  "breadcrumb": {
-    "home": "Inicio",
-    "discography": "Discografía",
-    "videos": "Videos",
-    "dvds": "DVDs",
-    "shows": "Shows",
-    "bootlegs": "Bootlegs",
-    "tour": "Gira",
-    "news": "Noticias",
-    "interviews": "Entrevistas",
-    "history": "Historia",
-    "lineups": "Formaciones",
-    "members": "Miembros",
-    "songs": "Canciones",
-    "faq": "Preguntas frecuentes",
-    "terms": "Términos y condiciones",
-    "privacy": "Política de privacidad",
-    "contact": "Contacto"
-  },
-  "lastShows": {
-    "latestShow": "Último Show",
-    "yearsAgo": "Hace 20 Años...",
-    "setlist": "Setlist"
-  },
-  "quickAccess": {
-    "title": "Explora el Contenido",
-    "discography": "Discografía",
-    "discographyCount": "17 álbumes",
-    "songs": "Canciones",
-    "songsCount": "150+ canciones",
-    "videos": "Videos",
-    "videosCount": "50+ videos",
-    "tour": "Tour 2026",
-    "tourCount": "Fechas en vivo",
-    "interviews": "Entrevistas",
-    "interviewsCount": "Entrevistas exclusivas",
-    "history": "Historia",
-    "historyCount": "40+ años"
-  },
-  "topSongs": {
-    "title": "Top 10 Canciones Más Tocadas en Vivo",
-    "subtitle": "Las canciones más interpretadas en la historia de Megadeth",
-    "timesPlayed": "veces tocada",
-    "viewAll": "Ver todas las canciones"
-  },
-  "upcomingTours": {
-    "title": "Próximos Shows",
-    "nextShow": "Próximo",
-    "viewAll": "Ver todas las fechas"
-  },
-  "heroIntro": {
-    "description": "Bienvenido al sitio más completo de Megadeth en español. Descubre toda la discografía, historia de la banda, shows en vivo, entrevistas exclusivas, letras de canciones y las últimas noticias sobre Dave Mustaine, Teemu Mäntysaari, James LoMenzo y Dirk Verbeuren."
-  },
-  "search": {
-    "placeholder": "Buscar canciones, álbumes, shows, noticias...",
-    "typeToSearch": "Escribe al menos 2 caracteres para buscar",
-    "noResults": "No se encontraron resultados para",
-    "tryWith": "Intenta con: 'Holy Wars', 'Rust in Peace', 'Buenos Aires'",
-    "songs": "Canciones",
-    "albums": "Álbumes",
-    "shows": "Shows",
-    "news": "Noticias",
-    "members": "Miembros",
-    "interviews": "Entrevistas"
-  },
-  "featuredArticle": {
-    "featured": "Artículo Destacado",
-    "readMore": "Leer más"
-  },
-  "reviews": {
-    "pageTitle": "Reviews - Megadeth Fan Site",
-    "pageDescription": "Lee críticas y análisis detallados de álbumes, conciertos y documentales de Megadeth",
-    "title": "Reviews",
-    "description": "Críticas y análisis detallados de la discografía y actuaciones de Megadeth",
-    "breadcrumb": {
-      "home": "Inicio",
-      "discography": "Discografía",
-      "reviews": "Reviews"
-    },
-    "category": {
-      "album": "Álbum",
-      "concert": "Concierto",
-      "documentary": "Documental",
-      "other": "Otro"
-    },
-    "rating": "Calificación",
-    "readMore": "Leer review completa",
-    "backToReviews": "Volver a Reviews"
-  },
-  "comments": {
-    "title": "Comentarios",
-    "subtitle": "Deja tu comentario sobre",
-    "leave": "Deja tu comentario sobre",
-    "name": "Nombre",
-    "email": "Email",
-    "content": "Comentario",
-    "placeholder": "Escribe tu comentario (texto plano, sin enlaces)",
-    "submit": "Enviar comentario",
-    "posting": "Enviando...",
-    "loading": "Cargando comentarios...",
-    "none": "Aún no hay comentarios. ¡Sé el primero!",
-    "commentsTitle": "Comentarios",
-    "invalidEmail": "Ingresa un email válido",
-    "error": "Error al publicar comentario. Intenta nuevamente."
   }
 }

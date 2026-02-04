@@ -6,35 +6,37 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const keywordsByLocale = {
     es: [
-      "Megadeth tour",
-      "conciertos Megadeth",
-      "entradas Megadeth",
-      "gira 2025",
-      "Dave Mustaine concierto",
+      "Taylor Swift tour",
+      "conciertos Taylor Swift",
+      "entradas Taylor Swift",
+      "The Eras Tour",
+      "gira 2026",
+      "Taylor Swift concierto",
       "tour fechas",
-      "metal en vivo",
-      "thrash metal tour",
+      "pop en vivo",
+      "music tour",
     ],
     en: [
-      "Megadeth tour",
-      "Megadeth concerts",
-      "Megadeth tickets",
-      "tour 2025",
-      "Dave Mustaine concert",
+      "Taylor Swift tour",
+      "Taylor Swift concerts",
+      "Taylor Swift tickets",
+      "The Eras Tour",
+      "tour 2026",
+      "Taylor Swift concert",
       "tour dates",
-      "live metal",
-      "thrash metal tour",
+      "live pop",
+      "music tour",
     ],
   };
 
   const titleByLocale = {
-    es: "Megadeth Tour 2025 - Fechas y Entradas",
-    en: "Megadeth Tour 2025 - Dates and Tickets",
+    es: "Taylor Swift Tour 2026 - Fechas y Entradas",
+    en: "Taylor Swift Tour 2026 - Dates and Tickets",
   };
 
   const descriptionByLocale = {
-    es: "Fechas oficiales del tour de Megadeth 2025. Encuentra entradas para los conciertos en Europa y América.",
-    en: "Official Megadeth 2025 tour dates. Find tickets for concerts in Europe and America.",
+    es: "Fechas oficiales del tour de Taylor Swift 2026. Encuentra entradas para The Eras Tour.",
+    en: "Official Taylor Swift 2026 tour dates. Find tickets for The Eras Tour.",
   };
 
   return {
@@ -46,22 +48,22 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords:
       keywordsByLocale[locale as keyof typeof keywordsByLocale] ||
       keywordsByLocale.es,
-    authors: [{ name: "Exequiel Sosa" }],
+    authors: [{ name: "Taylor Swift Fan Site" }],
     openGraph: {
       title:
         titleByLocale[locale as keyof typeof titleByLocale] || titleByLocale.es,
       description:
         descriptionByLocale[locale as keyof typeof descriptionByLocale] ||
         descriptionByLocale.es,
-      siteName: "Megadeth Fan",
+      siteName: "Taylor Swift Fan",
       type: "website",
       locale: locale === "es" ? "es_AR" : "en_US",
       images: [
         {
-          url: "/images/megadeth-megadeth.jpg",
+          url: "/images/taylor-tour.jpg",
           width: 1200,
           height: 630,
-          alt: "Megadeth Tour 2025",
+          alt: "Taylor Swift Tour 2026",
         },
       ],
     },

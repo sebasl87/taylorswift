@@ -6,22 +6,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const t = await getTranslations("interviews");
 
-  const title = `${t("listTitle")} | Megadeth`;
+  const title = `${t("listTitle")} | Taylor Swift`;
   const description = t("listDescription");
   const keywords = [
-    "Megadeth",
+    "Taylor Swift",
     "entrevistas",
     "interviews",
-    "thrash metal",
-    "metal",
-    "Dave Mustaine",
-    "David Ellefson",
-    "Marty Friedman",
-    "Nick Menza",
-    "Kiko Loureiro",
-    "Dirk Verbeuren",
-    "James LoMenzo",
-    "Teemu Mäntysaari",
+    "pop",
+    "country",
+    "The Eras Tour",
     "declaraciones",
     "statements",
     "conversaciones",
@@ -36,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: "/entrevistas",
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       locale: locale === "es" ? "es_ES" : "en_US",
       type: "website",
       images: [
@@ -46,8 +39,8 @@ export async function generateMetadata(): Promise<Metadata> {
           height: 630,
           alt:
             locale === "es"
-              ? "Entrevistas de Megadeth - Colección completa"
-              : "Megadeth Interviews - Complete Collection",
+              ? "Entrevistas de Taylor Swift - Colección completa"
+              : "Taylor Swift Interviews - Complete Collection",
         },
       ],
     },
@@ -56,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       images: ["/images/entrevistas/og-interviews.jpg"],
-      creator: "@MegadethFanSite",
+      creator: "@TaylorSwiftFanSite",
     },
     alternates: {
       canonical: "/entrevistas",

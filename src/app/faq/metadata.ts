@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: "/images/placeholder.jpg",
           width: 1200,
           height: 630,
-          alt: "Megadeth FAQ",
+          alt: "Taylor Swift FAQ",
         },
       ],
     },

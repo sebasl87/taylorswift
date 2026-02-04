@@ -6,23 +6,18 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const t = await getTranslations("songs");
 
-  const title = `${t("songsListTitle")} | Megadeth`;
+  const title = `${t("songsListTitle")} | Taylor Swift`;
   const description = t("songsListDescription");
   const keywords = [
-    "Megadeth",
+    "Taylor Swift",
     "songs",
     "canciones",
-    "thrash metal",
-    "metal",
-    "Dave Mustaine",
-    "Nick Menza",
-    "Marty Friedman",
-    "David Ellefson",
-    "James LoMenzo",
-    "Dirk Verbeuren",
-    "Teemu Mäntysaari",
-    "discografía Megadeth",
-    "álbumes Megadeth",
+    "pop",
+    "country",
+    "alternative",
+    "The Eras Tour",
+    "discografía Taylor Swift",
+    "álbumes Taylor Swift",
     "lyrics",
     "letras",
   ];
@@ -35,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: "/songs",
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       locale: locale === "es" ? "es_ES" : "en_US",
       type: "website",
       images: [
@@ -45,8 +40,8 @@ export async function generateMetadata(): Promise<Metadata> {
           height: 630,
           alt:
             locale === "es"
-              ? "Listado de canciones de Megadeth"
-              : "Megadeth Songs List",
+              ? "Listado de canciones de Taylor Swift"
+              : "Taylor Swift Songs List",
         },
       ],
     },
@@ -55,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       images: ["/images/discography/og-songs.jpg"],
-      creator: "@MegadethFanSite",
+      creator: "@TaylorSwiftFanSite",
     },
     alternates: {
       canonical: "/songs",

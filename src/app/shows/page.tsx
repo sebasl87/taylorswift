@@ -6,18 +6,18 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const t = await getTranslations("shows");
 
-  const title = `${t("listTitle")} | Megadeth`;
+  const title = `${t("listTitle")} | Taylor Swift`;
   const description = t("listDescription");
   const keywords = [
-    "Megadeth",
+    "Taylor Swift",
     "shows",
     "conciertos",
     "concerts",
     "live",
     "en vivo",
-    "thrash metal",
-    "metal",
-    "Dave Mustaine",
+    "pop",
+    "country",
+    "The Eras Tour",
     "historic shows",
     "shows históricos",
     "tour dates",
@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: "/shows",
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       locale: locale === "es" ? "es_ES" : "en_US",
       type: "website",
       images: [
@@ -43,8 +43,8 @@ export async function generateMetadata(): Promise<Metadata> {
           height: 630,
           alt:
             locale === "es"
-              ? "Shows Históricos de Megadeth"
-              : "Megadeth Historic Shows",
+              ? "Shows Históricos de Taylor Swift"
+              : "Taylor Swift Historic Shows",
         },
       ],
     },
@@ -53,7 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       images: ["/images/shows/og-shows.jpg"],
-      creator: "@MegadethFanSite",
+      creator: "@TaylorSwiftFanSite",
     },
     alternates: {
       canonical: "/shows",

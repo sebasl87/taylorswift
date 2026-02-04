@@ -5,7 +5,7 @@ import { kv } from "@vercel/kv";
 export const runtime = "nodejs";
 
 const BASE_URL = "https://api.setlist.fm/rest/1.0";
-const DEFAULT_MBID = "a9044915-8be3-4c7e-b11f-9e2d2ea0a91e"; // Megadeth
+const DEFAULT_MBID = "20244d07-534f-4eff-b4d4-930878889970"; // Taylor Swift
 
 type TourCard = {
   id: string;

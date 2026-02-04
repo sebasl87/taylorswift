@@ -68,12 +68,12 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
       name: song.title,
       byArtist: {
         "@type": "MusicGroup",
-        name: "Megadeth",
+        name: "Taylor Swift",
       },
       inAlbum: {
         "@type": "MusicAlbum",
         name: song.album.title,
-        image: `https://megadeth.com.ar${song.album.cover}`,
+        image: `https://taylorswift.com${song.album.cover}`,
       },
       ...(song.details?.duration && { duration: song.details.duration }),
       ...(song.album?.year && { datePublished: `${song.album.year}-01-01` }),
@@ -97,7 +97,7 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
             }),
           })),
         }),
-      genre: ["Heavy Metal", "Thrash Metal"],
+      genre: ["Pop", "Country", "Alternative"],
       ...(song.lyrics &&
         song.lyrics.en && {
           lyrics: {

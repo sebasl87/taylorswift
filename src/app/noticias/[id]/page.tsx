@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: NewsPageProps) {
   }
 
   return {
-    title: `${article.title[locale]} | Megadeth Argentina`,
+    title: `${article.title[locale]} | Taylor Swift`,
     description: article.description[locale],
     openGraph: {
       title: article.title[locale],
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: NewsPageProps) {
       images: article.imageUrl
         ? [
             {
-              url: `https://megadeth.com.ar${article.imageUrl}`,
+              url: `https://taylorswift.com${article.imageUrl}`,
               alt: article.imageAlt?.[locale] || article.title[locale],
             },
           ]
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: NewsPageProps) {
       title: article.title[locale],
       description: article.description[locale],
       images: article.imageUrl
-        ? [`https://megadeth.com.ar${article.imageUrl}`]
+        ? [`https://taylorswift.com${article.imageUrl}`]
         : article.youtubeVideoId
           ? [
               `https://img.youtube.com/vi/${article.youtubeVideoId}/maxresdefault.jpg`,
@@ -104,16 +104,16 @@ export default async function NoticiaPage({ params }: NewsPageProps) {
     dateModified: article.publishedDate,
     author: {
       "@type": "Organization",
-      name: "Megadeth Argentina",
-      url: "https://megadeth.com.ar",
+      name: "Taylor Swift Fan Site",
+      url: "https://taylorswift.com",
     },
     publisher: {
       "@type": "Organization",
-      name: "Megadeth Argentina",
-      url: "https://megadeth.com.ar",
+      name: "Taylor Swift Fan Site",
+      url: "https://taylorswift.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://megadeth.com.ar/images/meg-argentina.jpg",
+        url: "https://taylorswift.com/favicon.ico",
         width: 600,
         height: 60,
       },
@@ -121,7 +121,7 @@ export default async function NoticiaPage({ params }: NewsPageProps) {
     image: article.imageUrl
       ? {
           "@type": "ImageObject",
-          url: `https://megadeth.com.ar${article.imageUrl}`,
+          url: `https://taylorswift.com${article.imageUrl}`,
           ...(article.imageAlt && {
             caption: article.imageAlt[locale],
           }),
@@ -133,18 +133,18 @@ export default async function NoticiaPage({ params }: NewsPageProps) {
           }
         : {
             "@type": "ImageObject",
-            url: "https://megadeth.com.ar/images/meg-argentina.jpg",
+            url: "https://taylorswift.com/favicon.ico",
           },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://megadeth.com.ar${
+      "@id": `https://taylorswift.com${
         locale === "es" ? "" : `/${locale}`
       }/noticias/${article.id}`,
     },
     inLanguage: locale,
     about: {
       "@type": "MusicGroup",
-      name: "Megadeth",
+      name: "Taylor Swift",
     },
   };
 

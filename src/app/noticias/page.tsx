@@ -68,14 +68,14 @@ export default function NoticiasPage() {
     "@type": "CollectionPage",
     name: t("title"),
     description: t("description"),
-    url: `https://megadeth.com.ar/${locale}/noticias`,
+    url: `https://taylorswift.com/${locale}/noticias`,
     inLanguage: locale,
     publisher: {
       "@type": "Organization",
-      name: "Megadeth Argentina",
+      name: "Taylor Swift Fan Club",
       logo: {
         "@type": "ImageObject",
-        url: "https://megadeth.com.ar/logo-megadeth.png",
+        url: "https://taylorswift.com/logo.png",
       },
     },
     mainEntity: {
@@ -88,12 +88,12 @@ export default function NoticiasPage() {
           headline: article.title[locale],
           description: article.description[locale].substring(0, 200),
           datePublished: article.publishedDate,
-          url: `https://megadeth.com.ar/${locale}/noticias/${article.id}`,
+          url: `https://taylorswift.com/${locale}/noticias/${article.id}`,
           image: article.imageUrl
-            ? `https://megadeth.com.ar${article.imageUrl}`
+            ? `https://taylorswift.com${article.imageUrl}`
             : article.youtubeVideoId
             ? `https://img.youtube.com/vi/${article.youtubeVideoId}/hqdefault.jpg`
-            : "https://megadeth.com.ar/logo-megadeth.png",
+            : "https://taylorswift.com/logo.png",
         },
       })),
     },

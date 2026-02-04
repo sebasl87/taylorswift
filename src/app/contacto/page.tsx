@@ -10,30 +10,30 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("contact");
 
   const titleByLocale = {
-    es: `${t("title")} | Megadeth Argentina`,
-    en: `${t("title")} | Megadeth Argentina`,
+    es: `${t("title")} | Taylor Swift Fan Site`,
+    en: `${t("title")} | Taylor Swift Fan Site`,
   };
 
   const descriptionByLocale = {
-    es: "Ponte en contacto con Megadeth Argentina. Envíanos tus comentarios, sugerencias o consultas sobre el sitio web no oficial de fans de Megadeth.",
-    en: "Get in touch with Megadeth Argentina. Send us your comments, suggestions or questions about the unofficial Megadeth fan website.",
+    es: "Ponte en contacto con nosotros. Envíanos tus comentarios, sugerencias o consultas sobre el sitio web no oficial de fans de Taylor Swift.",
+    en: "Get in touch with us. Send us your comments, suggestions or questions about the unofficial Taylor Swift fan website.",
   };
 
   const keywordsByLocale = {
     es: [
-      "Megadeth contacto",
-      "contactar Megadeth Argentina",
-      "email Megadeth",
-      "sugerencias Megadeth",
-      "comentarios sitio Megadeth",
+      "Taylor Swift contacto",
+      "contactar Taylor Swift Fan Site",
+      "email Taylor Swift",
+      "sugerencias Taylor Swift",
+      "comentarios sitio Taylor Swift",
       "fan site contacto",
     ],
     en: [
-      "Megadeth contact",
-      "contact Megadeth Argentina",
-      "Megadeth email",
-      "Megadeth suggestions",
-      "Megadeth site comments",
+      "Taylor Swift contact",
+      "contact Taylor Swift Fan Site",
+      "Taylor Swift email",
+      "Taylor Swift suggestions",
+      "Taylor Swift site comments",
       "fan site contact",
     ],
   };
@@ -80,7 +80,7 @@ export default function ContactPage() {
           <Button
             variant="contained"
             color="primary"
-            href="mailto:megadethargentina77@gmail.com"
+            href="mailto:contact@taylorswiftfan.com"
             sx={{ fontWeight: 600 }}
           >
             {t("emailButton")}
