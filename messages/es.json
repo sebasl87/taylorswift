@@ -11,7 +11,7 @@
   "songs": {
     "title": "Canciones",
     "songsListTitle": "Listado de canciones",
-    "songsListDescription": "Explora todas las canciones de Megadeth, con letras, músicos y detalles de cada tema.",
+    "songsListDescription": "Explora todas las canciones de Taylor Swift, con letras, músicos y detalles de cada tema.",
     "search": "Buscar canción, disco, año, músico, autor...",
     "duration": "Duración",
     "track": "N° de pista",
@@ -35,16 +35,16 @@
     "timesPlayedLive": "Veces tocada en vivo",
     "songArtwork": "Artwork de la Canción",
     "top10Title": "Top 10 Canciones Más Tocadas",
-    "top10Description": "Las canciones más interpretadas en vivo por Megadeth. Recuento a Octubre 2025",
+    "top10Description": "Las canciones más interpretadas en vivo por Taylor Swift. Recuento a Octubre 2025",
     "position": "Posición",
-    "titleTable": "Todas las canciones de Megadeth",
+    "titleTable": "Todas las canciones de Taylor Swift",
     "otherSongsFromAlbum": "Otras canciones del álbum",
     "preSubtitle": "¿Hay alguna canción que recuerdes y no esté en la lista?, ¡déjanosla en los comentarios!"
   },
   "interviews": {
     "title": "Entrevistas",
     "listTitle": "Entrevistas",
-    "listDescription": "Colección completa de entrevistas a los miembros de Megadeth a lo largo de su historia. Desde los inicios en 1983 hasta la actualidad.",
+    "listDescription": "Colección completa de entrevistas a Taylor Swift a lo largo de su historia. Desde los inicios hasta la actualidad.",
     "search": "Buscar entrevista, medio, entrevistado...",
     "date": "Fecha",
     "media": "Medio",

@@ -1,18 +1,18 @@
 {
-  "id": "megadeth-final-album-review",
+  "id": "taylor-swift-banner",
   "isActive": true,
   "title": {
-    "es": "Megadeth: el último acorde",
-    "en": "Megadeth: The Final Chord"
+    "es": "Explora las Eras de Taylor",
+    "en": "Explore Taylor's Eras"
   },
   "subtitle": {
-    "es": "Ya escuché el nuevo album y te traigo una reseña personal y sin maquillaje sobre el disco final de la banda que marcó mi adolescencia y me acompañó toda la vida. Un cierre digno, honesto e inevitable.",
-    "en": "I have listened to the new album and bring you a personal and unfiltered review of the final album from the band that shaped my adolescence and stayed with me throughout my life. A worthy, honest, and inevitable ending."
+    "es": "Descubre la discografía completa y la evolución musical de Taylor Swift a través de los años.",
+    "en": "Discover Taylor Swift's complete discography and musical evolution through the years."
   },
   "cta": {
-    "es": "Leer la reseña completa",
-    "en": "Read the full review"
+    "es": "Ver Discografía",
+    "en": "View Discography"
   },
-  "imageUrl": "/images/albums/17-megadeth.jpg",
-  "link": "/discography/reviews/megadeth-final-album-review-2026"
+  "imageUrl": "/images/placeholder.jpg",
+  "link": "/discography"
 }
