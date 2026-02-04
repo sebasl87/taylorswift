@@ -1,5 +1,9 @@
 {
-  "name": "megadeth-site",
+  "name": "taylorswift-site",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebasl87/taylorswift.git"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
