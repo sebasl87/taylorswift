@@ -11,7 +11,7 @@
   "songs": {
     "title": "Songs",
     "songsListTitle": "Songs list",
-    "songsListDescription": "Explore all Megadeth songs, with lyrics, musicians and details for each track.",
+    "songsListDescription": "Explore all Taylor Swift songs, with lyrics, musicians and details for each track.",
     "search": "Search song, album, year, musician, writer...",
     "duration": "Duration",
     "track": "Track number",
@@ -35,7 +35,7 @@
     "timesPlayedLive": "Times played live",
     "songArtwork": "Song Artwork",
     "top10Title": "Top 10 Most Played Songs",
-    "top10Description": "The most performed songs live by Megadeth. Count as of October 2025",
+    "top10Description": "The most performed songs live by Taylor Swift. Count as of October 2025",
     "position": "Position",
     "titleTable": "All Megadeth songs",
     "otherSongsFromAlbum": "Other songs from the album",
@@ -44,7 +44,7 @@
   "interviews": {
     "title": "Interviews",
     "listTitle": "Interviews",
-    "listDescription": "Complete collection of interviews with Megadeth members throughout their history. From the beginnings in 1983 to the present day.",
+    "listDescription": "Complete collection of interviews with Taylor Swift throughout her history. From the beginnings to the present day.",
     "search": "Search interview, media, interviewee...",
     "date": "Date",
     "media": "Media",
