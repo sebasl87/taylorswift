@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getLocale } from "next-intl/server";
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import { ColorModeProvider } from "@/theme/useColorMode";
+import { EraProvider } from "@/context/EraContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -210,16 +211,18 @@ export default async function RootLayout({
         }}
       >
         <NextIntlClientProvider messages={messages}>
-          <ColorModeProvider>
-            <ThemeRegistry>
-              <Header />
-              <main style={{ flex: 1 }}>
-                {children}
-                <GoogleAnalytics gaId="G-3MT8DZR057" />
-              </main>
-              <Footer />
-            </ThemeRegistry>
-          </ColorModeProvider>
+          <EraProvider>
+            <ColorModeProvider>
+              <ThemeRegistry>
+                <Header />
+                <main style={{ flex: 1 }}>
+                  {children}
+                  <GoogleAnalytics gaId="G-3MT8DZR057" />
+                </main>
+                <Footer />
+              </ThemeRegistry>
+            </ColorModeProvider>
+          </EraProvider>
         </NextIntlClientProvider>
       </body>
     </html>

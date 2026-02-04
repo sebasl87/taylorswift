@@ -11,32 +11,31 @@ export default function Footer() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Megadeth Fan Site",
-    url: "https://megadeth-fan-site.com",
+    name: "Taylor Swift Fan Site",
+    url: "https://taylorswift.com",
     description: t("seoDescription"),
-    logo: "https://megadeth-fan-site.com/images/logo.png",
+    logo: "https://taylorswift.com/images/logo.png",
     sameAs: [
-      "https://www.megadeth.com",
-      "https://www.facebook.com/Megadeth",
-      "https://twitter.com/Megadeth",
-      "https://www.instagram.com/megadeth/",
-      "https://www.youtube.com/user/megadeth",
+      "https://www.taylorswift.com",
+      "https://www.facebook.com/TaylorSwift",
+      "https://twitter.com/taylorswift13",
+      "https://www.instagram.com/taylorswift/",
+      "https://www.youtube.com/user/taylorswift",
     ],
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Megadeth Fan Site",
-    url: "https://megadeth-fan-site.com",
+    name: "Taylor Swift Fan Site",
+    url: "https://taylorswift.com",
     description: t("seoDescription"),
     inLanguage: locale,
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate:
-          "https://megadeth-fan-site.com/search?q={search_term_string}",
+        urlTemplate: "https://taylorswift.com/search?q={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },

@@ -4,14 +4,14 @@ import { getLocale } from "next-intl/server";
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const title = locale === "es"
-    ? "Términos y condiciones | Megadeth Fan Site"
-    : "Terms and Conditions | Megadeth Fan Site";
+    ? "Términos y condiciones | Taylor Swift Fan Site"
+    : "Terms and Conditions | Taylor Swift Fan Site";
   const description = locale === "es"
-    ? "Lee los términos y condiciones de uso del sitio de fans de Megadeth. Información legal y derechos."
-    : "Read the terms and conditions for using the Megadeth fan site. Legal information and rights.";
+    ? "Lee los términos y condiciones de uso del sitio de fans de Taylor Swift. Información legal y derechos."
+    : "Read the terms and conditions for using the Taylor Swift fan site. Legal information and rights.";
   const keywords = locale === "es"
-    ? ["Megadeth", "términos", "condiciones", "legal", "fan site", "uso"]
-    : ["Megadeth", "terms", "conditions", "legal", "fan site", "usage"];
+    ? ["Taylor Swift", "términos", "condiciones", "legal", "fan site", "uso"]
+    : ["Taylor Swift", "terms", "conditions", "legal", "fan site", "usage"];
   return {
     title,
     description,
@@ -19,15 +19,15 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       type: "website",
       locale: locale === "es" ? "es_AR" : "en_US",
       images: [
         {
-          url: "/images/megadeth-megadeth.jpg",
+          url: "/images/placeholder.jpg",
           width: 1200,
           height: 630,
-          alt: "Megadeth Términos",
+          alt: "Taylor Swift Términos",
         },
       ],
     },

@@ -4,14 +4,14 @@ import { getLocale } from "next-intl/server";
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const title = locale === "es"
-    ? "Preguntas frecuentes | Megadeth Fan Site"
-    : "Frequently Asked Questions | Megadeth Fan Site";
+    ? "Preguntas frecuentes | Taylor Swift Fan Site"
+    : "Frequently Asked Questions | Taylor Swift Fan Site";
   const description = locale === "es"
-    ? "Respuestas a las preguntas más comunes sobre el fan site de Megadeth, legalidad, contacto y uso."
-    : "Answers to the most common questions about the Megadeth fan site, legality, contact and usage.";
+    ? "Respuestas a las preguntas más comunes sobre el fan site de Taylor Swift, legalidad, contacto y uso."
+    : "Answers to the most common questions about the Taylor Swift fan site, legality, contact and usage.";
   const keywords = locale === "es"
-    ? ["Megadeth", "FAQ", "preguntas frecuentes", "fan site", "contacto", "legal", "privacidad", "términos"]
-    : ["Megadeth", "FAQ", "frequently asked questions", "fan site", "contact", "legal", "privacy", "terms"];
+    ? ["Taylor Swift", "FAQ", "preguntas frecuentes", "fan site", "contacto", "legal", "privacidad", "términos"]
+    : ["Taylor Swift", "FAQ", "frequently asked questions", "fan site", "contact", "legal", "privacy", "terms"];
   return {
     title,
     description,
@@ -19,12 +19,12 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      siteName: "Megadeth Fan Site",
+      siteName: "Taylor Swift Fan Site",
       type: "website",
       locale: locale === "es" ? "es_AR" : "en_US",
       images: [
         {
-          url: "/images/megadeth-megadeth.jpg",
+          url: "/images/placeholder.jpg",
           width: 1200,
           height: 630,
           alt: "Megadeth FAQ",
