@@ -1,11 +1,15 @@
 import type { NextConfig } from "next";
-import createNextIntlPlugin from 'next-intl/plugin';
-
-const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
-  
+
+  // Configuración de i18n para Pages Router
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'en',
+    localeDetection: false,
+  },
+
   // Optimización de imágenes
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -16,11 +20,11 @@ const nextConfig: NextConfig = {
 
   // Compresión
   compress: true,
-  
+
   // Experimental features para mejor performance
   experimental: {
     optimizePackageImports: ['@mui/material', '@mui/icons-material'],
   },
 };
 
-export default withNextIntl(nextConfig);
+export default nextConfig;

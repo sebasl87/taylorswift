@@ -1,5 +1,3 @@
-"use client";
-
 import {
   AppBar,
   Toolbar,
@@ -25,7 +23,7 @@ import { useColorMode } from "@/theme/useColorMode";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -44,7 +42,9 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const currentLocale = useLocale();
   const t = useTranslations("navigation");
-  const pathname = usePathname();
+  const router = useRouter();
+  // Ensure router is ready and get pathname without query params
+  const pathname = router.asPath ? router.asPath.split('?')[0] : '/';
 
   // Detectar scroll
   useEffect(() => {
@@ -79,9 +79,9 @@ export default function Header() {
     setAnchorEl(null);
   };
 
-  const handleLanguageChange = (locale: string) => {
-    document.cookie = `NEXT_LOCALE=${locale}; max-age=31536000; path=/`;
-    window.location.reload();
+  const handleLanguageChange = (newLocale: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale: newLocale });
     handleLanguageClose();
   };
 
@@ -201,43 +201,32 @@ export default function Header() {
                           {item.label}
                         </Button>
                         <Menu
+                          id="media-menu"
                           anchorEl={mediaAnchorEl}
                           open={Boolean(mediaAnchorEl)}
                           onClose={handleMediaMouseLeave}
                           MenuListProps={{
+                            onMouseEnter: handleMediaMouseEnter,
                             onMouseLeave: handleMediaMouseLeave,
                           }}
-                          sx={{
-                            "& .MuiPaper-root": {
-                              mt: 1,
-                            },
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "left",
+                          }}
+                          transformOrigin={{
+                            vertical: "top",
+                            horizontal: "left",
                           }}
                         >
-                          {mediaItems.map((mediaItem) => (
+                          {mediaItems.map((subItem) => (
                             <MenuItem
-                              key={mediaItem.href}
-                              component={Link}
-                              href={mediaItem.href}
+                              key={subItem.href}
                               onClick={handleMediaMouseLeave}
-                              sx={{
-                                backgroundColor: pathname.startsWith(
-                                  mediaItem.href,
-                                )
-                                  ? "primary.main"
-                                  : "transparent",
-                                color: pathname.startsWith(mediaItem.href)
-                                  ? "white"
-                                  : "text.primary",
-                                "&:hover": {
-                                  backgroundColor: pathname.startsWith(
-                                    mediaItem.href,
-                                  )
-                                    ? "primary.dark"
-                                    : "action.hover",
-                                },
-                              }}
+                              component={Link}
+                              href={subItem.href}
+                              selected={pathname.startsWith(subItem.href)}
                             >
-                              {mediaItem.label}
+                              {subItem.label}
                             </MenuItem>
                           ))}
                         </Menu>
@@ -287,236 +276,83 @@ export default function Header() {
               </Box>
             </Box>
 
-            {/* Espaciador para mobile/tablet */}
-            <Box sx={{ flexGrow: 1, display: { xs: "block", xl: "none" } }} />
-
-            <IconButton
-              onClick={() => setSearchOpen(true)}
-              aria-label="Buscar"
-              sx={{
-                color: "text.primary",
-                display: { xs: "none", sm: "flex" },
-              }}
-            >
-              <SearchIcon />
-            </IconButton>
-
-            <Button
-              startIcon={<LanguageIcon />}
-              onClick={handleLanguageClick}
-              sx={{
-                textTransform: "uppercase",
-                minWidth: "auto",
-                display: { xs: "none", sm: "flex" },
-              }}
-            >
-              {currentLocale}
-            </Button>
-
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleLanguageClose}
-            >
-              <MenuItem onClick={() => handleLanguageChange("en")}>
-                English
-              </MenuItem>
-              <MenuItem onClick={() => handleLanguageChange("es")}>
-                Español
-              </MenuItem>
-            </Menu>
-
-            <IconButton
-              onClick={toggle}
-              aria-label="Cambiar tema"
-              sx={{ display: { xs: "none", sm: "flex" } }}
-            >
-              {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
-            </IconButton>
-            {/* Botón hamburguesa para mobile/tablet */}
-            <IconButton
-              sx={{
-                display: { xs: "block", xl: "none" },
-                color: mode === "dark" ? "white" : "black",
-              }}
-              onClick={() => setDrawerOpen(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
-        </Container>
-
-        {/* Drawer para navegación mobile */}
-        <Drawer
-          anchor="right"
-          open={drawerOpen}
-          onClose={() => setDrawerOpen(false)}
-          sx={{
-            "& .MuiDrawer-paper": {
-              width: 280,
-              backgroundColor: mode === "dark" ? "grey.900" : "grey.50",
-            },
-          }}
-        >
-          <Box sx={{ p: 2 }}>
-            <Box width="100%" display="flex" justifyContent="center" mb={2}>
-              <Typography
-                variant="h4"
-                component="div"
-                sx={{
-                  fontWeight: "bold",
-                  color: mode === "dark" ? "white" : "black",
-                  fontFamily: "var(--font-geist-sans)",
-                  letterSpacing: "-0.05em",
-                }}
-              >
-                TAYLOR SWIFT
-              </Typography>
-            </Box>
-
-            {/* Botones de acción para mobile */}
-            <Box
-              sx={{ display: "flex", gap: 1, mb: 2, justifyContent: "center" }}
-            >
-              <IconButton
-                onClick={() => {
-                  setSearchOpen(true);
-                  setDrawerOpen(false);
-                }}
-                aria-label="Buscar"
-                sx={{ color: "text.primary" }}
-              >
+            <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+              <IconButton onClick={() => setSearchOpen(true)} color="inherit">
                 <SearchIcon />
               </IconButton>
-              <IconButton
-                onClick={handleLanguageClick}
-                aria-label="Cambiar idioma"
-                sx={{ color: "text.primary" }}
-              >
-                <LanguageIcon />
-              </IconButton>
-              <IconButton onClick={toggle} aria-label="Cambiar tema">
+              <IconButton onClick={toggle} color="inherit">
                 {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
               </IconButton>
+              <IconButton onClick={handleLanguageClick} color="inherit">
+                <LanguageIcon />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleLanguageClose}
+              >
+                <MenuItem
+                  onClick={() => handleLanguageChange("es")}
+                  selected={currentLocale === "es"}
+                >
+                  Español
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleLanguageChange("en")}
+                  selected={currentLocale === "en"}
+                >
+                  English
+                </MenuItem>
+              </Menu>
+
+              {/* Menú móvil */}
+              <IconButton
+                color="inherit"
+                sx={{ display: { xs: "block", xl: "none" } }}
+                onClick={() => setDrawerOpen(true)}
+              >
+                <MenuIcon />
+              </IconButton>
             </Box>
-
-            <List>
-              {navigationItems.map((item) => {
-                if (item.hasSubmenu) {
-                  return (
-                    <Box key="media">
-                      <ListItem disablePadding>
-                        <ListItemButton
-                          sx={{
-                            borderRadius: 1,
-                            mb: 1,
-                            backgroundColor: isMediaActive
-                              ? "primary.main"
-                              : "transparent",
-                            color: isMediaActive ? "white" : "text.primary",
-                            "&:hover": {
-                              backgroundColor: isMediaActive
-                                ? "primary.dark"
-                                : "action.hover",
-                            },
-                          }}
-                        >
-                          <ListItemText
-                            primary={item.label}
-                            sx={{
-                              "& .MuiListItemText-primary": {
-                                fontWeight: isMediaActive ? 600 : 400,
-                                textTransform: "uppercase",
-                                letterSpacing: "0.5px",
-                              },
-                            }}
-                          />
-                        </ListItemButton>
-                      </ListItem>
-                      {mediaItems.map((mediaItem) => {
-                        const isActive = pathname.startsWith(mediaItem.href);
-                        return (
-                          <ListItem key={mediaItem.href} disablePadding>
-                            <ListItemButton
-                              component={Link}
-                              href={mediaItem.href}
-                              onClick={() => setDrawerOpen(false)}
-                              sx={{
-                                borderRadius: 1,
-                                mb: 1,
-                                ml: 2,
-                                backgroundColor: isActive
-                                  ? "primary.main"
-                                  : "transparent",
-                                color: isActive ? "white" : "text.primary",
-                                "&:hover": {
-                                  backgroundColor: isActive
-                                    ? "primary.dark"
-                                    : "action.hover",
-                                },
-                              }}
-                            >
-                              <ListItemText
-                                primary={mediaItem.label}
-                                sx={{
-                                  "& .MuiListItemText-primary": {
-                                    fontWeight: isActive ? 600 : 400,
-                                    fontSize: "0.9rem",
-                                  },
-                                }}
-                              />
-                            </ListItemButton>
-                          </ListItem>
-                        );
-                      })}
-                    </Box>
-                  );
-                }
-
-                const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
-                  <ListItem key={item.href} disablePadding>
-                    <ListItemButton
-                      component={Link}
-                      href={item.href}
-                      onClick={() => setDrawerOpen(false)}
-                      sx={{
-                        borderRadius: 1,
-                        mb: 1,
-                        backgroundColor: isActive
-                          ? "primary.main"
-                          : "transparent",
-                        color: isActive ? "white" : "text.primary",
-                        "&:hover": {
-                          backgroundColor: isActive
-                            ? "primary.dark"
-                            : "action.hover",
-                        },
-                      }}
-                    >
-                      <ListItemText
-                        primary={item.label}
-                        sx={{
-                          "& .MuiListItemText-primary": {
-                            fontWeight: isActive ? 600 : 400,
-                            textTransform: "uppercase",
-                            letterSpacing: "0.5px",
-                          },
-                        }}
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                );
-              })}
-            </List>
-          </Box>
-        </Drawer>
+          </Toolbar>
+        </Container>
       </AppBar>
 
-      {/* Search Modal */}
+      {/* Drawer para móvil */}
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
+        <Box
+          sx={{ width: 250 }}
+          role="presentation"
+          onClick={() => setDrawerOpen(false)}
+          onKeyDown={() => setDrawerOpen(false)}
+        >
+          <List>
+            {navigationItems.map((item) => {
+              if (item.hasSubmenu) {
+                return mediaItems.map((subItem) => (
+                  <ListItem key={subItem.href} disablePadding>
+                    <ListItemButton component={Link} href={subItem.href}>
+                      <ListItemText primary={subItem.label} />
+                    </ListItemButton>
+                  </ListItem>
+                ));
+              }
+              return (
+                <ListItem key={item.href} disablePadding>
+                  <ListItemButton component={Link} href={item.href}>
+                    <ListItemText primary={item.label} />
+                  </ListItemButton>
+                </ListItem>
+              );
+            })}
+          </List>
+        </Box>
+      </Drawer>
+
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );

@@ -205,5 +205,9 @@
     "news": "Noticias",
     "members": "Miembros",
     "interviews": "Entrevistas"
+  },
+  "discography": {
+    "title": "Discografía",
+    "description": "Explora la discografía completa de Taylor Swift, incluyendo álbumes de estudio, en vivo, recopilatorios y EPs."
   }
 }

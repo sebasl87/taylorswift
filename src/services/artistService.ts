@@ -72,6 +72,43 @@ export async function getArtistData(artistName: string, lang: "es" | "en" = "en"
 
   const [discographyResult, tourResult, newsResult] = await Promise.allSettled(promises);
 
+  // MOCK DATA INJECTION IF MISSING KEYS
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (!process.env.JAMBASE_API_KEY && tourResult.status === "fulfilled" && (tourResult.value as any[]).length === 0) {
+    console.warn("Using MOCK Tour Data due to missing JAMBASE_API_KEY");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tourResult as any).value = [
+      {
+        name: "The Eras Tour - Tokyo (Mock)",
+        date: "2024-02-07T18:00:00",
+        venue: "Tokyo Dome",
+        city: "Tokyo",
+        country: "Japan",
+        url: "#",
+        status: "scheduled"
+      },
+      {
+        name: "The Eras Tour - Melbourne (Mock)",
+        date: "2024-02-16T18:00:00",
+        venue: "MCG",
+        city: "Melbourne",
+        country: "Australia",
+        url: "#",
+        status: "scheduled"
+      },
+      {
+        name: "The Eras Tour - Sydney (Mock)",
+        date: "2024-02-23T18:00:00",
+        venue: "Accor Stadium",
+        city: "Sydney",
+        country: "Australia",
+        url: "#",
+        status: "scheduled"
+      }
+    ];
+  }
+  // End Mock Data
+
   // Process Results
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const discography = discographyResult.status === "fulfilled" ? (discographyResult.value as any[]) : [];

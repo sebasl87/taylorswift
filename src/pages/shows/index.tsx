@@ -1,0 +1,30 @@
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import { useTranslations } from 'next-intl';
+import ShowsListPage from '@/components/ShowsListPage';
+
+export default function ShowsPage() {
+  const t = useTranslations('shows');
+  
+  return (
+    <>
+      <Head>
+        <title>{`${t('listTitle')} | Taylor Swift`}</title>
+        <meta name="description" content={t('listDescription')} />
+        <meta property="og:title" content={`${t('listTitle')} | Taylor Swift`} />
+        <meta property="og:description" content={t('listDescription')} />
+        <meta property="og:type" content="website" />
+        {/* Add more meta tags as needed */}
+      </Head>
+      <ShowsListPage />
+    </>
+  );
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      messages: (await import(`../../../messages/${locale}.json`)).default
+    }
+  };
+};
