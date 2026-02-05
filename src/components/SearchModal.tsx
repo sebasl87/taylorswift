@@ -17,7 +17,7 @@ import { Search as SearchIcon, Close as CloseIcon } from "@mui/icons-material";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import songsData from "@/constants/songs.json";
+import { getAllSongs } from "@/utils/songs";
 import discographyData from "@/constants/discography.json";
 import liveAlbumsData from "@/constants/liveAlbums.json";
 import compilationsData from "@/constants/compilations.json";
@@ -59,76 +59,117 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
     const searchTerm = query.toLowerCase();
 
     // Buscar canciones
-    const songsList = songsData as unknown as {
-      id: string;
-      title: string;
-      album: { title: string; year: number; cover: string };
-      credits?: { writers?: { lyrics?: string[]; music?: string[] } };
-    }[];
+    const songsList = getAllSongs();
     const songs = songsList
       .filter(
         (song) =>
           song.title.toLowerCase().includes(searchTerm) ||
           song.album.title.toLowerCase().includes(searchTerm) ||
           song.credits?.writers?.lyrics?.some((w: string) =>
-            w.toLowerCase().includes(searchTerm)
+            w.toLowerCase().includes(searchTerm),
           ) ||
           song.credits?.writers?.music?.some((w: string) =>
-            w.toLowerCase().includes(searchTerm)
-          )
+            w.toLowerCase().includes(searchTerm),
+          ),
       )
       .slice(0, 5);
 
     // Buscar álbumes
     const allAlbums = [
-      ...(discographyData as unknown as { id: string; title: string; year: number; cover: string }[]),
-      ...(liveAlbumsData as unknown as { id: string; title: string; year: number; cover: string }[]),
-      ...(compilationsData as unknown as { id: string; title: string; year: number; cover: string }[]),
-      ...(epsData as unknown as { id: string; title: string; year: number; cover: string }[]),
+      ...(discographyData as unknown as {
+        id: string;
+        title: string;
+        year: number;
+        cover: string;
+      }[]),
+      ...(liveAlbumsData as unknown as {
+        id: string;
+        title: string;
+        year: number;
+        cover: string;
+      }[]),
+      ...(compilationsData as unknown as {
+        id: string;
+        title: string;
+        year: number;
+        cover: string;
+      }[]),
+      ...(epsData as unknown as {
+        id: string;
+        title: string;
+        year: number;
+        cover: string;
+      }[]),
     ];
     const albums = allAlbums
       .filter(
         (album) =>
           album.title.toLowerCase().includes(searchTerm) ||
-          album.year.toString().includes(searchTerm)
+          album.year.toString().includes(searchTerm),
       )
       .slice(0, 5);
 
     // Buscar shows
-    const shows = (showsData as unknown as { id: string; city: string; venue: string; country: string; era: string; date: string }[])
+    const shows = (
+      showsData as unknown as {
+        id: string;
+        city: string;
+        venue: string;
+        country: string;
+        era: string;
+        date: string;
+      }[]
+    )
       .filter(
         (show) =>
           show.city.toLowerCase().includes(searchTerm) ||
           show.venue.toLowerCase().includes(searchTerm) ||
           show.country.toLowerCase().includes(searchTerm) ||
-          show.era.toLowerCase().includes(searchTerm)
+          show.era.toLowerCase().includes(searchTerm),
       )
       .slice(0, 5);
 
     // Buscar noticias
-    const news = (newsData as unknown as { id: string; title: Record<"es"|"en", string>; description: Record<"es"|"en", string> }[])
+    const news = (
+      newsData as unknown as {
+        id: string;
+        title: Record<"es" | "en", string>;
+        description: Record<"es" | "en", string>;
+      }[]
+    )
       .filter(
         (article) =>
           article.title[locale].toLowerCase().includes(searchTerm) ||
-          article.description[locale].toLowerCase().includes(searchTerm)
+          article.description[locale].toLowerCase().includes(searchTerm),
       )
       .slice(0, 5);
 
     // Buscar miembros
     const membersMap = Array.isArray(membersData as unknown)
       ? {}
-      : ((membersData as unknown as { members?: Record<string, { id: string; name: string }> }).members || {});
+      : (
+          membersData as unknown as {
+            members?: Record<string, { id: string; name: string }>;
+          }
+        ).members || {};
     const members = Object.values(membersMap)
       .filter((member) => member.name.toLowerCase().includes(searchTerm))
       .slice(0, 5);
 
     // Buscar entrevistas
-    const interviews = (interviewsData as unknown as { id: string; interviewees?: { name?: string }[]; media?: { name?: string }; date?: string }[])
+    const interviews = (
+      interviewsData as unknown as {
+        id: string;
+        interviewees?: { name?: string }[];
+        media?: { name?: string };
+        date?: string;
+      }[]
+    )
       .filter(
         (interview) =>
           interview.interviewees?.some((person) =>
-            person.name?.toLowerCase().includes(searchTerm)
-          ) || interview.media?.name?.toLowerCase().includes(searchTerm)
+            person.name?.toLowerCase().includes(searchTerm),
+          ) || interview.media?.name?.toLowerCase().includes(searchTerm),
       )
       .slice(0, 5);
 

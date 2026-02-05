@@ -21,7 +21,7 @@ import {
   Button,
 } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
-import songsData from "@/constants/songs.json";
+import { getAllSongs, Song } from "@/utils/songs";
 import songsCountData from "@/constants/songs.counts.fixed.json";
 
 import Breadcrumb from "./Breadcrumb";
@@ -31,33 +31,6 @@ import { CommentsSection } from "./CommentsSection";
 
 const ITEMS_PER_PAGE_DESKTOP = 10;
 const ITEMS_PER_PAGE_MOBILE = 10;
-
-interface Song {
-  id: string;
-  title: string;
-  album: {
-    title: string;
-    year: number;
-    cover: string;
-  };
-  credits: {
-    musicians: Array<{
-      name: string;
-      id: string;
-      instrument: { es: string; en: string } | string;
-    }>;
-    writers: {
-      lyrics: string[];
-      music: string[];
-    };
-  };
-  details: {
-    track_number: number;
-    duration: string;
-  };
-  theme?: { es?: string; en?: string };
-  lyrics?: { es?: string | null; en?: string | null };
-}
 
 function getFilterValue(song: Song, filter: string) {
   const lower = filter.toLowerCase();
@@ -88,9 +61,9 @@ export default function SongsListPage() {
   const [filter, setFilter] = useState("");
   const [pageDesktop, setPageDesktop] = useState(1);
   const [displayCountMobile, setDisplayCountMobile] = useState(
-    ITEMS_PER_PAGE_MOBILE
+    ITEMS_PER_PAGE_MOBILE,
   );
-  const songs: Song[] = songsData;
+  const songs: Song[] = getAllSongs();
   const songsCounts: Record<string, number> = songsCountData;
 
   // Obtener top 10 canciones más tocadas
@@ -137,7 +110,7 @@ export default function SongsListPage() {
 
   const loadMoreMobile = () => {
     setDisplayCountMobile((prev) =>
-      Math.min(prev + ITEMS_PER_PAGE_MOBILE, filtered.length)
+      Math.min(prev + ITEMS_PER_PAGE_MOBILE, filtered.length),
     );
   };
   // const [mounted, setMounted] = useState(false);

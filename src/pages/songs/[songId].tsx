@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import SongDetailPage from "@/components/SongDetailPage";
-import songsData from "@/constants/songs.json";
+import { getAllSongs, getSongById } from "@/utils/songs";
 
 interface SongPageProps {
   songId: string;
@@ -15,18 +15,11 @@ interface SongPageProps {
 }
 
 export default function SongPage({ songId, songData }: SongPageProps) {
-  // songData is passed for Metadata purposes mainly
-  // SongDetailPage fetches its own data or uses songId? 
-  // Wait, SongDetailPage in App Router took songId. 
-  // Let's check SongDetailPage implementation.
-  // Assuming it takes songId based on previous read.
-
   return (
     <>
       <Head>
         <title>{`${songData.title} | Taylor Swift`}</title>
         <meta name="description" content={`${songData.title} (${songData.album.year}) - ${songData.album.title}`} />
-         {/* More meta tags can be added here based on songData */}
       </Head>
       <SongDetailPage songId={songId} />
     </>
@@ -34,7 +27,7 @@ export default function SongPage({ songId, songData }: SongPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allSongs = songsData as unknown as { id: string }[];
+  const allSongs = getAllSongs();
   const locales = ['en', 'es'];
   const paths: { params: { songId: string }, locale: string }[] = [];
 
@@ -52,8 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const songId = params?.songId as string;
-  const list = songsData as unknown as { id: string }[];
-  const song = list.find((s) => s.id === songId);
+  const song = getSongById(songId);
 
   if (!song) {
     return {

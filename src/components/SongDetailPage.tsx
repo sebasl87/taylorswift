@@ -15,7 +15,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
-import songsData from "@/constants/songs.json";
+import { getAllSongs } from "@/utils/songs";
 import songsCountData from "@/constants/songs.counts.fixed.json";
 import Link from "next/link";
 import Image from "next/image";
@@ -31,22 +31,14 @@ interface SongDetailPageProps {
   songId: string;
 }
 
-const songsList = songsData as unknown as {
-  id: string;
-  title: string;
-  album: { title: string; year: number; cover: string; songArtwork?: string };
-  details?: { duration?: string; track_number?: number };
-  theme: { es: string; en: string };
-  credits: { writers: { lyrics: string[]; music: string[] }; musicians: { name: string; instrument?: string | { es: string; en: string } }[] };
-  lyrics?: { es?: string; en?: string };
-}[];
+const songsList = getAllSongs();
 
 export default function SongDetailPage({ songId }: SongDetailPageProps) {
   const t = useTranslations("songs");
   const tb = useTranslations("breadcrumb");
   const [showEs, setShowEs] = useState(false);
   const locale = useLocale();
-  
+
   const song = songsList.find((s) => s.id === songId);
   const songsCounts: Record<string, number> = songsCountData;
 
@@ -223,7 +215,7 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
     );
 
   const isTop10 = top10Songs.includes(song.title);
-  const themeText = song.theme[instrumentKey];
+  const themeText = song.theme ? song.theme[instrumentKey] : null;
   const timesPlayed = songsCounts[song.title] || 0;
 
   return (
@@ -328,14 +320,16 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
                 {t("musicBy")}: {song.credits.writers.music.join(", ")}
               </Typography>
             </Card>
-            <Card sx={{ padding: 2, mt: 3, boxShadow: 2, mb: 4 }}>
-              <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
-                {t("theme")}
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 2 }}>
-                {themeText}
-              </Typography>
-            </Card>
+            {themeText && (
+              <Card sx={{ padding: 2, mt: 3, boxShadow: 2, mb: 4 }}>
+                <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>
+                  {t("theme")}
+                </Typography>
+                <Typography variant="body1" sx={{ mb: 2 }}>
+                  {themeText}
+                </Typography>
+              </Card>
+            )}
 
             <Box
               display={"flex"}
@@ -406,7 +400,11 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
                 const memberId = slugify(m.name);
                 const membersMap = Array.isArray(membersData as unknown)
                   ? {}
-                  : ((membersData as unknown as { members?: Record<string, { image?: string }> }).members || {});
+                  : (
+                      membersData as unknown as {
+                        members?: Record<string, { image?: string }>;
+                      }
+                    ).members || {};
                 const memberObj = membersMap[memberId];
                 return (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={m.name}>
