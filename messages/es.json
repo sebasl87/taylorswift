@@ -39,8 +39,9 @@
     "faq": "Preguntas Frecuentes",
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
-     "tour": "Tour"
-   },
+    "tour": "Tour",
+    "videos": "Videos"
+  },
   "comments": {
     "title": "Comentarios",
     "leave": "Deja un comentario",
@@ -259,5 +260,10 @@
   "discography": {
     "title": "Discografía",
     "description": "Explora la discografía completa de Taylor Swift, incluyendo álbumes de estudio, en vivo, recopilatorios y EPs."
+  },
+  "videos": {
+    "title": "Videos Oficiales",
+    "subtitle": "Explora la videografía completa de Taylor Swift",
+    "comment": "Comentarios"
   }
 }

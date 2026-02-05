@@ -50,7 +50,7 @@ export default function VideosGrid({ videos }: VideosGridProps) {
       {/* Videos Grid */}
       <Box
         component="section"
-        aria-label="Colección de videos musicales de Megadeth"
+        aria-label="Colección de videos musicales de Taylor Swift"
         sx={{
           display: "grid",
           gridTemplateColumns: {

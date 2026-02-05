@@ -67,8 +67,8 @@ export default function VideoCard({ video }: VideoCardProps) {
             {/* Thumbnail */}
             <Box
               component="img"
-              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-              alt={`Miniatura del video ${video.title} de Megadeth (${video.year})`}
+              src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+              alt={`Miniatura del video ${video.title} de Taylor Swift (${video.year})`}
               itemProp="thumbnailUrl"
               loading="lazy"
               sx={{
