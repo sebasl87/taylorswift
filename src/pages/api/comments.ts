@@ -81,7 +81,7 @@ export default async function handler(
     const version = (await kv.get<number>(vKey)) ?? 0;
 
     const cKey = pageCacheKey(pageType, pageId, version, limit, offset);
-    const cached = await kv.get<{ items: any[] }>(cKey);
+    const cached = await kv.get<{ items: Record<string, unknown>[] }>(cKey);
 
     if (cached) {
       res.setHeader("x-comments-cache", "HIT");
@@ -143,8 +143,9 @@ export default async function handler(
 
     try {
       await rateLimitOrThrow(ip);
-    } catch (e: any) {
-      if (e?.message === "RATE_LIMIT") {
+    } catch (e: unknown) {
+      const err = e as Error;
+      if (err?.message === "RATE_LIMIT") {
         res.setHeader("x-rl-limit", String(MAX_PER_HOUR));
         res.setHeader("x-rl-window", String(WINDOW_SECONDS));
         return res.status(429).json({ error: "Too many comments. Try later." });

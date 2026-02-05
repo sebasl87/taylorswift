@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Box, Typography, Container, Grid, Button } from "@mui/material";
+import { Box, Typography, Container, Grid } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Card, Typography, Button, Container } from "@mui/material";
+import { Box, Card, Typography, Button } from "@mui/material";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";

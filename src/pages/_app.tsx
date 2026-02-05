@@ -60,7 +60,7 @@ function InnerApp({ Component, pageProps }: MyAppProps) {
 }
 
 export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const { emotionCache = clientSideEmotionCache, pageProps } = props;
   const router = useRouter();
 
   return (

@@ -8,7 +8,7 @@ import { useState, useMemo } from "react";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 import NewsCard from "@/components/NewsCard";
 import RandomSectionBanner from "@/components/NewsBanner";
-import { Container, Typography, Box, Tabs, Tab, Grid } from "@mui/material";
+import { Typography, Box, Tabs, Tab, Grid } from "@mui/material";
 
 export default function NoticiasPage() {
   const t = useTranslations("news");

@@ -1,9 +1,9 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
-import Head from 'next/head';
-import { useTranslations, useLocale } from 'next-intl';
+import { GetStaticProps, GetStaticPaths } from "next";
+import Head from "next/head";
+import { useLocale } from 'next-intl';
 import BootlegDetailPage from "@/components/BootlegDetailPage";
 import bootlegsData from "@/constants/bootlegs.json";
-import { Bootleg, generateBootlegSlug, formatBootlegDate, getBootlegYear } from "@/types/bootleg";
+import { Bootleg, generateBootlegSlug, getBootlegYear } from "@/types/bootleg";
 
 interface BootlegPageProps {
   bootleg: Bootleg;
@@ -18,11 +18,11 @@ function findBootlegBySlug(slug: string): Bootleg | null {
 }
 
 export default function BootlegPage({ bootleg }: BootlegPageProps) {
-  const t = useTranslations('bootlegs');
   const locale = useLocale();
 
   const title = `${bootleg.title} - ${bootleg.city}`;
-  const description = locale === "es" ? bootleg.description.es : bootleg.description.en;
+  const description =
+    locale === "es" ? bootleg.description.es : bootleg.description.en;
   const year = getBootlegYear(bootleg);
   const fullTitle = `${title} (${year}) | Taylor Swift Bootlegs`;
 
@@ -34,7 +34,10 @@ export default function BootlegPage({ bootleg }: BootlegPageProps) {
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={bootleg.image || "/images/bootlegs/default-bootleg.jpg"} />
+        <meta
+          property="og:image"
+          content={bootleg.image || "/images/bootlegs/default-bootleg.jpg"}
+        />
         {/* Add more meta tags as needed */}
       </Head>
       <BootlegDetailPage bootleg={bootleg} />
@@ -44,8 +47,8 @@ export default function BootlegPage({ bootleg }: BootlegPageProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const bootlegs = bootlegsData as Bootleg[];
-  const locales = ['en', 'es'];
-  const paths: { params: { bootlegId: string }, locale: string }[] = [];
+  const locales = ["en", "es"];
+  const paths: { params: { bootlegId: string }; locale: string }[] = [];
 
   bootlegs.forEach((bootleg) => {
     const slug = generateBootlegSlug(bootleg);
@@ -73,7 +76,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   return {
     props: {
       bootleg,
-      messages: (await import(`../../../messages/${locale}.json`)).default
-    }
+      messages: (await import(`../../../messages/${locale}.json`)).default,
+    },
   };
 };

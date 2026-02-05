@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
 import InterviewDetailPage from "@/components/InterviewDetailPage";
 import interviewsData from "@/constants/interviews.json";
 import {

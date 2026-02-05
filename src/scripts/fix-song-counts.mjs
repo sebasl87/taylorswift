@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import fs from "node:fs";
-import path from "node:path";
 
 const inputPath = process.argv[2] || "songs.counts.json";
 const outputPath = process.argv[3] || "songs.counts.fixed.json";

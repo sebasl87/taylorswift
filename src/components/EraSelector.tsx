@@ -41,7 +41,6 @@ export default function EraSelector() {
           >
             <Button
               onClick={() => setEra(era.id)}
-              aria-pressed={isSelected}
               role="radio"
               aria-checked={isSelected}
               aria-label={era.name}

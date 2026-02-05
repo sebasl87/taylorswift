@@ -25,7 +25,6 @@ import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
 // Lazy load del SearchModal para mejor performance inicial

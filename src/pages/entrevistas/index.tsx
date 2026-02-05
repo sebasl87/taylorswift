@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import InterviewsListPage from "@/components/InterviewsListPage";
 
 export default function InterviewsPage() {

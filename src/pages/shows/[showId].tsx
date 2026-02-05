@@ -1,9 +1,8 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
-import Head from 'next/head';
-import { useTranslations, useLocale } from 'next-intl';
+import { GetStaticProps, GetStaticPaths } from "next";
+import Head from "next/head";
 import ShowDetailPage from "@/components/ShowDetailPage";
 import showsData from "@/constants/shows.json";
-import { Show, generateShowSlug, formatShowDate } from "@/types/show";
+import { Show, generateShowSlug } from "@/types/show";
 
 interface ShowPageProps {
   show: Show;
@@ -18,9 +17,6 @@ function findShowBySlug(slug: string): Show | null {
 }
 
 export default function ShowPage({ show }: ShowPageProps) {
-  const t = useTranslations('shows'); // Assuming we might need translations for meta if not passed from props
-  const locale = useLocale();
-
   // Metadata logic adapted for Pages Router (Head)
   const title = `${show.venue} - ${show.city}`;
   const description = `${show.whyHistoric}`;
@@ -36,7 +32,10 @@ export default function ShowPage({ show }: ShowPageProps) {
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={show.image || "/images/shows/default-show.jpg"} />
+        <meta
+          property="og:image"
+          content={show.image || "/images/shows/default-show.jpg"}
+        />
         {/* Add more meta tags as needed */}
       </Head>
       <ShowDetailPage show={show} />
@@ -46,8 +45,8 @@ export default function ShowPage({ show }: ShowPageProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const shows = showsData as Show[];
-  const locales = ['en', 'es'];
-  const paths: { params: { showId: string }, locale: string }[] = [];
+  const locales = ["en", "es"];
+  const paths: { params: { showId: string }; locale: string }[] = [];
 
   shows.forEach((show) => {
     const slug = generateShowSlug(show);
@@ -75,7 +74,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   return {
     props: {
       show,
-      messages: (await import(`../../../messages/${locale}.json`)).default
-    }
+      messages: (await import(`../../../messages/${locale}.json`)).default,
+    },
   };
 };

@@ -56,7 +56,7 @@ interface Song {
     duration: string;
   };
   theme?: { es?: string; en?: string };
-  lyrics?: { es?: string; en?: string };
+  lyrics?: { es?: string | null; en?: string | null };
 }
 
 function getFilterValue(song: Song, filter: string) {

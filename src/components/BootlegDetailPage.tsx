@@ -238,7 +238,6 @@ function Setlist({ songs }: { songs: string[] }) {
 export default function BootlegDetailPage({ bootleg }: BootlegDetailPageProps) {
   const t = useTranslations("bootlegs");
   const tb = useTranslations("breadcrumb");
-  const locale = useLocale();
 
   const title = `${bootleg.title} - ${bootleg.city}`;
 

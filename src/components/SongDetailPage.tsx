@@ -31,20 +31,22 @@ interface SongDetailPageProps {
   songId: string;
 }
 
+const songsList = songsData as unknown as {
+  id: string;
+  title: string;
+  album: { title: string; year: number; cover: string; songArtwork?: string };
+  details?: { duration?: string; track_number?: number };
+  theme: { es: string; en: string };
+  credits: { writers: { lyrics: string[]; music: string[] }; musicians: { name: string; instrument?: string | { es: string; en: string } }[] };
+  lyrics?: { es?: string; en?: string };
+}[];
+
 export default function SongDetailPage({ songId }: SongDetailPageProps) {
   const t = useTranslations("songs");
   const tb = useTranslations("breadcrumb");
   const [showEs, setShowEs] = useState(false);
   const locale = useLocale();
-  const songsList = songsData as unknown as {
-    id: string;
-    title: string;
-    album: { title: string; year: number; cover: string; songArtwork?: string };
-    details?: { duration?: string; track_number?: number };
-    theme: { es: string; en: string };
-    credits: { writers: { lyrics: string[]; music: string[] }; musicians: { name: string; instrument?: string | { es: string; en: string } }[] };
-    lyrics?: { es?: string; en?: string };
-  }[];
+  
   const song = songsList.find((s) => s.id === songId);
   const songsCounts: Record<string, number> = songsCountData;
 

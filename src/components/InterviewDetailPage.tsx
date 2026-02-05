@@ -14,7 +14,6 @@ import { Launch } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import ContainerGradient from "./atoms/ContainerGradient";
 import Breadcrumb from "@/components/Breadcrumb";
 import {
   Interview,

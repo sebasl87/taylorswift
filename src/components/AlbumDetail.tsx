@@ -65,7 +65,6 @@ export default function AlbumDetail({ album }: AlbumDetailProps) {
     const isCompilation = compList.some((a) => a.id === album.id);
     const isEP = epList.some((a) => a.id === album.id);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let sourceData: Album[] = [];
     if (isStudio) sourceData = studioList;
     else if (isLive) sourceData = liveList;
@@ -519,6 +518,7 @@ export default function AlbumDetail({ album }: AlbumDetailProps) {
                           src={relatedAlbum.cover}
                           alt={relatedAlbum.title}
                           fill
+                          sizes="(max-width: 600px) 50vw, 33vw"
                           style={{ objectFit: "cover" }}
                         />
                       </Box>

@@ -1,6 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import Head from "next/head";
-import { useTranslations } from "next-intl";
+import Head from 'next/head';
 import AlbumDetail from "@/components/AlbumDetail";
 import discographyData from "@/constants/discography.json";
 import liveAlbumsData from "@/constants/liveAlbums.json";

@@ -10,7 +10,7 @@ import YouTubeEmbed from "@/components/YouTubeEmbed";
 import Link from "next/link";
 import RandomSectionBanner from "@/components/NewsBanner";
 import { CommentsSection } from "@/components/CommentsSection";
-import { Container, Typography, Box, Chip, Button } from "@mui/material";
+import { Container, Typography, Box, Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 interface NoticiaPageProps {
@@ -18,7 +18,6 @@ interface NoticiaPageProps {
 }
 
 export default function NoticiaPage({ article }: NoticiaPageProps) {
-  const t = useTranslations("news");
   const tb = useTranslations("breadcrumb");
   const locale = useLocale() as "es" | "en";
 

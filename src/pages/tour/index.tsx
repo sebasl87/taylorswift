@@ -19,7 +19,6 @@ import { useState, useMemo } from "react";
 import {
   Box,
   Typography,
-  Container,
   Card,
   CardContent,
   Grid,
@@ -28,7 +27,6 @@ import {
   Tabs,
   Tab,
   TextField,
-  IconButton,
   InputAdornment,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -81,8 +79,11 @@ export default function TourPage() {
   };
 
   // Obtener fecha actual
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const today = useMemo(() => {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    return d;
+  }, []);
 
   // Función para filtrar conciertos por búsqueda
   const filterConcerts = (concerts: typeof tourDates, query: string) => {
@@ -114,39 +115,9 @@ export default function TourPage() {
   }, [searchQuery, sortOrder, today]);
 
   // Filtrar y ordenar conciertos pasados
-  const pastConcerts = useMemo(() => {
-    const past = tourDates.filter((show) => new Date(show.date) < today);
-    const filtered = filterConcerts(past, searchQuery);
-    // Para pasados, por defecto orden descendente (más recientes primero)
-    return sortConcerts(filtered, sortOrder === "asc" ? "desc" : "asc");
-  }, [searchQuery, sortOrder, today]);
+  // (Removed unused pastConcerts logic)
 
   // Metadata constants
-  const keywordsByLocale = {
-    es: [
-      "Taylor Swift tour",
-      "conciertos Taylor Swift",
-      "entradas Taylor Swift",
-      "The Eras Tour",
-      "gira 2026",
-      "Taylor Swift concierto",
-      "tour fechas",
-      "pop en vivo",
-      "music tour",
-    ],
-    en: [
-      "Taylor Swift tour",
-      "Taylor Swift concerts",
-      "Taylor Swift tickets",
-      "The Eras Tour",
-      "tour 2026",
-      "Taylor Swift concert",
-      "tour dates",
-      "live pop",
-      "music tour",
-    ],
-  };
-
   const titleByLocale = {
     es: "Taylor Swift Tour 2026 - Fechas y Entradas",
     en: "Taylor Swift Tour 2026 - Dates and Tickets",

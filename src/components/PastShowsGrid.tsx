@@ -17,7 +17,7 @@ import {
   Chip,
   Link as MuiLink,
 } from "@mui/material";
-import { Close, CalendarMonth, Place } from "@mui/icons-material";
+import { Close, CalendarMonth } from "@mui/icons-material";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";

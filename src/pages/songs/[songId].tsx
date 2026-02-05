@@ -1,12 +1,17 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
-import { useTranslations } from 'next-intl';
 import SongDetailPage from "@/components/SongDetailPage";
 import songsData from "@/constants/songs.json";
 
 interface SongPageProps {
   songId: string;
-  songData: any; // Using any or specific type if available to pass to Head
+  songData: {
+    title: string;
+    album: {
+      title: string;
+      year: number;
+    };
+  };
 }
 
 export default function SongPage({ songId, songData }: SongPageProps) {
