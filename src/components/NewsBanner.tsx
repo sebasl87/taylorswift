@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import Image from "next/image";
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 
 interface Section {
   id: string;
@@ -86,13 +86,15 @@ export default function RandomSectionBanner({
 }: RandomSectionBannerProps) {
   const router = useRouter();
   const locale = useLocale() as "es" | "en";
+  const [randomSection, setRandomSection] = useState<Section | null>(null);
 
-  // Filtrar la sección actual y seleccionar una aleatoria
-  const randomSection = useMemo(() => {
+  useEffect(() => {
     const availableSections = sections.filter((s) => s.id !== currentSection);
     const randomIndex = Math.floor(Math.random() * availableSections.length);
-    return availableSections[randomIndex];
+    setRandomSection(availableSections[randomIndex]);
   }, [currentSection]);
+
+  if (!randomSection) return null;
 
   const handleClick = () => {
     router.push(randomSection.route);

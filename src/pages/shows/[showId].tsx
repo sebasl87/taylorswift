@@ -6,6 +6,7 @@ import { Show, generateShowSlug } from "@/types/show";
 
 interface ShowPageProps {
   show: Show;
+  relatedShows: Show[];
 }
 
 // Función para encontrar show por slug (reused logic)
@@ -16,7 +17,7 @@ function findShowBySlug(slug: string): Show | null {
   return show || null;
 }
 
-export default function ShowPage({ show }: ShowPageProps) {
+export default function ShowPage({ show, relatedShows }: ShowPageProps) {
   // Metadata logic adapted for Pages Router (Head)
   const title = `${show.venue} - ${show.city}`;
   const description = `${show.whyHistoric}`;
@@ -38,7 +39,7 @@ export default function ShowPage({ show }: ShowPageProps) {
         />
         {/* Add more meta tags as needed */}
       </Head>
-      <ShowDetailPage show={show} />
+      <ShowDetailPage show={show} relatedShows={relatedShows} />
     </>
   );
 }
@@ -71,9 +72,17 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     };
   }
 
+  // Calculate related shows at build time to avoid hydration mismatch
+  const allShows = showsData as Show[];
+  const relatedShows = allShows
+    .filter((s) => s.era === show.era && s.id !== show.id)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 3);
+
   return {
     props: {
       show,
+      relatedShows,
       messages: (await import(`../../../messages/${locale}.json`)).default,
     },
   };

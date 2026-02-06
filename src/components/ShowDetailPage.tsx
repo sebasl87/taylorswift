@@ -31,6 +31,7 @@ import { CommentsSection } from "./CommentsSection";
 
 interface ShowDetailPageProps {
   show: Show;
+  relatedShows?: Show[];
 }
 
 // Componente para YouTube Embed
@@ -236,21 +237,19 @@ function Setlist({ songs }: { songs: string[] }) {
   );
 }
 
-export default function ShowDetailPage({ show }: ShowDetailPageProps) {
+export default function ShowDetailPage({
+  show,
+  relatedShows,
+}: ShowDetailPageProps) {
   const t = useTranslations("shows");
   const tb = useTranslations("breadcrumb");
   const locale = useLocale();
 
   const title = `${show.venue} - ${show.city}`;
 
-  // Obtener otros shows de la misma era/tour
-  const relatedShows = useMemo(() => {
-    const allShows = showsData as Show[];
-    return allShows
-      .filter((s) => s.era === show.era && s.id !== show.id)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-  }, [show.era, show.id]);
+  // Si no se pasan shows relacionados (fallback), mostrar vacío o calcular deterministicamente
+  // Para evitar errores de hidratación, es mejor recibirlos como prop desde getStaticProps
+  const finalRelatedShows = relatedShows || [];
 
   return (
     <ContainerGradientNoPadding>
@@ -367,7 +366,7 @@ export default function ShowDetailPage({ show }: ShowDetailPageProps) {
         <Setlist songs={show.setlist} />
 
         {/* Shows relacionados de la misma era */}
-        {relatedShows.length > 0 && (
+        {finalRelatedShows.length > 0 && (
           <Box sx={{ maxWidth: 900, mx: "auto", mt: 6, mb: 4 }}>
             <Typography
               variant="h5"
@@ -381,7 +380,7 @@ export default function ShowDetailPage({ show }: ShowDetailPageProps) {
               {t("otherShowsFromEra") || "Otros shows de la misma era"}
             </Typography>
             <Grid container spacing={2}>
-              {relatedShows.map((relatedShow) => (
+              {finalRelatedShows.map((relatedShow) => (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={relatedShow.id}>
                   <Link
                     href={`/shows/${relatedShow.id}`}
