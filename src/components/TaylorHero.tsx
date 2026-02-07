@@ -13,6 +13,7 @@ import Link from "next/link";
 import EraSelector from "./EraSelector";
 import Hero from "./Hero";
 import { useEra } from "@/context/EraContext";
+import LastShowsCards from "./LastShowsCards";
 
 export default function TaylorHero() {
   const { currentEra } = useEra();
@@ -55,6 +56,9 @@ export default function TaylorHero() {
         <Hero />
 
         <EraSelector />
+        <Box sx={{ mt: 4 }}>
+          <LastShowsCards />
+        </Box>
         {/* <Box sx={{ mt: 8 }}>
           <Typography
             variant="h2"

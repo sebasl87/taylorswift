@@ -184,7 +184,7 @@ function ShowDetailModal({
               }}
             >
               <Image
-                src="/images/site-updates/20.png"
+                src="/images/banners/taylive.jpg"
                 alt="Show"
                 fill
                 style={{ objectFit: "cover" }}

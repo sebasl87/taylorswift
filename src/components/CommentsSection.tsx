@@ -206,7 +206,7 @@ export function CommentsSection({
         {/* Banner Header */}
         <Box sx={{ position: "relative", height: { xs: 180, md: 300 } }}>
           <Image
-            src="/images/banners/comentarios.jpg"
+            src="/images/eras/comments.jpg"
             alt={t("title")}
             fill
             style={{ objectFit: "cover", objectPosition: "center 35%" }}

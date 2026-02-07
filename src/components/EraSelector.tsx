@@ -31,6 +31,7 @@ export default function EraSelector() {
         pb: 8,
         width: "100%",
       }}
+      mt={4}
     >
       {/* Encabezado de la sección */}
       <Box sx={{ textAlign: "center", mb: 6 }}>

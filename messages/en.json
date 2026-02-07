@@ -280,6 +280,11 @@
     "title": "Explore every Taylor Swift era",
     "subtitle": "Discover the albums, sounds and aesthetics that define each era of her musical career"
   },
+  "lastShows": {
+    "latestShow": "Latest show",
+    "yearsAgo": "This day years ago",
+    "setlist": "Setlist"
+  },
   "tour": {
     "title": "Tour",
     "subtitle": "Explore Taylor Swift's tours, from her beginnings to the present. Upcoming dates and setlists.",

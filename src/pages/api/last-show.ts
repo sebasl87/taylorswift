@@ -61,8 +61,10 @@ function normalizeSetlistItem(item: any): NormalizedShow | null {
   const iso = ddmmyyyyToISO(item?.eventDate);
   if (!item?.id || !iso) return null;
 
-  const set0 = item?.sets?.set?.[0];
-  const songsRaw: any[] = Array.isArray(set0?.song) ? set0.song : [];
+  const setsRaw: any[] = Array.isArray(item?.sets?.set) ? item.sets.set : [];
+  const songsRaw: any[] = setsRaw.flatMap((setItem) =>
+    Array.isArray(setItem?.song) ? setItem.song : []
+  );
   const songs = songsRaw
     .map((s) => ({
       name: s?.name ?? "",
@@ -96,6 +98,15 @@ function normalizeSetlistItem(item: any): NormalizedShow | null {
   };
 }
 
+function pickFirstWithSongs(rawList: any[]): NormalizedShow | null {
+  const normalized = rawList
+    .map(normalizeSetlistItem)
+    .filter(Boolean) as NormalizedShow[];
+
+  const withSongs = normalized.find((s) => Array.isArray(s.songs) && s.songs.length > 0);
+  return withSongs ?? normalized[0] ?? null;
+}
+
 function pickClosestInSameMonth(shows: NormalizedShow[], targetISO: string): NormalizedShow | null {
   const target = isoToDate(targetISO);
   if (Number.isNaN(target.getTime())) return null;
@@ -112,6 +123,28 @@ function pickClosestInSameMonth(shows: NormalizedShow[], targetISO: string): Nor
 
   const tms = target.getTime();
   return inMonth
+    .slice()
+    .sort((a, b) => {
+      const da = Math.abs(isoToDate(a.eventDateISO).getTime() - tms);
+      const db = Math.abs(isoToDate(b.eventDateISO).getTime() - tms);
+      return da - db;
+    })[0];
+}
+
+function pickClosestInYear(shows: NormalizedShow[], targetISO: string): NormalizedShow | null {
+  const target = isoToDate(targetISO);
+  if (Number.isNaN(target.getTime())) return null;
+
+  const ty = target.getUTCFullYear();
+  const inYear = shows.filter((s) => {
+    const d = isoToDate(s.eventDateISO);
+    return !Number.isNaN(d.getTime()) && d.getUTCFullYear() === ty;
+  });
+
+  if (!inYear.length) return null;
+
+  const tms = target.getTime();
+  return inYear
     .slice()
     .sort((a, b) => {
       const da = Math.abs(isoToDate(a.eventDateISO).getTime() - tms);
@@ -173,10 +206,11 @@ export default async function handler(
     return;
   }
 
-  const { mbid: m, yearsAgo: y, warm: w } = req.query;
+  const { mbid: m, yearsAgo: y, warm: w, clear: c } = req.query;
   const mbid = (Array.isArray(m) ? m[0] : m) || "20244d07-534f-4eff-b4d4-930878889970";
-  const yearsAgo = Number((Array.isArray(y) ? y[0] : y) || "20");
-  const warm = (Array.isArray(w) ? w[0] : w) === "1";
+  const yearsAgo = Number((Array.isArray(y) ? y[0] : y) || "5");
+  const warm = (Array.isArray(w) ? w[0] : w) !== "0";
+  const clear = (Array.isArray(c) ? c[0] : c) === "1";
 
   const latestKey = `setlist:latest:${mbid}:p1`;
   const latestFreshSeconds = 60;     // 1 min fresco
@@ -211,7 +245,7 @@ export default async function handler(
       url: "https://www.setlist.fm/setlist/taylor-swift/2024/tokyo-dome-tokyo-japan-33ad0045.html",
       attribution: { text: "Source: setlist.fm (MOCK)", url: "https://www.setlist.fm" },
     };
-    return res.status(200).json(mockShow);
+    return res.status(200).json({ latest: mockShow, yearsAgoPrev: mockShow });
   }
 
   try {
@@ -219,7 +253,11 @@ export default async function handler(
     let latestObj: NormalizedShow | null = null;
     const latestCached = await kvGet<NormalizedShow>(latestKey);
 
-    if (latestCached.value) {
+    if (clear) {
+      await kv.del(latestKey);
+    }
+
+    if (latestCached.value && latestCached.value.songs?.length && !clear) {
       latestObj = latestCached.value;
     } else {
       const latestRes = await upstreamFetch(`/artist/${mbid}/setlists?p=1`);
@@ -228,8 +266,8 @@ export default async function handler(
           { latest: null, yearsAgoPrev: null, error: "Upstream error", details: latestRes.bodyText }
         );
       }
-      const latestRaw = latestRes.json?.setlist?.[0];
-      latestObj = normalizeSetlistItem(latestRaw);
+      const latestRawList: any[] = Array.isArray(latestRes.json?.setlist) ? latestRes.json.setlist : [];
+      latestObj = pickFirstWithSongs(latestRawList);
       if (!latestObj) {
         return res.status(404).json(
           { latest: null, yearsAgoPrev: null, error: "Latest not found/invalid" }
@@ -254,7 +292,7 @@ export default async function handler(
 
     // intento KV
     const yearsCached = await kvGet<NormalizedShow | null>(yearsKey);
-    if (yearsCached.value !== null) {
+    if (yearsCached.value !== null && !clear) {
       return res.status(200).json(
         {
           latest: latestObj,
@@ -262,6 +300,10 @@ export default async function handler(
           meta: { targetISO, targetYear, targetMonth, cache: { latestKey, yearsKey }, stale: yearsCached.stale },
         }
       );
+    }
+
+    if (clear) {
+      await kv.del(yearsKey);
     }
 
     // si no está cacheado y no es warm, no hago 2do request (evita 429)
@@ -292,7 +334,10 @@ export default async function handler(
     const yearSetlists: any[] = Array.isArray(yearRes.json?.setlist) ? yearRes.json.setlist : [];
     const normalized = yearSetlists.map(normalizeSetlistItem).filter(Boolean) as NormalizedShow[];
 
-    const yearsAgoPrev = pickClosestInSameMonth(normalized, targetISO);
+    const yearsAgoPrev =
+      pickClosestInSameMonth(normalized, targetISO) ??
+      pickClosestInYear(normalized, targetISO) ??
+      null;
 
     // cacheo (incluso null) por 24h fresco y 7 días retenido
     await kvSet(yearsKey, yearsAgoPrev ?? null, yearsFreshSeconds, yearsKeepSeconds);

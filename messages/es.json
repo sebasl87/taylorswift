@@ -280,6 +280,11 @@
     "title": "Explorá cada era de Taylor Swift",
     "subtitle": "Descubrí los álbumes, sonidos y estética que definen cada momento de su carrera musical"
   },
+  "lastShows": {
+    "latestShow": "Último show",
+    "yearsAgo": "Un día como hoy",
+    "setlist": "Setlist"
+  },
   "tour": {
     "title": "Gira",
     "subtitle": "Explora las giras de Taylor Swift, desde sus inicios hasta la actualidad. Próximas fechas y setlists.",
