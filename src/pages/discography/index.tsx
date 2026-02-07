@@ -3,25 +3,17 @@ import Head from "next/head";
 import { useTranslations } from "next-intl";
 import DiscographyGrid from "@/components/DiscographyGrid";
 import discographyData from "@/constants/discography.json";
-import liveAlbumsData from "@/constants/liveAlbums.json";
-import compilationsData from "@/constants/compilations.json";
-import epsData from "@/constants/eps.json";
 import { Album } from "@/types/album";
-import { Container, Typography, Box, Tabs, Tab } from "@mui/material";
-import { useState } from "react";
+import { Typography, Box } from "@mui/material";
+import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
+import Breadcrumb from "@/components/Breadcrumb";
+import { useEra } from "@/context/EraContext";
 
 export default function DiscographyPage() {
   const t = useTranslations("discography");
-  const [activeTab, setActiveTab] = useState(0);
-
-  const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
-    setActiveTab(newValue);
-  };
+  const { currentEra } = useEra();
 
   const studioAlbums = discographyData as unknown as Album[];
-  const liveAlbums = liveAlbumsData as unknown as Album[];
-  const compilations = compilationsData as unknown as Album[];
-  const eps = epsData as unknown as Album[];
 
   return (
     <>
@@ -33,27 +25,58 @@ export default function DiscographyPage() {
         <meta property="og:type" content="website" />
       </Head>
 
-      <Box sx={{ py: 4 }}>
-        <Container>
-          <Typography variant="h2" component="h1" gutterBottom align="center">
-            {t("title")}
-          </Typography>
+      <ContainerGradientNoPadding>
+        <Box
+          sx={{
+            position: "relative",
+            minHeight: "100vh",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: currentEra.colors.heroOverlay || "rgba(0,0,0,0.2)",
+              pointerEvents: "none",
+              transition: "background 0.5s ease",
+              zIndex: 0,
+            },
+          }}
+        >
+          <Box
+            pt="100px"
+            pb={{ xs: 4, md: 6 }}
+            maxWidth="1440px"
+            mx="auto"
+            sx={{
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            <Breadcrumb items={[{ label: t("title") }]} />
+            <Typography
+              variant="h2"
+              component="h1"
+              gutterBottom
+              align="center"
+              sx={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 800,
+                mb: 4,
+                color: currentEra.colors.heroText || "#FFFFFF",
+                textShadow: `2px 2px 8px ${currentEra.shadowColor}, 
+                           0 0 20px ${currentEra.shadowColor}`,
+                transition: "color 0.5s ease, text-shadow 0.5s ease",
+              }}
+            >
+              {t("title")}
+            </Typography>
 
-          <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 4 }}>
-            <Tabs value={activeTab} onChange={handleTabChange} centered>
-              <Tab label="Studio Albums" />
-              <Tab label="Live Albums" />
-              <Tab label="Compilations" />
-              <Tab label="EPs" />
-            </Tabs>
+            <DiscographyGrid albums={studioAlbums} />
           </Box>
-
-          {activeTab === 0 && <DiscographyGrid albums={studioAlbums} />}
-          {activeTab === 1 && <DiscographyGrid albums={liveAlbums} />}
-          {activeTab === 2 && <DiscographyGrid albums={compilations} />}
-          {activeTab === 3 && <DiscographyGrid albums={eps} />}
-        </Container>
-      </Box>
+        </Box>
+      </ContainerGradientNoPadding>
     </>
   );
 }

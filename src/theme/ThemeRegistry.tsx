@@ -5,7 +5,6 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { makeTheme } from "./createTheme";
-import { useColorMode } from "./useColorMode";
 import { useEra } from "@/context/EraContext";
 
 const createEmotionCache = () => {
@@ -18,12 +17,11 @@ export default function ThemeRegistry({
   children: React.ReactNode;
 }) {
   const cache = React.useMemo(() => createEmotionCache(), []);
-  const { mode } = useColorMode();
   const { currentEra } = useEra();
 
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider theme={makeTheme(mode, currentEra)}>
+      <ThemeProvider theme={makeTheme(currentEra)}>
         <CssBaseline />
         {children}
       </ThemeProvider>

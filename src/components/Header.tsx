@@ -14,12 +14,12 @@ import {
   ListItemText,
   ListItemButton,
 } from "@mui/material";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LanguageIcon from "@mui/icons-material/Language";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { useColorMode } from "@/theme/useColorMode";
+import PaletteIcon from "@mui/icons-material/Palette";
+import { useEra } from "@/context/EraContext";
+import { ERAS } from "@/constants/eras";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
@@ -33,17 +33,19 @@ const SearchModal = dynamic(() => import("./SearchModal"), {
 });
 
 export default function Header() {
-  const { mode, toggle } = useColorMode();
+  const { currentEra, setEra } = useEra();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [eraAnchorEl, setEraAnchorEl] = useState<null | HTMLElement>(null);
   const [mediaAnchorEl, setMediaAnchorEl] = useState<null | HTMLElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
   const currentLocale = useLocale();
   const t = useTranslations("navigation");
   const router = useRouter();
   // Ensure router is ready and get pathname without query params
-  const pathname = router.asPath ? router.asPath.split('?')[0] : '/';
+  const pathname = router.asPath ? router.asPath.split("?")[0] : "/";
 
   // Detectar scroll
   useEffect(() => {
@@ -56,9 +58,19 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Limpiar timeout al desmontar
+  useEffect(() => {
+    return () => {
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+      }
+    };
+  }, [closeTimeout]);
+
   const mediaItems = [
+    { label: t("discography"), href: "/discography" },
     { label: t("shows"), href: "/shows" },
-    { label: t("bootlegs"), href: "/bootlegs" },
+    { label: t("videos"), href: "/videos" },
   ];
 
   const navigationItems = [
@@ -78,6 +90,19 @@ export default function Header() {
     setAnchorEl(null);
   };
 
+  const handleEraClick = (event: React.MouseEvent<HTMLElement>) => {
+    setEraAnchorEl(event.currentTarget);
+  };
+
+  const handleEraClose = () => {
+    setEraAnchorEl(null);
+  };
+
+  const handleEraChange = (eraId: string) => {
+    setEra(eraId);
+    handleEraClose();
+  };
+
   const handleLanguageChange = (newLocale: string) => {
     const { pathname, asPath, query } = router;
     router.push({ pathname, query }, asPath, { locale: newLocale });
@@ -85,44 +110,76 @@ export default function Header() {
   };
 
   const handleMediaMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
+    // Limpiar cualquier timeout pendiente
+    if (closeTimeout) {
+      clearTimeout(closeTimeout);
+      setCloseTimeout(null);
+    }
     setMediaAnchorEl(event.currentTarget);
   };
 
   const handleMediaMouseLeave = () => {
-    setMediaAnchorEl(null);
+    // Agregar un pequeño delay antes de cerrar el menú
+    const timeout = setTimeout(() => {
+      setMediaAnchorEl(null);
+    }, 150); // 150ms de delay
+    setCloseTimeout(timeout);
   };
 
   const isMediaActive = mediaItems.some((item) =>
     pathname.startsWith(item.href),
   );
 
-  // Función para obtener el color de fondo basado en scroll y modo
+  // Función para obtener el color de fondo basado en scroll
   const getBackgroundColor = () => {
     if (!isScrolled) return "transparent";
-    return mode === "dark"
-      ? "rgba(0, 0, 0, 0.95)"
-      : "rgba(255, 255, 255, 0.95)";
+    // Usar el color secundario de cada era con alta opacidad para que sea característico
+    const colorToUse = currentEra.colors.secondary;
+    // Convertir hex a rgba con opacidad 0.95
+    const hex = colorToUse.replace("#", "");
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, 0.95)`;
+  };
+
+  // Función para obtener el color del borde basado en la era
+  const getBorderColor = () => {
+    const isDark =
+      currentEra.id === "reputation" || currentEra.id === "midnights";
+    return isDark ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.15)";
+  };
+
+  // Función para obtener el color del texto del logo
+  const getLogoColor = () => {
+    const isDark =
+      currentEra.id === "reputation" || currentEra.id === "midnights";
+    return isScrolled
+      ? isDark
+        ? "white"
+        : currentEra.colors.text
+      : isDark
+        ? "white"
+        : "black";
   };
 
   return (
     <>
       <AppBar
-        position="sticky"
+        position="fixed"
         elevation={isScrolled ? 4 : 0}
         sx={{
           backgroundColor: getBackgroundColor(),
           backdropFilter: isScrolled ? "blur(10px)" : "none",
-          borderBottom: isScrolled
-            ? mode === "dark"
-              ? "1px solid rgba(255, 255, 255, 0.1)"
-              : "1px solid rgba(0, 0, 0, 0.1)"
-            : "none",
+          borderBottom: isScrolled ? `1px solid ${getBorderColor()}` : "none",
           transition: "all 0.3s ease-in-out",
           padding: 1,
+          zIndex: 1100,
+          top: 0,
         }}
       >
         <Container maxWidth={false} sx={{ maxWidth: 1440, mx: "auto" }}>
-          <Toolbar sx={{ gap: 2, px: { xs: 0, sm: 0 } }}>
+          <Toolbar sx={{ gap: 2, px: { xs: 0, sm: 0 }, color: getLogoColor() }}>
             <Typography variant="h6" sx={{ fontWeight: 800 }}>
               <Link
                 href="/"
@@ -133,15 +190,20 @@ export default function Header() {
                   component="div"
                   sx={{
                     fontWeight: "bold",
-                    color: mode === "dark" ? "white" : "black",
-                    fontFamily: "var(--font-geist-sans)",
+                    color: getLogoColor(),
+                    fontFamily: "var(--font-heading)",
                     letterSpacing: "-0.05em",
+                    transition: "color 0.3s ease",
+                    fontSize: { xs: "1.25rem", sm: "1.5rem", md: "2rem" },
                   }}
                 >
                   TAYLOR SWIFT
                 </Typography>
               </Link>
             </Typography>
+
+            {/* Spacer para mobile - empuja botones a la derecha */}
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", xl: "none" } }} />
 
             {/* Navegación centrada - solo desktop */}
             <Box
@@ -204,9 +266,19 @@ export default function Header() {
                           anchorEl={mediaAnchorEl}
                           open={Boolean(mediaAnchorEl)}
                           onClose={handleMediaMouseLeave}
+                          disableScrollLock
                           MenuListProps={{
-                            onMouseEnter: handleMediaMouseEnter,
+                            onMouseEnter: () => {
+                              // Limpiar timeout al entrar en el menú
+                              if (closeTimeout) {
+                                clearTimeout(closeTimeout);
+                                setCloseTimeout(null);
+                              }
+                            },
                             onMouseLeave: handleMediaMouseLeave,
+                            sx: {
+                              py: 0.5,
+                            },
                           }}
                           anchorOrigin={{
                             vertical: "bottom",
@@ -215,6 +287,15 @@ export default function Header() {
                           transformOrigin={{
                             vertical: "top",
                             horizontal: "left",
+                          }}
+                          slotProps={{
+                            paper: {
+                              sx: {
+                                bgcolor: "background.paper",
+                                color: "text.primary",
+                                mt: 0.5, // Pequeño margen para evitar el gap
+                              },
+                            },
                           }}
                         >
                           {mediaItems.map((subItem) => (
@@ -279,16 +360,67 @@ export default function Header() {
               <IconButton onClick={() => setSearchOpen(true)} color="inherit">
                 <SearchIcon />
               </IconButton>
-              <IconButton onClick={toggle} color="inherit">
-                {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+              <IconButton
+                onClick={handleEraClick}
+                color="inherit"
+                aria-label="Select Era"
+              >
+                <PaletteIcon />
               </IconButton>
+              <Menu
+                key={`era-${currentEra.id}`}
+                anchorEl={eraAnchorEl}
+                open={Boolean(eraAnchorEl)}
+                onClose={handleEraClose}
+                disableScrollLock
+                slotProps={{
+                  paper: {
+                    sx: {
+                      maxHeight: 400,
+                      width: "250px",
+                      bgcolor: "background.paper",
+                      color: "text.primary",
+                    },
+                  },
+                }}
+              >
+                {ERAS.map((era) => (
+                  <MenuItem
+                    key={era.id}
+                    onClick={() => handleEraChange(era.id)}
+                    selected={currentEra.id === era.id}
+                    sx={{
+                      borderLeft: `4px solid ${era.colors.primary}`,
+                      "&.Mui-selected": {
+                        backgroundColor: era.colors.secondary + "30",
+                        fontWeight: "bold",
+                      },
+                      "&:hover": {
+                        backgroundColor: era.colors.secondary + "20",
+                      },
+                    }}
+                  >
+                    {era.name}
+                  </MenuItem>
+                ))}
+              </Menu>
               <IconButton onClick={handleLanguageClick} color="inherit">
                 <LanguageIcon />
               </IconButton>
               <Menu
+                key={`lang-${currentEra.id}`}
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={handleLanguageClose}
+                disableScrollLock
+                slotProps={{
+                  paper: {
+                    sx: {
+                      bgcolor: "background.paper",
+                      color: "text.primary",
+                    },
+                  },
+                }}
               >
                 <MenuItem
                   onClick={() => handleLanguageChange("es")}
@@ -319,9 +451,19 @@ export default function Header() {
 
       {/* Drawer para móvil */}
       <Drawer
+        key={`drawer-${currentEra.id}`}
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
+        disableScrollLock
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: "background.paper",
+              color: "text.primary",
+            },
+          },
+        }}
       >
         <Box
           sx={{ width: 250 }}

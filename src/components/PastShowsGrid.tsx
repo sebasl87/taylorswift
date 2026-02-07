@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import { Close, CalendarMonth } from "@mui/icons-material";
 import { useLocale } from "next-intl";
+import { useEra } from "@/context/EraContext";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -80,9 +81,10 @@ function ShowDetailModal({
   onClose: () => void;
   showId: string | null;
 }) {
+  const { currentEra } = useEra();
+  const locale = useLocale();
   const [showDetail, setShowDetail] = useState<ShowDetail | null>(null);
   const [loading, setLoading] = useState(false);
-  const locale = useLocale();
 
   useEffect(() => {
     if (open && showId) {
@@ -104,14 +106,20 @@ function ShowDetailModal({
 
   return (
     <Dialog
+      key={currentEra.id}
       open={open}
       onClose={onClose}
       maxWidth="md"
       fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: 2,
-          maxHeight: "90vh",
+      disableScrollLock
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: 2,
+            maxHeight: "90vh",
+            bgcolor: "background.paper",
+            color: "text.primary",
+          },
         },
       }}
     >
@@ -397,7 +405,7 @@ export default function PastShowsGrid() {
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
-    value: number
+    value: number,
   ) => {
     setPage(value);
     window.scrollTo({ top: 0, behavior: "smooth" });

@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { Search as SearchIcon, Close as CloseIcon } from "@mui/icons-material";
 import { useTranslations, useLocale } from "next-intl";
+import { useEra } from "@/context/EraContext";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllSongs } from "@/utils/songs";
@@ -40,6 +41,7 @@ function songNameToUrl(songName: string): string {
 }
 
 export default function SearchModal({ open, onClose }: SearchModalProps) {
+  const { currentEra } = useEra();
   const [query, setQuery] = useState("");
   const t = useTranslations("search");
   const locale = useLocale() as "es" | "en";
@@ -192,16 +194,22 @@ export default function SearchModal({ open, onClose }: SearchModalProps) {
   return (
     <>
       <Dialog
+        key={currentEra.id}
         open={open}
         onClose={handleClose}
         maxWidth="md"
         fullWidth
-        PaperProps={{
-          sx: {
-            borderRadius: { xs: 1, sm: 2 },
-            maxHeight: { xs: "100vh", sm: "80vh" },
-            m: { xs: 0, sm: 2 },
-            width: { xs: "90%", sm: "100%" },
+        disableScrollLock
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: { xs: 1, sm: 2 },
+              maxHeight: { xs: "100vh", sm: "80vh" },
+              m: { xs: 0, sm: 2 },
+              width: { xs: "90%", sm: "100%" },
+              bgcolor: "background.paper",
+              color: "text.primary",
+            },
           },
         }}
         sx={{

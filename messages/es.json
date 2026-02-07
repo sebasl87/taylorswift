@@ -265,5 +265,29 @@
     "title": "Videos Oficiales",
     "subtitle": "Explora la videografía completa de Taylor Swift",
     "comment": "Comentarios"
+  },
+  "hero": {
+    "title": "Taylor Swift: discografía, giras y noticias",
+    "subtitle": "Explorá álbumes, eras, canciones destacadas y actualizaciones del universo Swift.",
+    "ctaPrimary": "Ver discografía",
+    "ctaSecondary": "Últimas noticias",
+    "chipEras": "Eras",
+    "chipTours": "Tours",
+    "chipBio": "Biografía",
+    "imageAlt": "Taylor Swift"
+  },
+  "eraSelector": {
+    "title": "Explorá cada era de Taylor Swift",
+    "subtitle": "Descubrí los álbumes, sonidos y estética que definen cada momento de su carrera musical"
+  },
+  "tour": {
+    "title": "Gira",
+    "subtitle": "Explora las giras de Taylor Swift, desde sus inicios hasta la actualidad. Próximas fechas y setlists.",
+    "upcomingShows": "Próximas fechas",
+    "pastShows": "Fechas pasadas",
+    "date": "Fecha",
+    "tickets": "Entradas",
+    "searchPlaceholder": "Buscar por ciudad, país, venue...",
+    "noShowsFound": "No se encontraron shows para esta búsqueda"
   }
 }

@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import {
-  Container,
   Typography,
   TextField,
   Table,
@@ -24,6 +23,7 @@ import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import showsData from "@/constants/shows.json";
 import ContainerGradientNoPadding from "./atoms/ContainerGradientNoPadding";
+import { useEra } from "@/context/EraContext";
 import Breadcrumb from "@/components/Breadcrumb";
 import {
   Show,
@@ -55,10 +55,11 @@ export default function ShowsListPage() {
   const t = useTranslations("shows");
   const tb = useTranslations("breadcrumb");
   const locale = useLocale();
+  const { currentEra } = useEra();
   const [filter, setFilter] = useState("");
   const [pageDesktop, setPageDesktop] = useState(1);
   const [displayCountMobile, setDisplayCountMobile] = useState(
-    ITEMS_PER_PAGE_MOBILE
+    ITEMS_PER_PAGE_MOBILE,
   );
   const shows: Show[] = showsData as Show[];
 
@@ -90,258 +91,293 @@ export default function ShowsListPage() {
 
   const loadMoreMobile = () => {
     setDisplayCountMobile((prev) =>
-      Math.min(prev + ITEMS_PER_PAGE_MOBILE, filtered.length)
+      Math.min(prev + ITEMS_PER_PAGE_MOBILE, filtered.length),
     );
   };
 
   return (
     <ContainerGradientNoPadding>
-      <Box pt={{ xs: 2, md: 4 }} px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
-        <Breadcrumb items={[{ label: tb("shows") }]} />
-      </Box>
-      <Container maxWidth={false} sx={{ maxWidth: 1440, mx: "auto" }}>
+      <Box
+        sx={{
+          position: "relative",
+          minHeight: "100vh",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: currentEra.colors.heroOverlay || "rgba(0,0,0,0.2)",
+            pointerEvents: "none",
+            transition: "background 0.5s ease",
+            zIndex: 0,
+          },
+        }}
+      >
         <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          width={"100%"}
+          pt="100px"
+          pb={{ xs: 4, md: 6 }}
+          maxWidth="1440px"
+          mx="auto"
+          sx={{
+            position: "relative",
+            zIndex: 1,
+          }}
         >
-          <Typography
-            variant="h1"
-            sx={{ fontSize: { xs: 32, md: 56 }, mb: 3, fontWeight: 700, mt: 3 }}
+          <Breadcrumb items={[{ label: tb("shows") }]} />
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            width={"100%"}
           >
-            {t("title")}
-          </Typography>
-        </Box>
-
-        <TextField
-          label={t("search")}
-          variant="outlined"
-          fullWidth
-          sx={{ mb: 4 }}
-          value={filter}
-          onChange={handleFilterChange}
-        />
-
-        {/* Tabla solo visible en desktop */}
-        <TableContainer
-          component={Paper}
-          sx={{ mb: 4, display: { xs: "none", md: "block" } }}
-        >
-          <Table size="small">
-            <TableHead
+            <Typography
+              variant="h1"
               sx={{
-                backgroundColor: "primary.main",
-                height: 50,
+                fontFamily: "var(--font-heading)",
+                fontSize: { xs: 32, md: 56 },
+                mb: 3,
+                fontWeight: 700,
+                mt: 3,
+                color: currentEra.colors.heroText || "#FFFFFF",
+                textShadow: `2px 2px 8px ${currentEra.shadowColor}, 0 0 20px ${currentEra.shadowColor}`,
+                transition: "color 0.5s ease, text-shadow 0.5s ease",
               }}
             >
-              <TableRow>
-                <TableCell>
-                  <Typography fontWeight={600} fontSize={18} color="white">
-                    {t("date")}
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography fontWeight={600} fontSize={18} color="white">
-                    {t("venue")}
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography fontWeight={600} fontSize={18} color="white">
-                    {t("city")}
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography fontWeight={600} fontSize={18} color="white">
-                    {t("country")}
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography fontWeight={600} fontSize={18} color="white">
-                    {t("era")}
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {displayedDesktop.map((show) => {
-                const slug = generateShowSlug(show);
-
-                return (
-                  <TableRow
-                    key={show.id}
-                    hover
-                    sx={{ cursor: "pointer", height: 55 }}
-                    onClick={() => (window.location.href = `/shows/${slug}`)}
-                  >
-                    <TableCell>
-                      <Typography variant="body2">
-                        {formatShowDate(show.date, locale)}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          fontWeight: 500,
-                          color: "primary.main",
-                          maxWidth: 300,
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          whiteSpace: "nowrap",
-                        }}
-                      >
-                        {show.venue}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2">{show.city}</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2">{show.country}</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Chip
-                        label={show.era}
-                        size="small"
-                        variant="outlined"
-                        sx={{ fontSize: "0.75rem" }}
-                      />
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        {/* Paginación para desktop */}
-        {totalPagesDesktop > 1 && (
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              justifyContent: "center",
-              mb: 4,
-            }}
-          >
-            <Pagination
-              count={totalPagesDesktop}
-              page={pageDesktop}
-              onChange={(_, page) => setPageDesktop(page)}
-              color="primary"
-              size="large"
-              showFirstButton
-              showLastButton
-            />
+              {t("title")}
+            </Typography>
           </Box>
-        )}
 
-        {/* Cards para móvil */}
-        <Grid
-          container
-          spacing={2}
-          sx={{ display: { xs: "flex", md: "none" } }}
-        >
-          {displayedMobile.map((show) => {
-            const slug = generateShowSlug(show);
+          <TextField
+            label={t("search")}
+            variant="outlined"
+            fullWidth
+            sx={{ mb: 4 }}
+            value={filter}
+            onChange={handleFilterChange}
+          />
 
-            return (
-              <Grid size={{ xs: 12 }} key={show.id}>
-                <Card sx={{ height: "100%" }}>
-                  <CardActionArea
-                    component={Link}
-                    href={`/shows/${slug}`}
-                    sx={{ height: "100%" }}
-                  >
-                    <CardContent sx={{ p: 2 }}>
-                      <Box sx={{ mb: 1 }}>
+          {/* Tabla solo visible en desktop */}
+          <TableContainer
+            component={Paper}
+            sx={{ mb: 4, display: { xs: "none", md: "block" } }}
+          >
+            <Table size="small">
+              <TableHead
+                sx={{
+                  backgroundColor: "primary.main",
+                  height: 50,
+                }}
+              >
+                <TableRow>
+                  <TableCell>
+                    <Typography fontWeight={600} fontSize={18} color="white">
+                      {t("date")}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography fontWeight={600} fontSize={18} color="white">
+                      {t("venue")}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography fontWeight={600} fontSize={18} color="white">
+                      {t("city")}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography fontWeight={600} fontSize={18} color="white">
+                      {t("country")}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography fontWeight={600} fontSize={18} color="white">
+                      {t("era")}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {displayedDesktop.map((show) => {
+                  const slug = generateShowSlug(show);
+
+                  return (
+                    <TableRow
+                      key={show.id}
+                      hover
+                      sx={{ cursor: "pointer", height: 55 }}
+                      onClick={() => (window.location.href = `/shows/${slug}`)}
+                    >
+                      <TableCell>
+                        <Typography variant="body2">
+                          {formatShowDate(show.date, locale)}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            fontWeight: 500,
+                            color: "primary.main",
+                            maxWidth: 300,
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {show.venue}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="body2">{show.city}</Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="body2">{show.country}</Typography>
+                      </TableCell>
+                      <TableCell>
                         <Chip
                           label={show.era}
                           size="small"
                           variant="outlined"
-                          sx={{ mb: 1 }}
+                          sx={{ fontSize: "0.75rem" }}
                         />
-                      </Box>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
 
-                      <Typography
-                        variant="h6"
-                        component="h3"
-                        sx={{
-                          fontWeight: 600,
-                          mb: 1,
-                          fontSize: "1.1rem",
-                          lineHeight: 1.3,
-                          color: "primary.main",
-                        }}
-                      >
-                        {show.venue}
-                      </Typography>
-
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ mb: 1 }}
-                      >
-                        {show.city}, {show.country} •{" "}
-                        {formatShowDate(show.date, locale)}
-                      </Typography>
-
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: "vertical",
-                        }}
-                      >
-                        {getShowHistoricDescription(show, locale)}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            );
-          })}
-        </Grid>
-
-        {/* Botón "Cargar más" para mobile */}
-        {hasMoreMobile && (
-          <Box
-            sx={{
-              display: { xs: "flex", md: "none" },
-              justifyContent: "center",
-              mt: 4,
-              mb: 4,
-            }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              onClick={loadMoreMobile}
+          {/* Paginación para desktop */}
+          {totalPagesDesktop > 1 && (
+            <Box
               sx={{
-                px: 6,
-                py: 1.5,
-                fontSize: 16,
-                fontWeight: 600,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "center",
+                mb: 4,
               }}
             >
-              {locale === "es" ? "Cargar más shows" : "Load more shows"}
-            </Button>
-          </Box>
-        )}
+              <Pagination
+                count={totalPagesDesktop}
+                page={pageDesktop}
+                onChange={(_, page) => setPageDesktop(page)}
+                color="primary"
+                size="large"
+                showFirstButton
+                showLastButton
+              />
+            </Box>
+          )}
 
-        <Box my={4}>
-          <RandomSectionBanner currentSection="shows" />
+          {/* Cards para móvil */}
+          <Grid
+            container
+            spacing={2}
+            sx={{ display: { xs: "flex", md: "none" } }}
+          >
+            {displayedMobile.map((show) => {
+              const slug = generateShowSlug(show);
+
+              return (
+                <Grid size={{ xs: 12 }} key={show.id}>
+                  <Card sx={{ height: "100%" }}>
+                    <CardActionArea
+                      component={Link}
+                      href={`/shows/${slug}`}
+                      sx={{ height: "100%" }}
+                    >
+                      <CardContent sx={{ p: 2 }}>
+                        <Box sx={{ mb: 1 }}>
+                          <Chip
+                            label={show.era}
+                            size="small"
+                            variant="outlined"
+                            sx={{ mb: 1 }}
+                          />
+                        </Box>
+
+                        <Typography
+                          variant="h6"
+                          component="h3"
+                          sx={{
+                            fontWeight: 600,
+                            mb: 1,
+                            fontSize: "1.1rem",
+                            lineHeight: 1.3,
+                            color: "primary.main",
+                          }}
+                        >
+                          {show.venue}
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ mb: 1 }}
+                        >
+                          {show.city}, {show.country} •{" "}
+                          {formatShowDate(show.date, locale)}
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                          }}
+                        >
+                          {getShowHistoricDescription(show, locale)}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              );
+            })}
+          </Grid>
+
+          {/* Botón "Cargar más" para mobile */}
+          {hasMoreMobile && (
+            <Box
+              sx={{
+                display: { xs: "flex", md: "none" },
+                justifyContent: "center",
+                mt: 4,
+                mb: 4,
+              }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                onClick={loadMoreMobile}
+                sx={{
+                  px: 6,
+                  py: 1.5,
+                  fontSize: 16,
+                  fontWeight: 600,
+                }}
+              >
+                {locale === "es" ? "Cargar más shows" : "Load more shows"}
+              </Button>
+            </Box>
+          )}
+
+          <Box my={4}>
+            <RandomSectionBanner currentSection="shows" />
+          </Box>
+          <CommentsSection
+            pageType="article"
+            pageId="shows-page"
+            customSubtitle={t("preSubtitle")}
+          />
         </Box>
-        <CommentsSection
-          pageType="article"
-          pageId="shows-page"
-          customSubtitle={t("preSubtitle")}
-        />
-      </Container>
+      </Box>
     </ContainerGradientNoPadding>
   );
 }

@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import EraSelector from "./EraSelector";
+import Hero from "./Hero";
 import { useEra } from "@/context/EraContext";
 
 export default function TaylorHero() {
@@ -19,20 +20,42 @@ export default function TaylorHero() {
   return (
     <Box
       sx={{
+        position: "relative",
         bgcolor: "transparent",
-        pt: { xs: 8, md: 12 },
-        pb: { xs: 6, md: 10 },
         background: currentEra.gradient,
         transition: "background 0.5s ease",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: currentEra.colors.heroOverlay || "rgba(0,0,0,0.2)",
+          pointerEvents: "none",
+          transition: "background 0.5s ease",
+          zIndex: 0, // Detrás del contenido
+        },
       }}
     >
-      <Container>
+      <Container
+        maxWidth={false}
+        sx={{
+          width: "100%",
+          maxWidth: 1440,
+          mx: "auto",
+          paddingTop: "100px",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <Hero />
+
         <EraSelector />
-        <Box sx={{ mt: 8 }}>
+        {/* <Box sx={{ mt: 8 }}>
           <Typography
             variant="h2"
             sx={{
@@ -40,11 +63,25 @@ export default function TaylorHero() {
               fontWeight: 700,
               letterSpacing: 0.5,
               mb: 2,
+              color: currentEra.colors.heroText || "#FFFFFF",
+              textShadow: `2px 2px 8px ${currentEra.shadowColor}, 
+                           0 0 20px ${currentEra.shadowColor}`,
+              transition: "color 0.5s ease, text-shadow 0.5s ease",
             }}
           >
             Taylor Swift
           </Typography>
-          <Typography sx={{ color: "text.secondary", mb: 3, maxWidth: 720 }}>
+          <Typography
+            sx={{
+              color: currentEra.colors.heroText || "#FFFFFF",
+              mb: 3,
+
+              textShadow: `1px 1px 4px ${currentEra.shadowColor}`,
+              transition: "color 0.5s ease, text-shadow 0.5s ease",
+              fontSize: { xs: "1rem", md: "1.125rem" },
+              lineHeight: 1.7,
+            }}
+          >
             Discografía completa, biografía detallada, galería, noticias y
             playlists curatoradas. Diseño pastel, elegante y totalmente
             responsive.
@@ -91,6 +128,13 @@ export default function TaylorHero() {
                     borderRadius: 3,
                     border: "1px solid",
                     borderColor: "divider",
+                    bgcolor: "rgba(255, 255, 255, 0.9)",
+                    backdropFilter: "blur(10px)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      transform: "translateY(-4px)",
+                      boxShadow: `0 8px 24px ${currentEra.shadowColor}`,
+                    },
                   }}
                 >
                   <CardContent>
@@ -111,7 +155,7 @@ export default function TaylorHero() {
               </Grid>
             ))}
           </Grid>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   );

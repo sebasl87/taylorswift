@@ -1,9 +1,10 @@
 import VideosGrid from "@/components/VideosGrid";
 import videosData from "../../constants/videos.json";
 import type { Video } from "@/types/video";
-import { Container, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import Head from "next/head";
 import { useTranslations, useLocale } from "next-intl";
+import { useEra } from "@/context/EraContext";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 import RandomSectionBanner from "@/components/NewsBanner";
@@ -81,6 +82,7 @@ function generateStructuredData(locale: string) {
 }
 
 export default function VideosPage() {
+  const { currentEra } = useEra();
   const locale = useLocale();
   const tb = useTranslations("breadcrumb");
   const v = useTranslations("videos");
@@ -167,20 +169,29 @@ export default function VideosPage() {
       />
 
       <ContainerGradientNoPadding>
-        <Box pt={{ xs: 2, md: 4 }} px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
-          <Breadcrumb items={[{ label: tb("videos") }]} />
-        </Box>
-        <Container maxWidth={false} sx={{ maxWidth: 1440, mx: "auto", py: 4 }}>
-          <VideosGrid videos={videosData as unknown as Video[]} />
-          <Box mt={4}>
-            <RandomSectionBanner currentSection="videos" />
+        {/* Overlay con el color de la era */}
+        <Box
+          sx={{
+            background: currentEra.colors.heroOverlay,
+            minHeight: "100vh",
+            position: "relative",
+          }}
+        >
+          <Box pt="100px" px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
+            <Breadcrumb items={[{ label: tb("videos") }]} />
           </Box>
-          <CommentsSection
-            pageType="article"
-            pageId="videos-page"
-            customSubtitle={v("comment")}
-          />
-        </Container>
+          <Box sx={{ maxWidth: 1440, mx: "auto", px: { xs: 2, md: 4 }, py: 4 }}>
+            <VideosGrid videos={videosData as unknown as Video[]} />
+            <Box mt={4}>
+              <RandomSectionBanner currentSection="videos" />
+            </Box>
+            <CommentsSection
+              pageType="article"
+              pageId="videos-page"
+              customSubtitle={v("comment")}
+            />
+          </Box>
+        </Box>
       </ContainerGradientNoPadding>
     </>
   );

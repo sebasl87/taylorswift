@@ -1,89 +1,139 @@
 "use client";
 
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ERAS } from "@/constants/eras";
 import { useEra } from "@/context/EraContext";
+import Image from "next/image";
+
+// Mapeo de IDs de era a nombres de archivo de imagen
+const ERA_IMAGES: Record<string, string> = {
+  "taylor-swift": "/images/eras/01-taylor.jpg",
+  fearless: "/images/eras/02-fearless.jpg",
+  "speak-now": "/images/eras/03-speak.jpg",
+  red: "/images/eras/04-red.jpg",
+  "1989": "/images/eras/05-1989.jpg",
+  reputation: "/images/eras/06-reputation.jpg",
+  lover: "/images/eras/07-lover.jpg",
+  folklore: "/images/eras/08-folklore.jpg",
+  evermore: "/images/eras/09-evermore.jpg",
+  midnights: "/images/eras/10-midnights.jpg",
+};
 
 export default function EraSelector() {
   const { currentEra, setEra } = useEra();
-  const theme = useTheme();
+  const t = useTranslations("eraSelector");
 
   return (
     <Box
       sx={{
-        display: "grid",
-        gridTemplateColumns: {
-          xs: "repeat(3, 1fr)",
-          sm: "repeat(5, 1fr)",
-          md: "repeat(10, 1fr)",
-        },
-        gap: { xs: 2, sm: 3 },
-        py: 6,
-        px: 2,
+        pb: 8,
         width: "100%",
-        maxWidth: "1200px",
-        margin: "0 auto",
       }}
-      role="radiogroup"
-      aria-label="Select Taylor Swift Era"
     >
-      {ERAS.map((era) => {
-        const isSelected = currentEra.id === era.id;
-        return (
-          <Box
-            key={era.id}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 1.5,
-            }}
-          >
-            <Button
+      {/* Encabezado de la sección */}
+      <Box sx={{ textAlign: "center", mb: 6 }}>
+        <Typography
+          variant="h2"
+          component="h2"
+          sx={{
+            fontFamily: "var(--font-heading)",
+            fontWeight: 700,
+            fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+            color: currentEra.colors.heroText || "#FFFFFF",
+            textShadow: `2px 2px 8px ${currentEra.shadowColor}, 
+                         0 0 20px ${currentEra.shadowColor}`,
+            transition: "color 0.5s ease, text-shadow 0.5s ease",
+            mb: 2,
+          }}
+        >
+          {t("title")}
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            color: currentEra.colors.heroText || "#FFFFFF",
+            textShadow: `1px 1px 4px ${currentEra.shadowColor}`,
+            transition: "color 0.5s ease, text-shadow 0.5s ease",
+            fontSize: { xs: "1rem", md: "1.125rem" },
+            maxWidth: "800px",
+            mx: "auto",
+            lineHeight: 1.6,
+          }}
+        >
+          {t("subtitle")}
+        </Typography>
+      </Box>
+
+      {/* Grid de Cards por Era */}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)" },
+          gap: 3,
+          width: "100%",
+        }}
+      >
+        {ERAS.map((era) => {
+          const isSelected = currentEra.id === era.id;
+          return (
+            <Box
+              key={era.id}
+              component={Link}
+              href={`/era/${era.id}`}
               onClick={() => setEra(era.id)}
-              role="radio"
-              aria-checked={isSelected}
-              aria-label={era.name}
               sx={{
-                minWidth: "auto",
-                width: { xs: 64, sm: 72, md: 80 },
-                height: { xs: 64, sm: 72, md: 80 },
-                borderRadius: "50%",
-                background: era.gradient,
-                border: "none",
+                display: "block",
+                textDecoration: "none",
+                borderRadius: 2,
+                width: "100%",
                 boxShadow: isSelected
-                  ? `inset 0 0 0 4px ${theme.palette.background.paper}, 0 0 0 2px ${era.colors.primary}, 0 8px 16px ${era.shadowColor}`
-                  : `0 4px 8px rgba(0,0,0,0.1)`,
+                  ? `0 8px 24px ${era.shadowColor}`
+                  : `0 4px 12px rgba(0,0,0,0.1)`,
                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform: isSelected
-                  ? "scale(1.1) translateY(-4px)"
-                  : "scale(1)",
                 "&:hover": {
-                  transform: "scale(1.15) translateY(-4px)",
-                  boxShadow: `0 12px 24px ${era.shadowColor}`,
+                  transform: "translateY(-4px)",
+                  boxShadow: `0 12px 32px ${era.shadowColor}`,
                 },
-                position: "relative",
-                overflow: "hidden",
-              }}
-            />
-            <Typography
-              variant="body2"
-              sx={{
-                fontSize: { xs: "14px", md: "15px" },
-                fontWeight: isSelected ? 700 : 500,
-                color: isSelected ? era.colors.primary : "text.primary",
-                textAlign: "center",
-                opacity: isSelected ? 1 : 0.8,
-                transition: "all 0.3s ease",
-                lineHeight: 1.2,
-                maxWidth: "100px",
               }}
             >
-              {era.name}
-            </Typography>
-          </Box>
-        );
-      })}
+              <Box sx={{ position: "relative", width: "100%" }}>
+                <Image
+                  src={ERA_IMAGES[era.id]}
+                  alt={era.name}
+                  width={600}
+                  height={406}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                    borderRadius: "16px",
+                  }}
+                />
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 16,
+                    right: 16,
+                    display: "inline-block",
+                    px: 2,
+                    py: 0.5,
+                    borderRadius: 12,
+                    background: era.gradient,
+                    color: era.colors.heroText,
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    boxShadow: `0 2px 8px ${era.shadowColor}`,
+                  }}
+                >
+                  {era.name} - {era.year}
+                </Box>
+              </Box>
+            </Box>
+          );
+        })}
+      </Box>
     </Box>
   );
 }

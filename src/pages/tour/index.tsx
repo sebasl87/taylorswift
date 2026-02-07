@@ -38,6 +38,7 @@ import { tourDates } from "@/constants/tourDates";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 import RandomSectionBanner from "@/components/NewsBanner";
 import { useLocale } from "next-intl";
+import { useEra } from "@/context/EraContext";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,6 +66,7 @@ export default function TourPage() {
   const t = useTranslations("tour");
   const tb = useTranslations("breadcrumb");
   const locale = useLocale();
+  const { currentEra } = useEra();
   const [activeTab, setActiveTab] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
@@ -146,145 +148,184 @@ export default function TourPage() {
       </Head>
 
       <ContainerGradientNoPadding>
-        <Box pt={{ xs: 2, md: 4 }} px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
-          <Breadcrumb items={[{ label: tb("tour") }]} />
-          <Box sx={{ mb: 6, textAlign: "center" }}>
-            <Typography
-              variant="h2"
-              component="h1"
-              sx={{
-                fontWeight: 800,
-                mb: 2,
-                background: "linear-gradient(45deg, #FF69B4 30%, #FF1493 90%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              {t("title")}
-            </Typography>
-            <Typography variant="h5" color="text.secondary" sx={{ mb: 4 }}>
-              {t("subtitle")}
-            </Typography>
-
-            <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 3 }}>
-              <Tabs
-                value={activeTab}
-                onChange={handleTabChange}
-                centered
-                textColor="primary"
-                indicatorColor="primary"
-              >
-                <Tab label={t("upcomingShows")} />
-                <Tab label={t("pastShows")} />
-              </Tabs>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                mb: 3,
-                gap: 2,
-                flexWrap: "wrap",
-              }}
-            >
-              <TextField
-                placeholder={t("searchPlaceholder")}
-                variant="outlined"
-                size="small"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
+        <Box
+          sx={{
+            position: "relative",
+            minHeight: "100vh",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: currentEra.colors.heroOverlay || "rgba(0,0,0,0.2)",
+              pointerEvents: "none",
+              transition: "background 0.5s ease",
+              zIndex: 0,
+            },
+          }}
+        >
+          <Box ml={0} pt="100px">
+            <Breadcrumb items={[{ label: tb("tour") }]} />
+          </Box>
+          <Box
+            px={{ xs: 2, md: 4 }}
+            pb={{ xs: 4, md: 6 }}
+            maxWidth="1440px"
+            mx="auto"
+            sx={{
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            <Box sx={{ mb: 6, textAlign: "center" }}>
+              <Typography
+                variant="h2"
+                component="h1"
+                sx={{
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 800,
+                  mb: 2,
+                  color: currentEra.colors.heroText || "#FFFFFF",
+                  textShadow: `2px 2px 8px ${currentEra.shadowColor}, 
+                           0 0 20px ${currentEra.shadowColor}`,
+                  transition: "color 0.5s ease, text-shadow 0.5s ease",
                 }}
-                sx={{ flexGrow: 1, maxWidth: 400 }}
-              />
-              <Button
-                startIcon={
-                  sortOrder === "asc" ? (
-                    <ArrowUpwardIcon />
-                  ) : (
-                    <ArrowDownwardIcon />
-                  )
-                }
-                onClick={toggleSortOrder}
-                variant="outlined"
               >
-                {t("date")}
-              </Button>
-            </Box>
+                {t("title")}
+              </Typography>
+              <Typography
+                variant="h5"
+                sx={{
+                  mb: 4,
+                  color: currentEra.colors.heroText || "#FFFFFF",
+                  textShadow: `1px 1px 4px ${currentEra.shadowColor}`,
+                  transition: "color 0.5s ease, text-shadow 0.5s ease",
+                }}
+              >
+                {t("subtitle")}
+              </Typography>
 
-            <TabPanel value={activeTab} index={0}>
-              {upcomingConcerts.length > 0 ? (
-                <Grid container spacing={3}>
-                  {upcomingConcerts.map((show, index) => (
-                    <Grid
-                      size={{ xs: 12, sm: 6, md: 4 }}
-                      key={`${show.date}-${show.city}-${index}`}
-                    >
-                      <Card
-                        sx={{
-                          height: "100%",
-                          display: "flex",
-                          flexDirection: "column",
-                          transition: "transform 0.2s",
-                          "&:hover": {
-                            transform: "scale(1.02)",
-                            boxShadow: 6,
-                          },
-                        }}
+              <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 3 }}>
+                <Tabs
+                  value={activeTab}
+                  onChange={handleTabChange}
+                  centered
+                  textColor="primary"
+                  indicatorColor="primary"
+                >
+                  <Tab label={t("upcomingShows")} />
+                  <Tab label={t("pastShows")} />
+                </Tabs>
+              </Box>
+
+              <TabPanel value={activeTab} index={0}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    mb: 3,
+                    gap: 2,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <TextField
+                    placeholder={t("searchPlaceholder")}
+                    variant="outlined"
+                    size="small"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={{ flexGrow: 1, maxWidth: 400 }}
+                  />
+                  <Button
+                    startIcon={
+                      sortOrder === "asc" ? (
+                        <ArrowUpwardIcon />
+                      ) : (
+                        <ArrowDownwardIcon />
+                      )
+                    }
+                    onClick={toggleSortOrder}
+                    variant="outlined"
+                  >
+                    {t("date")}
+                  </Button>
+                </Box>
+                {upcomingConcerts.length > 0 ? (
+                  <Grid container spacing={3}>
+                    {upcomingConcerts.map((show, index) => (
+                      <Grid
+                        size={{ xs: 12, sm: 6, md: 4 }}
+                        key={`${show.date}-${show.city}-${index}`}
                       >
-                        <CardContent sx={{ flexGrow: 1 }}>
-                          <Typography variant="h6" gutterBottom>
-                            {show.city}, {show.country}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            gutterBottom
-                          >
-                            {new Date(show.date).toLocaleDateString(locale, {
-                              weekday: "long",
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}
-                          </Typography>
-                          <Typography variant="body1" sx={{ mt: 2 }}>
-                            {show.venue}
-                          </Typography>
-                        </CardContent>
-                        <CardActions>
-                          <Button
-                            size="small"
-                            color="primary"
-                            href={show.ticketLink}
-                            target="_blank"
-                            fullWidth
-                            variant="contained"
-                          >
-                            {t("tickets")}
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </Grid>
-                  ))}
-                </Grid>
-              ) : (
-                <Typography variant="body1" sx={{ mt: 4 }}>
-                  {t("noShowsFound")}
-                </Typography>
-              )}
-            </TabPanel>
+                        <Card
+                          sx={{
+                            height: "100%",
+                            display: "flex",
+                            flexDirection: "column",
+                            transition: "transform 0.2s",
+                            "&:hover": {
+                              transform: "scale(1.02)",
+                              boxShadow: 6,
+                            },
+                          }}
+                        >
+                          <CardContent sx={{ flexGrow: 1 }}>
+                            <Typography variant="h6" gutterBottom>
+                              {show.city}, {show.country}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              color="text.secondary"
+                              gutterBottom
+                            >
+                              {new Date(show.date).toLocaleDateString(locale, {
+                                weekday: "long",
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              })}
+                            </Typography>
+                            <Typography variant="body1" sx={{ mt: 2 }}>
+                              {show.venue}
+                            </Typography>
+                          </CardContent>
+                          <CardActions>
+                            <Button
+                              size="small"
+                              color="primary"
+                              href={show.ticketLink}
+                              target="_blank"
+                              fullWidth
+                              variant="contained"
+                            >
+                              {t("tickets")}
+                            </Button>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                ) : (
+                  <Typography variant="body1" sx={{ mt: 4 }}>
+                    {t("noShowsFound")}
+                  </Typography>
+                )}
+              </TabPanel>
 
-            <TabPanel value={activeTab} index={1}>
-              <PastShowsGrid />
-            </TabPanel>
+              <TabPanel value={activeTab} index={1}>
+                <PastShowsGrid />
+              </TabPanel>
+            </Box>
           </Box>
         </Box>
         <RandomSectionBanner currentSection="tour" />

@@ -1,15 +1,19 @@
+"use client";
 import { Box } from "@mui/material";
+import { useEra } from "@/context/EraContext";
 
 export const ContainerGradientNoPadding = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
+  const { currentEra } = useEra();
+
   return (
     <Box
       sx={{
-        background:
-          "radial-gradient(60% 80% at 50% 0%, rgba(239,83,80,0.15), transparent 60%)",
+        background: currentEra.gradient,
+        transition: "background 0.5s ease",
       }}
     >
       {children}
