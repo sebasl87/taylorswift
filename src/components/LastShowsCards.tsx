@@ -349,7 +349,7 @@ export default function LastShowsCards() {
             <ShowCard
               show={data.yearsAgoPrev}
               title={t("yearsAgo")}
-              imageSrc="/images/banners/old.jpg"
+              imageSrc="/images/banners/old2.jpg"
             />
           </Grid>
         )}

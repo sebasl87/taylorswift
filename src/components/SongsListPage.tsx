@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   Container,
   Typography,
@@ -33,6 +33,11 @@ import { useEra } from "@/context/EraContext";
 const ITEMS_PER_PAGE_DESKTOP = 10;
 const ITEMS_PER_PAGE_MOBILE = 10;
 
+// Función para normalizar título (quitar Taylor's Version para matching)
+function normalizeTitle(title: string): string {
+  return title.replace(/\s*\(Taylor's Version\)\s*/gi, "").trim();
+}
+
 function getFilterValue(song: Song, filter: string) {
   const lower = filter.toLowerCase();
   return (
@@ -65,8 +70,38 @@ export default function SongsListPage() {
   const [displayCountMobile, setDisplayCountMobile] = useState(
     ITEMS_PER_PAGE_MOBILE,
   );
-  const songs: Song[] = getAllSongs();
+
+  const allSongs: Song[] = getAllSongs();
   const songsCounts: Record<string, number> = songsCountData;
+
+  // Deduplicar canciones: si existe "Song" y "Song (Taylor's Version)",
+  // mantener solo el original (para mostrar año original)
+  const songs = useMemo(() => {
+    const songsMap = new Map<string, Song>();
+
+    allSongs.forEach((song) => {
+      const normalizedTitle = normalizeTitle(song.title);
+      const existing = songsMap.get(normalizedTitle);
+
+      // Si no existe, agregar
+      if (!existing) {
+        songsMap.set(normalizedTitle, song);
+      } else {
+        // Si existe, preferir la versión ORIGINAL (sin Taylor's Version)
+        const isTaylorsVersion = song.title.includes("Taylor's Version");
+        const existingIsTaylorsVersion =
+          existing.title.includes("Taylor's Version");
+
+        // Si la nueva es original y la existente es Taylor's Version, reemplazar
+        if (!isTaylorsVersion && existingIsTaylorsVersion) {
+          songsMap.set(normalizedTitle, song);
+        }
+        // Si ambas son originales o ambas son TV, mantener la existente
+      }
+    });
+
+    return Array.from(songsMap.values());
+  }, [allSongs]);
 
   // Obtener top 10 canciones más tocadas
   const top10Songs = Object.entries(songsCounts)
@@ -75,7 +110,9 @@ export default function SongsListPage() {
     .map(([title, count]) => ({
       title,
       count,
-      song: songs.find((s) => s.title === title),
+      song: songs.find(
+        (s) => normalizeTitle(s.title) === normalizeTitle(title),
+      ),
     }))
     .filter((item) => item.song !== undefined);
 
@@ -86,7 +123,8 @@ export default function SongsListPage() {
 
   // Función helper para obtener el número de veces tocada
   const getTimesPlayed = (songTitle: string): number => {
-    return songsCounts[songTitle] || 0;
+    const normalized = normalizeTitle(songTitle);
+    return songsCounts[normalized] || 0;
   };
 
   const filtered = filter

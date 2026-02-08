@@ -1,0 +1,993 @@
+{
+  "inputPath": "src/data/songs.counts.json",
+  "outputPath": "src/constants/songs.counts.fixed.json",
+  "reportPath": "src/data/songs.counts.report.json",
+  "medleysExpanded": [
+    {
+      "originalKey": "But Daddy I Love Him / So High School",
+      "count": 66,
+      "parts": [
+        "But Daddy I Love Him",
+        "So High School"
+      ]
+    },
+    {
+      "originalKey": "A Place in This World / New Romantics",
+      "count": 1,
+      "parts": [
+        "A Place in This World",
+        "New Romantics"
+      ]
+    },
+    {
+      "originalKey": "Long Live / New Year's Day / The Manuscript",
+      "count": 1,
+      "parts": [
+        "Long Live",
+        "New Year's Day",
+        "The Manuscript"
+      ]
+    },
+    {
+      "originalKey": "I Love You, I'm Sorry / Last Kiss",
+      "count": 1,
+      "parts": [
+        "I Love You, I'm Sorry",
+        "Last Kiss"
+      ]
+    },
+    {
+      "originalKey": "The Tortured Poets Department / Maroon",
+      "count": 1,
+      "parts": [
+        "The Tortured Poets Department",
+        "Maroon"
+      ]
+    },
+    {
+      "originalKey": "Haunted / Wonderland",
+      "count": 1,
+      "parts": [
+        "Haunted",
+        "Wonderland"
+      ]
+    },
+    {
+      "originalKey": "Never Grow Up / The Best Day",
+      "count": 1,
+      "parts": [
+        "Never Grow Up",
+        "The Best Day"
+      ]
+    },
+    {
+      "originalKey": "Sparks Fly / Message in a Bottle",
+      "count": 1,
+      "parts": [
+        "Sparks Fly",
+        "Message in a Bottle"
+      ]
+    },
+    {
+      "originalKey": "You're Losing Me / How Did It End?",
+      "count": 1,
+      "parts": [
+        "You're Losing Me",
+        "How Did It End?"
+      ]
+    },
+    {
+      "originalKey": "Ours / the last great american dynasty",
+      "count": 1,
+      "parts": [
+        "Ours",
+        "the last great american dynasty"
+      ]
+    },
+    {
+      "originalKey": "Cassandra / mad woman / I Did Something Bad",
+      "count": 1,
+      "parts": [
+        "Cassandra",
+        "mad woman",
+        "I Did Something Bad"
+      ]
+    },
+    {
+      "originalKey": "Mr. Perfectly Fine / Better Than Revenge",
+      "count": 1,
+      "parts": [
+        "Mr. Perfectly Fine",
+        "Better Than Revenge"
+      ]
+    },
+    {
+      "originalKey": "State of Grace / Labyrinth",
+      "count": 1,
+      "parts": [
+        "State of Grace",
+        "Labyrinth"
+      ]
+    },
+    {
+      "originalKey": "us. / Out of the Woods",
+      "count": 1,
+      "parts": [
+        "us.",
+        "Out of the Woods"
+      ]
+    },
+    {
+      "originalKey": "You're on Your Own, Kid / long story short",
+      "count": 1,
+      "parts": [
+        "You're on Your Own, Kid",
+        "long story short"
+      ]
+    },
+    {
+      "originalKey": "I Don't Wanna Live Forever / Mine",
+      "count": 1,
+      "parts": [
+        "I Don't Wanna Live Forever",
+        "Mine"
+      ]
+    },
+    {
+      "originalKey": "evermore / Peter",
+      "count": 1,
+      "parts": [
+        "evermore",
+        "Peter"
+      ]
+    },
+    {
+      "originalKey": "My Boy Only Breaks His Favorite Toys / This Is Why We Can't Have Nice Things",
+      "count": 1,
+      "parts": [
+        "My Boy Only Breaks His Favorite Toys",
+        "This Is Why We Can't Have Nice Things"
+      ]
+    },
+    {
+      "originalKey": "False God / 'tis the damn season",
+      "count": 1,
+      "parts": [
+        "False God",
+        "'tis the damn season"
+      ]
+    },
+    {
+      "originalKey": "Cornelia Street / The Bolter",
+      "count": 1,
+      "parts": [
+        "Cornelia Street",
+        "The Bolter"
+      ]
+    },
+    {
+      "originalKey": "The Prophecy / This Love",
+      "count": 1,
+      "parts": [
+        "The Prophecy",
+        "This Love"
+      ]
+    },
+    {
+      "originalKey": "Maroon / cowboy like me",
+      "count": 1,
+      "parts": [
+        "Maroon",
+        "cowboy like me"
+      ]
+    },
+    {
+      "originalKey": "The Albatross / Holy Ground",
+      "count": 1,
+      "parts": [
+        "The Albatross",
+        "Holy Ground"
+      ]
+    },
+    {
+      "originalKey": "Cold as You / exile",
+      "count": 1,
+      "parts": [
+        "Cold as You",
+        "exile"
+      ]
+    },
+    {
+      "originalKey": "Afterglow / Dress",
+      "count": 1,
+      "parts": [
+        "Afterglow",
+        "Dress"
+      ]
+    },
+    {
+      "originalKey": "How You Get the Girl / Clean",
+      "count": 1,
+      "parts": [
+        "How You Get the Girl",
+        "Clean"
+      ]
+    },
+    {
+      "originalKey": "Espresso / Is It Over Now? / Please Please Please",
+      "count": 1,
+      "parts": [
+        "Espresso",
+        "Is It Over Now?",
+        "Please Please Please"
+      ]
+    },
+    {
+      "originalKey": "Hits Different / Welcome to New York",
+      "count": 1,
+      "parts": [
+        "Hits Different",
+        "Welcome to New York"
+      ]
+    },
+    {
+      "originalKey": "Our Song / Call It What You Want",
+      "count": 1,
+      "parts": [
+        "Our Song",
+        "Call It What You Want"
+      ]
+    },
+    {
+      "originalKey": "The Black Dog / Haunted",
+      "count": 1,
+      "parts": [
+        "The Black Dog",
+        "Haunted"
+      ]
+    },
+    {
+      "originalKey": "Out of the Woods / All You Had to Do Was Stay",
+      "count": 1,
+      "parts": [
+        "Out of the Woods",
+        "All You Had to Do Was Stay"
+      ]
+    },
+    {
+      "originalKey": "mirrorball / Guilty as Sin?",
+      "count": 1,
+      "parts": [
+        "mirrorball",
+        "Guilty as Sin?"
+      ]
+    },
+    {
+      "originalKey": "Should've Said No / I Did Something Bad",
+      "count": 1,
+      "parts": [
+        "Should've Said No",
+        "I Did Something Bad"
+      ]
+    },
+    {
+      "originalKey": "loml / White Horse",
+      "count": 1,
+      "parts": [
+        "loml",
+        "White Horse"
+      ]
+    },
+    {
+      "originalKey": "Tim McGraw / Timeless",
+      "count": 1,
+      "parts": [
+        "Tim McGraw",
+        "Timeless"
+      ]
+    },
+    {
+      "originalKey": "this is me trying / Daylight",
+      "count": 1,
+      "parts": [
+        "this is me trying",
+        "Daylight"
+      ]
+    },
+    {
+      "originalKey": "Long Live / Change",
+      "count": 1,
+      "parts": [
+        "Long Live",
+        "Change"
+      ]
+    },
+    {
+      "originalKey": "The Archer / You're on Your Own, Kid",
+      "count": 1,
+      "parts": [
+        "The Archer",
+        "You're on Your Own, Kid"
+      ]
+    },
+    {
+      "originalKey": "My Boy Only Breaks His Favorite Toys / coney island",
+      "count": 1,
+      "parts": [
+        "My Boy Only Breaks His Favorite Toys",
+        "coney island"
+      ]
+    },
+    {
+      "originalKey": "Dear John / Sad Beautiful Tragic",
+      "count": 1,
+      "parts": [
+        "Dear John",
+        "Sad Beautiful Tragic"
+      ]
+    },
+    {
+      "originalKey": "Everything Has Changed / End Game / Thinking Out Loud",
+      "count": 1,
+      "parts": [
+        "Everything Has Changed",
+        "End Game",
+        "Thinking Out Loud"
+      ]
+    },
+    {
+      "originalKey": "King of My Heart / The Alchemy",
+      "count": 1,
+      "parts": [
+        "King of My Heart",
+        "The Alchemy"
+      ]
+    },
+    {
+      "originalKey": "Today Was a Fairytale / I Think He Knows",
+      "count": 1,
+      "parts": [
+        "Today Was a Fairytale",
+        "I Think He Knows"
+      ]
+    },
+    {
+      "originalKey": "The Black Dog / exile",
+      "count": 1,
+      "parts": [
+        "The Black Dog",
+        "exile"
+      ]
+    },
+    {
+      "originalKey": "I Can Fix Him (No Really I Can) / I Can See You",
+      "count": 1,
+      "parts": [
+        "I Can Fix Him (No Really I Can)",
+        "I Can See You"
+      ]
+    },
+    {
+      "originalKey": "Red / Maroon",
+      "count": 1,
+      "parts": [
+        "Red",
+        "Maroon"
+      ]
+    },
+    {
+      "originalKey": "mirrorball / Clara Bow",
+      "count": 1,
+      "parts": [
+        "mirrorball",
+        "Clara Bow"
+      ]
+    },
+    {
+      "originalKey": "Suburban Legends / New Year's Day",
+      "count": 1,
+      "parts": [
+        "Suburban Legends",
+        "New Year's Day"
+      ]
+    },
+    {
+      "originalKey": "I Don't Wanna Live Forever / imgonnagetyouback",
+      "count": 1,
+      "parts": [
+        "I Don't Wanna Live Forever",
+        "imgonnagetyouback"
+      ]
+    },
+    {
+      "originalKey": "loml / Don't You",
+      "count": 1,
+      "parts": [
+        "loml",
+        "Don't You"
+      ]
+    },
+    {
+      "originalKey": "Fresh Out the Slammer / You Are in Love",
+      "count": 1,
+      "parts": [
+        "Fresh Out the Slammer",
+        "You Are in Love"
+      ]
+    },
+    {
+      "originalKey": "ivy / Call It What You Want",
+      "count": 1,
+      "parts": [
+        "ivy",
+        "Call It What You Want"
+      ]
+    },
+    {
+      "originalKey": "the last great american dynasty / Run",
+      "count": 1,
+      "parts": [
+        "the last great american dynasty",
+        "Run"
+      ]
+    },
+    {
+      "originalKey": "Nothing New / Dear Reader",
+      "count": 1,
+      "parts": [
+        "Nothing New",
+        "Dear Reader"
+      ]
+    },
+    {
+      "originalKey": "Teardrops on My Guitar / The Last Time",
+      "count": 1,
+      "parts": [
+        "Teardrops on My Guitar",
+        "The Last Time"
+      ]
+    },
+    {
+      "originalKey": "We Were Happy / happiness",
+      "count": 1,
+      "parts": [
+        "We Were Happy",
+        "happiness"
+      ]
+    },
+    {
+      "originalKey": "Paper Rings / Stay Stay Stay",
+      "count": 1,
+      "parts": [
+        "Paper Rings",
+        "Stay Stay Stay"
+      ]
+    },
+    {
+      "originalKey": "it's time to go / Better Man",
+      "count": 1,
+      "parts": [
+        "it's time to go",
+        "Better Man"
+      ]
+    },
+    {
+      "originalKey": "Speak Now / Hey Stephen",
+      "count": 1,
+      "parts": [
+        "Speak Now",
+        "Hey Stephen"
+      ]
+    },
+    {
+      "originalKey": "this is me trying / Labyrinth",
+      "count": 1,
+      "parts": [
+        "this is me trying",
+        "Labyrinth"
+      ]
+    },
+    {
+      "originalKey": "Superstar / invisible string",
+      "count": 1,
+      "parts": [
+        "Superstar",
+        "invisible string"
+      ]
+    },
+    {
+      "originalKey": "\"Slut!\" / False God",
+      "count": 1,
+      "parts": [
+        "\"Slut!\"",
+        "False God"
+      ]
+    },
+    {
+      "originalKey": "Mr. Perfectly Fine / Red",
+      "count": 1,
+      "parts": [
+        "Mr. Perfectly Fine",
+        "Red"
+      ]
+    },
+    {
+      "originalKey": "the 1 / Wonderland",
+      "count": 1,
+      "parts": [
+        "the 1",
+        "Wonderland"
+      ]
+    },
+    {
+      "originalKey": "I Almost Do / The Moment I Knew",
+      "count": 1,
+      "parts": [
+        "I Almost Do",
+        "The Moment I Knew"
+      ]
+    },
+    {
+      "originalKey": "Robin / Never Grow Up",
+      "count": 1,
+      "parts": [
+        "Robin",
+        "Never Grow Up"
+      ]
+    },
+    {
+      "originalKey": "Last Kiss / Sad Beautiful Tragic",
+      "count": 1,
+      "parts": [
+        "Last Kiss",
+        "Sad Beautiful Tragic"
+      ]
+    },
+    {
+      "originalKey": "Sweeter Than Fiction / Holy Ground",
+      "count": 1,
+      "parts": [
+        "Sweeter Than Fiction",
+        "Holy Ground"
+      ]
+    },
+    {
+      "originalKey": "Mary's Song (Oh My My My) / So High School / Everything Has Changed",
+      "count": 1,
+      "parts": [
+        "Mary's Song (Oh My My My)",
+        "So High School",
+        "Everything Has Changed"
+      ]
+    },
+    {
+      "originalKey": "imgonnagetyouback / Dress",
+      "count": 1,
+      "parts": [
+        "imgonnagetyouback",
+        "Dress"
+      ]
+    },
+    {
+      "originalKey": "You Are in Love / cowboy like me",
+      "count": 1,
+      "parts": [
+        "You Are in Love",
+        "cowboy like me"
+      ]
+    },
+    {
+      "originalKey": "Guilty as Sin? / Untouchable",
+      "count": 1,
+      "parts": [
+        "Guilty as Sin?",
+        "Untouchable"
+      ]
+    },
+    {
+      "originalKey": "The Archer / Question...?",
+      "count": 1,
+      "parts": [
+        "The Archer",
+        "Question...?"
+      ]
+    },
+    {
+      "originalKey": "This Love / Ours",
+      "count": 1,
+      "parts": [
+        "This Love",
+        "Ours"
+      ]
+    },
+    {
+      "originalKey": "State of Grace / You're on Your Own, Kid",
+      "count": 1,
+      "parts": [
+        "State of Grace",
+        "You're on Your Own, Kid"
+      ]
+    },
+    {
+      "originalKey": "Sweet Nothing / hoax",
+      "count": 1,
+      "parts": [
+        "Sweet Nothing",
+        "hoax"
+      ]
+    },
+    {
+      "originalKey": "Out of the Woods / Is It Over Now? / Clean",
+      "count": 1,
+      "parts": [
+        "Out of the Woods",
+        "Is It Over Now?",
+        "Clean"
+      ]
+    },
+    {
+      "originalKey": "Hits Different / Death by a Thousand Cuts",
+      "count": 1,
+      "parts": [
+        "Hits Different",
+        "Death by a Thousand Cuts"
+      ]
+    },
+    {
+      "originalKey": "I Forgot That You Existed / This Is Why We Can't Have Nice Things",
+      "count": 1,
+      "parts": [
+        "I Forgot That You Existed",
+        "This Is Why We Can't Have Nice Things"
+      ]
+    },
+    {
+      "originalKey": "I Hate It Here / the lakes",
+      "count": 1,
+      "parts": [
+        "I Hate It Here",
+        "the lakes"
+      ]
+    },
+    {
+      "originalKey": "This Is What You Came For / gold rush",
+      "count": 1,
+      "parts": [
+        "This Is What You Came For",
+        "gold rush"
+      ]
+    },
+    {
+      "originalKey": "The Great War / You're Losing Me",
+      "count": 1,
+      "parts": [
+        "The Great War",
+        "You're Losing Me"
+      ]
+    },
+    {
+      "originalKey": "I Can See You / Mine",
+      "count": 1,
+      "parts": [
+        "I Can See You",
+        "Mine"
+      ]
+    },
+    {
+      "originalKey": "Cornelia Street / Maroon",
+      "count": 1,
+      "parts": [
+        "Cornelia Street",
+        "Maroon"
+      ]
+    },
+    {
+      "originalKey": "All of the Girls You Loved Before / Crazier",
+      "count": 1,
+      "parts": [
+        "All of the Girls You Loved Before",
+        "Crazier"
+      ]
+    },
+    {
+      "originalKey": "Glitch / Everything Has Changed",
+      "count": 1,
+      "parts": [
+        "Glitch",
+        "Everything Has Changed"
+      ]
+    },
+    {
+      "originalKey": "Fifteen / You're on Your Own, Kid",
+      "count": 2,
+      "parts": [
+        "Fifteen",
+        "You're on Your Own, Kid"
+      ]
+    },
+    {
+      "originalKey": "Our Song / Jump Then Fall",
+      "count": 1,
+      "parts": [
+        "Our Song",
+        "Jump Then Fall"
+      ]
+    },
+    {
+      "originalKey": "Come Back...Be Here / The Way I Loved You / The Other Side of the Door",
+      "count": 1,
+      "parts": [
+        "Come Back...Be Here",
+        "The Way I Loved You",
+        "The Other Side of the Door"
+      ]
+    },
+    {
+      "originalKey": "Message in a Bottle / How You Get The Girl / New Romantics",
+      "count": 1,
+      "parts": [
+        "Message in a Bottle",
+        "How You Get The Girl",
+        "New Romantics"
+      ]
+    },
+    {
+      "originalKey": "Say Don't Go / Welcome to New York / Clean",
+      "count": 1,
+      "parts": [
+        "Say Don't Go",
+        "Welcome to New York",
+        "Clean"
+      ]
+    },
+    {
+      "originalKey": "I Think He Knows / Gorgeous",
+      "count": 1,
+      "parts": [
+        "I Think He Knows",
+        "Gorgeous"
+      ]
+    },
+    {
+      "originalKey": "The Alchemy / Treacherous",
+      "count": 1,
+      "parts": [
+        "The Alchemy",
+        "Treacherous"
+      ]
+    },
+    {
+      "originalKey": "Tim McGraw / cowboy like me",
+      "count": 1,
+      "parts": [
+        "Tim McGraw",
+        "cowboy like me"
+      ]
+    },
+    {
+      "originalKey": "mirrorball / epiphany",
+      "count": 1,
+      "parts": [
+        "mirrorball",
+        "epiphany"
+      ]
+    },
+    {
+      "originalKey": "Sparks Fly / gold rush",
+      "count": 1,
+      "parts": [
+        "Sparks Fly",
+        "gold rush"
+      ]
+    },
+    {
+      "originalKey": "False God / \"Slut!\"",
+      "count": 1,
+      "parts": [
+        "False God",
+        "\"Slut!\""
+      ]
+    },
+    {
+      "originalKey": "Foolish One / Tell Me Why",
+      "count": 1,
+      "parts": [
+        "Foolish One",
+        "Tell Me Why"
+      ]
+    },
+    {
+      "originalKey": "This Love / Call It What You Want",
+      "count": 1,
+      "parts": [
+        "This Love",
+        "Call It What You Want"
+      ]
+    },
+    {
+      "originalKey": "long story short / The Story of Us",
+      "count": 1,
+      "parts": [
+        "long story short",
+        "The Story of Us"
+      ]
+    },
+    {
+      "originalKey": "Clean / evermore",
+      "count": 1,
+      "parts": [
+        "Clean",
+        "evermore"
+      ]
+    },
+    {
+      "originalKey": "Mine / Starlight",
+      "count": 1,
+      "parts": [
+        "Mine",
+        "Starlight"
+      ]
+    },
+    {
+      "originalKey": "I Don't Wanna Live Forever / Dress",
+      "count": 1,
+      "parts": [
+        "I Don't Wanna Live Forever",
+        "Dress"
+      ]
+    },
+    {
+      "originalKey": "Would've, Could've, Should've / ivy",
+      "count": 1,
+      "parts": [
+        "Would've, Could've, Should've",
+        "ivy"
+      ]
+    },
+    {
+      "originalKey": "Forever & Always / Maroon",
+      "count": 1,
+      "parts": [
+        "Forever & Always",
+        "Maroon"
+      ]
+    },
+    {
+      "originalKey": "Haunted / exile",
+      "count": 1,
+      "parts": [
+        "Haunted",
+        "exile"
+      ]
+    },
+    {
+      "originalKey": "Should've Said No / You're Not Sorry",
+      "count": 1,
+      "parts": [
+        "Should've Said No",
+        "You're Not Sorry"
+      ]
+    },
+    {
+      "originalKey": "New Year's Day / peace",
+      "count": 1,
+      "parts": [
+        "New Year's Day",
+        "peace"
+      ]
+    },
+    {
+      "originalKey": "White Horse / coney island",
+      "count": 1,
+      "parts": [
+        "White Horse",
+        "coney island"
+      ]
+    },
+    {
+      "originalKey": "cardigan / august / willow",
+      "count": 1,
+      "parts": [
+        "cardigan",
+        "august",
+        "willow"
+      ]
+    },
+    {
+      "originalKey": "The Man / Love Story / I Knew You Were Trouble / Blank Space / Shake It Off / Lover",
+      "count": 1,
+      "parts": [
+        "The Man",
+        "Love Story",
+        "I Knew You Were Trouble",
+        "Blank Space",
+        "Shake It Off",
+        "Lover"
+      ]
+    },
+    {
+      "originalKey": "Style / Love Story / You Belong With Me",
+      "count": 53,
+      "parts": [
+        "Style",
+        "Love Story",
+        "You Belong With Me"
+      ]
+    },
+    {
+      "originalKey": "Bad Blood / Should've Said No",
+      "count": 53,
+      "parts": [
+        "Bad Blood",
+        "Should've Said No"
+      ]
+    },
+    {
+      "originalKey": "Long Live / New Year's Day",
+      "count": 53,
+      "parts": [
+        "Long Live",
+        "New Year's Day"
+      ]
+    },
+    {
+      "originalKey": "We Are Never Ever Getting Back Together / This Is Why We Can't Have Nice Things",
+      "count": 53,
+      "parts": [
+        "We Are Never Ever Getting Back Together",
+        "This Is Why We Can't Have Nice Things"
+      ]
+    },
+    {
+      "originalKey": "Enchanted / Wildest Dreams",
+      "count": 16,
+      "parts": [
+        "Enchanted",
+        "Wildest Dreams"
+      ]
+    },
+    {
+      "originalKey": "We Are Never Ever Getting Back Together / Bad Blood",
+      "count": 1,
+      "parts": [
+        "We Are Never Ever Getting Back Together",
+        "Bad Blood"
+      ]
+    },
+    {
+      "originalKey": "Picture to Burn / Love Story / Forever & Always / Change",
+      "count": 1,
+      "parts": [
+        "Picture to Burn",
+        "Love Story",
+        "Forever & Always",
+        "Change"
+      ]
+    }
+  ],
+  "merges": [
+    {
+      "canonicalKey": "how you get the girl",
+      "chosenDisplay": "How You Get the Girl",
+      "variants": [
+        {
+          "name": "How You Get the Girl",
+          "count": 1
+        },
+        {
+          "name": "How You Get The Girl",
+          "count": 1
+        },
+        {
+          "name": "How You Get the Girl",
+          "count": 89
+        }
+      ],
+      "uniqueNames": [
+        "How You Get the Girl",
+        "How You Get The Girl"
+      ]
+    }
+  ],
+  "notes": []
+}

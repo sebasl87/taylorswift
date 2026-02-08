@@ -10,7 +10,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:backfill": "node src/scripts/setlist-sync.mjs backfill",
+    "sync:update": "node src/scripts/setlist-sync.mjs update",
+    "sync:fix": "node src/scripts/fix-song-counts.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

@@ -3,6 +3,7 @@
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { ERAS } from "@/constants/eras";
 import { useEra } from "@/context/EraContext";
 import Image from "next/image";
@@ -24,6 +25,30 @@ const ERA_IMAGES: Record<string, string> = {
 export default function EraSelector() {
   const { currentEra, setEra } = useEra();
   const t = useTranslations("eraSelector");
+  const [previewEraId, setPreviewEraId] = useState<string | null>(null);
+
+  const handleMouseEnter = (eraId: string) => {
+    // Solo hacer preview si no es el seleccionado actual
+    if (eraId !== currentEra.id) {
+      setPreviewEraId(currentEra.id); // Guardar el actual
+      setEra(eraId); // Mostrar preview
+    }
+  };
+
+  const handleMouseLeave = () => {
+    // Volver al tema guardado
+    if (previewEraId !== null) {
+      setEra(previewEraId);
+      setPreviewEraId(null);
+    }
+  };
+
+  const handleClick = (eraId: string) => {
+    // Limpiar preview y establecer permanentemente
+    setPreviewEraId(null);
+    setEra(eraId);
+    // El Link manejará la navegación
+  };
 
   return (
     <Box
@@ -78,17 +103,22 @@ export default function EraSelector() {
       >
         {ERAS.map((era) => {
           const isSelected = currentEra.id === era.id;
+          const description = t(`tooltips.${era.id}`);
+
           return (
             <Box
               key={era.id}
               component={Link}
               href={`/era/${era.id}`}
-              onClick={() => setEra(era.id)}
+              onClick={() => handleClick(era.id)}
+              onMouseEnter={() => handleMouseEnter(era.id)}
+              onMouseLeave={handleMouseLeave}
               sx={{
                 display: "block",
                 textDecoration: "none",
                 borderRadius: 2,
                 width: "100%",
+                position: "relative",
                 boxShadow: isSelected
                   ? `0 8px 24px ${era.shadowColor}`
                   : `0 4px 12px rgba(0,0,0,0.1)`,
@@ -96,6 +126,9 @@ export default function EraSelector() {
                 "&:hover": {
                   transform: "translateY(-4px)",
                   boxShadow: `0 12px 32px ${era.shadowColor}`,
+                  "& .era-overlay": {
+                    opacity: 1,
+                  },
                 },
               }}
             >
@@ -112,6 +145,36 @@ export default function EraSelector() {
                     borderRadius: "16px",
                   }}
                 />
+
+                {/* Overlay con descripción */}
+                <Box
+                  className="era-overlay"
+                  sx={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.3) 100%)",
+                    borderRadius: "16px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    p: 3,
+                    opacity: 0,
+                    transition: "opacity 0.3s ease",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: "#FFFFFF",
+                      fontSize: { xs: "0.875rem", md: "1rem" },
+                      lineHeight: 1.5,
+                      fontWeight: 400,
+                    }}
+                  >
+                    {description}
+                  </Typography>
+                </Box>
+
                 <Box
                   sx={{
                     position: "absolute",

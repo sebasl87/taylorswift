@@ -278,7 +278,19 @@
   },
   "eraSelector": {
     "title": "Explore every Taylor Swift era",
-    "subtitle": "Discover the albums, sounds and aesthetics that define each era of her musical career"
+    "subtitle": "Discover the albums, sounds and aesthetics that define each era of her musical career",
+    "tooltips": {
+      "taylor-swift": "Her country debut with autobiographical lyrics about teenage love and small-town life.",
+      "fearless": "Modern fairy tales that catapulted her to stardom. Radiant optimism and dreamy romance.",
+      "speak-now": "Entirely self-written. Epic stories of love, regret, and redemption.",
+      "red": "Intense emotions and transition from country to pop. Burning passion and self-discovery.",
+      "1989": "Total reinvention with synth-pop inspired by the 80s. A new pop identity.",
+      "reputation": "Dark era with electronic beats and sharp lyrics about fame and reinvention.",
+      "lover": "Celebration of love in all its forms. Joyful, colorful, and romantic.",
+      "folklore": "Introspective indie-folk narrative with fictional tales, nature, and nostalgia.",
+      "evermore": "Autumnal continuation of folklore with melancholic and mature stories.",
+      "midnights": "Nocturnal reflections on dark thoughts, dreams, and anxieties."
+    }
   },
   "lastShows": {
     "latestShow": "Latest show",
@@ -294,5 +306,16 @@
     "tickets": "Tickets",
     "searchPlaceholder": "Search by city, country, venue...",
     "noShowsFound": "No shows found for this search"
+  },
+  "topSongs": {
+    "title": "Most Played Songs",
+    "subtitle": "The songs Taylor Swift has played the most times live",
+    "timesPlayed": "times played",
+    "viewAll": "View all"
+  },
+  "upcomingTours": {
+    "title": "Upcoming Shows",
+    "nextShow": "Next show",
+    "viewAll": "View all dates"
   }
 }

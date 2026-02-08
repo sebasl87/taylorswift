@@ -278,7 +278,19 @@
   },
   "eraSelector": {
     "title": "Explorá cada era de Taylor Swift",
-    "subtitle": "Descubrí los álbumes, sonidos y estética que definen cada momento de su carrera musical"
+    "subtitle": "Descubrí los álbumes, sonidos y estética que definen cada momento de su carrera musical",
+    "tooltips": {
+      "taylor-swift": "Su debut country con letras autobiográficas sobre el amor adolescente y la vida en un pueblo pequeño.",
+      "fearless": "Cuentos de hadas modernos que la catapultaron al estrellato. Optimismo radiante y romance soñador.",
+      "speak-now": "Enteramente escrito por Taylor. Historias épicas de amor, arrepentimiento y redención.",
+      "red": "Emociones intensas y transición del country al pop. Pasión ardiente y autodescubrimiento.",
+      "1989": "Reinvención total con synth-pop inspirado en los 80s. Una nueva identidad pop.",
+      "reputation": "Era oscura con beats electrónicos y letras afiladas sobre la fama y la reinvención.",
+      "lover": "Celebración del amor en todas sus formas. Alegre, colorida y romántica.",
+      "folklore": "Narrativa indie-folk introspectiva con cuentos ficticios, naturaleza y nostalgia.",
+      "evermore": "Continuación otoñal de folklore con historias melancólicas y maduras.",
+      "midnights": "Reflexiones nocturnas sobre pensamientos oscuros, sueños y ansiedades."
+    }
   },
   "lastShows": {
     "latestShow": "Último show",
@@ -294,5 +306,16 @@
     "tickets": "Entradas",
     "searchPlaceholder": "Buscar por ciudad, país, venue...",
     "noShowsFound": "No se encontraron shows para esta búsqueda"
+  },
+  "topSongs": {
+    "title": "Canciones más tocadas",
+    "subtitle": "Las canciones que más veces tocó Taylor Swift en vivo",
+    "timesPlayed": "veces tocada",
+    "viewAll": "Ver todas"
+  },
+  "upcomingTours": {
+    "title": "Próximas fechas",
+    "nextShow": "Próximo show",
+    "viewAll": "Ver todas las fechas"
   }
 }
