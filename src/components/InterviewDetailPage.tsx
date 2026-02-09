@@ -437,11 +437,11 @@ export default function InterviewDetailPage({
         )}
 
         {/* Botón de vuelta */}
-        <Box sx={{ mt: 6, textAlign: "center", mb: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
           <Button
             component={Link}
             href="/entrevistas"
-            variant="contained"
+            variant="outlined"
             size="large"
           >
             {t("backToInterviews")}

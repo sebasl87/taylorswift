@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Typography, Card, CardContent, Divider } from "@mui/material";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import songsCountsData from "@/constants/songs.counts.fixed.json";
@@ -15,6 +15,7 @@ function songNameToUrl(songName: string): string {
 
 export default function TopSongsWidget() {
   const t = useTranslations("topSongs");
+  const locale = useLocale();
 
   // Convertir objeto a array y ordenar por veces tocadas
   const counts = songsCountsData as unknown as Record<string, number>;

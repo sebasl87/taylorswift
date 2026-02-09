@@ -25,7 +25,7 @@ export default function HistoryNavigation({
   const t = useTranslations("history");
 
   const currentIndex = allChapters.findIndex(
-    (ch) => ch.slug === currentChapter.slug
+    (ch) => ch.slug === currentChapter.slug,
   );
   const progress = ((currentIndex + 1) / allChapters.length) * 100;
 

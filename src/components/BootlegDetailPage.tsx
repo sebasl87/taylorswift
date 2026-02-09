@@ -155,6 +155,7 @@ function BootlegMetadata({ bootleg }: { bootleg: Bootleg }) {
 // Componente para el setlist
 function Setlist({ songs }: { songs: string[] }) {
   const t = useTranslations("bootlegs");
+  const locale = useLocale();
 
   return (
     <Card sx={{ mb: 4 }}>

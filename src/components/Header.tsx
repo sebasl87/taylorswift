@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AppBar,
   Toolbar,
@@ -23,7 +25,7 @@ import { ERAS } from "@/constants/eras";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
@@ -44,8 +46,7 @@ export default function Header() {
   const currentLocale = useLocale();
   const t = useTranslations("navigation");
   const router = useRouter();
-  // Ensure router is ready and get pathname without query params
-  const pathname = router.asPath ? router.asPath.split("?")[0] : "/";
+  const pathname = usePathname();
 
   // Detectar scroll
   useEffect(() => {
@@ -104,8 +105,8 @@ export default function Header() {
   };
 
   const handleLanguageChange = (newLocale: string) => {
-    const { pathname, asPath, query } = router;
-    router.push({ pathname, query }, asPath, { locale: newLocale });
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    router.refresh();
     handleLanguageClose();
   };
 

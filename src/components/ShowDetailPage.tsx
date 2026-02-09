@@ -157,6 +157,7 @@ function ShowMetadata({ show }: { show: Show }) {
 // Componente para el setlist
 function Setlist({ songs }: { songs: string[] }) {
   const t = useTranslations("shows");
+  const locale = useLocale();
 
   return (
     <Card sx={{ mb: 4 }}>

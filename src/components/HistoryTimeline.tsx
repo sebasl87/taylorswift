@@ -330,7 +330,7 @@ export default function HistoryTimeline({
                       height: "60px",
                       background: `radial-gradient(circle at top right, ${alpha(
                         color,
-                        0.2
+                        0.2,
                       )} 0%, transparent 70%)`,
                       borderRadius: "0 12px 0 100%",
                     }}
