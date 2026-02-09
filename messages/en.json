@@ -207,6 +207,16 @@
     "seeEnding": "See current era",
     "chapters": "Chapter"
   },
+  "historyPage": {
+    "title": "History",
+    "description": "Explore the complete history of Taylor Swift, era by era, from her debut to Midnights.",
+    "keywords": "Taylor Swift, history, eras, biography, discography, timeline",
+    "imageAlt": "Taylor Swift Eras Timeline"
+  },
+  "chapterPage": {
+    "notFoundTitle": "Chapter not found",
+    "notFoundDescription": "The history chapter you are looking for does not exist."
+  },
   "chapters": {
     "origenes": {
       "title": "The Origins",

@@ -1,1 +1,226 @@
-[]
+{
+  "title": {
+    "es": "La Historia de Taylor Swift",
+    "en": "The History of Taylor Swift"
+  },
+  "subtitle": {
+    "es": "Un viaje a través de sus eras musicales",
+    "en": "A journey through her musical eras"
+  },
+  "introduction": {
+    "es": "Explora la evolución de una de las artistas más influyentes de nuestra generación, desde sus inicios en el country hasta su dominio del pop global.",
+    "en": "Explore the evolution of one of the most influential artists of our generation, from her country beginnings to her global pop dominance."
+  },
+  "chapters": [
+    {
+      "id": "debut",
+      "slug": "taylor-swift",
+      "title": {
+        "es": "Taylor Swift (Debut)",
+        "en": "Taylor Swift (Debut)"
+      },
+      "period": "2006–2008",
+      "yearStart": 2006,
+      "yearEnd": 2008,
+      "summary": {
+        "es": "El inicio de todo. Una joven de 16 años conquista la escena country con su álbum homónimo.",
+        "en": "The beginning of it all. A 16-year-old conquers the country scene with her self-titled album."
+      },
+      "color": "#B6D06D",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/debut.jpg",
+        "alt": "Taylor Swift Debut Era"
+      }
+    },
+    {
+      "id": "fearless",
+      "slug": "fearless",
+      "title": {
+        "es": "Fearless",
+        "en": "Fearless"
+      },
+      "period": "2008–2010",
+      "yearStart": 2008,
+      "yearEnd": 2010,
+      "summary": {
+        "es": "El álbum que la catapultó al estrellato masivo y le valió su primer Grammy al Álbum del Año.",
+        "en": "The album that catapulted her to massive stardom and earned her first Album of the Year Grammy."
+      },
+      "color": "#E6C200",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/fearless.jpg",
+        "alt": "Fearless Era"
+      }
+    },
+    {
+      "id": "speak-now",
+      "slug": "speak-now",
+      "title": {
+        "es": "Speak Now",
+        "en": "Speak Now"
+      },
+      "period": "2010–2012",
+      "yearStart": 2010,
+      "yearEnd": 2012,
+      "summary": {
+        "es": "Escrito enteramente por ella misma, una declaración de independencia artística.",
+        "en": "Written entirely by herself, a declaration of artistic independence."
+      },
+      "color": "#7E4E9E",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/speak-now.jpg",
+        "alt": "Speak Now Era"
+      }
+    },
+    {
+      "id": "red",
+      "slug": "red",
+      "title": {
+        "es": "Red",
+        "en": "Red"
+      },
+      "period": "2012–2014",
+      "yearStart": 2012,
+      "yearEnd": 2014,
+      "summary": {
+        "es": "La transición. Una mezcla ecléctica de country, pop y rock que exploró el desamor intenso.",
+        "en": "The transition. An eclectic mix of country, pop, and rock that explored intense heartbreak."
+      },
+      "color": "#BE0000",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/red.jpg",
+        "alt": "Red Era"
+      }
+    },
+    {
+      "id": "1989",
+      "slug": "1989",
+      "title": {
+        "es": "1989",
+        "en": "1989"
+      },
+      "period": "2014–2017",
+      "yearStart": 2014,
+      "yearEnd": 2017,
+      "summary": {
+        "es": "Su renacimiento pop oficial. Sintetizadores ochenteros y dominio total de las listas.",
+        "en": "Her official pop rebirth. 80s synths and total chart dominance."
+      },
+      "color": "#85C1E9",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/1989.jpg",
+        "alt": "1989 Era"
+      }
+    },
+    {
+      "id": "reputation",
+      "slug": "reputation",
+      "title": {
+        "es": "Reputation",
+        "en": "Reputation"
+      },
+      "period": "2017–2019",
+      "yearStart": 2017,
+      "yearEnd": 2019,
+      "summary": {
+        "es": "No habrá explicación, solo reputación. Un álbum oscuro y vengativo, pero profundamente romántico.",
+        "en": "There will be no explanation, there will just be reputation. A dark and vengeful, yet deeply romantic album."
+      },
+      "color": "#333333",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/reputation.jpg",
+        "alt": "Reputation Era"
+      }
+    },
+    {
+      "id": "lover",
+      "slug": "lover",
+      "title": {
+        "es": "Lover",
+        "en": "Lover"
+      },
+      "period": "2019–2020",
+      "yearStart": 2019,
+      "yearEnd": 2020,
+      "summary": {
+        "es": "Un cielo de colores pastel después de la tormenta. Una celebración del amor en todas sus formas.",
+        "en": "A pastel sky after the storm. A celebration of love in all its forms."
+      },
+      "color": "#F8B9D4",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/lover.jpg",
+        "alt": "Lover Era"
+      }
+    },
+    {
+      "id": "folklore",
+      "slug": "folklore",
+      "title": {
+        "es": "Folklore",
+        "en": "Folklore"
+      },
+      "period": "2020",
+      "yearStart": 2020,
+      "yearEnd": 2020,
+      "summary": {
+        "es": "Cuentos escapistas nacidos en el aislamiento. Indie-folk y narrativa poética.",
+        "en": "Escapist tales born in isolation. Indie-folk and poetic storytelling."
+      },
+      "color": "#C0C0C0",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/folklore.jpg",
+        "alt": "Folklore Era"
+      }
+    },
+    {
+      "id": "evermore",
+      "slug": "evermore",
+      "title": {
+        "es": "Evermore",
+        "en": "Evermore"
+      },
+      "period": "2020–2022",
+      "yearStart": 2020,
+      "yearEnd": 2022,
+      "summary": {
+        "es": "La hermana de folklore. Nos adentramos más en el bosque de su imaginación.",
+        "en": "Folklore's sister. We go deeper into the forest of her imagination."
+      },
+      "color": "#C69C6D",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/evermore.jpg",
+        "alt": "Evermore Era"
+      }
+    },
+    {
+      "id": "midnights",
+      "slug": "midnights",
+      "title": {
+        "es": "Midnights",
+        "en": "Midnights"
+      },
+      "period": "2022–Present",
+      "yearStart": 2022,
+      "yearEnd": 2024,
+      "summary": {
+        "es": "Historias de 13 noches de insomnio. Un regreso al pop confesional con un toque onírico.",
+        "en": "Stories of 13 sleepless nights. A return to confessional pop with a dreamlike twist."
+      },
+      "color": "#191970",
+      "sections": [],
+      "coverImage": {
+        "src": "/images/eras/midnights.jpg",
+        "alt": "Midnights Era"
+      }
+    }
+  ]
+}
