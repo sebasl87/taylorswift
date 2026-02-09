@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import newsData from "@/constants/news.json";
 import { NewsArticle } from "@/types/news";
@@ -17,7 +17,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params: { id, locale } }: { params: { id: string; locale: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const locale = await getLocale();
   const article = (newsData as NewsArticle[]).find((a) => a.id === id);
   if (!article) return {};
 
@@ -32,16 +38,20 @@ export async function generateMetadata({ params: { id, locale } }: { params: { i
       description: description,
       type: "article",
       publishedTime: article.publishedDate,
-      images: article.imageUrl ? [`https://taylorswift.com${article.imageUrl}`] : [],
+      images: article.imageUrl
+        ? [`https://taylorswift.com${article.imageUrl}`]
+        : [],
     },
   };
 }
 
 export default async function NoticiaPage({
-  params: { id, locale },
+  params,
 }: {
-  params: { id: string; locale: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
+  const locale = await getLocale();
   const article = (newsData as NewsArticle[]).find((a) => a.id === id);
 
   if (!article) {
@@ -52,7 +62,7 @@ export default async function NoticiaPage({
   const title = article.title[locale as "es" | "en"];
   const formattedDate = new Date(article.publishedDate).toLocaleDateString(
     locale === "es" ? "es-ES" : "en-US",
-    { year: "numeric", month: "long", day: "numeric" }
+    { year: "numeric", month: "long", day: "numeric" },
   );
 
   return (
@@ -80,11 +90,7 @@ export default async function NoticiaPage({
             >
               {title}
             </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              gutterBottom
-            >
+            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
               {formattedDate}
             </Typography>
           </Box>
@@ -107,7 +113,7 @@ export default async function NoticiaPage({
               />
             </Box>
           )}
-          
+
           {/* Content rendering can be added here if needed, or if it is just title/image as per original file */}
         </Container>
       </Box>

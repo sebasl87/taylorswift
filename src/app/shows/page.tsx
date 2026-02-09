@@ -1,8 +1,9 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import ShowsListPage from "@/components/ShowsListPage";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export async function generateMetadata() {
+  const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "shows" });
   return {
     title: `${t("title")} | Taylor Swift`,

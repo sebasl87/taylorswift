@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Box } from "@mui/material";
 import HistoryChapterComponent from "@/components/HistoryChapter";
 import historiaData from "@/constants/historia.json";
@@ -22,10 +22,13 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params: { capitulo, locale },
+  params,
 }: {
-  params: { capitulo: string; locale: string };
+  params: Promise<{ capitulo: string }>;
 }) {
+  const { capitulo } = await params;
+  const locale = await getLocale();
+
   const data = historiaData as HistoryData;
   const chapter = findChapterBySlug(data.chapters, capitulo);
   if (!chapter) return {};
@@ -67,10 +70,13 @@ export async function generateMetadata({
 }
 
 export default async function CapituloPage({
-  params: { capitulo, locale },
+  params,
 }: {
-  params: { capitulo: string; locale: string };
+  params: Promise<{ capitulo: string }>;
 }) {
+  const { capitulo } = await params;
+  const locale = await getLocale();
+
   const data = historiaData as HistoryData;
   const chapter = findChapterBySlug(data.chapters, capitulo);
 

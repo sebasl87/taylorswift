@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import AlbumDetail from "@/components/AlbumDetail";
 import discographyData from "@/constants/discography.json";
 import liveAlbumsData from "@/constants/liveAlbums.json";
@@ -38,7 +39,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params: { albumId, locale } }: { params: { albumId: string, locale: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ albumId: string }>;
+}): Promise<Metadata> {
+  const { albumId } = await params;
+  const locale = await getLocale();
   const album = getAlbumById(albumId);
   if (!album) return { title: "Album Not Found" };
 
@@ -50,14 +57,19 @@ export async function generateMetadata({ params: { albumId, locale } }: { params
     title: `${album.title} (${album.year}) - Taylor Swift Fan`,
     description: `${album.title} - ${albumDescription}`,
     openGraph: {
-        title: `${album.title} (${album.year})`,
-        description: albumDescription,
-        images: [album.cover],
-    }
+      title: `${album.title} (${album.year})`,
+      description: albumDescription,
+      images: [album.cover],
+    },
   };
 }
 
-export default function AlbumPage({ params: { albumId } }: { params: { albumId: string } }) {
+export default async function AlbumPage({
+  params,
+}: {
+  params: Promise<{ albumId: string }>;
+}) {
+  const { albumId } = await params;
   const album = getAlbumById(albumId);
 
   if (!album) {

@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import VideosPageClient from "./VideosPageClient";
 import videosData from "@/constants/videos.json";
 import type { Video } from "@/types/video";
@@ -73,9 +73,10 @@ function generateStructuredData(locale: string) {
   };
 }
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export async function generateMetadata() {
+  const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "videos" });
-  
+
   const titleByLocale = {
     es: "Videos Oficiales de Taylor Swift | Videoclips y Performances en Vivo",
     en: "Official Taylor Swift Videos | Music Videos and Live Performances",
@@ -87,17 +88,24 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 
   return {
-    title: titleByLocale[locale as keyof typeof titleByLocale] || titleByLocale.es,
-    description: descriptionByLocale[locale as keyof typeof descriptionByLocale] || descriptionByLocale.es,
+    title:
+      titleByLocale[locale as keyof typeof titleByLocale] || titleByLocale.es,
+    description:
+      descriptionByLocale[locale as keyof typeof descriptionByLocale] ||
+      descriptionByLocale.es,
     openGraph: {
-      title: titleByLocale[locale as keyof typeof titleByLocale] || titleByLocale.es,
-      description: descriptionByLocale[locale as keyof typeof descriptionByLocale] || descriptionByLocale.es,
+      title:
+        titleByLocale[locale as keyof typeof titleByLocale] || titleByLocale.es,
+      description:
+        descriptionByLocale[locale as keyof typeof descriptionByLocale] ||
+        descriptionByLocale.es,
       type: "website",
     },
   };
 }
 
-export default function VideosPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function VideosPage() {
+  const locale = await getLocale();
   const structuredData = generateStructuredData(locale);
 
   return (

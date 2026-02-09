@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Metadata } from "next";
 import BootlegDetailPage from "@/components/BootlegDetailPage";
 import bootlegsData from "@/constants/bootlegs.json";
@@ -18,7 +18,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params: { bootlegId, locale } }: { params: { bootlegId: string, locale: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ bootlegId: string }>;
+}): Promise<Metadata> {
+  const { bootlegId } = await params;
+  const locale = await getLocale();
   const bootleg = findBootlegBySlug(bootlegId);
   if (!bootleg) return { title: "Bootleg Not Found" };
 
@@ -32,15 +38,20 @@ export async function generateMetadata({ params: { bootlegId, locale } }: { para
     title: fullTitle,
     description: description,
     openGraph: {
-        title: fullTitle,
-        description: description,
-        type: "article",
-        images: [bootleg.image || "/images/bootlegs/default-bootleg.jpg"],
-    }
+      title: fullTitle,
+      description: description,
+      type: "article",
+      images: [bootleg.image || "/images/bootlegs/default-bootleg.jpg"],
+    },
   };
 }
 
-export default function BootlegPage({ params: { bootlegId } }: { params: { bootlegId: string } }) {
+export default async function BootlegPage({
+  params,
+}: {
+  params: Promise<{ bootlegId: string }>;
+}) {
+  const { bootlegId } = await params;
   const bootleg = findBootlegBySlug(bootlegId);
 
   if (!bootleg) {
