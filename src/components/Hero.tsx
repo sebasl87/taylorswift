@@ -3,13 +3,13 @@
 import { Box, Typography, Button, Grid, Chip, Stack } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useEra } from "@/context/EraContext";
 
 export default function Hero() {
   const { currentEra } = useEra();
   const t = useTranslations("hero");
-  const locale = useLocale();
+
 
   return (
     <Grid

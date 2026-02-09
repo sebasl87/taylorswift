@@ -1,13 +1,13 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, getLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
-import ThemeRegistry from '@/theme/ThemeRegistry';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import ThemeRegistry from "@/theme/ThemeRegistry";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { EraProvider } from "@/context/EraContext";
 import "@/styles/globals.css";
 
@@ -35,21 +35,16 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params: { locale }
 }: {
   children: React.ReactNode;
-  params: { locale: string };
 }) {
-  // Ensure that the incoming `locale` is valid
-  if (!['en', 'es'].includes(locale)) {
-    notFound();
-  }
- 
+  const locale = await getLocale();
+
   // Providing all messages to the client
   const messages = await getMessages();
- 
+
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -80,16 +75,22 @@ export default async function LocaleLayout({
             `,
           }}
         />
-        <NextIntlClientProvider messages={messages} locale={locale} timeZone="America/Argentina/Buenos_Aires">
+        <NextIntlClientProvider
+          messages={messages}
+          locale={locale}
+          timeZone="America/Argentina/Buenos_Aires"
+        >
           <EraProvider>
             <ThemeRegistry>
               <div
-                style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+                style={{
+                  minHeight: "100vh",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
               >
                 <Header />
-                <main style={{ flex: 1 }}>
-                  {children}
-                </main>
+                <main style={{ flex: 1 }}>{children}</main>
                 <Footer />
                 <GoogleAnalytics gaId="G-3MT8DZR057" />
               </div>
