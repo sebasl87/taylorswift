@@ -3,7 +3,7 @@
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ERAS } from "@/constants/eras";
 import { useEra } from "@/context/EraContext";
 import Image from "next/image";
@@ -25,27 +25,37 @@ const ERA_IMAGES: Record<string, string> = {
 export default function EraSelector() {
   const { currentEra, setEra } = useEra();
   const t = useTranslations("eraSelector");
-  const [previewEraId, setPreviewEraId] = useState<string | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  // Guardar el ID de la era permanentemente seleccionada
+  const selectedEraIdRef = useRef<string>(currentEra.id);
+
+  // Actualizar la referencia cuando currentEra cambie por un click (no por hover)
+  useEffect(() => {
+    if (!isHovering) {
+      selectedEraIdRef.current = currentEra.id;
+    }
+  }, [currentEra.id, isHovering]);
 
   const handleMouseEnter = (eraId: string) => {
-    // Solo hacer preview si no es el seleccionado actual
-    if (eraId !== currentEra.id) {
-      setPreviewEraId(currentEra.id); // Guardar el actual
-      setEra(eraId); // Mostrar preview
+    // Marcar que estamos en modo preview
+    setIsHovering(true);
+    // Mostrar preview solo si no es la seleccionada
+    if (eraId !== selectedEraIdRef.current) {
+      setEra(eraId);
     }
   };
 
   const handleMouseLeave = () => {
-    // Volver al tema guardado
-    if (previewEraId !== null) {
-      setEra(previewEraId);
-      setPreviewEraId(null);
-    }
+    // Salir del modo preview
+    setIsHovering(false);
+    // Volver a la era permanentemente seleccionada
+    setEra(selectedEraIdRef.current);
   };
 
   const handleClick = (eraId: string) => {
-    // Limpiar preview y establecer permanentemente
-    setPreviewEraId(null);
+    // Establecer permanentemente la nueva era
+    setIsHovering(false);
+    selectedEraIdRef.current = eraId;
     setEra(eraId);
     // El Link manejará la navegación
   };
@@ -102,7 +112,7 @@ export default function EraSelector() {
         }}
       >
         {ERAS.map((era) => {
-          const isSelected = currentEra.id === era.id;
+          const isSelected = selectedEraIdRef.current === era.id;
           const description = t(`tooltips.${era.id}`);
 
           return (

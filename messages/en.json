@@ -310,12 +310,15 @@
   "tour": {
     "title": "Tour",
     "subtitle": "Explore Taylor Swift's tours, from her beginnings to the present. Upcoming dates and setlists.",
+    "upcoming": "Upcoming",
+    "past": "Past",
     "upcomingShows": "Upcoming shows",
     "pastShows": "Past shows",
     "date": "Date",
     "tickets": "Tickets",
     "searchPlaceholder": "Search by city, country, venue...",
-    "noShowsFound": "No shows found for this search"
+    "noShowsFound": "No shows found for this search",
+    "noUpcoming": "No upcoming shows scheduled"
   },
   "topSongs": {
     "title": "Most Played Songs",

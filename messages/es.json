@@ -310,12 +310,15 @@
   "tour": {
     "title": "Gira",
     "subtitle": "Explora las giras de Taylor Swift, desde sus inicios hasta la actualidad. Próximas fechas y setlists.",
+    "upcoming": "Próximas",
+    "past": "Pasadas",
     "upcomingShows": "Próximas fechas",
     "pastShows": "Fechas pasadas",
     "date": "Fecha",
     "tickets": "Entradas",
     "searchPlaceholder": "Buscar por ciudad, país, venue...",
-    "noShowsFound": "No se encontraron shows para esta búsqueda"
+    "noShowsFound": "No se encontraron shows para esta búsqueda",
+    "noUpcoming": "No hay shows próximos programados"
   },
   "topSongs": {
     "title": "Canciones más tocadas",
