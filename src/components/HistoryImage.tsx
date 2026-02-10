@@ -15,6 +15,13 @@ export default function HistoryImageComponent({
   priority = false,
 }: HistoryImageComponentProps) {
   const locale = useLocale() as "es" | "en";
+  
+  // Resolve bilingual alt text
+  const altText = getText(image.alt, locale);
+  
+  // Append version query param to bust browser/Next.js cache
+  // We use a static version number that we increment when we update assets
+  const imageSrc = `${image.src}?v=3`;
 
   const getImageSizeStyles = () => {
     switch (image.size) {
@@ -167,8 +174,8 @@ export default function HistoryImageComponent({
             }}
           >
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={imageSrc}
+              alt={altText}
               {...imageProps}
               priority={priority}
             />
@@ -209,8 +216,8 @@ export default function HistoryImageComponent({
             }}
           >
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={imageSrc}
+              alt={altText}
               {...imageProps}
               priority={priority}
             />
@@ -255,8 +262,8 @@ export default function HistoryImageComponent({
             }}
           >
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={imageSrc}
+              alt={altText}
               {...imageProps}
               priority={priority}
             />
@@ -313,8 +320,8 @@ export default function HistoryImageComponent({
             }}
           >
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={imageSrc}
+              alt={altText}
               {...imageProps}
               priority={priority}
             />
@@ -356,8 +363,8 @@ export default function HistoryImageComponent({
             }}
           >
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={imageSrc}
+              alt={altText}
               {...imageProps}
               priority={priority}
             />
@@ -395,8 +402,8 @@ export default function HistoryImageComponent({
             }}
           >
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={imageSrc}
+              alt={altText}
               {...imageProps}
               priority={priority}
             />

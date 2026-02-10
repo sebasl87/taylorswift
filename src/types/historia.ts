@@ -6,7 +6,7 @@ export interface BilingualText {
 
 export interface HistoryImage {
   src: string;
-  alt: string;
+  alt: string | BilingualText;
   caption?: string | BilingualText;
   position?: 'left' | 'right' | 'center' | 'full' | 'background';
   layout?: 'float' | 'gallery' | 'parallax' | 'carousel' | 'collage';
