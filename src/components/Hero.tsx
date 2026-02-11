@@ -10,7 +10,6 @@ export default function Hero() {
   const { currentEra } = useEra();
   const t = useTranslations("hero");
 
-
   return (
     <Grid
       container
@@ -118,8 +117,8 @@ export default function Hero() {
           <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
             <Chip
               label={t("chipEras")}
-              component={Link}
-              href="/eras"
+              component="a"
+              href="#eras"
               clickable
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
@@ -136,8 +135,8 @@ export default function Hero() {
             />
             <Chip
               label={t("chipTours")}
-              component={Link}
-              href="/shows"
+              component="a"
+              href="#tour"
               clickable
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
@@ -155,7 +154,7 @@ export default function Hero() {
             <Chip
               label={t("chipBio")}
               component={Link}
-              href="/biografia"
+              href="/era"
               clickable
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.2)",

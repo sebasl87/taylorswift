@@ -13,6 +13,7 @@ import {
   TextField,
   InputAdornment,
 } from "@mui/material";
+import Link from "next/link";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
@@ -249,6 +250,10 @@ export default function TourPageClient() {
                       </CardContent>
                       <CardActions sx={{ p: 2, pt: 0 }}>
                         <Button
+                          component={Link}
+                          href={show.ticketLink || "#"}
+                          target={show.ticketLink ? "_blank" : "_self"}
+                          rel={show.ticketLink ? "noopener noreferrer" : ""}
                           size="small"
                           variant="contained"
                           fullWidth

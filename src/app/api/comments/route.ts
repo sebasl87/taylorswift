@@ -75,3 +75,53 @@ export async function GET(request: NextRequest) {
     },
   });
 }
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { pageType, pageId, name, email, content, website } = body;
+
+    // Honeypot check
+    if (website) {
+      return NextResponse.json({ error: "Spam detected" }, { status: 400 });
+    }
+
+    if (!pageType || !pageId || !name || !email || !content) {
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 },
+      );
+    }
+
+    // Insert into Supabase
+    const { data, error } = await supabase
+      .from("comments")
+      .insert({
+        page_type: pageType,
+        page_id: pageId,
+        name,
+        email,
+        content,
+        status: "published", // Auto-publish for now
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Supabase error:", error);
+      return NextResponse.json({ error: "Failed to save comment" }, { status: 500 });
+    }
+
+    // Invalidate cache
+    const vKey = pageVersionKey(pageType, pageId);
+    await kv.incr(vKey);
+
+    return NextResponse.json(data, { status: 201 });
+  } catch (err) {
+    console.error("Server error:", err);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
+  }
+}

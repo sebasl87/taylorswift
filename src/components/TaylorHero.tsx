@@ -57,8 +57,10 @@ export default function TaylorHero() {
       >
         <Hero />
 
-        <EraSelector />
-        <Box sx={{ mt: 4 }}>
+        <div id="eras">
+          <EraSelector />
+        </div>
+        <Box sx={{ mt: 4 }} id="shows">
           <LastShowsCards />
         </Box>
 
@@ -68,7 +70,7 @@ export default function TaylorHero() {
             <Grid size={{ xs: 12, md: 6 }}>
               <TopSongsWidget />
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={{ xs: 12, md: 6 }} id="tour">
               <UpcomingToursWidget />
             </Grid>
           </Grid>
