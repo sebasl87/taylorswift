@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Typography, Button, Grid, Chip, Stack } from "@mui/material";
+import { Box, Typography, Button, Chip, Stack, Container } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -10,19 +10,85 @@ export default function Hero() {
   const { currentEra } = useEra();
   const t = useTranslations("hero");
 
+  // Función para scroll suave a una sección
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string,
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
-    <Grid
-      container
-      spacing={4}
+    <Box
       sx={{
-        alignItems: "center",
-        minHeight: { xs: "auto", md: "60vh" },
+        position: "relative",
+        width: "100%",
+        minHeight: { xs: "600px", md: "80vh" },
+        borderRadius: { xs: 0, md: 4 },
+        overflow: "hidden",
+        mb: 4,
       }}
     >
-      {/* Columna Izquierda - Texto */}
-      <Grid size={{ xs: 12, md: 6 }}>
+      {/* Imagen de fondo full-width */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 0,
+        }}
+      >
+        <Image
+          src="/images/cards-home/hero.png"
+          alt={t("imageAlt")}
+          fill
+          priority
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+          sizes="100vw"
+        />
+      </Box>
+
+      {/* Overlay oscuro para mejor contraste del texto */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "rgba(0,0,0,0.3)",
+          zIndex: 2,
+        }}
+      />
+
+      {/* Contenido de texto sobre la imagen */}
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 3,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          minHeight: { xs: "600px", md: "80vh" },
+          py: { xs: 4, md: 8 },
+        }}
+      >
         <Box
           sx={{
+            width: { xs: "100%", md: "60%", lg: "50%" },
             display: "flex",
             flexDirection: "column",
             gap: 3,
@@ -35,12 +101,11 @@ export default function Hero() {
             sx={{
               fontFamily: "var(--font-heading)",
               fontWeight: 700,
-              fontSize: { xs: "2.5rem", sm: "3rem", md: "3.5rem" },
+              fontSize: { xs: "2.5rem", sm: "3rem", md: "4rem" },
               lineHeight: 1.2,
-              color: currentEra.colors.heroText || "#FFFFFF",
-              textShadow: `2px 2px 8px ${currentEra.shadowColor}, 
-                           0 0 20px ${currentEra.shadowColor}`,
-              transition: "color 0.5s ease, text-shadow 0.5s ease",
+              color: "#FFFFFF",
+              textShadow:
+                "2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)",
             }}
           >
             {t("title")}
@@ -50,10 +115,9 @@ export default function Hero() {
           <Typography
             variant="h6"
             sx={{
-              color: currentEra.colors.heroText || "#FFFFFF",
-              textShadow: `1px 1px 4px ${currentEra.shadowColor}`,
-              transition: "color 0.5s ease, text-shadow 0.5s ease",
-              fontSize: { xs: "1rem", md: "1.125rem" },
+              color: "#FFFFFF",
+              textShadow: "1px 1px 4px rgba(0,0,0,0.8)",
+              fontSize: { xs: "1rem", md: "1.25rem" },
               lineHeight: 1.7,
               fontWeight: 400,
             }}
@@ -98,8 +162,8 @@ export default function Hero() {
                 fontSize: "1rem",
                 fontWeight: 600,
                 borderWidth: 2,
-                borderColor: currentEra.colors.heroText || "#FFFFFF",
-                color: currentEra.colors.heroText || "#FFFFFF",
+                borderColor: "#FFFFFF",
+                color: "#FFFFFF",
                 transition: "all 0.3s ease",
                 "&:hover": {
                   borderWidth: 2,
@@ -119,13 +183,14 @@ export default function Hero() {
               label={t("chipEras")}
               component="a"
               href="#eras"
+              onClick={(e) => handleSmoothScroll(e, "eras")}
               clickable
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
                 backdropFilter: "blur(10px)",
-                color: currentEra.colors.heroText || "#FFFFFF",
+                color: "#FFFFFF",
                 fontWeight: 500,
-                border: `1px solid rgba(255, 255, 255, 0.3)`,
+                border: "1px solid rgba(255, 255, 255, 0.3)",
                 transition: "all 0.3s ease",
                 "&:hover": {
                   backgroundColor: "rgba(255, 255, 255, 0.3)",
@@ -137,13 +202,14 @@ export default function Hero() {
               label={t("chipTours")}
               component="a"
               href="#tour"
+              onClick={(e) => handleSmoothScroll(e, "tour")}
               clickable
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
                 backdropFilter: "blur(10px)",
-                color: currentEra.colors.heroText || "#FFFFFF",
+                color: "#FFFFFF",
                 fontWeight: 500,
-                border: `1px solid rgba(255, 255, 255, 0.3)`,
+                border: "1px solid rgba(255, 255, 255, 0.3)",
                 transition: "all 0.3s ease",
                 "&:hover": {
                   backgroundColor: "rgba(255, 255, 255, 0.3)",
@@ -159,9 +225,9 @@ export default function Hero() {
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
                 backdropFilter: "blur(10px)",
-                color: currentEra.colors.heroText || "#FFFFFF",
+                color: "#FFFFFF",
                 fontWeight: 500,
-                border: `1px solid rgba(255, 255, 255, 0.3)`,
+                border: "1px solid rgba(255, 255, 255, 0.3)",
                 transition: "all 0.3s ease",
                 "&:hover": {
                   backgroundColor: "rgba(255, 255, 255, 0.3)",
@@ -171,45 +237,7 @@ export default function Hero() {
             />
           </Stack>
         </Box>
-      </Grid>
-
-      {/* Columna Derecha - Imagen */}
-      <Grid size={{ xs: 12, md: 6 }}>
-        <Box
-          sx={{
-            position: "relative",
-            width: "100%",
-            height: { xs: "400px", sm: "500px", md: "600px" },
-            borderRadius: 4,
-            overflow: "hidden",
-            boxShadow: `0 20px 60px ${currentEra.shadowColor}`,
-            transition: "box-shadow 0.5s ease",
-            "&::after": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: `linear-gradient(135deg, ${currentEra.colors.primary}15, ${currentEra.colors.secondary}15)`,
-              pointerEvents: "none",
-              transition: "background 0.5s ease",
-            },
-          }}
-        >
-          <Image
-            src="/images/site-updates/hero.jpg"
-            alt={t("imageAlt")}
-            fill
-            priority
-            style={{
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </Box>
-      </Grid>
-    </Grid>
+      </Container>
+    </Box>
   );
 }

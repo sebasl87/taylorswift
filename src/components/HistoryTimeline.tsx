@@ -12,6 +12,7 @@ import { HistoryChapter, getText } from "@/types/historia";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useLocale } from "next-intl";
+import { useEra } from "@/context/EraContext";
 
 interface HistoryTimelineProps {
   chapters: HistoryChapter[];
@@ -25,11 +26,15 @@ export default function HistoryTimeline({
   const theme = useTheme();
   const router = useRouter();
   const locale = useLocale() as "es" | "en";
+  const { setEra } = useEra();
   const [hoveredChapter, setHoveredChapter] = useState<string | null>(null);
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   const handleChapterClick = (chapterSlug: string) => {
-    router.push(`/historia/${chapterSlug}`);
+    // Cambiar el theme a la era seleccionada
+    setEra(chapterSlug);
+    // Navegar a la página de la era
+    router.push(`/era/${chapterSlug}`);
   };
 
   const getChapterColor = (chapter: HistoryChapter, index: number) => {
@@ -53,7 +58,7 @@ export default function HistoryTimeline({
   if (isMobile) {
     // Versión Mobile (Vertical)
     return (
-      <Box sx={{ position: "relative", px: 2, py: 4 }}>
+      <Box sx={{ position: "relative", px: 2, pb: 4 }}>
         {/* Línea vertical */}
         <Box
           sx={{

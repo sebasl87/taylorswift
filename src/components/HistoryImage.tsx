@@ -15,10 +15,10 @@ export default function HistoryImageComponent({
   priority = false,
 }: HistoryImageComponentProps) {
   const locale = useLocale() as "es" | "en";
-  
+
   // Resolve bilingual alt text
   const altText = getText(image.alt, locale);
-  
+
   // Append version query param to bust browser/Next.js cache
   // We use a static version number that we increment when we update assets
   const imageSrc = `${image.src}?v=3`;
@@ -34,7 +34,7 @@ export default function HistoryImageComponent({
       case "full":
         return { width: 800, height: 500 };
       default:
-        return { width: 400, height: 300 };
+        return { width: 1440, height: 500 };
     }
   };
 
@@ -121,7 +121,7 @@ export default function HistoryImageComponent({
           width: baseSize.width,
           height: baseSize.height,
           ...aspectStyles,
-          margin: "20px auto",
+          margin: "auto",
           display: "block",
           // Media query para mobile
           "@media (max-width: 600px)": {

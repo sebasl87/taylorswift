@@ -411,9 +411,9 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
                 <Typography variant="subtitle1" sx={{ mt: 3, fontWeight: 600 }}>
                   {t("lyrics")}
                 </Typography>
-                <Button variant="outlined" onClick={() => setShowEs((e) => !e)}>
+                {/* <Button variant="outlined" onClick={() => setShowEs((e) => !e)}>
                   {showEs ? t("showEn") : t("showEs")}
-                </Button>
+                </Button> */}
               </Box>
 
               <Box

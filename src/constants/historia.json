@@ -1,7 +1,7 @@
 {
   "title": {
-    "es": "La Historia de Taylor Swift",
-    "en": "The History of Taylor Swift"
+    "es": "Las Eras",
+    "en": "The Eras"
   },
   "subtitle": {
     "es": "Un viaje a través de sus eras musicales",
@@ -16,8 +16,8 @@
       "id": "debut",
       "slug": "taylor-swift",
       "title": {
-        "es": "Taylor Swift (Debut)",
-        "en": "Taylor Swift (Debut)"
+        "es": "Taylor Swift",
+        "en": "Taylor Swift"
       },
       "period": "2006–2008",
       "yearStart": 2006,
@@ -28,7 +28,7 @@
       },
       "color": "#B6D06D",
       "coverImage": {
-        "src": "/images/eras/01-taylor.jpg",
+        "src": "/images/history/01.png",
         "alt": "Taylor Swift Debut Era"
       },
       "sections": [
@@ -50,7 +50,7 @@
                 "es": "Tim McGraw: El Primer Sencillo",
                 "en": "Tim McGraw: The First Single"
               },
-              "position": "center",
+              "position": "right",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -73,14 +73,14 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/debut/debut-album.jpg",
+              "src": "/images/history/debut/first-album6.jpg",
               "alt": {
                 "es": "El Álbum Homónimo",
                 "en": "The Self-Titled Album"
               },
               "position": "center",
               "layout": "gallery",
-              "size": "large",
+              "size": "full",
               "caption": {
                 "es": "El Álbum Homónimo",
                 "en": "The Self-Titled Album"
@@ -101,12 +101,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/debut/opening-act.jpg",
+              "src": "/images/history/debut/leyend.webp",
               "alt": {
                 "es": "Teloneando a Leyendas",
                 "en": "Opening for Legends"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -129,12 +129,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/debut/cma-horizon.jpg",
+              "src": "/images/history/debut/cma.jpg",
               "alt": {
                 "es": "Premio Horizon de la CMA",
                 "en": "CMA Horizon Award"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -157,14 +157,14 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/debut/grammy-nomination.jpg",
+              "src": "/images/history/debut/17.webp",
               "alt": {
                 "es": "Nominación al Grammy",
                 "en": "Grammy Nomination"
               },
-              "position": "center",
-              "layout": "gallery",
-              "size": "large",
+              "position": "right",
+              "layout": "collage",
+              "size": "full",
               "caption": {
                 "es": "Nominación al Grammy",
                 "en": "Grammy Nomination"
@@ -190,7 +190,7 @@
       },
       "color": "#E6C200",
       "coverImage": {
-        "src": "/images/eras/02-fearless.jpg",
+        "src": "/images/history/fearless/home.png",
         "alt": "Fearless Era"
       },
       "sections": [
@@ -207,12 +207,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/fearless/love-story.jpg",
+              "src": "/images/history/fearless/love.jpg",
               "alt": {
                 "es": "El Fenómeno 'Love Story'",
                 "en": "The 'Love Story' Phenomenon"
               },
-              "position": "center",
+              "position": "right",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -235,12 +235,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/shows/2009.webp",
+              "src": "/images/history/fearless/fearless.webp",
               "alt": {
                 "es": "Era Fearless",
                 "en": "Fearless Era"
               },
-              "position": "center",
+              "position": "full",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -263,13 +263,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/fearless/fearless-tour.jpg",
+              "src": "/images/history/fearless/fearless-tour.avif",
               "alt": {
                 "es": "Fearless Tour",
                 "en": "Fearless Tour"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Fearless Tour",
@@ -291,12 +291,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/shows/2009_vma.webp",
+              "src": "/images/history/fearless/vma.webp",
               "alt": {
                 "es": "Taylor en los VMA 2009",
                 "en": "Taylor at 2009 VMAs"
               },
-              "position": "center",
+              "position": "right",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -319,13 +319,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/shows/2010_gillette.webp",
+              "src": "/images/history/fearless/grammys-20102.webp",
               "alt": {
                 "es": "Celebración Grammy",
                 "en": "Grammy Celebration"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "La noche dorada de Taylor",
@@ -352,7 +352,7 @@
       },
       "color": "#7E4E9E",
       "coverImage": {
-        "src": "/images/eras/03-speak.jpg",
+        "src": "/images/history/speak-now/home.png",
         "alt": "Speak Now Era"
       },
       "sections": [
@@ -369,12 +369,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/speak-now/solo-writing.jpg",
+              "src": "/images/history/speak-now/speak.jpg",
               "alt": {
                 "es": "Escrito en Solitario",
                 "en": "Written Solo"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -397,7 +397,7 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/speak-now/mine-release.jpg",
+              "src": "/images/history/speak-now/mine.jpg",
               "alt": {
                 "es": "Mine y el Lanzamiento",
                 "en": "Mine and the Release"
@@ -430,7 +430,7 @@
                 "es": "Speak Now World Tour",
                 "en": "Speak Now World Tour"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -453,13 +453,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/speak-now/mean-grammy.jpg",
+              "src": "/images/history/speak-now/mean.webp",
               "alt": {
                 "es": "La Venganza de 'Mean'",
                 "en": "'Mean' Revenge"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "La Venganza de 'Mean'",
@@ -481,12 +481,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/speak-now/rain-show.jpg",
+              "src": "/images/history/speak-now/rain.jpg",
               "alt": {
                 "es": "El Concierto Bajo la Lluvia",
                 "en": "The Rain Show"
               },
-              "position": "center",
+              "position": "background",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -514,7 +514,7 @@
       },
       "color": "#BE0000",
       "coverImage": {
-        "src": "/images/eras/04-red.jpg",
+        "src": "/images/history/red/home.png",
         "alt": "Red Era"
       },
       "sections": [
@@ -531,12 +531,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/red/wanegbt.jpg",
+              "src": "/images/history/red/weare.webp",
               "alt": {
                 "es": "El Primer Número 1",
                 "en": "The First Number 1"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -559,7 +559,7 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/red/red-release.jpg",
+              "src": "/images/history/red/red.webp",
               "alt": {
                 "es": "Red: Un Mosaico Emocional",
                 "en": "Red: An Emotional Mosaic"
@@ -587,12 +587,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/red/all-too-well.jpg",
+              "src": "/images/history/red/alto.avif",
               "alt": {
                 "es": "La Leyenda de All Too Well",
                 "en": "The Legend of All Too Well"
               },
-              "position": "center",
+              "position": "full",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -615,13 +615,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/red/red-tour.jpg",
+              "src": "/images/history/red/redtour.webp",
               "alt": {
                 "es": "The Red Tour",
                 "en": "The Red Tour"
               },
-              "position": "center",
-              "layout": "gallery",
+              "position": "left",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "The Red Tour",
@@ -643,13 +643,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/red/grammy-loss.jpg",
+              "src": "/images/history/red/sad.jpg",
               "alt": {
                 "es": "La Derrota que Inspiró 1989",
                 "en": "The Loss That Inspired 1989"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "La Derrota que Inspiró 1989",
@@ -676,7 +676,7 @@
       },
       "color": "#85C1E9",
       "coverImage": {
-        "src": "/images/eras/05-1989.jpg",
+        "src": "/images/history/1989/1989.jpg",
         "alt": "1989 Era"
       },
       "sections": [
@@ -693,12 +693,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/1989/shake-it-off.jpg",
+              "src": "/images/history/1989/shake.avif",
               "alt": {
                 "es": "Shake It Off y el Pop",
                 "en": "Shake It Off and Pop"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -721,13 +721,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/1989/1989-release.jpg",
+              "src": "/images/history/1989/secret.jpg",
               "alt": {
                 "es": "1989: Un Blockbuster",
                 "en": "1989: A Blockbuster"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "1989: Un Blockbuster",
@@ -749,12 +749,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/1989/blank-space.jpg",
+              "src": "/images/history/1989/blank.webp",
               "alt": {
                 "es": "La Sátira de Blank Space",
                 "en": "The Blank Space Satire"
               },
-              "position": "center",
+              "position": "right",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -777,7 +777,7 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/1989/1989-tour.jpg",
+              "src": "/images/history/1989/1989tour.webp",
               "alt": {
                 "es": "The 1989 World Tour",
                 "en": "The 1989 World Tour"
@@ -805,13 +805,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/1989/second-aoty.jpg",
+              "src": "/images/history/1989/1989album.jpg",
               "alt": {
                 "es": "Segundo Álbum del Año",
                 "en": "Second Album of the Year"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Segundo Álbum del Año",
@@ -838,7 +838,7 @@
       },
       "color": "#333333",
       "coverImage": {
-        "src": "/images/eras/06-reputation.jpg",
+        "src": "/images/history/reputation/home.png",
         "alt": "Reputation Era"
       },
       "sections": [
@@ -855,12 +855,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/reputation/blackout.jpg",
+              "src": "/images/history/reputation/repu.webp",
               "alt": {
                 "es": "El Apagón y la Serpiente",
                 "en": "The Blackout and the Snake"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -883,13 +883,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/reputation/lwymmd.jpg",
+              "src": "/images/history/reputation/look.avif",
               "alt": {
                 "es": "Look What You Made Me Do",
                 "en": "Look What You Made Me Do"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Look What You Made Me Do",
@@ -911,13 +911,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/reputation/reputation-album.jpg",
+              "src": "/images/history/reputation/reputa.webp",
               "alt": {
                 "es": "Lanzamiento de Reputation",
                 "en": "Reputation Release"
               },
-              "position": "center",
-              "layout": "gallery",
+              "position": "left",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Lanzamiento de Reputation",
@@ -939,12 +939,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/reputation/reputation-tour.jpg",
+              "src": "/images/history/reputation/stadium.jpg",
               "alt": {
                 "es": "Reputation Stadium Tour",
                 "en": "Reputation Stadium Tour"
               },
-              "position": "center",
+              "position": "full",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -967,13 +967,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/reputation/delicate.jpg",
+              "src": "/images/history/reputation/delicate.avif",
               "alt": {
                 "es": "El Éxito de Delicate",
                 "en": "The Success of Delicate"
               },
-              "position": "center",
-              "layout": "gallery",
+              "position": "right",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "El Éxito de Delicate",
@@ -1000,7 +1000,7 @@
       },
       "color": "#F8B9D4",
       "coverImage": {
-        "src": "/images/eras/07-lover.jpg",
+        "src": "/images/history/lover/home.png",
         "alt": "Lover Era"
       },
       "sections": [
@@ -1017,12 +1017,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/lover/me-single.jpg",
+              "src": "/images/history/lover/me.webp",
               "alt": {
                 "es": "ME! y el Cambio de Tono",
                 "en": "ME! and the Tone Shift"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1045,13 +1045,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/lover/activism.jpg",
+              "src": "/images/history/lover/callme.jpg",
               "alt": {
                 "es": "Activismo Político",
                 "en": "Political Activism"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Activismo Político",
@@ -1073,12 +1073,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/lover/masters-dispute.jpg",
+              "src": "/images/history/lover/masters.webp",
               "alt": {
                 "es": "La Disputa por los Masters",
                 "en": "The Masters Dispute"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1101,13 +1101,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/lover/lover-release.jpg",
+              "src": "/images/history/lover/lover.png",
               "alt": {
                 "es": "Lanzamiento de Lover",
                 "en": "Lover Release"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Lanzamiento de Lover",
@@ -1129,12 +1129,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/lover/artist-decade.jpg",
+              "src": "/images/history/lover/amas.webp",
               "alt": {
                 "es": "Artista de la Década",
                 "en": "Artist of the Decade"
               },
-              "position": "center",
+              "position": "full",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1162,7 +1162,7 @@
       },
       "color": "#C0C0C0",
       "coverImage": {
-        "src": "/images/eras/08-folklore.jpg",
+        "src": "/images/history/folklore/home.png",
         "alt": "Folklore Era"
       },
       "sections": [
@@ -1179,12 +1179,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/folklore/surprise-drop.jpg",
+              "src": "/images/history/folklore/folk.jpg",
               "alt": {
                 "es": "El Lanzamiento Sorpresa",
                 "en": "The Surprise Drop"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1207,13 +1207,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/folklore/cardigan.jpg",
+              "src": "/images/history/folklore/cardigan2.jpg",
               "alt": {
                 "es": "Cardigan y el Número 1",
                 "en": "Cardigan and Number 1"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Cardigan y el Número 1",
@@ -1235,12 +1235,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/folklore/critical-acclaim.jpg",
+              "src": "/images/history/folklore/rs.jpg",
               "alt": {
                 "es": "Aclamación Crítica",
                 "en": "Critical Acclaim"
               },
-              "position": "center",
+              "position": "full",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1263,12 +1263,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/folklore/long-pond.jpg",
+              "src": "/images/history/folklore/lp.webp",
               "alt": {
                 "es": "The Long Pond Studio Sessions",
                 "en": "The Long Pond Studio Sessions"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1291,13 +1291,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/folklore/third-aoty.jpg",
+              "src": "/images/history/folklore/grammy2.jpg",
               "alt": {
                 "es": "Tercer Álbum del Año",
                 "en": "Third Album of the Year"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Tercer Álbum del Año",
@@ -1324,7 +1324,7 @@
       },
       "color": "#C69C6D",
       "coverImage": {
-        "src": "/images/eras/09-evermore.jpg",
+        "src": "/images/history/evermore/home.png",
         "alt": "Evermore Era"
       },
       "sections": [
@@ -1341,12 +1341,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/evermore/sister-album.jpg",
+              "src": "/images/history/evermore/ever.jpg",
               "alt": {
                 "es": "El Álbum Hermana",
                 "en": "The Sister Album"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1369,13 +1369,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/evermore/willow.jpg",
+              "src": "/images/history/evermore/willow2.jpeg",
               "alt": {
                 "es": "Willow",
                 "en": "Willow"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Willow",
@@ -1397,12 +1397,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/evermore/champagne-problems.jpg",
+              "src": "/images/history/evermore/champagne.jpg",
               "alt": {
                 "es": "Champagne Problems",
                 "en": "Champagne Problems"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1425,13 +1425,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/evermore/fearless-tv.jpg",
+              "src": "/images/history/evermore/regordings.avif",
               "alt": {
                 "es": "Comienzan las Regrabaciones",
                 "en": "Re-recordings Begin"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Comienzan las Regrabaciones",
@@ -1453,12 +1453,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/evermore/red-tv-atw10.jpg",
+              "src": "/images/history/evermore/altto.jpg",
               "alt": {
                 "es": "Red TV y All Too Well (10 Min)",
                 "en": "Red TV and All Too Well (10 Min)"
               },
-              "position": "center",
+              "position": "background",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1486,7 +1486,7 @@
       },
       "color": "#191970",
       "coverImage": {
-        "src": "/images/eras/10-midnights.jpg",
+        "src": "/images/history/midnights/home.png",
         "alt": "Midnights Era"
       },
       "sections": [
@@ -1503,12 +1503,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/midnights/vma-announce.jpg",
+              "src": "/images/history/midnights/vma.webp",
               "alt": {
                 "es": "Anuncio en los VMA",
                 "en": "VMA Announcement"
               },
-              "position": "center",
+              "position": "left",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1531,13 +1531,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/midnights/top-10.jpg",
+              "src": "/images/history/midnights/anti.webp",
               "alt": {
                 "es": "Top 10 Histórico",
                 "en": "Historic Top 10"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Top 10 Histórico",
@@ -1559,12 +1559,12 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/midnights/eras-tour-kickoff.jpg",
+              "src": "/images/history/midnights/eras.jpg",
               "alt": {
                 "es": "The Eras Tour",
                 "en": "The Eras Tour"
               },
-              "position": "center",
+              "position": "full",
               "layout": "gallery",
               "size": "large",
               "caption": {
@@ -1587,13 +1587,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/midnights/fourth-aoty.jpg",
+              "src": "/images/history/midnights/aoty.jpg",
               "alt": {
                 "es": "Cuarto Álbum del Año",
                 "en": "Fourth Album of the Year"
               },
-              "position": "center",
-              "layout": "gallery",
+              "position": "left",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "Cuarto Álbum del Año",
@@ -1615,13 +1615,13 @@
           "layout": "text-with-images",
           "images": [
             {
-              "src": "/images/history/midnights/ttpd-announce.jpg",
+              "src": "/images/history/midnights/tortured.webp",
               "alt": {
                 "es": "El Departamento de Poetas Torturados",
                 "en": "The Tortured Poets Department"
               },
               "position": "center",
-              "layout": "gallery",
+              "layout": "collage",
               "size": "large",
               "caption": {
                 "es": "El Departamento de Poetas Torturados",

@@ -80,6 +80,7 @@ export default function Header() {
     { label: t("media"), href: "#", hasSubmenu: true },
     { label: t("news"), href: "/noticias" },
     { label: t("interviews"), href: "/entrevistas" },
+    { label: "Eras", href: "/era" },
     { label: t("songs"), href: "/songs" },
   ];
 
