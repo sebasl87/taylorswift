@@ -305,26 +305,44 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    /** 3) Fetch upstream years ago */
-    // Buscamos setlists de ese año. setlist.fm no deja filtrar por mes exacto fácilmente en /artist/{mbid}/setlists?year=YYYY
-    // Tendremos que traer la página 1 del año targetYear y filtrar.
-    const yearsRes = await upstreamFetch(`/artist/${mbid}/setlists?year=${targetYear}&p=1`);
-
+    /** 3) Fetch upstream years ago - búsqueda recursiva hacia atrás */
     let found: NormalizedShow | null = null;
-    if (yearsRes.ok) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const list: any[] = Array.isArray(yearsRes.json?.setlist) ? yearsRes.json.setlist : [];
-      const normalizedList = list.map(normalizeSetlistItem).filter(Boolean) as NormalizedShow[];
+    let searchYear = parseInt(targetYear);
+    const maxSearchAttempts = 10; // Buscar hasta 10 años hacia atrás
+    let searchedYears: string[] = [];
 
-      // Estrategia: "el show más cercano a targetISO dentro del mismo mes"
-      // Si no hay nada en ese mes, "el más cercano en todo el año"
-      found = pickClosestInSameMonth(normalizedList, targetISO);
-      if (!found) {
-        found = pickClosestInYear(normalizedList, targetISO);
+    for (let attempt = 0; attempt < maxSearchAttempts && !found; attempt++) {
+      const currentSearchYear = searchYear - attempt;
+      searchedYears.push(currentSearchYear.toString());
+      
+      const yearsRes = await upstreamFetch(`/search/setlists?artistMbid=${mbid}&year=${currentSearchYear}&p=1`);
+
+      if (yearsRes.ok) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const list: any[] = Array.isArray(yearsRes.json?.setlist) ? yearsRes.json.setlist : [];
+        const normalizedList = list.map(normalizeSetlistItem).filter(Boolean) as NormalizedShow[];
+
+        // Para el año objetivo, intentar encontrar el más cercano en fecha
+        if (attempt === 0) {
+          found = pickClosestInSameMonth(normalizedList, targetISO);
+          if (!found) {
+            found = pickClosestInYear(normalizedList, targetISO);
+          }
+        } else {
+          // Para años anteriores, tomar el último show del año (más reciente)
+          const withSongs = normalizedList.filter(s => Array.isArray(s.songs) && s.songs.length > 0);
+          if (withSongs.length > 0) {
+            // El primer elemento debería ser el más reciente ya que la API los ordena por fecha desc
+            found = withSongs[0];
+          }
+        }
+
+        // Salir del loop si encontramos algo
+        if (found) break;
       }
     }
 
-    // Guardamos en cache (incluso si es null, para no martillar la API si no hubo show ese año)
+    // Guardamos en cache con metadata de búsqueda
     await kvSet(yearsKey, found, yearsFreshSeconds, yearsKeepSeconds);
 
     return NextResponse.json({
@@ -333,7 +351,8 @@ export async function GET(req: NextRequest) {
       meta: {
         cachedYears: false,
         targetISO,
-        apiStatus: yearsRes.status,
+        searchedYears,
+        foundInYear: found?.eventDateISO.slice(0, 4) ?? null,
       },
     });
 
