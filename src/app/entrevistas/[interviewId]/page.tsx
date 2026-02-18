@@ -1,4 +1,4 @@
-import { getTranslations, getLocale } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 import { Metadata } from "next";
 import InterviewDetailPage from "@/components/InterviewDetailPage";
 import interviewsData from "@/constants/interviews.json";

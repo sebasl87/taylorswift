@@ -7,9 +7,6 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-const MAX_PER_HOUR = 10;
-const WINDOW_SECONDS = 60 * 60;
-
 // Helper functions
 function pageVersionKey(pageType: string, pageId: string) {
   return `comments:v:${pageType}:${pageId}`;

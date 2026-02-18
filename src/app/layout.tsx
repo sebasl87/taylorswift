@@ -1,6 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Metadata } from "next";

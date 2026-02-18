@@ -8,7 +8,7 @@ import { useState, useMemo } from "react";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 import NewsCard from "@/components/NewsCard";
 import RandomSectionBanner from "@/components/NewsBanner";
-import { Typography, Box, Tabs, Tab, Grid } from "@mui/material";
+import { Typography, Box, Tabs, Tab } from "@mui/material";
 
 export default function NoticiasClient() {
   const t = useTranslations("news");
@@ -111,7 +111,7 @@ export default function NoticiasClient() {
               },
             }}
           >
-            {groupedByMonth.map((group, index) => (
+            {groupedByMonth.map((group) => (
               <Tab key={group.key} label={getMonthLabel(group.key)} />
             ))}
           </Tabs>

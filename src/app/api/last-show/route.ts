@@ -51,7 +51,7 @@ type NormalizedShow = {
     countryName?: string | null;
     coords?: { lat: number; long: number } | null;
   };
-  songs: Array<{ name: string; tape: boolean; info?: string | null; cover?: any | null }>;
+  songs: Array<{ name: string; tape: boolean; info?: string | null; cover?: unknown | null }>;
   url?: string | null;
   attribution?: { text: string; url?: string | null };
 };
@@ -307,9 +307,9 @@ export async function GET(req: NextRequest) {
 
     /** 3) Fetch upstream years ago - búsqueda recursiva hacia atrás */
     let found: NormalizedShow | null = null;
-    let searchYear = parseInt(targetYear);
+    const searchYear = parseInt(targetYear);
     const maxSearchAttempts = 10; // Buscar hasta 10 años hacia atrás
-    let searchedYears: string[] = [];
+    const searchedYears: string[] = [];
 
     for (let attempt = 0; attempt < maxSearchAttempts && !found; attempt++) {
       const currentSearchYear = searchYear - attempt;

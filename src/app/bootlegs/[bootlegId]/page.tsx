@@ -1,4 +1,4 @@
-import { getTranslations, getLocale } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 import { Metadata } from "next";
 import BootlegDetailPage from "@/components/BootlegDetailPage";
 import bootlegsData from "@/constants/bootlegs.json";
