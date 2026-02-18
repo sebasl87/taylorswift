@@ -241,7 +241,7 @@ async function processFeed(feedUrl) {
       // Verificar relevancia
       console.log(`   🔍 Analizando: "${title.substring(0, 60)}..."`);
 
-      const isRelevant = await isRelevantToTaylorSwift(title, content);
+      const isRelevant = await isRelevantToTaylor(title, content);
 
       if (isRelevant) {
         console.log(`   ✅ Relevante para Taylor Swift`);
