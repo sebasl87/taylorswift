@@ -1,82 +1,26 @@
-import { getLocale, getTranslations } from "next-intl/server";
-import type { Metadata } from "next";
-import SongsListPage from "../../components/SongsListPage";
+import { getTranslations, getLocale } from "next-intl/server";
+import SongsListPage from "@/components/SongsListPage";
+import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata() {
   const locale = await getLocale();
-  const t = await getTranslations("songs");
-
-  const title = `${t("songsListTitle")} | Megadeth`;
-  const description = t("songsListDescription");
-  const keywords = [
-    "Megadeth",
-    "songs",
-    "canciones",
-    "thrash metal",
-    "metal",
-    "Dave Mustaine",
-    "Nick Menza",
-    "Marty Friedman",
-    "David Ellefson",
-    "James LoMenzo",
-    "Dirk Verbeuren",
-    "Teemu Mäntysaari",
-    "discografía Megadeth",
-    "álbumes Megadeth",
-    "lyrics",
-    "letras",
-  ];
-
+  const t = await getTranslations({ locale, namespace: "songs" });
   return {
-    title,
-    description,
-    keywords,
+    title: `${t("title")} | Taylor Swift`,
+    description: t("description"),
+    keywords: t("keywords"),
     openGraph: {
-      title,
-      description,
-      url: "/songs",
-      siteName: "Megadeth Fan Site",
-      locale: locale === "es" ? "es_ES" : "en_US",
+      title: `${t("title")} | Taylor Swift`,
+      description: t("description"),
       type: "website",
-      images: [
-        {
-          url: "/images/discography/og-songs.jpg",
-          width: 1200,
-          height: 630,
-          alt:
-            locale === "es"
-              ? "Listado de canciones de Megadeth"
-              : "Megadeth Songs List",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: ["/images/discography/og-songs.jpg"],
-      creator: "@MegadethFanSite",
-    },
-    alternates: {
-      canonical: "/songs",
-      languages: {
-        es: "/songs",
-        en: "/songs",
-      },
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
     },
   };
 }
 
 export default function SongsPage() {
-  return <SongsListPage />;
+  return (
+    <ContainerGradientNoPadding>
+      <SongsListPage />
+    </ContainerGradientNoPadding>
+  );
 }

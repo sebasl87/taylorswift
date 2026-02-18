@@ -1,359 +1,243 @@
 "use client";
 
-import { Box, Container, Stack, Typography, Button } from "@mui/material";
-import { useTranslations, useLocale } from "next-intl";
-import ContainerGradient from "../components/atoms/ContainerGradient";
+import { Box, Typography, Button, Chip, Stack, Container } from "@mui/material";
 import Image from "next/image";
-import Divider from "@mui/material/Divider";
-import ArticleCard from "./ArticleCard";
-import QuickAccessGrid from "./QuickAccessGrid";
-import TopSongsWidget from "./TopSongsWidget";
-import UpcomingToursWidget from "./UpcomingToursWidget";
-import newsData from "@/constants/news.json";
-import { NewsArticle } from "@/types/news";
 import Link from "next/link";
-import RandomSectionBanner from "./NewsBanner";
-import SiteUpdatesBanner from "./SiteUpdatesBanner";
-import siteUpdatesData from "@/constants/site-updates.json";
-import LastShowsCards from "./LastShowsCards";
-import FeaturedReviewBanner from "./FeaturedReviewBanner";
-import ArgentinaConcertBanner from "./ArgentinaConcertBanner";
-import { slugify } from "@/utils/slugify";
+import { useTranslations } from "next-intl";
+import { useEra } from "@/context/EraContext";
 
 export default function Hero() {
+  const { currentEra } = useEra();
   const t = useTranslations("hero");
-  const tAlbum = useTranslations("album");
-  const tNews = useTranslations("news");
-  const tIntro = useTranslations("heroIntro");
-  const locale = useLocale() as "es" | "en";
 
-  // Obtener las últimas 3 noticias ordenadas por fecha
-  const latestNews = ([...newsData] as NewsArticle[])
-    .sort(
-      (a, b) =>
-        new Date(b.publishedDate).getTime() -
-        new Date(a.publishedDate).getTime(),
-    )
-    .slice(0, 5);
+  // Función para scroll suave a una sección
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string,
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   return (
-    <ContainerGradient>
-      <Container
-        maxWidth={false}
-        sx={{ maxWidth: 1440, mx: "auto", px: { xs: 2, sm: 3 } }}
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+        minHeight: { xs: "600px", md: "80vh" },
+        borderRadius: { xs: 0, md: 4 },
+        overflow: "hidden",
+        mb: 4,
+      }}
+    >
+      {/* Imagen de fondo full-width */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 0,
+        }}
       >
-        <Stack spacing={3} alignItems="start">
-          <Typography variant="h1" sx={{ fontSize: { xs: 24, md: 56 } }}>
+        <Image
+          src="/images/cards-home/hero.png"
+          alt={t("imageAlt")}
+          fill
+          priority
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+          sizes="100vw"
+        />
+      </Box>
+
+      {/* Overlay oscuro para mejor contraste del texto */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "rgba(0,0,0,0.3)",
+          zIndex: 2,
+        }}
+      />
+
+      {/* Contenido de texto sobre la imagen */}
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 3,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          minHeight: { xs: "600px", md: "80vh" },
+          py: { xs: 4, md: 8 },
+        }}
+      >
+        <Box
+          sx={{
+            width: { xs: "100%", md: "60%", lg: "50%" },
+            display: "flex",
+            flexDirection: "column",
+            gap: 3,
+          }}
+        >
+          {/* H1 - SEO optimizado */}
+          <Typography
+            variant="h1"
+            component="h1"
+            sx={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              fontSize: { xs: "2.5rem", sm: "3rem", md: "4rem" },
+              lineHeight: 1.2,
+              color: "#FFFFFF",
+              textShadow:
+                "2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)",
+            }}
+          >
             {t("title")}
           </Typography>
 
-          {/* Intro SEO */}
+          {/* Bajada */}
           <Typography
-            variant="body1"
+            variant="h6"
             sx={{
-              fontSize: { xs: 14, md: 18 },
-              color: "text.secondary",
-              maxWidth: 1200,
+              color: "#FFFFFF",
+              textShadow: "1px 1px 4px rgba(0,0,0,0.8)",
+              fontSize: { xs: "1rem", md: "1.25rem" },
               lineHeight: 1.7,
+              fontWeight: 400,
             }}
           >
-            {tIntro("description")}
+            {t("subtitle")}
           </Typography>
 
-          <Box
-            width="100%"
-            gap={4}
-            display="flex"
-            flexDirection={{ xs: "column", lg: "row" }}
-            justifyContent={{ xs: "center", lg: "flex-start" }}
-            alignItems={{ xs: "center", lg: "flex-start" }}
-          >
-            <Box
+          {/* CTAs Principales */}
+          <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+            <Button
+              variant="contained"
+              size="large"
+              component={Link}
+              href="/discography"
               sx={{
-                position: "relative",
-                width: { xs: "300px", md: "600px" },
-                height: { xs: "300px", md: "600px" },
-                flexShrink: 0,
-                overflow: "hidden",
-                borderRadius: 0,
-                transition: "border-radius 0.3s ease",
+                borderRadius: 3,
+                px: 4,
+                py: 1.5,
+                textTransform: "none",
+                fontSize: "1rem",
+                fontWeight: 600,
+                boxShadow: `0 4px 14px ${currentEra.shadowColor}`,
+                transition: "all 0.3s ease",
                 "&:hover": {
-                  borderRadius: "24px",
+                  transform: "translateY(-2px)",
+                  boxShadow: `0 6px 20px ${currentEra.shadowColor}`,
                 },
               }}
             >
-              <Link
-                href="/discography/megadeth"
-                passHref
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <Image
-                  src="/images/megadeth-megadeth.jpg"
-                  alt="Megadeth"
-                  fill
-                  style={{
-                    objectFit: "cover",
-                  }}
-                  priority
-                />
-              </Link>
-            </Box>
-            <Box>
-              <Stack spacing={2} sx={{ mt: 0 }}>
-                <Typography
-                  variant="h4"
-                  color="primary"
-                  sx={{ fontSize: { xs: 20, md: 34 }, fontWeight: 600, mb: 1 }}
-                >
-                  {tAlbum("finalAlbumTitle")}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: 500,
-                    color: "text.primary",
-                    fontSize: { xs: 18, md: 24 },
-                  }}
-                >
-                  {tAlbum("albumName")}: &quot;{tAlbum("albumName")}&quot;
-                </Typography>
-                <Stack spacing={1.5}>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontSize: { xs: 14, md: 17 } }}
-                  >
-                    <strong>{tAlbum("firstSingle")}:</strong> &quot;
-                    {tAlbum("firstSingleValue")}&quot;
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontSize: { xs: 14, md: 17 } }}
-                  >
-                    <strong>{tAlbum("producedBy")}:</strong>{" "}
-                    {tAlbum("producedByValue")}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontSize: { xs: 14, md: 17 } }}
-                  >
-                    <strong>{tAlbum("finalLineup")}:</strong>{" "}
-                    {tAlbum("finalLineupValue")}
-                  </Typography>
-
-                  <Typography
-                    variant="body1"
-                    sx={{ fontSize: { xs: 14, md: 17 }, mt: 1 }}
-                  >
-                    <strong>{tAlbum("preOrder")}:</strong>{" "}
-                    <Typography
-                      component="a"
-                      href="https://shop.megadeth.com/collections/megadeth"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        color: "primary.main",
-                        textDecoration: "none",
-                        fontWeight: 600,
-                        fontSize: "1.1rem",
-                        "&:hover": {
-                          color: "primary.dark",
-                          textDecoration: "underline",
-                        },
-                      }}
-                    >
-                      {tAlbum("officialStore")}
-                    </Typography>
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontSize: { xs: 14, md: 17 } }}
-                  >
-                    <strong>{tAlbum("updatedSections")}:</strong>{" "}
-                    <Typography
-                      component={Link}
-                      href="/discography"
-                      sx={{
-                        color: "primary.main",
-                        textDecoration: "none",
-                        fontWeight: 600,
-                        fontSize: "1.1rem",
-                        "&:hover": {
-                          color: "primary.dark",
-                          textDecoration: "underline",
-                        },
-                      }}
-                    >
-                      {tAlbum("discography")}
-                    </Typography>
-                    {" y "}
-                    <Typography
-                      component={Link}
-                      href="/songs"
-                      sx={{
-                        color: "primary.main",
-                        textDecoration: "none",
-                        fontWeight: 600,
-                        fontSize: "1.1rem",
-                        "&:hover": {
-                          color: "primary.dark",
-                          textDecoration: "underline",
-                        },
-                      }}
-                    >
-                      {tAlbum("songs")}
-                    </Typography>{" "}
-                    {tAlbum("withAllNews")}
-                  </Typography>
-                </Stack>
-                {/* Tracklist Section */}
-                <Box mt={3}>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 600,
-                      mb: 1,
-                      fontSize: { xs: 16, md: 22 },
-                    }}
-                  >
-                    Tracklist
-                  </Typography>
-                  <Stack spacing={0.5}>
-                    {[
-                      "TIPPING POINT",
-                      "I DON'T CARE",
-                      "HEY, GOD?!",
-                      "LET THERE BE SHRED",
-                      "PUPPET PARADE",
-                      "ANOTHER BAD DAY",
-                      "MADE TO KILL",
-                      "OBEY THE CALL",
-                      "I AM WAR",
-                      "THE LAST NOTE",
-                      "RIDE THE LIGHTNING",
-                      "BLOODLUST",
-                      "NOBODY'S HERO",
-                    ].map((track, idx) => (
-                      <Link
-                        key={track}
-                        href={`/songs/${slugify(track)}`}
-                        passHref
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            fontSize: { xs: 13, md: 16 },
-                            pl: 1,
-                            cursor: "pointer",
-                            transition: "color 0.2s",
-                            "&:hover": {
-                              color: "primary.main",
-                            },
-                          }}
-                        >
-                          <strong>{idx + 1}.</strong> {track}
-                        </Typography>
-                      </Link>
-                    ))}
-                  </Stack>
-                </Box>
-                {/* Countdown Component
-                <Box mt={1}>
-                  <Countdown />
-                </Box> */}
-              </Stack>
-            </Box>
+              {t("ctaPrimary")}
+            </Button>
+            <Button
+              variant="outlined"
+              size="large"
+              component={Link}
+              href="/noticias"
+              sx={{
+                borderRadius: 3,
+                px: 4,
+                py: 1.5,
+                textTransform: "none",
+                fontSize: "1rem",
+                fontWeight: 600,
+                borderWidth: 2,
+                borderColor: "#FFFFFF",
+                color: "#FFFFFF",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  borderWidth: 2,
+                  transform: "translateY(-2px)",
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  backdropFilter: "blur(10px)",
+                },
+              }}
+            >
+              {t("ctaSecondary")}
+            </Button>
           </Box>
-        </Stack>
 
-        {/* Banner de concierto en Argentina */}
-        <Box mt={4}>
-          <ArgentinaConcertBanner />
-        </Box>
-
-        <FeaturedReviewBanner />
-
-        {/* Quick Access Grid */}
-        <QuickAccessGrid />
-
-        {/* Upcoming Tours & Top Songs - Side by Side */}
-        <Box
-          sx={{
-            width: "100%",
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
-            gap: 3,
-            mt: 6,
-            mb: 4,
-            alignItems: "stretch",
-          }}
-        >
-          <UpcomingToursWidget limit={8} />
-          <TopSongsWidget />
-        </Box>
-
-        {/* Banner de actualizaciones del sitio */}
-        {siteUpdatesData.length > 0 && (
-          <Box sx={{ width: "100%", mb: 4 }}>
-            <SiteUpdatesBanner updates={siteUpdatesData} />
-          </Box>
-        )}
-
-        {/* Cards de últimos shows */}
-        <Box sx={{ width: "100%" }} pt={3}>
-          <LastShowsCards />
-        </Box>
-        <Divider sx={{ mt: 8, mb: 4, width: "100%" }} />
-
-        {/* Sección de últimas noticias */}
-        <Typography
-          variant="h2"
-          sx={{ fontSize: { xs: 28, md: 48 }, mb: 4, mt: 4 }}
-        >
-          {tNews("latestNews")}
-        </Typography>
-
-        {latestNews.map((article: NewsArticle) => (
-          <Box key={article.id}>
-            <ArticleCard
-              title={article.title[locale]}
-              description={article.description[locale]}
-              imageUrl={article.imageUrl}
-              imageAlt={article.imageAlt?.[locale]}
-              imageCaption={article.imageCaption?.[locale]}
-              publishedDate={article.publishedDate}
-              linkUrl={article.linkUrl}
-              linkTarget={article.linkTarget}
-              youtubeVideoId={article.youtubeVideoId}
-              externalLinks={article.externalLinks?.map((link) => ({
-                url: link.url,
-                text: link.text[locale],
-              }))}
+          {/* Mini-links / Chips */}
+          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            <Chip
+              label={t("chipEras")}
+              component="a"
+              href="#eras"
+              onClick={(e) => handleSmoothScroll(e, "eras")}
+              clickable
+              sx={{
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                backdropFilter: "blur(10px)",
+                color: "#FFFFFF",
+                fontWeight: 500,
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  transform: "translateY(-2px)",
+                },
+              }}
             />
-            <Divider sx={{ my: 6, width: "100%" }} />
-          </Box>
-        ))}
-
-        {/* Botón para ver todas las noticias */}
-        <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
-          <Button
-            component={Link}
-            href="/noticias"
-            variant="contained"
-            size="large"
-            sx={{
-              px: 4,
-              py: 1.5,
-              fontSize: { xs: 16, md: 18 },
-              fontWeight: 600,
-              textTransform: "uppercase",
-            }}
-          >
-            {tNews("viewAllNews")}
-          </Button>
+            <Chip
+              label={t("chipTours")}
+              component="a"
+              href="#tour"
+              onClick={(e) => handleSmoothScroll(e, "tour")}
+              clickable
+              sx={{
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                backdropFilter: "blur(10px)",
+                color: "#FFFFFF",
+                fontWeight: 500,
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  transform: "translateY(-2px)",
+                },
+              }}
+            />
+            <Chip
+              label={t("chipBio")}
+              component={Link}
+              href="/era"
+              clickable
+              sx={{
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                backdropFilter: "blur(10px)",
+                color: "#FFFFFF",
+                fontWeight: 500,
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  transform: "translateY(-2px)",
+                },
+              }}
+            />
+          </Stack>
         </Box>
-        <RandomSectionBanner currentSection="news" />
       </Container>
-    </ContainerGradient>
+    </Box>
   );
 }

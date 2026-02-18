@@ -5,6 +5,7 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { HistoryChapter, getText } from "@/types/historia";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import { useEra } from "@/context/EraContext";
 
 interface HistoryNavigationProps {
   currentChapter: HistoryChapter;
@@ -23,21 +24,24 @@ export default function HistoryNavigation({
   const router = useRouter();
   const locale = useLocale() as "es" | "en";
   const t = useTranslations("history");
+  const { setEra, currentEra } = useEra();
 
   const currentIndex = allChapters.findIndex(
-    (ch) => ch.slug === currentChapter.slug
+    (ch) => ch.slug === currentChapter.slug,
   );
   const progress = ((currentIndex + 1) / allChapters.length) * 100;
 
   const handlePrevious = () => {
     if (previousChapter) {
-      router.push(`/historia/${previousChapter.slug}`);
+      setEra(previousChapter.slug);
+      router.push(`/era/${previousChapter.slug}`);
     }
   };
 
   const handleNext = () => {
     if (nextChapter) {
-      router.push(`/historia/${nextChapter.slug}`);
+      setEra(nextChapter.slug);
+      router.push(`/era/${nextChapter.slug}`);
     }
   };
 
@@ -72,8 +76,7 @@ export default function HistoryNavigation({
             sx={{
               width: `${progress}%`,
               height: "100%",
-              backgroundColor:
-                currentChapter.color || theme.palette.primary.main,
+              backgroundColor: currentEra.colors.primary,
               borderRadius: 2,
               transition: "width 0.5s ease",
             }}
@@ -91,7 +94,7 @@ export default function HistoryNavigation({
           <Typography
             variant="caption"
             sx={{
-              color: theme.palette.text.secondary,
+              color: currentEra.colors.text,
             }}
           >
             {t("chapters")} {currentIndex + 1} de {allChapters.length}
@@ -99,7 +102,7 @@ export default function HistoryNavigation({
           <Typography
             variant="caption"
             sx={{
-              color: currentChapter.color,
+              color: currentEra.colors.primary,
               fontWeight: 600,
             }}
           >
@@ -129,11 +132,11 @@ export default function HistoryNavigation({
             disabled={!previousChapter}
             sx={{
               minWidth: "120px",
-              borderColor: currentChapter.color,
-              color: currentChapter.color,
+              borderColor: currentEra.colors.primary,
+              color: currentEra.colors.heroText,
               "&:hover": {
-                borderColor: currentChapter.color,
-                backgroundColor: `${currentChapter.color}10`,
+                borderColor: currentEra.colors.primary,
+                backgroundColor: `${currentEra.colors.primary}20`,
               },
               "&.Mui-disabled": {
                 borderColor: theme.palette.grey[300],
@@ -172,11 +175,11 @@ export default function HistoryNavigation({
             disabled={!nextChapter}
             sx={{
               minWidth: "120px",
-              borderColor: currentChapter.color,
-              color: currentChapter.color,
+              borderColor: currentEra.colors.primary,
+              color: currentEra.colors.heroText,
               "&:hover": {
-                borderColor: currentChapter.color,
-                backgroundColor: `${currentChapter.color}10`,
+                borderColor: currentEra.colors.primary,
+                backgroundColor: `${currentEra.colors.primary}20`,
               },
               "&.Mui-disabled": {
                 borderColor: theme.palette.grey[300],

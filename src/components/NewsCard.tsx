@@ -22,11 +22,19 @@ export default function NewsCard({ article }: NewsCardProps) {
   // Formatear fecha
   const formattedDate = new Date(article.publishedDate).toLocaleDateString(
     locale === "es" ? "es-ES" : "en-US",
-    { year: "numeric", month: "long", day: "numeric" }
+    { year: "numeric", month: "long", day: "numeric" },
   );
 
   const hasYouTube = !!article.youtubeVideoId;
   const hasImage = !!article.imageUrl;
+
+  // Determinar imagen a mostrar (siempre muestra algo)
+  const imageToShow =
+    article.imageUrl ||
+    (hasYouTube
+      ? `https://img.youtube.com/vi/${article.youtubeVideoId}/hqdefault.jpg`
+      : null) ||
+    "/images/news/default-taylor-swift.jpg";
 
   return (
     <Card
@@ -44,18 +52,13 @@ export default function NewsCard({ article }: NewsCardProps) {
         },
       }}
     >
-      {(hasImage || hasYouTube) && (
-        <CardMedia
-          component="img"
-          height="200"
-          image={
-            article.imageUrl ||
-            `https://img.youtube.com/vi/${article.youtubeVideoId}/hqdefault.jpg`
-          }
-          alt={article.imageAlt?.[locale] || article.title[locale]}
-          sx={{ objectFit: "cover" }}
-        />
-      )}
+      <CardMedia
+        component="img"
+        height="200"
+        image={imageToShow}
+        alt={article.imageAlt?.[locale] || article.title[locale]}
+        sx={{ objectFit: "cover" }}
+      />
       <CardContent
         sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}
       >

@@ -2,6 +2,7 @@
 
 import { Box, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import { useEra } from "@/context/EraContext";
 import VideoCard from "./VideoCard";
 import type { Video } from "@/types/video";
 
@@ -10,6 +11,7 @@ interface VideosGridProps {
 }
 
 export default function VideosGrid({ videos }: VideosGridProps) {
+  const { currentEra } = useEra();
   const t = useTranslations("videos");
 
   return (
@@ -23,10 +25,9 @@ export default function VideosGrid({ videos }: VideosGridProps) {
           fontWeight: "bold",
           textAlign: "center",
           mb: 2,
-          background: "linear-gradient(45deg, #ff6b6b, #4ecdc4)",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          color: currentEra.colors.heroText,
+          textShadow: `2px 2px 4px ${currentEra.shadowColor}`,
+          fontFamily: "Playfair Display, serif",
         }}
       >
         {t("title")}
@@ -38,10 +39,12 @@ export default function VideosGrid({ videos }: VideosGridProps) {
         component="h2"
         sx={{
           textAlign: "center",
-          color: "text.secondary",
+          color: currentEra.colors.heroText,
+          textShadow: `1px 1px 2px ${currentEra.shadowColor}`,
           mb: 6,
           maxWidth: "600px",
           mx: "auto",
+          fontFamily: "Montserrat, sans-serif",
         }}
       >
         {t("subtitle")}
@@ -50,7 +53,7 @@ export default function VideosGrid({ videos }: VideosGridProps) {
       {/* Videos Grid */}
       <Box
         component="section"
-        aria-label="Colección de videos musicales de Megadeth"
+        aria-label="Colección de videos musicales de Taylor Swift"
         sx={{
           display: "grid",
           gridTemplateColumns: {

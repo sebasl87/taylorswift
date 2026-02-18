@@ -1,89 +1,56 @@
-import SongDetailPage from "../../../components/SongDetailPage";
-import songsData from "@/constants/songs.json";
-import { getLocale } from "next-intl/server";
-import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getTranslations, getLocale } from "next-intl/server";
+import SongDetailPage from "@/components/SongDetailPage";
+import { getAllSongs, Song } from "@/utils/songs";
+import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 
 export async function generateStaticParams() {
-  return songsData.map((song) => ({ songId: song.id }));
+  const songs = getAllSongs();
+  return songs.map((song) => ({
+    songId: song.id,
+  }));
 }
 
-interface Props {
-  params: Promise<{
-    songId: string;
-  }>;
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ songId: string }>;
+}) {
+  const { songId } = await params;
   const locale = await getLocale();
-  const song = songsData.find((s) => s.id === resolvedParams.songId);
-  if (!song) return { title: "Song not found" };
+  const songs = getAllSongs();
+  const song = songs.find((s) => s.id === songId);
+  if (!song) return {};
 
-  const title = song.title;
-  const album = song.album.title;
-  const year = song.album.year;
-  const theme = locale === "es" ? song.theme.es : song.theme.en;
-  const description = `${title} (${year}) - ${album}. ${theme}`;
-
-  const keywords = [
-    title,
-    album,
-    year.toString(),
-    "Megadeth",
-    "lyrics",
-    "letra",
-    ...song.credits.musicians.map((m) => m.name),
-  ];
-  const canonicalUrl = `/songs/${song.id}`;
+  const t = await getTranslations({ locale, namespace: "songs" });
 
   return {
-    title: `${title} | Megadeth`,
-    description,
-    keywords,
+    title: `${song.title} | Taylor Swift`,
+    description: `${t("about")} ${song.title} - ${song.album.title}`,
     openGraph: {
-      title: `${title} | Megadeth`,
-      description,
-      url: `/songs/${song.id}`,
-      siteName: "Megadeth Fan Site",
-      locale: locale === "es" ? "es_ES" : "en_US",
-      type: "article",
-      images: [
-        {
-          url: song.album.cover,
-          width: 1200,
-          height: 630,
-          alt: `${title} (${year}) - ${album}`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | Megadeth`,
-      description,
-      images: [song.album.cover],
-      creator: "@MegadethFanSite",
-    },
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        es: canonicalUrl,
-        en: canonicalUrl,
-      },
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
+      title: `${song.title} | Taylor Swift`,
+      description: `${t("about")} ${song.title} - ${song.album.title}`,
+      type: "music.song",
     },
   };
 }
 
-export default async function SongPage({ params }: Props) {
-  const resolvedParams = await params;
-  return <SongDetailPage songId={resolvedParams.songId} />;
+export default async function SongPage({
+  params,
+}: {
+  params: Promise<{ songId: string }>;
+}) {
+  const { songId } = await params;
+  const songs = getAllSongs();
+  const song = songs.find((s) => s.id === songId);
+
+  if (!song) {
+    notFound();
+  }
+
+  return (
+    <ContainerGradientNoPadding>
+      <SongDetailPage songId={songId} />
+    </ContainerGradientNoPadding>
+  );
 }

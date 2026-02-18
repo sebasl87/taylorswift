@@ -5,6 +5,8 @@ import { HistoryChapter, HistorySection, getText } from "@/types/historia";
 import HistoryImageComponent from "./HistoryImage";
 import { useTheme } from "@mui/material/styles";
 import { useLocale } from "next-intl";
+import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
+import { useEra } from "@/context/EraContext";
 
 interface HistoryChapterComponentProps {
   chapter: HistoryChapter;
@@ -21,6 +23,7 @@ function HistorySectionComponent({
 }: HistorySectionComponentProps) {
   const theme = useTheme();
   const locale = useLocale() as "es" | "en";
+  const { currentEra } = useEra();
 
   const sectionContent = getText(section.content, locale);
   const sectionTitle = section.title
@@ -40,7 +43,7 @@ function HistorySectionComponent({
             sx={{
               lineHeight: 1.8,
               fontSize: "1.1rem",
-              color: theme.palette.text.primary,
+              color: currentEra.colors.heroText,
               textAlign: "justify",
               mb: 2,
             }}
@@ -69,7 +72,7 @@ function HistorySectionComponent({
         sx={{
           lineHeight: 1.8,
           fontSize: "1.1rem",
-          color: theme.palette.text.primary,
+          color: currentEra.colors.heroText,
           textAlign: "justify",
           mb: 4,
         }}
@@ -121,7 +124,7 @@ function HistorySectionComponent({
           sx={{
             lineHeight: 1.8,
             fontSize: "1.1rem",
-            color: theme.palette.text.primary,
+            color: currentEra.colors.heroText,
             textAlign: "justify",
           }}
         >
@@ -138,7 +141,7 @@ function HistorySectionComponent({
       sx={{
         lineHeight: 1.8,
         fontSize: "1.1rem",
-        color: theme.palette.text.primary,
+        color: currentEra.colors.heroText,
         textAlign: "justify",
         mb: 3,
       }}
@@ -156,7 +159,7 @@ function HistorySectionComponent({
             variant="h4"
             sx={{
               fontWeight: 700,
-              color: chapterColor,
+              color: currentEra.colors.heroText,
               mb: 1,
               fontSize: { xs: "1.5rem", md: "2rem" },
             }}
@@ -167,7 +170,7 @@ function HistorySectionComponent({
             sx={{
               width: "60px",
               height: "3px",
-              backgroundColor: chapterColor,
+              backgroundColor: currentEra.colors.primary,
               mb: 2,
             }}
           />
@@ -189,6 +192,7 @@ export default function HistoryChapterComponent({
 }: HistoryChapterComponentProps) {
   const theme = useTheme();
   const locale = useLocale() as "es" | "en";
+  const { currentEra } = useEra();
   const chapterColor = chapter.color || theme.palette.primary.main;
 
   const chapterTitle = getText(chapter.title, locale);
@@ -198,119 +202,131 @@ export default function HistoryChapterComponent({
   const chapterSummary = getText(chapter.summary, locale);
 
   return (
-    <Box width="100%">
-      {/* Header del capítulo */}
+    <ContainerGradientNoPadding>
       <Box
         sx={{
+          background: currentEra.colors.heroOverlay,
+          minHeight: "100vh",
           position: "relative",
-          mb: 4,
-          overflow: "hidden",
-          borderRadius: 4,
+          justifyContent: "center",
+          display: "flex",
         }}
       >
-        {/* Imagen de fondo del capítulo */}
-        {chapter.coverImage && (
-          <HistoryImageComponent image={chapter.coverImage} priority />
-        )}
-
-        {/* Overlay con información del capítulo */}
-        <Box
-          sx={{
-            position: chapter.coverImage ? "absolute" : "relative",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: chapter.coverImage
-              ? "rgba(0,0,0,0.6)"
-              : `linear-gradient(135deg, ${chapterColor}20, ${chapterColor}10)`,
-            color: chapter.coverImage ? "white" : theme.palette.text.primary,
-            textAlign: "center",
-            padding: 6,
-            minHeight: "400px",
-          }}
-        >
-          {/* Chip con período */}
-          <Chip
-            label={chapter.period}
+        <Box width="100%" pt="100px" maxWidth={1440}>
+          {/* Header del capítulo */}
+          <Box
             sx={{
-              backgroundColor: chapterColor,
-              color: "white",
-              fontWeight: 700,
-              fontSize: "1rem",
-              mb: 2,
-              px: 2,
-              py: 0.5,
-            }}
-          />
-
-          {/* Título */}
-          <Typography
-            variant="h1"
-            sx={{
-              fontWeight: 900,
-              fontSize: { xs: "2.5rem", md: "4rem" },
-              mb: 1,
-              textShadow: chapter.coverImage
-                ? "2px 2px 4px rgba(0,0,0,0.8)"
-                : "none",
-              lineHeight: 1.1,
+              position: "relative",
+              mb: 4,
+              overflow: "hidden",
+              borderRadius: 2,
             }}
           >
-            {chapterTitle}
-          </Typography>
+            {/* Imagen de fondo del capítulo */}
+            {chapter.coverImage && (
+              <HistoryImageComponent image={chapter.coverImage} priority />
+            )}
 
-          {/* Subtítulo */}
-          {chapter.subtitle && (
-            <Typography
-              variant="h4"
+            {/* Overlay con información del capítulo */}
+            <Box
               sx={{
-                fontWeight: 300,
-                fontSize: { xs: "1.2rem", md: "1.8rem" },
-                mb: 3,
-                fontStyle: "italic",
-                textShadow: chapter.coverImage
-                  ? "1px 1px 2px rgba(0,0,0,0.8)"
-                  : "none",
-                opacity: 0.9,
+                position: chapter.coverImage ? "absolute" : "relative",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+
+                color: chapter.coverImage
+                  ? "white"
+                  : theme.palette.text.primary,
+                textAlign: "center",
+                padding: 6,
+                minHeight: "400px",
               }}
             >
-              {chapterSubtitle}
-            </Typography>
-          )}
+              {/* Chip con período */}
+              <Chip
+                label={chapter.period}
+                sx={{
+                  backgroundColor: chapterColor,
+                  color: "white",
+                  fontWeight: 700,
+                  fontSize: "1rem",
+                  mb: 2,
+                  px: 2,
+                  py: 0.5,
+                }}
+              />
 
-          {/* Resumen */}
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: 400,
-              fontSize: { xs: "1rem", md: "1.2rem" },
-              maxWidth: "800px",
-              lineHeight: 1.6,
-              textShadow: chapter.coverImage
-                ? "1px 1px 2px rgba(0,0,0,0.8)"
-                : "none",
-            }}
-          >
-            {chapterSummary}
-          </Typography>
+              {/* Título */}
+              <Typography
+                variant="h1"
+                sx={{
+                  fontWeight: 900,
+                  fontSize: { xs: "2.5rem", md: "4rem" },
+                  mb: 1,
+                  textShadow: chapter.coverImage
+                    ? "2px 2px 4px rgba(0,0,0,0.8)"
+                    : "none",
+                  lineHeight: 1.1,
+                }}
+              >
+                {chapterTitle}
+              </Typography>
+
+              {/* Subtítulo */}
+              {chapter.subtitle && (
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 300,
+                    fontSize: { xs: "1.2rem", md: "1.8rem" },
+                    mb: 3,
+                    fontStyle: "italic",
+                    textShadow: chapter.coverImage
+                      ? "1px 1px 2px rgba(0,0,0,0.8)"
+                      : "none",
+                    opacity: 0.9,
+                  }}
+                >
+                  {chapterSubtitle}
+                </Typography>
+              )}
+
+              {/* Resumen */}
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 400,
+                  fontSize: { xs: "1rem", md: "1.2rem" },
+                  maxWidth: "800px",
+                  lineHeight: 1.6,
+                  textShadow: chapter.coverImage
+                    ? "1px 1px 2px rgba(0,0,0,0.8)"
+                    : "none",
+                }}
+              >
+                {chapterSummary}
+              </Typography>
+            </Box>
+          </Box>
+
+          {/* Contenido de las secciones */}
+          <Box sx={{ maxWidth: "1392px", mx: "auto", px: { xs: 2, md: 4 } }}>
+            {chapter.sections.map((section) => (
+              <HistorySectionComponent
+                key={section.id}
+                section={section}
+                chapterColor={chapterColor}
+              />
+            ))}
+          </Box>
         </Box>
       </Box>
-
-      {/* Contenido de las secciones */}
-      <Box sx={{ maxWidth: "1392px", mx: "auto", px: { xs: 2, md: 4 } }}>
-        {chapter.sections.map((section) => (
-          <HistorySectionComponent
-            key={section.id}
-            section={section}
-            chapterColor={chapterColor}
-          />
-        ))}
-      </Box>
-    </Box>
+    </ContainerGradientNoPadding>
   );
 }

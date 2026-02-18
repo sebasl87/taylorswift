@@ -1,63 +1,18 @@
-import { getLocale, getTranslations } from "next-intl/server";
-import type { Metadata } from "next";
-import BootlegsListPage from "@/components/BootlegsListPage";
+import { getTranslations, getLocale } from "next-intl/server";
+import { Metadata } from "next";
+import BootlegsListPage from '@/components/BootlegsListPage';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const t = await getTranslations("bootlegs");
-
-  const title = `${t("listTitle")} | Megadeth`;
-  const description = t("listDescription");
-  const keywords = [
-    "Megadeth",
-    "bootlegs",
-    "conciertos",
-    "concerts",
-    "live",
-    "en vivo",
-    "thrash metal",
-    "metal",
-    "Dave Mustaine",
-    "recordings",
-    "grabaciones",
-    "YouTube",
-    "unofficial",
-    "no oficial",
-  ];
-
+  const t = await getTranslations({ locale, namespace: "bootlegs" });
   return {
-    title,
-    description,
-    keywords,
+    title: `${t('listTitle')} | Taylor Swift`,
+    description: t('listDescription'),
     openGraph: {
-      title,
-      description,
-      url: "/bootlegs",
-      siteName: "Megadeth Fan Site",
-      locale: locale === "es" ? "es_ES" : "en_US",
-      type: "website",
-      images: [
-        {
-          url: "/images/bootlegs/og-bootlegs.jpg",
-          width: 1200,
-          height: 630,
-          alt: locale === "es" ? "Bootlegs de Megadeth" : "Megadeth Bootlegs",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: ["/images/bootlegs/og-bootlegs.jpg"],
-    },
-    alternates: {
-      canonical: "/bootlegs",
-      languages: {
-        es: "/bootlegs",
-        en: "/bootlegs",
-      },
-    },
+        title: `${t('listTitle')} | Taylor Swift`,
+        description: t('listDescription'),
+        type: "website",
+    }
   };
 }
 

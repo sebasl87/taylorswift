@@ -150,7 +150,7 @@ export function CommentsSection({
         }),
       });
 
-      const json = await response.json().catch(() => ({}));
+      await response.json().catch(() => ({}));
 
       if (response.ok) {
         setFormData({ name: "", email: "", content: "", website: "" });

@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Typography, Card, CardContent, Divider } from "@mui/material";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import songsCountsData from "@/constants/songs.counts.fixed.json";
@@ -15,11 +15,13 @@ function songNameToUrl(songName: string): string {
 
 export default function TopSongsWidget() {
   const t = useTranslations("topSongs");
+  const locale = useLocale();
 
   // Convertir objeto a array y ordenar por veces tocadas
-  const topSongs = Object.entries(songsCountsData)
+  const counts = songsCountsData as unknown as Record<string, number>;
+  const topSongs = Object.entries(counts)
     .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count)
+    .sort((a, b) => (b.count || 0) - (a.count || 0))
     .slice(0, 10);
 
   return (
@@ -46,7 +48,7 @@ export default function TopSongsWidget() {
           }}
         >
           <Image
-            src="/images/cards-home/topsongs.png"
+            src="/images/cards-home/topsongs2.jpg"
             alt={t("title")}
             fill
             style={{ objectFit: "cover" }}

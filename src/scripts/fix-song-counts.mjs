@@ -2,9 +2,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const inputPath = process.argv[2] || "songs.counts.json";
-const outputPath = process.argv[3] || "songs.counts.fixed.json";
-const reportPath = process.argv[4] || "songs.counts.report.json";
+const inputPath = process.argv[2] || "src/data/songs.counts.json";
+const outputPath = process.argv[3] || "src/constants/songs.counts.fixed.json";
+const reportPath = process.argv[4] || "src/data/songs.counts.report.json";
 
 /**
  * Pass B: normalización “segura” (sin inventar nombres)
@@ -128,7 +128,7 @@ function main() {
         prev.count += count;
         prev.displayName = pickBestDisplayName(
           prev.displayName,
-          displayCandidate
+          displayCandidate,
         );
         acc.set(ck, prev);
       }

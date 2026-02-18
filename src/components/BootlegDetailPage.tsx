@@ -155,6 +155,7 @@ function BootlegMetadata({ bootleg }: { bootleg: Bootleg }) {
 // Componente para el setlist
 function Setlist({ songs }: { songs: string[] }) {
   const t = useTranslations("bootlegs");
+  const locale = useLocale();
 
   return (
     <Card sx={{ mb: 4 }}>
@@ -238,7 +239,6 @@ function Setlist({ songs }: { songs: string[] }) {
 export default function BootlegDetailPage({ bootleg }: BootlegDetailPageProps) {
   const t = useTranslations("bootlegs");
   const tb = useTranslations("breadcrumb");
-  const locale = useLocale();
 
   const title = `${bootleg.title} - ${bootleg.city}`;
 

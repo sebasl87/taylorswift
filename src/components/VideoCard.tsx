@@ -17,7 +17,7 @@ function getYouTubeVideoId(url: string): string | null {
 
 function getVideoDescription(
   description: Video["description"],
-  locale: string
+  locale: string,
 ): string {
   return description[locale as keyof typeof description] || description.es;
 }
@@ -67,8 +67,8 @@ export default function VideoCard({ video }: VideoCardProps) {
             {/* Thumbnail */}
             <Box
               component="img"
-              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-              alt={`Miniatura del video ${video.title} de Megadeth (${video.year})`}
+              src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+              alt={`Miniatura del video ${video.title} de Taylor Swift (${video.year})`}
               itemProp="thumbnailUrl"
               loading="lazy"
               sx={{
@@ -124,7 +124,7 @@ export default function VideoCard({ video }: VideoCardProps) {
           <Box
             component="iframe"
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
-            title={`Video: ${video.title} - Megadeth (${video.year})`}
+            title={`Video: ${video.title} - Taylor Swift (${video.year})`}
             itemProp="embedUrl"
             sx={{
               position: "absolute",
@@ -185,14 +185,14 @@ export default function VideoCard({ video }: VideoCardProps) {
         {/* Metadatos ocultos para SEO */}
         <meta itemProp="contentUrl" content={video.youtube} />
         <meta itemProp="duration" content="PT3M30S" />
-        <meta itemProp="genre" content="Thrash Metal" />
+        <meta itemProp="genre" content="Pop" />
         <div
           itemProp="creator"
           itemScope
           itemType="https://schema.org/MusicGroup"
           style={{ display: "none" }}
         >
-          <meta itemProp="name" content="Megadeth" />
+          <meta itemProp="name" content="Taylor Swift" />
         </div>
       </CardContent>
     </Card>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Card, Typography, Button, Container } from "@mui/material";
+import { Box, Card, Typography, Button } from "@mui/material";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,8 +20,8 @@ export default function FeaturedReviewBanner() {
     "@type": "PromotionCard",
     name: bannerData.title[locale],
     description: bannerData.subtitle[locale],
-    url: `https://megadeth.com.ar${bannerData.link}`,
-    image: `https://megadeth.com.ar${bannerData.imageUrl}`,
+    url: `https://taylorswift.com${bannerData.link}`,
+    image: `https://taylorswift.com${bannerData.imageUrl}`,
     inLanguage: locale,
   };
 

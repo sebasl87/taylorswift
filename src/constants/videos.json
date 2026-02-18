@@ -1,1 +1,497 @@
-[]
+[
+  {
+    "title": "Tim McGraw",
+    "year": 2006,
+    "youtube": "https://www.youtube.com/watch?v=GkD20ajVxnY",
+    "description": {
+      "es": "El sencillo debut de Taylor Swift. El video muestra a Taylor tocando su guitarra acústica y recordando un amor de verano, estableciendo su estilo narrativo característico.",
+      "en": "Taylor Swift's debut single. The video features Taylor playing her acoustic guitar and reminiscing about a summer romance, establishing her signature storytelling style."
+    }
+  },
+  {
+    "title": "Teardrops On My Guitar",
+    "year": 2007,
+    "youtube": "https://www.youtube.com/watch?v=xKCek6_dB0M",
+    "description": {
+      "es": "Un video emotivo donde Taylor expresa su amor no correspondido por un compañero de clase, combinando escenas escolares con tomas glamurosas.",
+      "en": "An emotional video where Taylor expresses her unrequited love for a classmate, blending high school scenes with glamorous shots."
+    }
+  },
+  {
+    "title": "Our Song",
+    "year": 2007,
+    "youtube": "https://www.youtube.com/watch?v=Jb2stN7kH28",
+    "description": {
+      "es": "Video colorido y vibrante donde Taylor interpreta la canción en varios escenarios fantásticos, consolidando su imagen en la música country.",
+      "en": "A colorful and vibrant video where Taylor performs the song in various fantastical settings, consolidating her image in country music."
+    }
+  },
+  {
+    "title": "Picture To Burn",
+    "year": 2008,
+    "youtube": "https://www.youtube.com/watch?v=yCMqcFAigRg",
+    "description": {
+      "es": "Un video lleno de actitud donde Taylor y su banda se vengan de un ex novio, mostrando su lado más rebelde y empoderado.",
+      "en": "An attitude-filled video where Taylor and her band take revenge on an ex-boyfriend, showing her more rebellious and empowered side."
+    }
+  },
+  {
+    "title": "Change",
+    "year": 2008,
+    "youtube": "https://www.youtube.com/watch?v=B1jYllE0T-k",
+    "description": {
+      "es": "Video que presenta a Taylor actuando con su banda, capturando la energía de sus presentaciones en vivo y el espíritu de superación.",
+      "en": "Video featuring Taylor performing with her band, capturing the energy of her live performances and the spirit of overcoming obstacles."
+    }
+  },
+  {
+    "title": "Love Story",
+    "year": 2008,
+    "youtube": "https://www.youtube.com/watch?v=8xg3vE8Ie_E",
+    "description": {
+      "es": "Uno de sus videos más icónicos, recreando la historia de Romeo y Julieta con un final feliz, transportándonos a épocas pasadas.",
+      "en": "One of her most iconic videos, recreating the story of Romeo and Juliet with a happy ending, transporting us to past eras."
+    }
+  },
+  {
+    "title": "White Horse",
+    "year": 2008,
+    "youtube": "https://www.youtube.com/watch?v=D1Xr-JFLxQI",
+    "description": {
+      "es": "Un video dramático que narra la desilusión amorosa y el darse cuenta de que la vida real no es un cuento de hadas.",
+      "en": "A dramatic video narrating romantic disillusionment and the realization that real life is not a fairy tale."
+    }
+  },
+  {
+    "title": "You Belong With Me",
+    "year": 2009,
+    "youtube": "https://www.youtube.com/watch?v=VuNIsY6JdUw",
+    "description": {
+      "es": "Divertido video donde Taylor interpreta dos papeles: la chica popular y la vecina 'nerd', luchando por el amor del chico de al lado.",
+      "en": "Fun video where Taylor plays two roles: the popular girl and the 'nerd' neighbor, fighting for the love of the boy next door."
+    }
+  },
+  {
+    "title": "Fifteen",
+    "year": 2009,
+    "youtube": "https://www.youtube.com/watch?v=Pb-K2tXWK4w",
+    "description": {
+      "es": "Video con efectos visuales que muestra a Taylor y su mejor amiga Abigail navegando por las experiencias del primer año de secundaria.",
+      "en": "Video with visual effects showing Taylor and her best friend Abigail navigating the experiences of their freshman year of high school."
+    }
+  },
+  {
+    "title": "Fearless",
+    "year": 2010,
+    "youtube": "https://www.youtube.com/watch?v=7BPQxGMAb3I",
+    "description": {
+      "es": "Montaje de imágenes de la gira Fearless Tour, mostrando la conexión especial de Taylor con sus fans y la vida en la carretera.",
+      "en": "Montage of footage from the Fearless Tour, showing Taylor's special connection with her fans and life on the road."
+    }
+  },
+  {
+    "title": "The Best Day",
+    "year": 2009,
+    "youtube": "https://www.youtube.com/watch?v=l4_6eQm7RTQ",
+    "description": {
+      "es": "Un conmovedor homenaje a su madre, compilando videos caseros reales de la infancia de Taylor.",
+      "en": "A touching tribute to her mother, compiling real home videos from Taylor's childhood."
+    }
+  },
+  {
+    "title": "Crazier",
+    "year": 2009,
+    "youtube": "https://www.youtube.com/watch?v=12n04_lQ70k",
+    "description": {
+      "es": "Video con escenas de 'Hannah Montana: La Película', donde Taylor hace un cameo interpretando esta balada romántica.",
+      "en": "Video featuring scenes from 'Hannah Montana: The Movie', where Taylor makes a cameo performing this romantic ballad."
+    }
+  },
+  {
+    "title": "Mine",
+    "year": 2010,
+    "youtube": "https://www.youtube.com/watch?v=XPBwXKgDTdE",
+    "description": {
+      "es": "Narra la historia de una relación a través de los años, desde el noviazgo hasta el matrimonio y la familia, superando el miedo al fracaso.",
+      "en": "Narrates the story of a relationship through the years, from dating to marriage and family, overcoming the fear of failure."
+    }
+  },
+  {
+    "title": "Back To December",
+    "year": 2011,
+    "youtube": "https://www.youtube.com/watch?v=QUwxKWT6m7U",
+    "description": {
+      "es": "Un video melancólico e invernal donde Taylor lamenta haber dejado ir a un amor pasado, visualizando su arrepentimiento.",
+      "en": "A melancholic and wintry video where Taylor regrets letting go of a past love, visualizing her remorse."
+    }
+  },
+  {
+    "title": "Mean",
+    "year": 2011,
+    "youtube": "https://www.youtube.com/watch?v=jYa1eI1hpDE",
+    "description": {
+      "es": "Con una estética teatral y vintage, Taylor critica a quienes la subestimaron, celebrando el éxito y la individualidad.",
+      "en": "With a theatrical and vintage aesthetic, Taylor criticizes those who underestimated her, celebrating success and individuality."
+    }
+  },
+  {
+    "title": "The Story Of Us",
+    "year": 2011,
+    "youtube": "https://www.youtube.com/watch?v=nN6VR92V70M",
+    "description": {
+      "es": "Ambientado en una biblioteca universitaria, muestra la tensión incómoda entre dos ex novios que intentan ignorarse.",
+      "en": "Set in a university library, it shows the awkward tension between two exes trying to ignore each other."
+    }
+  },
+  {
+    "title": "Sparks Fly",
+    "year": 2011,
+    "youtube": "https://www.youtube.com/watch?v=oKarwdWeiWk",
+    "description": {
+      "es": "Recopilación de momentos energéticos del Speak Now World Tour, capturando la magia y pirotecnia de sus conciertos.",
+      "en": "Compilation of energetic moments from the Speak Now World Tour, capturing the magic and pyrotechnics of her concerts."
+    }
+  },
+  {
+    "title": "Ours",
+    "year": 2011,
+    "youtube": "https://www.youtube.com/watch?v=LZ34L5Hg7Ro",
+    "description": {
+      "es": "Muestra a Taylor en un entorno de oficina gris y aburrido, manteniendo la alegría gracias a los recuerdos de su amor.",
+      "en": "Shows Taylor in a gray and boring office environment, maintaining joy thanks to memories of her love."
+    }
+  },
+  {
+    "title": "Safe & Sound",
+    "year": 2012,
+    "youtube": "https://www.youtube.com/watch?v=RzhAS_GnJIc",
+    "description": {
+      "es": "Colaboración con The Civil Wars para 'Los Juegos del Hambre', con una atmósfera etérea, sombría y boscosa.",
+      "en": "Collaboration with The Civil Wars for 'The Hunger Games', featuring an ethereal, somber, and forest-like atmosphere."
+    }
+  },
+  {
+    "title": "We Are Never Ever Getting Back Together",
+    "year": 2012,
+    "youtube": "https://www.youtube.com/watch?v=WA4iX5D9Z64",
+    "description": {
+      "es": "Filmado en una sola toma continua (plano secuencia), muestra a Taylor pasando por las etapas de una ruptura de forma colorida y divertida.",
+      "en": "Filmed in a single continuous shot, it shows Taylor going through the stages of a breakup in a colorful and fun way."
+    }
+  },
+  {
+    "title": "Begin Again",
+    "year": 2012,
+    "youtube": "https://www.youtube.com/watch?v=cMPEd8m79nE",
+    "description": {
+      "es": "Filmado en París, captura la esperanza y belleza de comenzar un nuevo romance después de una relación difícil.",
+      "en": "Filmed in Paris, it captures the hope and beauty of starting a new romance after a difficult relationship."
+    }
+  },
+  {
+    "title": "I Knew You Were Trouble",
+    "year": 2012,
+    "youtube": "https://www.youtube.com/watch?v=vNoKguSdy4Y",
+    "description": {
+      "es": "Un video más oscuro y narrativo que explora una relación tóxica y caótica, marcando un cambio de estilo visual.",
+      "en": "A darker and more narrative video exploring a toxic and chaotic relationship, marking a shift in visual style."
+    }
+  },
+  {
+    "title": "22",
+    "year": 2013,
+    "youtube": "https://www.youtube.com/watch?v=AgFeZr5ptV8",
+    "description": {
+      "es": "Celebra la juventud y la amistad, mostrando a Taylor divirtiéndose con sus amigas reales en Malibú.",
+      "en": "Celebrates youth and friendship, showing Taylor having fun with her real-life friends in Malibu."
+    }
+  },
+  {
+    "title": "Everything Has Changed",
+    "year": 2013,
+    "youtube": "https://www.youtube.com/watch?v=w1oM3kQpXRo",
+    "description": {
+      "es": "Cuenta la historia de dos niños que se conocen en la escuela, revelando al final que son hijos de Taylor y Ed Sheeran.",
+      "en": "Tells the story of two kids meeting at school, revealing at the end that they are Taylor and Ed Sheeran's children."
+    }
+  },
+  {
+    "title": "Red",
+    "year": 2013,
+    "youtube": "https://www.youtube.com/watch?v=Zlot0i3Zykw",
+    "description": {
+      "es": "Imágenes vibrantes de la gira Red Tour, reflejando la intensidad y el color rojo que define esta era.",
+      "en": "Vibrant footage from the Red Tour, reflecting the intensity and the color red that defines this era."
+    }
+  },
+  {
+    "title": "Shake It Off",
+    "year": 2014,
+    "youtube": "https://www.youtube.com/watch?v=nfWlot6h_JM",
+    "description": {
+      "es": "Taylor explora diferentes estilos de baile (ballet, hip-hop, animadora) con humor, animando a ignorar las críticas.",
+      "en": "Taylor explores different dance styles (ballet, hip-hop, cheerleading) with humor, encouraging people to shake off criticism."
+    }
+  },
+  {
+    "title": "Blank Space",
+    "year": 2014,
+    "youtube": "https://www.youtube.com/watch?v=e-ORhEE9VVg",
+    "description": {
+      "es": "Sátira brillante donde Taylor interpreta al personaje de 'novia loca' que los medios crearon sobre ella.",
+      "en": "A brilliant satire where Taylor plays the 'crazy girlfriend' character that the media created about her."
+    }
+  },
+  {
+    "title": "Style",
+    "year": 2015,
+    "youtube": "https://www.youtube.com/watch?v=-CmadmM5cOk",
+    "description": {
+      "es": "Video artístico y onírico con proyecciones visuales y siluetas, evocando recuerdos de un amor elegante y atemporal.",
+      "en": "Artistic and dreamlike video with visual projections and silhouettes, evoking memories of a stylish and timeless love."
+    }
+  },
+  {
+    "title": "Bad Blood",
+    "year": 2015,
+    "youtube": "https://www.youtube.com/watch?v=QcIy9NiNbmo",
+    "description": {
+      "es": "Un éxito de acción tipo película de espías con un elenco estelar de amigas famosas preparándose para la batalla.",
+      "en": "A blockbuster spy-movie style video with a star-studded cast of famous friends preparing for battle."
+    }
+  },
+  {
+    "title": "Wildest Dreams",
+    "year": 2015,
+    "youtube": "https://www.youtube.com/watch?v=IdneKLhsWOQ",
+    "description": {
+      "es": "Ambientado en el glamour de Hollywood de los años 50 y en África, narra un romance de cine destinado a terminar.",
+      "en": "Set in the glamour of 1950s Hollywood and Africa, it narrates a movie romance destined to end."
+    }
+  },
+  {
+    "title": "Out Of The Woods",
+    "year": 2015,
+    "youtube": "https://www.youtube.com/watch?v=JLf9q36SXxY",
+    "description": {
+      "es": "Taylor huye a través de bosques, montañas y playas, simbolizando la ansiedad y fragilidad de una relación.",
+      "en": "Taylor flees through woods, mountains, and beaches, symbolizing the anxiety and fragility of a relationship."
+    }
+  },
+  {
+    "title": "New Romantics",
+    "year": 2016,
+    "youtube": "https://www.youtube.com/watch?v=wyK7YuwUWsU",
+    "description": {
+      "es": "Carta de amor a sus fans con imágenes detrás de escena y en vivo del 1989 World Tour.",
+      "en": "A love letter to her fans featuring behind-the-scenes and live footage from the 1989 World Tour."
+    }
+  },
+  {
+    "title": "I Don't Wanna Live Forever",
+    "year": 2017,
+    "youtube": "https://www.youtube.com/watch?v=7F37r50VUTQ",
+    "description": {
+      "es": "Colaboración con ZAYN para 'Cincuenta Sombras más Oscuras', mostrando a ambos artistas en un hotel de lujo destrozando habitaciones.",
+      "en": "Collaboration with ZAYN for 'Fifty Shades Darker', showing both artists in a luxury hotel trashing rooms."
+    }
+  },
+  {
+    "title": "Look What You Made Me Do",
+    "year": 2017,
+    "youtube": "https://www.youtube.com/watch?v=3tmd-ClpJxk",
+    "description": {
+      "es": "Video lleno de simbolismo donde Taylor 'mata' a sus versiones pasadas, marcando el inicio de la era Reputation.",
+      "en": "Symbolism-packed video where Taylor 'kills' her past selves, marking the beginning of the Reputation era."
+    }
+  },
+  {
+    "title": "...Ready For It?",
+    "year": 2017,
+    "youtube": "https://www.youtube.com/watch?v=wIft-t-MQuE",
+    "description": {
+      "es": "Futurista y sci-fi, presenta a dos versiones de Taylor enfrentándose en un entorno cibernético visualmente impactante.",
+      "en": "Futuristic and sci-fi, featuring two versions of Taylor facing off in a visually striking cybernetic environment."
+    }
+  },
+  {
+    "title": "End Game",
+    "year": 2018,
+    "youtube": "https://www.youtube.com/watch?v=dfnCAmr569k",
+    "description": {
+      "es": "Taylor viaja por Miami, Tokio y Londres de fiesta con Ed Sheeran y Future, mostrando una vida de lujos.",
+      "en": "Taylor travels through Miami, Tokyo, and London partying with Ed Sheeran and Future, showing a life of luxury."
+    }
+  },
+  {
+    "title": "Delicate",
+    "year": 2018,
+    "youtube": "https://www.youtube.com/watch?v=tCXGJQYZ9JA",
+    "description": {
+      "es": "Taylor se vuelve invisible y aprovecha para bailar libremente por un hotel y las calles bajo la lluvia, siendo ella misma.",
+      "en": "Taylor becomes invisible and takes the opportunity to dance freely through a hotel and rain-soaked streets, being herself."
+    }
+  },
+  {
+    "title": "ME!",
+    "year": 2019,
+    "youtube": "https://www.youtube.com/watch?v=FuXNumBwDOM",
+    "description": {
+      "es": "Explosión de colores pastel y fantasía que marca el inicio de la era Lover, celebrando la individualidad con Brendon Urie.",
+      "en": "Explosion of pastel colors and fantasy marking the start of the Lover era, celebrating individuality with Brendon Urie."
+    }
+  },
+  {
+    "title": "You Need To Calm Down",
+    "year": 2019,
+    "youtube": "https://www.youtube.com/watch?v=Dkk9gvTmCIE",
+    "description": {
+      "es": "Un himno colorido a favor de la comunidad LGBTQ+, con cameos de numerosas celebridades y un mensaje contra el odio.",
+      "en": "A colorful anthem supporting the LGBTQ+ community, featuring cameos from numerous celebrities and a message against hate."
+    }
+  },
+  {
+    "title": "Lover",
+    "year": 2019,
+    "youtube": "https://www.youtube.com/watch?v=-BjZmE2gtdo",
+    "description": {
+      "es": "Romántico y acogedor, transcurre dentro de una casa de muñecas donde cada habitación representa una etapa o color del amor.",
+      "en": "Romantic and cozy, set inside a dollhouse where each room represents a stage or color of love."
+    }
+  },
+  {
+    "title": "The Man",
+    "year": 2020,
+    "youtube": "https://www.youtube.com/watch?v=AqAJLh9wuZ0",
+    "description": {
+      "es": "Dirigido por Taylor, ella misma se transforma con maquillaje prostético para interpretar a un hombre privilegiado y criticar el sexismo.",
+      "en": "Directed by Taylor, she transforms herself with prosthetic makeup to play a privileged man and criticize sexism."
+    }
+  },
+  {
+    "title": "cardigan",
+    "year": 2020,
+    "youtube": "https://www.youtube.com/watch?v=K-a8s8OLBSE",
+    "description": {
+      "es": "Mágico y atmosférico, Taylor viaja a través de su piano a bosques y mares tormentosos, reflejando la introspección de Folklore.",
+      "en": "Magical and atmospheric, Taylor travels through her piano to forests and stormy seas, reflecting the introspection of Folklore."
+    }
+  },
+  {
+    "title": "willow",
+    "year": 2020,
+    "youtube": "https://www.youtube.com/watch?v=RsEzJ91Tufk",
+    "description": {
+      "es": "Continuación de 'cardigan', sigue un hilo dorado a través de diferentes escenarios mágicos y épocas, buscando a su destino.",
+      "en": "Continuation of 'cardigan', following a golden thread through different magical settings and eras, searching for her destiny."
+    }
+  },
+  {
+    "title": "Christmas Tree Farm",
+    "year": 2019,
+    "youtube": "https://www.youtube.com/watch?v=mN3rDTAdM2o",
+    "description": {
+      "es": "Video nostálgico compuesto enteramente por grabaciones caseras de la infancia de Taylor creciendo en una granja de árboles de Navidad.",
+      "en": "Nostalgic video composed entirely of home movies from Taylor's childhood growing up on a Christmas tree farm."
+    }
+  },
+  {
+    "title": "All Too Well: The Short Film",
+    "year": 2021,
+    "youtube": "https://www.youtube.com/watch?v=tollGa3S0o8",
+    "description": {
+      "es": "Cortometraje escrito y dirigido por Taylor, narrando la dolorosa ruptura descrita en la versión de 10 minutos de la canción.",
+      "en": "Short film written and directed by Taylor, narrating the painful breakup described in the 10-minute version of the song."
+    }
+  },
+  {
+    "title": "I Bet You Think About Me",
+    "year": 2021,
+    "youtube": "https://www.youtube.com/watch?v=5UMCrq-bBCg",
+    "description": {
+      "es": "Dirigido por Blake Lively, Taylor irrumpe en la boda de un ex novio vestida de rojo, causando caos y diversión.",
+      "en": "Directed by Blake Lively, Taylor crashes an ex-boyfriend's wedding dressed in red, causing chaos and fun."
+    }
+  },
+  {
+    "title": "Anti-Hero",
+    "year": 2022,
+    "youtube": "https://www.youtube.com/watch?v=b1kbLwvqugk",
+    "description": {
+      "es": "Video surrealista donde Taylor enfrenta a sus propios fantasmas, inseguridades y miedos nocturnos con humor negro.",
+      "en": "Surreal video where Taylor confronts her own ghosts, insecurities, and night terrors with dark humor."
+    }
+  },
+  {
+    "title": "Bejeweled",
+    "year": 2022,
+    "youtube": "https://www.youtube.com/watch?v=b7QlX3yR2xs",
+    "description": {
+      "es": "Una reinterpretación del cuento de Cenicienta, donde Taylor busca brillar por sí misma y ganar el castillo, llena de easter eggs.",
+      "en": "A reimagining of the Cinderella story, where Taylor seeks to shine on her own and win the castle, full of easter eggs."
+    }
+  },
+  {
+    "title": "Lavender Haze",
+    "year": 2023,
+    "youtube": "https://www.youtube.com/watch?v=h8DLofLM7No",
+    "description": {
+      "es": "Visualmente impresionante y lleno de humo lavanda, explora el deseo de permanecer en la burbuja del amor ignorando el ruido exterior.",
+      "en": "Visually stunning and full of lavender smoke, exploring the desire to stay in the love bubble ignoring outside noise."
+    }
+  },
+  {
+    "title": "Karma",
+    "year": 2023,
+    "youtube": "https://www.youtube.com/watch?v=P1Z_K5b889U",
+    "description": {
+      "es": "Un viaje cósmico y visual con Ice Spice, donde Taylor personifica el karma en diferentes formas y escenarios fantásticos.",
+      "en": "A cosmic and visual journey with Ice Spice, where Taylor personifies karma in different forms and fantastical settings."
+    }
+  },
+  {
+    "title": "I Can See You",
+    "year": 2023,
+    "youtube": "https://www.youtube.com/watch?v=lV195M8b76s",
+    "description": {
+      "es": "Video de acción donde Joey King y Taylor Lautner rescatan a la Taylor de la era Speak Now de una bóveda de máxima seguridad.",
+      "en": "Action video where Joey King and Taylor Lautner rescue the Speak Now era Taylor from a maximum security vault."
+    }
+  },
+  {
+    "title": "Fortnight",
+    "year": 2024,
+    "youtube": "https://www.youtube.com/watch?v=q3zqJs7JUCQ",
+    "description": {
+      "es": "Estética gótica y en blanco y negro, con Post Malone y Ethan Hawke, explorando temas de locura y amores pasados.",
+      "en": "Gothic black and white aesthetic, featuring Post Malone and Ethan Hawke, exploring themes of madness and past loves."
+    }
+  },
+  {
+    "title": "I Can Do It With a Broken Heart",
+    "year": 2024,
+    "youtube": "https://www.youtube.com/watch?v=SlbVgp96EAk",
+    "description": {
+      "es": "Muestra imágenes inéditas detrás de escena del Eras Tour, revelando el esfuerzo y la práctica detrás del espectáculo masivo.",
+      "en": "Shows unseen behind-the-scenes footage of the Eras Tour, revealing the effort and practice behind the massive show."
+    }
+  },
+  {
+    "title": "The Last Time",
+    "year": 2013,
+    "youtube": "https://www.youtube.com/watch?v=QuijXg8xrZ8",
+    "description": {
+      "es": "Interpretación en vivo y dramática junto a Gary Lightbody de Snow Patrol, mostrando la tensión emocional de la canción.",
+      "en": "Dramatic live performance with Gary Lightbody of Snow Patrol, showing the emotional tension of the song."
+    }
+  },
+  {
+    "title": "Highway Don't Care",
+    "year": 2013,
+    "youtube": "https://www.youtube.com/watch?v=KmxAihchf08",
+    "description": {
+      "es": "Colaboración con Tim McGraw y Keith Urban. Un video narrativo sobre los peligros de conducir distraído mientras se sufre por amor.",
+      "en": "Collaboration with Tim McGraw and Keith Urban. A narrative video about the dangers of distracted driving while heartbroken."
+    }
+  }
+]

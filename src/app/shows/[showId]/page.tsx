@@ -1,120 +1,60 @@
 import { notFound } from "next/navigation";
+import { getTranslations, getLocale } from "next-intl/server";
 import ShowDetailPage from "@/components/ShowDetailPage";
 import showsData from "@/constants/shows.json";
-import { Show, generateShowSlug, formatShowDate } from "@/types/show";
-import { getLocale } from "next-intl/server";
-import type { Metadata } from "next";
+import { Show, generateShowSlug } from "@/types/show";
+import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 
-interface ShowPageProps {
-  params: Promise<{
-    showId: string;
-  }>;
-}
-
-// Función para encontrar show por slug
-function findShowBySlug(slug: string): Show | null {
-  const show = (showsData as Show[]).find((s) => {
-    return generateShowSlug(s) === slug;
-  });
-  return show || null;
+function getShowById(id: string): Show | undefined {
+  return (showsData as Show[]).find((show) => show.id === id);
 }
 
 export async function generateStaticParams() {
-  return (showsData as Show[]).map((show: Show) => ({
-    showId: generateShowSlug(show),
+  const shows = showsData as Show[];
+  return shows.map((show) => ({
+    showId: show.id,
   }));
 }
 
 export async function generateMetadata({
   params,
-}: ShowPageProps): Promise<Metadata> {
+}: {
+  params: Promise<{ showId: string }>;
+}) {
   const { showId } = await params;
   const locale = await getLocale();
-  const show = findShowBySlug(showId);
+  const show = getShowById(showId);
+  if (!show) return {};
 
-  if (!show) return { title: "Show no encontrado" };
-
-  const title = `${show.venue} - ${show.city}`;
-  const description = `${show.whyHistoric}`;
-  const date = new Date(show.date);
-  const year = date.getFullYear();
-
-  const fullTitle = `${title} (${year}) | Megadeth Shows`;
-  const keywords = [
-    "Megadeth",
-    show.venue,
-    show.city,
-    show.country,
-    show.era,
-    year.toString(),
-    "show",
-    "concierto",
-    "concert",
-    "live",
-    "en vivo",
-    ...show.setlist,
-  ];
+  const t = await getTranslations({ locale, namespace: "shows" });
+  const title = `${show.date} - ${show.city} | Taylor Swift`;
 
   return {
-    title: fullTitle,
-    description,
-    keywords,
+    title,
+    description: `${t("showIn")} ${show.city}, ${show.country} - ${show.venue}`,
     openGraph: {
-      title: fullTitle,
-      description,
-      url: `/shows/${showId}`,
-      siteName: "Megadeth Fan Site",
-      locale: locale === "es" ? "es_ES" : "en_US",
+      title,
+      description: `${t("showIn")} ${show.city}, ${show.country} - ${show.venue}`,
       type: "article",
-      publishedTime: show.date,
-      images: [
-        {
-          url: show.image || "/images/shows/1994.jpg",
-          width: 1200,
-          height: 630,
-          alt: `${title} - ${formatShowDate(show.date, locale)}`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: fullTitle,
-      description,
-      images: [show.image || "/images/shows/1994.jpg"],
-      creator: "@MegadethFanSite",
-    },
-    alternates: {
-      canonical: `/shows/${showId}`,
-      languages: {
-        es: `/shows/${showId}`,
-        en: `/shows/${showId}`,
-      },
-    },
-    other: {
-      "article:published_time": show.date,
-      "article:section": "Shows",
-      "article:tag": show.era,
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
     },
   };
 }
 
-export default async function ShowPage({ params }: ShowPageProps) {
+export default async function ShowPage({
+  params,
+}: {
+  params: Promise<{ showId: string }>;
+}) {
   const { showId } = await params;
-  const show = findShowBySlug(showId);
+  const show = getShowById(showId);
 
   if (!show) {
     notFound();
   }
 
-  return <ShowDetailPage show={show} />;
+  return (
+    <ContainerGradientNoPadding>
+      <ShowDetailPage show={show} />
+    </ContainerGradientNoPadding>
+  );
 }

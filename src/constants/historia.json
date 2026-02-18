@@ -1,1 +1,1636 @@
-[]
+{
+  "title": {
+    "es": "Las Eras",
+    "en": "The Eras"
+  },
+  "subtitle": {
+    "es": "Un viaje a través de sus eras musicales",
+    "en": "A journey through her musical eras"
+  },
+  "introduction": {
+    "es": "Explora la evolución de una de las artistas más influyentes de nuestra generación, desde sus inicios en el country hasta su dominio del pop global.",
+    "en": "Explore the evolution of one of the most influential artists of our generation, from her country beginnings to her global pop dominance."
+  },
+  "chapters": [
+    {
+      "id": "debut",
+      "slug": "taylor-swift",
+      "title": {
+        "es": "Taylor Swift",
+        "en": "Taylor Swift"
+      },
+      "period": "2006–2008",
+      "yearStart": 2006,
+      "yearEnd": 2008,
+      "summary": {
+        "es": "El inicio de todo. Una joven de 16 años conquista la escena country con su álbum homónimo.",
+        "en": "The beginning of it all. A 16-year-old conquers the country scene with her self-titled album."
+      },
+      "color": "#B6D06D",
+      "coverImage": {
+        "src": "/images/history/01.png",
+        "alt": "Taylor Swift Debut Era"
+      },
+      "sections": [
+        {
+          "id": "tim-mcgraw",
+          "title": {
+            "es": "Tim McGraw: El Primer Sencillo",
+            "en": "Tim McGraw: The First Single"
+          },
+          "content": {
+            "es": "Escrita durante una clase de matemáticas, esta canción capturó la nostalgia de un amor de verano. A pesar de ser una artista desconocida, Taylor convenció a Scott Borchetta de lanzarla como su sencillo debut, marcando el inicio de su carrera.",
+            "en": "Written during a math class, this song captured the nostalgia of a summer romance. Despite being an unknown artist, Taylor convinced Scott Borchetta to release it as her debut single, marking the beginning of her career."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/debut/tim-mcgraw.jpg",
+              "alt": {
+                "es": "Tim McGraw: El Primer Sencillo",
+                "en": "Tim McGraw: The First Single"
+              },
+              "position": "right",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Tim McGraw: El Primer Sencillo",
+                "en": "Tim McGraw: The First Single"
+              }
+            }
+          ]
+        },
+        {
+          "id": "debut-album",
+          "title": {
+            "es": "El Álbum Homónimo",
+            "en": "The Self-Titled Album"
+          },
+          "content": {
+            "es": "El álbum homónimo pasó más semanas en el Billboard 200 que cualquier otro en la década de 2000. Taylor promocionó el disco con una gira de radio de 6 meses y abriendo conciertos para leyendas del country.",
+            "en": "The self-titled album spent more weeks on the Billboard 200 than any other in the 2000s. Taylor promoted the record with a 6-month radio tour and by opening for country legends."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/debut/first-album6.jpg",
+              "alt": {
+                "es": "El Álbum Homónimo",
+                "en": "The Self-Titled Album"
+              },
+              "position": "center",
+              "layout": "gallery",
+              "size": "full",
+              "caption": {
+                "es": "El Álbum Homónimo",
+                "en": "The Self-Titled Album"
+              }
+            }
+          ]
+        },
+        {
+          "id": "opening-act",
+          "title": {
+            "es": "Teloneando a Leyendas",
+            "en": "Opening for Legends"
+          },
+          "content": {
+            "es": "Taylor fue telonera de Rascal Flatts después de que Eric Church fuera despedido. Aprovechó cada oportunidad para conectar con el público, ganándose una base de fans leales antes de tener su propia gira.",
+            "en": "Taylor opened for Rascal Flatts after Eric Church was fired. She took every opportunity to connect with the audience, earning a loyal fanbase before having her own tour."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/debut/leyend.webp",
+              "alt": {
+                "es": "Teloneando a Leyendas",
+                "en": "Opening for Legends"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Teloneando a Leyendas",
+                "en": "Opening for Legends"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cma-horizon",
+          "title": {
+            "es": "Premio Horizon de la CMA",
+            "en": "CMA Horizon Award"
+          },
+          "content": {
+            "es": "En 2007, ganó el Horizon Award de la CMA. Al recibirlo, exclamó: '¡Esto es definitivamente lo mejor de mi último año de secundaria!', consolidando su estatus como la nueva estrella del country.",
+            "en": "In 2007, she won the CMA Horizon Award. Upon receiving it, she exclaimed: 'This is definitely the highlight of my senior year!', cementing her status as country's newest star."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/debut/cma.jpg",
+              "alt": {
+                "es": "Premio Horizon de la CMA",
+                "en": "CMA Horizon Award"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Premio Horizon de la CMA",
+                "en": "CMA Horizon Award"
+              }
+            }
+          ]
+        },
+        {
+          "id": "grammy-nomination",
+          "title": {
+            "es": "Nominación al Grammy",
+            "en": "Grammy Nomination"
+          },
+          "content": {
+            "es": "Nominada a Mejor Artista Nuevo en los Grammy de 2008, Taylor interpretó 'Tim McGraw' ante una audiencia global. Aunque no ganó esa noche, su actuación demostró que había llegado para quedarse.",
+            "en": "Nominated for Best New Artist at the 2008 Grammys, Taylor performed 'Tim McGraw' to a global audience. Although she didn't win that night, her performance proved she was here to stay."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/debut/17.webp",
+              "alt": {
+                "es": "Nominación al Grammy",
+                "en": "Grammy Nomination"
+              },
+              "position": "right",
+              "layout": "collage",
+              "size": "full",
+              "caption": {
+                "es": "Nominación al Grammy",
+                "en": "Grammy Nomination"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fearless",
+      "slug": "fearless",
+      "title": {
+        "es": "Fearless",
+        "en": "Fearless"
+      },
+      "period": "2008–2010",
+      "yearStart": 2008,
+      "yearEnd": 2010,
+      "summary": {
+        "es": "El álbum que la catapultó al estrellato masivo y le valió su primer Grammy al Álbum del Año.",
+        "en": "The album that catapulted her to massive stardom and earned her first Album of the Year Grammy."
+      },
+      "color": "#E6C200",
+      "coverImage": {
+        "src": "/images/history/fearless/home.png",
+        "alt": "Fearless Era"
+      },
+      "sections": [
+        {
+          "id": "love-story",
+          "title": {
+            "es": "El Fenómeno 'Love Story'",
+            "en": "The 'Love Story' Phenomenon"
+          },
+          "content": {
+            "es": "Inspirada en Romeo y Julieta pero con un final feliz, esta canción se convirtió en un himno mundial. Fue grabada en Nashville y catapultó a Taylor al estrellato pop internacional.",
+            "en": "Inspired by Romeo and Juliet but with a happy ending, this song became a global anthem. Recorded in Nashville, it catapulted Taylor to international pop stardom."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/fearless/love.jpg",
+              "alt": {
+                "es": "El Fenómeno 'Love Story'",
+                "en": "The 'Love Story' Phenomenon"
+              },
+              "position": "right",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "El Fenómeno 'Love Story'",
+                "en": "The 'Love Story' Phenomenon"
+              }
+            }
+          ]
+        },
+        {
+          "id": "fearless-release",
+          "title": {
+            "es": "Lanzamiento de Fearless",
+            "en": "Fearless Release"
+          },
+          "content": {
+            "es": "Fearless debutó en el número 1 del Billboard 200 y fue el álbum más vendido de 2009 en Estados Unidos. Consolidó a Taylor como una fuerza imparable en la música.",
+            "en": "Fearless debuted at number 1 on the Billboard 200 and was the best-selling album of 2009 in the United States. It solidified Taylor as an unstoppable force in music."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/fearless/fearless.webp",
+              "alt": {
+                "es": "Era Fearless",
+                "en": "Fearless Era"
+              },
+              "position": "full",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Dominio total de las listas",
+                "en": "Total chart dominance"
+              }
+            }
+          ]
+        },
+        {
+          "id": "fearless-tour",
+          "title": {
+            "es": "Fearless Tour",
+            "en": "Fearless Tour"
+          },
+          "content": {
+            "es": "Su primera gira como cabeza de cartel agotó estadios como el Gillette en minutos. El espectáculo teatral incluyó cambios de vestuario y escenografía de cuento de hadas, documentado en 'Journey to Fearless'.",
+            "en": "Her first headlining tour sold out stadiums like Gillette in minutes. The theatrical show included costume changes and fairytale set design, documented in 'Journey to Fearless'."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/fearless/fearless-tour.avif",
+              "alt": {
+                "es": "Fearless Tour",
+                "en": "Fearless Tour"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Fearless Tour",
+                "en": "Fearless Tour"
+              }
+            }
+          ]
+        },
+        {
+          "id": "vma-incident",
+          "title": {
+            "es": "El Incidente de los VMA 2009",
+            "en": "The 2009 VMA Incident"
+          },
+          "content": {
+            "es": "Un momento infame que, irónicamente, galvanizó el apoyo público hacia Taylor. Su manejo elegante de la situación demostró su madurez y clase.",
+            "en": "An infamous moment that, ironically, galvanized public support for Taylor. Her graceful handling of the situation demonstrated her maturity and class."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/fearless/vma.webp",
+              "alt": {
+                "es": "Taylor en los VMA 2009",
+                "en": "Taylor at 2009 VMAs"
+              },
+              "position": "right",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Un momento que definió su carrera",
+                "en": "A career-defining moment"
+              }
+            }
+          ]
+        },
+        {
+          "id": "grammy-win",
+          "title": {
+            "es": "Álbum del Año",
+            "en": "Album of the Year"
+          },
+          "content": {
+            "es": "En 2010, Taylor se convirtió en la artista más joven en la historia (en ese momento) en ganar el Grammy al Álbum del Año por Fearless, llevándose a casa 4 premios esa noche.",
+            "en": "In 2010, Taylor became the youngest artist in history (at the time) to win the Album of the Year Grammy for Fearless, taking home 4 awards that night."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/fearless/grammys-20102.webp",
+              "alt": {
+                "es": "Celebración Grammy",
+                "en": "Grammy Celebration"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "La noche dorada de Taylor",
+                "en": "Taylor's golden night"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "speak-now",
+      "slug": "speak-now",
+      "title": {
+        "es": "Speak Now",
+        "en": "Speak Now"
+      },
+      "period": "2010–2012",
+      "yearStart": 2010,
+      "yearEnd": 2012,
+      "summary": {
+        "es": "Escrito enteramente por ella misma, una declaración de independencia artística.",
+        "en": "Written entirely by herself, a declaration of artistic independence."
+      },
+      "color": "#7E4E9E",
+      "coverImage": {
+        "src": "/images/history/speak-now/home.png",
+        "alt": "Speak Now Era"
+      },
+      "sections": [
+        {
+          "id": "solo-writing",
+          "title": {
+            "es": "Escrito en Solitario",
+            "en": "Written Solo"
+          },
+          "content": {
+            "es": "En respuesta a los críticos que cuestionaban su autoría, Taylor escribió cada canción de Speak Now sin co-escritores. En el prólogo del álbum, defendió su derecho a contar su propia historia, creando un trabajo profundamente personal y audaz.",
+            "en": "In response to critics questioning her authorship, Taylor wrote every song on Speak Now without co-writers. In the album prologue, she defended her right to tell her own story, creating a deeply personal and bold body of work."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/speak-now/speak.jpg",
+              "alt": {
+                "es": "Escrito en Solitario",
+                "en": "Written Solo"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Escrito en Solitario",
+                "en": "Written Solo"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mine-release",
+          "title": {
+            "es": "Mine y el Lanzamiento",
+            "en": "Mine and the Release"
+          },
+          "content": {
+            "es": "El sencillo principal 'Mine' se filtró antes de tiempo, forzando un lanzamiento apresurado. El video musical, filmado en Kennebunkport, Maine, mostró una narrativa de amor maduro, y el álbum vendió más de un millón de copias en su primera semana.",
+            "en": "The lead single 'Mine' leaked early, forcing a rushed release. The music video, filmed in Kennebunkport, Maine, showcased a mature love narrative, and the album sold over a million copies in its first week."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/speak-now/mine.jpg",
+              "alt": {
+                "es": "Mine y el Lanzamiento",
+                "en": "Mine and the Release"
+              },
+              "position": "center",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Mine y el Lanzamiento",
+                "en": "Mine and the Release"
+              }
+            }
+          ]
+        },
+        {
+          "id": "speak-now-tour",
+          "title": {
+            "es": "Speak Now World Tour",
+            "en": "Speak Now World Tour"
+          },
+          "content": {
+            "es": "Una gira mágica y teatral. Cada noche, Taylor escribía letras de canciones de otros artistas en su brazo y realizaba versiones acústicas locales, conectando de manera única con cada ciudad que visitaba.",
+            "en": "A magical and theatrical tour. Every night, Taylor wrote lyrics from other artists' songs on her arm and performed local acoustic covers, connecting uniquely with each city she visited."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/speak-now/speak-now-tour.jpg",
+              "alt": {
+                "es": "Speak Now World Tour",
+                "en": "Speak Now World Tour"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Speak Now World Tour",
+                "en": "Speak Now World Tour"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mean-grammy",
+          "title": {
+            "es": "La Venganza de 'Mean'",
+            "en": "'Mean' Revenge"
+          },
+          "content": {
+            "es": "La canción 'Mean', una respuesta a un crítico mordaz, ganó dos Grammys. Su interpretación en la ceremonia recibió una ovación de pie, y al cantar 'algún día cantaré esto en los Grammy', cambió la letra para celebrar su triunfo real.",
+            "en": "The song 'Mean', a response to a harsh critic, won two Grammys. Her performance at the ceremony received a standing ovation, and when singing 'someday I'll be singing this at the Grammys', she changed the lyric to celebrate her actual triumph."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/speak-now/mean.webp",
+              "alt": {
+                "es": "La Venganza de 'Mean'",
+                "en": "'Mean' Revenge"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "La Venganza de 'Mean'",
+                "en": "'Mean' Revenge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "rain-show",
+          "title": {
+            "es": "El Concierto Bajo la Lluvia",
+            "en": "The Rain Show"
+          },
+          "content": {
+            "es": "El legendario concierto en Gillette Stadium bajo una lluvia torrencial se convirtió en parte del folklore de sus fans. Taylor continuó actuando empapada, solidificando un vínculo inquebrantable con su audiencia que perdura hasta hoy.",
+            "en": "The legendary concert at Gillette Stadium in torrential rain became part of her fan folklore. Taylor continued performing soaked, solidifying an unbreakable bond with her audience that endures to this day."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/speak-now/rain.jpg",
+              "alt": {
+                "es": "El Concierto Bajo la Lluvia",
+                "en": "The Rain Show"
+              },
+              "position": "background",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "El Concierto Bajo la Lluvia",
+                "en": "The Rain Show"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "red",
+      "slug": "red",
+      "title": {
+        "es": "Red",
+        "en": "Red"
+      },
+      "period": "2012–2014",
+      "yearStart": 2012,
+      "yearEnd": 2014,
+      "summary": {
+        "es": "La transición. Una mezcla ecléctica de country, pop y rock que exploró el desamor intenso.",
+        "en": "The transition. An eclectic mix of country, pop, and rock that explored intense heartbreak."
+      },
+      "color": "#BE0000",
+      "coverImage": {
+        "src": "/images/history/red/home.png",
+        "alt": "Red Era"
+      },
+      "sections": [
+        {
+          "id": "wanegbt",
+          "title": {
+            "es": "El Primer Número 1",
+            "en": "The First Number 1"
+          },
+          "content": {
+            "es": "'We Are Never Ever Getting Back Together' fue su primer #1 en el Hot 100. El video musical, filmado en una sola toma continua, capturó la energía caótica y divertida de su nueva dirección pop junto a Max Martin.",
+            "en": "'We Are Never Ever Getting Back Together' was her first #1 on the Hot 100. The music video, filmed in a single continuous take, captured the chaotic and fun energy of her new pop direction with Max Martin."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/red/weare.webp",
+              "alt": {
+                "es": "El Primer Número 1",
+                "en": "The First Number 1"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "El Primer Número 1",
+                "en": "The First Number 1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "red-release",
+          "title": {
+            "es": "Red: Un Mosaico Emocional",
+            "en": "Red: An Emotional Mosaic"
+          },
+          "content": {
+            "es": "Lanzado en octubre de 2012, Red fue un mosaico de estilos, colaborando con Gary Lightbody y Ed Sheeran. Vendió 1.2 millones de copias en su primera semana, desafiando las expectativas de la industria musical en declive.",
+            "en": "Released in October 2012, Red was a mosaic of styles, collaborating with Gary Lightbody and Ed Sheeran. It sold 1.2 million copies in its first week, defying expectations in a declining music industry."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/red/red.webp",
+              "alt": {
+                "es": "Red: Un Mosaico Emocional",
+                "en": "Red: An Emotional Mosaic"
+              },
+              "position": "center",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Red: Un Mosaico Emocional",
+                "en": "Red: An Emotional Mosaic"
+              }
+            }
+          ]
+        },
+        {
+          "id": "all-too-well",
+          "title": {
+            "es": "La Leyenda de All Too Well",
+            "en": "The Legend of All Too Well"
+          },
+          "content": {
+            "es": "Aunque no fue sencillo, 'All Too Well' se convirtió en la favorita de culto. La historia de la bufanda perdida y la letra devastadora la consagraron como su mejor compositora, alimentando rumores de una versión de 10 minutos.",
+            "en": "Although not a single, 'All Too Well' became a cult favorite. The story of the lost scarf and devastating lyrics consecrated her as her best songwriter, fueling rumors of a 10-minute version."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/red/alto.avif",
+              "alt": {
+                "es": "La Leyenda de All Too Well",
+                "en": "The Legend of All Too Well"
+              },
+              "position": "full",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "La Leyenda de All Too Well",
+                "en": "The Legend of All Too Well"
+              }
+            }
+          ]
+        },
+        {
+          "id": "red-tour",
+          "title": {
+            "es": "The Red Tour",
+            "en": "The Red Tour"
+          },
+          "content": {
+            "es": "La gira Red mostró a una Taylor más madura, llenando estadios globalmente. Ed Sheeran se unió como telonero, y juntos interpretaban 'Everything Has Changed' cada noche, cimentando una amistad icónica.",
+            "en": "The Red Tour showed a more mature Taylor, filling stadiums globally. Ed Sheeran joined as opening act, and together they performed 'Everything Has Changed' every night, cementing an iconic friendship."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/red/redtour.webp",
+              "alt": {
+                "es": "The Red Tour",
+                "en": "The Red Tour"
+              },
+              "position": "left",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "The Red Tour",
+                "en": "The Red Tour"
+              }
+            }
+          ]
+        },
+        {
+          "id": "grammy-loss",
+          "title": {
+            "es": "La Derrota que Inspiró 1989",
+            "en": "The Loss That Inspired 1989"
+          },
+          "content": {
+            "es": "Perder el Álbum del Año por Red fue un punto de inflexión. La crítica de que el álbum no era 'sonicamente cohesivo' motivó a Taylor a comprometerse totalmente con el pop para su siguiente proyecto, 1989.",
+            "en": "Losing Album of the Year for Red was a turning point. The critique that the album was not 'sonically cohesive' motivated Taylor to fully commit to pop for her next project, 1989."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/red/sad.jpg",
+              "alt": {
+                "es": "La Derrota que Inspiró 1989",
+                "en": "The Loss That Inspired 1989"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "La Derrota que Inspiró 1989",
+                "en": "The Loss That Inspired 1989"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1989",
+      "slug": "1989",
+      "title": {
+        "es": "1989",
+        "en": "1989"
+      },
+      "period": "2014–2017",
+      "yearStart": 2014,
+      "yearEnd": 2017,
+      "summary": {
+        "es": "Su renacimiento pop oficial. Sintetizadores ochenteros y dominio total de las listas.",
+        "en": "Her official pop rebirth. 80s synths and total chart dominance."
+      },
+      "color": "#85C1E9",
+      "coverImage": {
+        "src": "/images/history/1989/1989.jpg",
+        "alt": "1989 Era"
+      },
+      "sections": [
+        {
+          "id": "shake-it-off",
+          "title": {
+            "es": "Shake It Off y el Pop",
+            "en": "Shake It Off and Pop"
+          },
+          "content": {
+            "es": "Taylor anunció 1989 en un livestream de Yahoo y lanzó 'Shake It Off', declarando oficialmente su salida del country. La canción debutó en el #1 y se convirtió en un himno de autoafirmación contra los 'haters'.",
+            "en": "Taylor announced 1989 on a Yahoo livestream and released 'Shake It Off', officially declaring her departure from country. The song debuted at #1 and became an anthem of self-affirmation against 'haters'."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/1989/shake.avif",
+              "alt": {
+                "es": "Shake It Off y el Pop",
+                "en": "Shake It Off and Pop"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Shake It Off y el Pop",
+                "en": "Shake It Off and Pop"
+              }
+            }
+          ]
+        },
+        {
+          "id": "1989-release",
+          "title": {
+            "es": "1989: Un Blockbuster",
+            "en": "1989: A Blockbuster"
+          },
+          "content": {
+            "es": "Para el lanzamiento, Taylor inventó las 'Secret Sessions', invitando a fans a sus casas para escuchar el álbum antes que nadie. 1989 vendió 1.287 millones de copias en su primera semana, un fenómeno cultural.",
+            "en": "For the release, Taylor invented 'Secret Sessions', inviting fans to her homes to hear the album before anyone else. 1989 sold 1.287 million copies in its first week, a cultural phenomenon."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/1989/secret.jpg",
+              "alt": {
+                "es": "1989: Un Blockbuster",
+                "en": "1989: A Blockbuster"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "1989: Un Blockbuster",
+                "en": "1989: A Blockbuster"
+              }
+            }
+          ]
+        },
+        {
+          "id": "blank-space",
+          "title": {
+            "es": "La Sátira de Blank Space",
+            "en": "The Blank Space Satire"
+          },
+          "content": {
+            "es": "Con 'Blank Space', Taylor satirizó su imagen mediática de 'devoradora de hombres'. El video, filmado en una mansión histórica, la mostró como una villana glamorosa, y se convirtió en la primera mujer en destronarse a sí misma en el #1 del Hot 100.",
+            "en": "With 'Blank Space', Taylor satirized her media image as a 'man-eater'. The video, filmed in a historic mansion, showed her as a glamorous villain, and she became the first woman to dethrone herself at #1 on the Hot 100."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/1989/blank.webp",
+              "alt": {
+                "es": "La Sátira de Blank Space",
+                "en": "The Blank Space Satire"
+              },
+              "position": "right",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "La Sátira de Blank Space",
+                "en": "The Blank Space Satire"
+              }
+            }
+          ]
+        },
+        {
+          "id": "1989-tour",
+          "title": {
+            "es": "The 1989 World Tour",
+            "en": "The 1989 World Tour"
+          },
+          "content": {
+            "es": "Una gira masiva de estadios famosa por su 'Squad' y los invitados sorpresa en cada ciudad. Taylor popularizó el uso de pulseras LED controladas por radio, haciendo que cada fan fuera parte del espectáculo de luces.",
+            "en": "A massive stadium tour famous for its 'Squad' and surprise guests in every city. Taylor popularized the use of radio-controlled LED bracelets, making every fan part of the light show."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/1989/1989tour.webp",
+              "alt": {
+                "es": "The 1989 World Tour",
+                "en": "The 1989 World Tour"
+              },
+              "position": "center",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "The 1989 World Tour",
+                "en": "The 1989 World Tour"
+              }
+            }
+          ]
+        },
+        {
+          "id": "second-aoty",
+          "title": {
+            "es": "Segundo Álbum del Año",
+            "en": "Second Album of the Year"
+          },
+          "content": {
+            "es": "Al ganar su segundo Álbum del Año, Taylor dio un discurso poderoso: 'Habrá gente en el camino que intentará socavar tu éxito... pero si te concentras en el trabajo, sabrás que fuiste tú quien te puso allí'.",
+            "en": "Winning her second Album of the Year, Taylor gave a powerful speech: 'There will be people along the way who will try to undercut your success... but if you just focus on the work, you will know it was you who put you there'."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/1989/1989album.jpg",
+              "alt": {
+                "es": "Segundo Álbum del Año",
+                "en": "Second Album of the Year"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Segundo Álbum del Año",
+                "en": "Second Album of the Year"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reputation",
+      "slug": "reputation",
+      "title": {
+        "es": "Reputation",
+        "en": "Reputation"
+      },
+      "period": "2017–2019",
+      "yearStart": 2017,
+      "yearEnd": 2019,
+      "summary": {
+        "es": "No habrá explicación, solo reputación. Un álbum oscuro y vengativo, pero profundamente romántico.",
+        "en": "There will be no explanation, there will just be reputation. A dark and vengeful, yet deeply romantic album."
+      },
+      "color": "#333333",
+      "coverImage": {
+        "src": "/images/history/reputation/home.png",
+        "alt": "Reputation Era"
+      },
+      "sections": [
+        {
+          "id": "blackout",
+          "title": {
+            "es": "El Apagón y la Serpiente",
+            "en": "The Blackout and the Snake"
+          },
+          "content": {
+            "es": "Tras un año de silencio, Taylor borró todas sus redes sociales, causando un frenesí mediático. Reapareció con videos de una serpiente, reapropiándose del insulto que casi destruye su carrera y anunciando 'Reputation'.",
+            "en": "After a year of silence, Taylor wiped all her social media, causing a media frenzy. She reappeared with snake videos, reclaiming the insult that nearly destroyed her career and announcing 'Reputation'."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/reputation/repu.webp",
+              "alt": {
+                "es": "El Apagón y la Serpiente",
+                "en": "The Blackout and the Snake"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "El Apagón y la Serpiente",
+                "en": "The Blackout and the Snake"
+              }
+            }
+          ]
+        },
+        {
+          "id": "lwymmd",
+          "title": {
+            "es": "Look What You Made Me Do",
+            "en": "Look What You Made Me Do"
+          },
+          "content": {
+            "es": "'Look What You Made Me Do' rompió récords de YouTube en 24 horas. El video estaba lleno de referencias ocultas, incluyendo una bañera de diamantes y una escena en un cementerio donde enterraba a sus antiguas versiones.",
+            "en": "'Look What You Made Me Do' broke YouTube 24-hour records. The video was full of hidden references, including a bathtub of diamonds and a graveyard scene where she buried her former selves."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/reputation/look.avif",
+              "alt": {
+                "es": "Look What You Made Me Do",
+                "en": "Look What You Made Me Do"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Look What You Made Me Do",
+                "en": "Look What You Made Me Do"
+              }
+            }
+          ]
+        },
+        {
+          "id": "reputation-album",
+          "title": {
+            "es": "Lanzamiento de Reputation",
+            "en": "Reputation Release"
+          },
+          "content": {
+            "es": "Lanzado sin entrevistas de prensa ('No habrá explicación, solo reputación'), el álbum exploró temas de fama, traición y encontrar el amor verdadero en medio del caos. Vendió más de un millón de copias en su debut.",
+            "en": "Released with no press interviews ('There will be no explanation, there will just be reputation'), the album explored themes of fame, betrayal, and finding true love amidst chaos. It sold over a million copies in its debut."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/reputation/reputa.webp",
+              "alt": {
+                "es": "Lanzamiento de Reputation",
+                "en": "Reputation Release"
+              },
+              "position": "left",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Lanzamiento de Reputation",
+                "en": "Reputation Release"
+              }
+            }
+          ]
+        },
+        {
+          "id": "reputation-tour",
+          "title": {
+            "es": "Reputation Stadium Tour",
+            "en": "Reputation Stadium Tour"
+          },
+          "content": {
+            "es": "La gira se convirtió en la más taquillera de la historia de EE. UU. Con una cobra gigante llamada 'Karyn' y escenarios imponentes, Taylor demostró que podía llenar estadios incluso sin el apoyo de la radio mainstream.",
+            "en": "The tour became the highest-grossing in US history. With a giant cobra named 'Karyn' and massive stages, Taylor proved she could fill stadiums even without mainstream radio support."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/reputation/stadium.jpg",
+              "alt": {
+                "es": "Reputation Stadium Tour",
+                "en": "Reputation Stadium Tour"
+              },
+              "position": "full",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Reputation Stadium Tour",
+                "en": "Reputation Stadium Tour"
+              }
+            }
+          ]
+        },
+        {
+          "id": "delicate",
+          "title": {
+            "es": "El Éxito de Delicate",
+            "en": "The Success of Delicate"
+          },
+          "content": {
+            "es": "'Delicate' mostró el lado vulnerable del álbum. El video, donde baila invisible bajo la lluvia y en un hotel, resonó por su autenticidad y se convirtió en el éxito durmiente de la era.",
+            "en": "'Delicate' showed the vulnerable side of the album. The video, where she dances invisible in the rain and a hotel, resonated for its authenticity and became the era's sleeper hit."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/reputation/delicate.avif",
+              "alt": {
+                "es": "El Éxito de Delicate",
+                "en": "The Success of Delicate"
+              },
+              "position": "right",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "El Éxito de Delicate",
+                "en": "The Success of Delicate"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lover",
+      "slug": "lover",
+      "title": {
+        "es": "Lover",
+        "en": "Lover"
+      },
+      "period": "2019–2020",
+      "yearStart": 2019,
+      "yearEnd": 2020,
+      "summary": {
+        "es": "Un cielo de colores pastel después de la tormenta. Una celebración del amor en todas sus formas.",
+        "en": "A pastel sky after the storm. A celebration of love in all its forms."
+      },
+      "color": "#F8B9D4",
+      "coverImage": {
+        "src": "/images/history/lover/home.png",
+        "alt": "Lover Era"
+      },
+      "sections": [
+        {
+          "id": "me-single",
+          "title": {
+            "es": "ME! y el Cambio de Tono",
+            "en": "ME! and the Tone Shift"
+          },
+          "content": {
+            "es": "El primer sencillo 'ME!' marcó el fin de la era oscura de Reputation con una explosión de colores pastel. El video incluye la famosa escena 'Je suis calme!' del documental Miss Americana.",
+            "en": "The lead single 'ME!' marked the end of the dark Reputation era with an explosion of pastel colors. The video features the famous 'Je suis calme!' scene from the Miss Americana documentary."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/lover/me.webp",
+              "alt": {
+                "es": "ME! y el Cambio de Tono",
+                "en": "ME! and the Tone Shift"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "ME! y el Cambio de Tono",
+                "en": "ME! and the Tone Shift"
+              }
+            }
+          ]
+        },
+        {
+          "id": "activism",
+          "title": {
+            "es": "Activismo Político",
+            "en": "Political Activism"
+          },
+          "content": {
+            "es": "Con 'You Need To Calm Down', Taylor abogó explícitamente por la Ley de Igualdad (Equality Act). El video finaliza con una petición que acumuló medio millón de firmas, mostrando su activismo político.",
+            "en": "With 'You Need To Calm Down', Taylor explicitly advocated for the Equality Act. The video ends with a petition that garnered half a million signatures, showcasing her political activism."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/lover/callme.jpg",
+              "alt": {
+                "es": "Activismo Político",
+                "en": "Political Activism"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Activismo Político",
+                "en": "Political Activism"
+              }
+            }
+          ]
+        },
+        {
+          "id": "masters-dispute",
+          "title": {
+            "es": "La Disputa por los Masters",
+            "en": "The Masters Dispute"
+          },
+          "content": {
+            "es": "Taylor reveló que sus grabaciones maestras habían sido vendidas sin su consentimiento, llamándolo su 'peor escenario'. Esto encendió el debate sobre los derechos de los artistas y llevó a su decisión de regrabar su catálogo.",
+            "en": "Taylor revealed her master recordings had been sold without her consent, calling it her 'worst case scenario'. This ignited a debate on artists' rights and led to her decision to re-record her catalog."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/lover/masters.webp",
+              "alt": {
+                "es": "La Disputa por los Masters",
+                "en": "The Masters Dispute"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "La Disputa por los Masters",
+                "en": "The Masters Dispute"
+              }
+            }
+          ]
+        },
+        {
+          "id": "lover-release",
+          "title": {
+            "es": "Lanzamiento de Lover",
+            "en": "Lover Release"
+          },
+          "content": {
+            "es": "Lover incluyó entradas reales de sus diarios en las ediciones de lujo. Canciones como 'Cornelia Street' y 'Daylight' capturaron la vulnerabilidad de un amor dorado, alejándose del drama.",
+            "en": "Lover included real diary entries in the deluxe editions. Songs like 'Cornelia Street' and 'Daylight' captured the vulnerability of a golden love, moving away from the drama."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/lover/lover.png",
+              "alt": {
+                "es": "Lanzamiento de Lover",
+                "en": "Lover Release"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Lanzamiento de Lover",
+                "en": "Lover Release"
+              }
+            }
+          ]
+        },
+        {
+          "id": "artist-decade",
+          "title": {
+            "es": "Artista de la Década",
+            "en": "Artist of the Decade"
+          },
+          "content": {
+            "es": "En los AMAs, Taylor usó una camisa blanca con los nombres de sus álbumes 'secuestrados' escritos en ella mientras cantaba 'The Man', una poderosa declaración visual sobre su legado.",
+            "en": "At the AMAs, Taylor wore a white shirt with the names of her 'kidnapped' albums written on it while singing 'The Man', a powerful visual statement about her legacy."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/lover/amas.webp",
+              "alt": {
+                "es": "Artista de la Década",
+                "en": "Artist of the Decade"
+              },
+              "position": "full",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Artista de la Década",
+                "en": "Artist of the Decade"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "folklore",
+      "slug": "folklore",
+      "title": {
+        "es": "Folklore",
+        "en": "Folklore"
+      },
+      "period": "2020",
+      "yearStart": 2020,
+      "yearEnd": 2020,
+      "summary": {
+        "es": "Cuentos escapistas nacidos en el aislamiento. Indie-folk y narrativa poética.",
+        "en": "Escapist tales born in isolation. Indie-folk and poetic storytelling."
+      },
+      "color": "#C0C0C0",
+      "coverImage": {
+        "src": "/images/history/folklore/home.png",
+        "alt": "Folklore Era"
+      },
+      "sections": [
+        {
+          "id": "surprise-drop",
+          "title": {
+            "es": "El Lanzamiento Sorpresa",
+            "en": "The Surprise Drop"
+          },
+          "content": {
+            "es": "Anunciado con una simple foto en blanco y negro en el bosque, Folklore fue un shock. Taylor canalizó su imaginación durante el aislamiento, colaborando remotamente con Aaron Dessner.",
+            "en": "Announced with a simple black and white photo in the woods, Folklore was a shock. Taylor channeled her imagination during isolation, collaborating remotely with Aaron Dessner."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/folklore/folk.jpg",
+              "alt": {
+                "es": "El Lanzamiento Sorpresa",
+                "en": "The Surprise Drop"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "El Lanzamiento Sorpresa",
+                "en": "The Surprise Drop"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cardigan",
+          "title": {
+            "es": "Cardigan y el Número 1",
+            "en": "Cardigan and Number 1"
+          },
+          "content": {
+            "es": "'cardigan' introdujo el 'Triángulo Amoroso Adolescente' (Betty, James, Augustine). El video, dirigido por ella misma, usó efectos visuales para viajar a través de las teclas de su piano.",
+            "en": "'cardigan' introduced the 'Teenage Love Triangle' (Betty, James, Augustine). The self-directed video used visual effects to travel through the keys of her piano."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/folklore/cardigan2.jpg",
+              "alt": {
+                "es": "Cardigan y el Número 1",
+                "en": "Cardigan and Number 1"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Cardigan y el Número 1",
+                "en": "Cardigan and Number 1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "critical-acclaim",
+          "title": {
+            "es": "Aclamación Crítica",
+            "en": "Critical Acclaim"
+          },
+          "content": {
+            "es": "La crítica se rindió a sus pies; Rolling Stone lo llamó su mejor álbum. Folklore demostró su versatilidad y la estableció como una compositora respetada más allá del pop comercial.",
+            "en": "Critics bowed down; Rolling Stone called it her best album. Folklore proved her versatility and established her as a respected songwriter beyond commercial pop."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/folklore/rs.jpg",
+              "alt": {
+                "es": "Aclamación Crítica",
+                "en": "Critical Acclaim"
+              },
+              "position": "full",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Aclamación Crítica",
+                "en": "Critical Acclaim"
+              }
+            }
+          ]
+        },
+        {
+          "id": "long-pond",
+          "title": {
+            "es": "The Long Pond Studio Sessions",
+            "en": "The Long Pond Studio Sessions"
+          },
+          "content": {
+            "es": "En el documental, Taylor, Jack y Aaron se reunieron por primera vez en persona para tocar el álbum, compartiendo vino y anécdotas en una cabaña rústica, creando una atmósfera íntima inolvidable.",
+            "en": "In the documentary, Taylor, Jack, and Aaron met in person for the first time to play the album, sharing wine and stories in a rustic cabin, creating an unforgettable intimate atmosphere."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/folklore/lp.webp",
+              "alt": {
+                "es": "The Long Pond Studio Sessions",
+                "en": "The Long Pond Studio Sessions"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "The Long Pond Studio Sessions",
+                "en": "The Long Pond Studio Sessions"
+              }
+            }
+          ]
+        },
+        {
+          "id": "third-aoty",
+          "title": {
+            "es": "Tercer Álbum del Año",
+            "en": "Third Album of the Year"
+          },
+          "content": {
+            "es": "Al ganar su tercer AOTY, Taylor usó un vestido de flores Oscar de la Renta y una mascarilla a juego, una imagen icónica de la era pandémica. Agradeció a los fans por 'encontrarnos en este mundo imaginario'.",
+            "en": "Winning her third AOTY, Taylor wore a floral Oscar de la Renta dress and matching mask, an iconic image of the pandemic era. She thanked fans for 'meeting us in this imaginary world'."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/folklore/grammy2.jpg",
+              "alt": {
+                "es": "Tercer Álbum del Año",
+                "en": "Third Album of the Year"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Tercer Álbum del Año",
+                "en": "Third Album of the Year"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evermore",
+      "slug": "evermore",
+      "title": {
+        "es": "Evermore",
+        "en": "Evermore"
+      },
+      "period": "2020–2022",
+      "yearStart": 2020,
+      "yearEnd": 2022,
+      "summary": {
+        "es": "La hermana de folklore. Nos adentramos más en el bosque de su imaginación.",
+        "en": "Folklore's sister. We go deeper into the forest of her imagination."
+      },
+      "color": "#C69C6D",
+      "coverImage": {
+        "src": "/images/history/evermore/home.png",
+        "alt": "Evermore Era"
+      },
+      "sections": [
+        {
+          "id": "sister-album",
+          "title": {
+            "es": "El Álbum Hermana",
+            "en": "The Sister Album"
+          },
+          "content": {
+            "es": "Taylor describió Evermore como 'viajar más adentro del bosque folclórico'. Fue un regalo de cumpleaños para sus fans (y para ella misma) al cumplir 31 años, explorando temas más oscuros y experimentales.",
+            "en": "Taylor described Evermore as 'traveling further into the folklorian woods'. It was a birthday gift to her fans (and herself) turning 31, exploring darker and more experimental themes."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/evermore/ever.jpg",
+              "alt": {
+                "es": "El Álbum Hermana",
+                "en": "The Sister Album"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "El Álbum Hermana",
+                "en": "The Sister Album"
+              }
+            }
+          ]
+        },
+        {
+          "id": "willow",
+          "title": {
+            "es": "Willow",
+            "en": "Willow"
+          },
+          "content": {
+            "es": "El video de 'willow' continúa la historia de 'cardigan', siguiendo un hilo dorado del destino. Muestra a Taylor en una caja de cristal y realizando rituales de brujería, abrazando la estética mágica.",
+            "en": "The 'willow' video continues the 'cardigan' story, following a golden string of fate. It shows Taylor in a glass box and performing witchcraft rituals, embracing the magical aesthetic."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/evermore/willow2.jpeg",
+              "alt": {
+                "es": "Willow",
+                "en": "Willow"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Willow",
+                "en": "Willow"
+              }
+            }
+          ]
+        },
+        {
+          "id": "champagne-problems",
+          "title": {
+            "es": "Champagne Problems",
+            "en": "Champagne Problems"
+          },
+          "content": {
+            "es": "Famosa por su puente devastador, esta canción narra una propuesta fallida en Navidad. En el Eras Tour, la ovación de los fans después de esta canción dura minutos, convirtiéndose en un ritual.",
+            "en": "Famous for its devastating bridge, this song narrates a failed proposal at Christmas. On the Eras Tour, the fan ovation after this song lasts for minutes, becoming a ritual."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/evermore/champagne.jpg",
+              "alt": {
+                "es": "Champagne Problems",
+                "en": "Champagne Problems"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Champagne Problems",
+                "en": "Champagne Problems"
+              }
+            }
+          ]
+        },
+        {
+          "id": "fearless-tv",
+          "title": {
+            "es": "Comienzan las Regrabaciones",
+            "en": "Re-recordings Begin"
+          },
+          "content": {
+            "es": "Con Fearless (Taylor's Version), Taylor introdujo las canciones 'From The Vault' (Del Baúl), temas inéditos que enriquecieron la narrativa original. Fue un éxito rotundo de nostalgia y reivindicación.",
+            "en": "With Fearless (Taylor's Version), Taylor introduced 'From The Vault' songs, unreleased tracks that enriched the original narrative. It was a resounding success of nostalgia and vindication."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/evermore/regordings.avif",
+              "alt": {
+                "es": "Comienzan las Regrabaciones",
+                "en": "Re-recordings Begin"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Comienzan las Regrabaciones",
+                "en": "Re-recordings Begin"
+              }
+            }
+          ]
+        },
+        {
+          "id": "red-tv-atw10",
+          "title": {
+            "es": "Red TV y All Too Well (10 Min)",
+            "en": "Red TV and All Too Well (10 Min)"
+          },
+          "content": {
+            "es": "La versión de 10 minutos de 'All Too Well' se convirtió en el éxito más largo en alcanzar el #1. El cortometraje, protagonizado por Sadie Sink y Dylan O'Brien, dio vida visual a la bufanda roja perdida.",
+            "en": "The 10-minute version of 'All Too Well' became the longest song to reach #1. The short film, starring Sadie Sink and Dylan O'Brien, brought the lost red scarf to visual life."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/evermore/altto.jpg",
+              "alt": {
+                "es": "Red TV y All Too Well (10 Min)",
+                "en": "Red TV and All Too Well (10 Min)"
+              },
+              "position": "background",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Red TV y All Too Well (10 Min)",
+                "en": "Red TV and All Too Well (10 Min)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "midnights",
+      "slug": "midnights",
+      "title": {
+        "es": "Midnights",
+        "en": "Midnights"
+      },
+      "period": "2022–Present",
+      "yearStart": 2022,
+      "yearEnd": 2024,
+      "summary": {
+        "es": "Historias de 13 noches de insomnio. Un regreso al pop confesional con un toque onírico.",
+        "en": "Stories of 13 sleepless nights. A return to confessional pop with a dreamlike twist."
+      },
+      "color": "#191970",
+      "coverImage": {
+        "src": "/images/history/midnights/home.png",
+        "alt": "Midnights Era"
+      },
+      "sections": [
+        {
+          "id": "vma-announce",
+          "title": {
+            "es": "Anuncio en los VMA",
+            "en": "VMA Announcement"
+          },
+          "content": {
+            "es": "Vestida con un vestido de cristales de Oscar de la Renta, Taylor aprovechó su discurso de victoria en los VMA para anunciar Midnights, sabiendo que tenía la atención total del mundo.",
+            "en": "Dressed in an Oscar de la Renta crystal dress, Taylor used her VMA victory speech to announce Midnights, knowing she had the world's full attention."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/midnights/vma.webp",
+              "alt": {
+                "es": "Anuncio en los VMA",
+                "en": "VMA Announcement"
+              },
+              "position": "left",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "Anuncio en los VMA",
+                "en": "VMA Announcement"
+              }
+            }
+          ]
+        },
+        {
+          "id": "top-10",
+          "title": {
+            "es": "Top 10 Histórico",
+            "en": "Historic Top 10"
+          },
+          "content": {
+            "es": "La dominación fue total: Taylor ocupó los 10 primeros puestos del Hot 100, liderados por 'Anti-Hero'. La frase 'It's me, hi, I'm the problem' se convirtió en un fenómeno viral instantáneo en TikTok.",
+            "en": "Domination was total: Taylor occupied the entire top 10 of the Hot 100, led by 'Anti-Hero'. The phrase 'It's me, hi, I'm the problem' became an instant viral phenomenon on TikTok."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/midnights/anti.webp",
+              "alt": {
+                "es": "Top 10 Histórico",
+                "en": "Historic Top 10"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Top 10 Histórico",
+                "en": "Historic Top 10"
+              }
+            }
+          ]
+        },
+        {
+          "id": "eras-tour-kickoff",
+          "title": {
+            "es": "The Eras Tour",
+            "en": "The Eras Tour"
+          },
+          "content": {
+            "es": "La demanda por 'The Eras Tour' fue tan alta que rompió Ticketmaster, un evento conocido como 'La Gran Guerra'. La gira se convirtió en un fenómeno cultural y económico sin precedentes.",
+            "en": "Demand for 'The Eras Tour' was so high it broke Ticketmaster, an event known as 'The Great War'. The tour became an unprecedented cultural and economic phenomenon."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/midnights/eras.jpg",
+              "alt": {
+                "es": "The Eras Tour",
+                "en": "The Eras Tour"
+              },
+              "position": "full",
+              "layout": "gallery",
+              "size": "large",
+              "caption": {
+                "es": "The Eras Tour",
+                "en": "The Eras Tour"
+              }
+            }
+          ]
+        },
+        {
+          "id": "fourth-aoty",
+          "title": {
+            "es": "Cuarto Álbum del Año",
+            "en": "Fourth Album of the Year"
+          },
+          "content": {
+            "es": "Recibiendo el premio de manos de Celine Dion, Taylor hizo historia con su cuarto AOTY. En su discurso, enfatizó que el verdadero premio es el trabajo y la alegría de crear música.",
+            "en": "Receiving the award from Celine Dion, Taylor made history with her fourth AOTY. In her speech, she emphasized that the real award is the work and the joy of creating music."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/midnights/aoty.jpg",
+              "alt": {
+                "es": "Cuarto Álbum del Año",
+                "en": "Fourth Album of the Year"
+              },
+              "position": "left",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "Cuarto Álbum del Año",
+                "en": "Fourth Album of the Year"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ttpd-announce",
+          "title": {
+            "es": "El Departamento de Poetas Torturados",
+            "en": "The Tortured Poets Department"
+          },
+          "content": {
+            "es": "Mientras todos esperaban el anuncio de Reputation TV, Taylor sorprendió nuevamente revelando un álbum doble completamente nuevo: 'The Tortured Poets Department', mostrando su inagotable ética de trabajo.",
+            "en": "While everyone expected the Reputation TV announcement, Taylor surprised again by revealing a brand new double album: 'The Tortured Poets Department', showing her inexhaustible work ethic."
+          },
+          "layout": "text-with-images",
+          "images": [
+            {
+              "src": "/images/history/midnights/tortured.webp",
+              "alt": {
+                "es": "El Departamento de Poetas Torturados",
+                "en": "The Tortured Poets Department"
+              },
+              "position": "center",
+              "layout": "collage",
+              "size": "large",
+              "caption": {
+                "es": "El Departamento de Poetas Torturados",
+                "en": "The Tortured Poets Department"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

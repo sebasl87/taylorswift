@@ -16,18 +16,17 @@ import {
   ListItemText,
   ListItemButton,
 } from "@mui/material";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LanguageIcon from "@mui/icons-material/Language";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { useColorMode } from "@/theme/useColorMode";
+import PaletteIcon from "@mui/icons-material/Palette";
+import { useEra } from "@/context/EraContext";
+import { ERAS } from "@/constants/eras";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
 // Lazy load del SearchModal para mejor performance inicial
@@ -36,14 +35,17 @@ const SearchModal = dynamic(() => import("./SearchModal"), {
 });
 
 export default function Header() {
-  const { mode, toggle } = useColorMode();
+  const { currentEra, setEra } = useEra();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [eraAnchorEl, setEraAnchorEl] = useState<null | HTMLElement>(null);
   const [mediaAnchorEl, setMediaAnchorEl] = useState<null | HTMLElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
   const currentLocale = useLocale();
   const t = useTranslations("navigation");
+  const router = useRouter();
   const pathname = usePathname();
 
   // Detectar scroll
@@ -57,12 +59,19 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Limpiar timeout al desmontar
+  useEffect(() => {
+    return () => {
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+      }
+    };
+  }, [closeTimeout]);
+
   const mediaItems = [
     { label: t("discography"), href: "/discography" },
-    { label: t("videos"), href: "/videos" },
-    { label: t("dvds"), href: "/dvds" },
     { label: t("shows"), href: "/shows" },
-    { label: t("bootlegs"), href: "/bootlegs" },
+    { label: t("videos"), href: "/videos" },
   ];
 
   const navigationItems = [
@@ -71,9 +80,7 @@ export default function Header() {
     { label: t("media"), href: "#", hasSubmenu: true },
     { label: t("news"), href: "/noticias" },
     { label: t("interviews"), href: "/entrevistas" },
-    { label: t("history"), href: "/historia" },
-    { label: t("lineups"), href: "/formaciones" },
-    { label: t("members"), href: "/miembros" },
+    { label: "Eras", href: "/era" },
     { label: t("songs"), href: "/songs" },
   ];
 
@@ -85,73 +92,120 @@ export default function Header() {
     setAnchorEl(null);
   };
 
-  const handleLanguageChange = (locale: string) => {
-    document.cookie = `NEXT_LOCALE=${locale}; max-age=31536000; path=/`;
-    window.location.reload();
+  const handleEraClick = (event: React.MouseEvent<HTMLElement>) => {
+    setEraAnchorEl(event.currentTarget);
+  };
+
+  const handleEraClose = () => {
+    setEraAnchorEl(null);
+  };
+
+  const handleEraChange = (eraId: string) => {
+    setEra(eraId);
+    handleEraClose();
+  };
+
+  const handleLanguageChange = (newLocale: string) => {
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    router.refresh();
     handleLanguageClose();
   };
 
   const handleMediaMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
+    // Limpiar cualquier timeout pendiente
+    if (closeTimeout) {
+      clearTimeout(closeTimeout);
+      setCloseTimeout(null);
+    }
     setMediaAnchorEl(event.currentTarget);
   };
 
   const handleMediaMouseLeave = () => {
-    setMediaAnchorEl(null);
+    // Agregar un pequeño delay antes de cerrar el menú
+    const timeout = setTimeout(() => {
+      setMediaAnchorEl(null);
+    }, 150); // 150ms de delay
+    setCloseTimeout(timeout);
   };
 
   const isMediaActive = mediaItems.some((item) =>
-    pathname.startsWith(item.href)
+    pathname.startsWith(item.href),
   );
 
-  // Función para obtener el color de fondo basado en scroll y modo
+  // Función para obtener el color de fondo basado en scroll
   const getBackgroundColor = () => {
     if (!isScrolled) return "transparent";
-    return mode === "dark"
-      ? "rgba(0, 0, 0, 0.95)"
-      : "rgba(255, 255, 255, 0.95)";
+    // Usar el color secundario de cada era con alta opacidad para que sea característico
+    const colorToUse = currentEra.colors.secondary;
+    // Convertir hex a rgba con opacidad 0.95
+    const hex = colorToUse.replace("#", "");
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, 0.95)`;
+  };
+
+  // Función para obtener el color del borde basado en la era
+  const getBorderColor = () => {
+    const isDark =
+      currentEra.id === "reputation" || currentEra.id === "midnights";
+    return isDark ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.15)";
+  };
+
+  // Función para obtener el color del texto del logo
+  const getLogoColor = () => {
+    const isDark =
+      currentEra.id === "reputation" || currentEra.id === "midnights";
+    return isScrolled
+      ? isDark
+        ? "white"
+        : currentEra.colors.text
+      : isDark
+        ? "white"
+        : "black";
   };
 
   return (
     <>
       <AppBar
-        position="sticky"
+        position="fixed"
         elevation={isScrolled ? 4 : 0}
         sx={{
           backgroundColor: getBackgroundColor(),
           backdropFilter: isScrolled ? "blur(10px)" : "none",
-          borderBottom: isScrolled
-            ? mode === "dark"
-              ? "1px solid rgba(255, 255, 255, 0.1)"
-              : "1px solid rgba(0, 0, 0, 0.1)"
-            : "none",
+          borderBottom: isScrolled ? `1px solid ${getBorderColor()}` : "none",
           transition: "all 0.3s ease-in-out",
           padding: 1,
+          zIndex: 1100,
+          top: 0,
         }}
       >
         <Container maxWidth={false} sx={{ maxWidth: 1440, mx: "auto" }}>
-          <Toolbar sx={{ gap: 2, px: { xs: 0, sm: 0 } }}>
+          <Toolbar sx={{ gap: 2, px: { xs: 0, sm: 0 }, color: getLogoColor() }}>
             <Typography variant="h6" sx={{ fontWeight: 800 }}>
               <Link
                 href="/"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <Box
+                <Typography
+                  variant="h4"
+                  component="div"
                   sx={{
-                    position: "relative",
-                    width: { xs: "150px", sm: "200px" },
-                    height: { xs: "35px", sm: "47px" },
+                    fontWeight: "bold",
+                    color: getLogoColor(),
+                    fontFamily: "var(--font-heading)",
+                    letterSpacing: "-0.05em",
+                    transition: "color 0.3s ease",
+                    fontSize: { xs: "1.25rem", sm: "1.5rem", md: "2rem" },
                   }}
                 >
-                  <Image
-                    src="/logo-megadeth.png"
-                    alt="Megadeth"
-                    fill
-                    style={{ objectFit: "contain" }}
-                    priority
-                  />
-                </Box>
+                  TAYLOR SWIFT
+                </Typography>
               </Link>
             </Typography>
+
+            {/* Spacer para mobile - empuja botones a la derecha */}
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", xl: "none" } }} />
 
             {/* Navegación centrada - solo desktop */}
             <Box
@@ -166,8 +220,8 @@ export default function Header() {
                   const isActive = item.hasSubmenu
                     ? isMediaActive
                     : item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
+                      ? pathname === "/"
+                      : pathname.startsWith(item.href);
 
                   if (item.hasSubmenu) {
                     return (
@@ -210,43 +264,51 @@ export default function Header() {
                           {item.label}
                         </Button>
                         <Menu
+                          id="media-menu"
                           anchorEl={mediaAnchorEl}
                           open={Boolean(mediaAnchorEl)}
                           onClose={handleMediaMouseLeave}
+                          disableScrollLock
                           MenuListProps={{
+                            onMouseEnter: () => {
+                              // Limpiar timeout al entrar en el menú
+                              if (closeTimeout) {
+                                clearTimeout(closeTimeout);
+                                setCloseTimeout(null);
+                              }
+                            },
                             onMouseLeave: handleMediaMouseLeave,
+                            sx: {
+                              py: 0.5,
+                            },
                           }}
-                          sx={{
-                            "& .MuiPaper-root": {
-                              mt: 1,
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "left",
+                          }}
+                          transformOrigin={{
+                            vertical: "top",
+                            horizontal: "left",
+                          }}
+                          slotProps={{
+                            paper: {
+                              sx: {
+                                bgcolor: "background.paper",
+                                color: "text.primary",
+                                mt: 0.5, // Pequeño margen para evitar el gap
+                              },
                             },
                           }}
                         >
-                          {mediaItems.map((mediaItem) => (
+                          {mediaItems.map((subItem) => (
                             <MenuItem
-                              key={mediaItem.href}
-                              component={Link}
-                              href={mediaItem.href}
+                              key={subItem.href}
                               onClick={handleMediaMouseLeave}
-                              sx={{
-                                backgroundColor: pathname.startsWith(
-                                  mediaItem.href
-                                )
-                                  ? "primary.main"
-                                  : "transparent",
-                                color: pathname.startsWith(mediaItem.href)
-                                  ? "white"
-                                  : "text.primary",
-                                "&:hover": {
-                                  backgroundColor: pathname.startsWith(
-                                    mediaItem.href
-                                  )
-                                    ? "primary.dark"
-                                    : "action.hover",
-                                },
-                              }}
+                              component={Link}
+                              href={subItem.href}
+                              selected={pathname.startsWith(subItem.href)}
                             >
-                              {mediaItem.label}
+                              {subItem.label}
                             </MenuItem>
                           ))}
                         </Menu>
@@ -296,230 +358,144 @@ export default function Header() {
               </Box>
             </Box>
 
-            {/* Espaciador para mobile/tablet */}
-            <Box sx={{ flexGrow: 1, display: { xs: "block", xl: "none" } }} />
-
-            <IconButton
-              onClick={() => setSearchOpen(true)}
-              aria-label="Buscar"
-              sx={{
-                color: "text.primary",
-                display: { xs: "none", sm: "flex" },
-              }}
-            >
-              <SearchIcon />
-            </IconButton>
-
-            <Button
-              startIcon={<LanguageIcon />}
-              onClick={handleLanguageClick}
-              sx={{
-                textTransform: "uppercase",
-                minWidth: "auto",
-                display: { xs: "none", sm: "flex" },
-              }}
-            >
-              {currentLocale}
-            </Button>
-
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleLanguageClose}
-            >
-              <MenuItem onClick={() => handleLanguageChange("en")}>
-                English
-              </MenuItem>
-              <MenuItem onClick={() => handleLanguageChange("es")}>
-                Español
-              </MenuItem>
-            </Menu>
-
-            <IconButton
-              onClick={toggle}
-              aria-label="Cambiar tema"
-              sx={{ display: { xs: "none", sm: "flex" } }}
-            >
-              {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
-            </IconButton>
-            {/* Botón hamburguesa para mobile/tablet */}
-            <IconButton
-              sx={{
-                display: { xs: "block", xl: "none" },
-                color: mode === "dark" ? "white" : "black",
-              }}
-              onClick={() => setDrawerOpen(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
-        </Container>
-
-        {/* Drawer para navegación mobile */}
-        <Drawer
-          anchor="right"
-          open={drawerOpen}
-          onClose={() => setDrawerOpen(false)}
-          sx={{
-            "& .MuiDrawer-paper": {
-              width: 280,
-              backgroundColor: mode === "dark" ? "grey.900" : "grey.50",
-            },
-          }}
-        >
-          <Box sx={{ p: 2 }}>
-            <Box width="100%" display="flex" justifyContent="center" mb={2}>
-              <Image
-                src="/logo-megadeth.png"
-                alt="Megadeth"
-                width={150}
-                height={30}
-              />
-            </Box>
-
-            {/* Botones de acción para mobile */}
-            <Box
-              sx={{ display: "flex", gap: 1, mb: 2, justifyContent: "center" }}
-            >
-              <IconButton
-                onClick={() => {
-                  setSearchOpen(true);
-                  setDrawerOpen(false);
-                }}
-                aria-label="Buscar"
-                sx={{ color: "text.primary" }}
-              >
+            <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+              <IconButton onClick={() => setSearchOpen(true)} color="inherit">
                 <SearchIcon />
               </IconButton>
               <IconButton
-                onClick={handleLanguageClick}
-                aria-label="Cambiar idioma"
-                sx={{ color: "text.primary" }}
+                onClick={handleEraClick}
+                color="inherit"
+                aria-label="Select Era"
               >
+                <PaletteIcon />
+              </IconButton>
+              <Menu
+                key={`era-${currentEra.id}`}
+                anchorEl={eraAnchorEl}
+                open={Boolean(eraAnchorEl)}
+                onClose={handleEraClose}
+                disableScrollLock
+                slotProps={{
+                  paper: {
+                    sx: {
+                      maxHeight: 400,
+                      width: "250px",
+                      bgcolor: "background.paper",
+                      color: "text.primary",
+                    },
+                  },
+                }}
+              >
+                {ERAS.map((era) => (
+                  <MenuItem
+                    key={era.id}
+                    onClick={() => handleEraChange(era.id)}
+                    selected={currentEra.id === era.id}
+                    sx={{
+                      borderLeft: `4px solid ${era.colors.primary}`,
+                      "&.Mui-selected": {
+                        backgroundColor: era.colors.secondary + "30",
+                        fontWeight: "bold",
+                      },
+                      "&:hover": {
+                        backgroundColor: era.colors.secondary + "20",
+                      },
+                    }}
+                  >
+                    {era.name}
+                  </MenuItem>
+                ))}
+              </Menu>
+              <IconButton onClick={handleLanguageClick} color="inherit">
                 <LanguageIcon />
               </IconButton>
-              <IconButton onClick={toggle} aria-label="Cambiar tema">
-                {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+              <Menu
+                key={`lang-${currentEra.id}`}
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleLanguageClose}
+                disableScrollLock
+                slotProps={{
+                  paper: {
+                    sx: {
+                      bgcolor: "background.paper",
+                      color: "text.primary",
+                    },
+                  },
+                }}
+              >
+                <MenuItem
+                  onClick={() => handleLanguageChange("es")}
+                  selected={currentLocale === "es"}
+                >
+                  Español
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleLanguageChange("en")}
+                  selected={currentLocale === "en"}
+                >
+                  English
+                </MenuItem>
+              </Menu>
+
+              {/* Menú móvil */}
+              <IconButton
+                color="inherit"
+                sx={{ display: { xs: "block", xl: "none" } }}
+                onClick={() => setDrawerOpen(true)}
+              >
+                <MenuIcon />
               </IconButton>
             </Box>
-
-            <List>
-              {navigationItems.map((item) => {
-                if (item.hasSubmenu) {
-                  return (
-                    <Box key="media">
-                      <ListItem disablePadding>
-                        <ListItemButton
-                          sx={{
-                            borderRadius: 1,
-                            mb: 1,
-                            backgroundColor: isMediaActive
-                              ? "primary.main"
-                              : "transparent",
-                            color: isMediaActive ? "white" : "text.primary",
-                            "&:hover": {
-                              backgroundColor: isMediaActive
-                                ? "primary.dark"
-                                : "action.hover",
-                            },
-                          }}
-                        >
-                          <ListItemText
-                            primary={item.label}
-                            sx={{
-                              "& .MuiListItemText-primary": {
-                                fontWeight: isMediaActive ? 600 : 400,
-                                textTransform: "uppercase",
-                                letterSpacing: "0.5px",
-                              },
-                            }}
-                          />
-                        </ListItemButton>
-                      </ListItem>
-                      {mediaItems.map((mediaItem) => {
-                        const isActive = pathname.startsWith(mediaItem.href);
-                        return (
-                          <ListItem key={mediaItem.href} disablePadding>
-                            <ListItemButton
-                              component={Link}
-                              href={mediaItem.href}
-                              onClick={() => setDrawerOpen(false)}
-                              sx={{
-                                borderRadius: 1,
-                                mb: 1,
-                                ml: 2,
-                                backgroundColor: isActive
-                                  ? "primary.main"
-                                  : "transparent",
-                                color: isActive ? "white" : "text.primary",
-                                "&:hover": {
-                                  backgroundColor: isActive
-                                    ? "primary.dark"
-                                    : "action.hover",
-                                },
-                              }}
-                            >
-                              <ListItemText
-                                primary={mediaItem.label}
-                                sx={{
-                                  "& .MuiListItemText-primary": {
-                                    fontWeight: isActive ? 600 : 400,
-                                    fontSize: "0.9rem",
-                                  },
-                                }}
-                              />
-                            </ListItemButton>
-                          </ListItem>
-                        );
-                      })}
-                    </Box>
-                  );
-                }
-
-                const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
-                  <ListItem key={item.href} disablePadding>
-                    <ListItemButton
-                      component={Link}
-                      href={item.href}
-                      onClick={() => setDrawerOpen(false)}
-                      sx={{
-                        borderRadius: 1,
-                        mb: 1,
-                        backgroundColor: isActive
-                          ? "primary.main"
-                          : "transparent",
-                        color: isActive ? "white" : "text.primary",
-                        "&:hover": {
-                          backgroundColor: isActive
-                            ? "primary.dark"
-                            : "action.hover",
-                        },
-                      }}
-                    >
-                      <ListItemText
-                        primary={item.label}
-                        sx={{
-                          "& .MuiListItemText-primary": {
-                            fontWeight: isActive ? 600 : 400,
-                            textTransform: "uppercase",
-                            letterSpacing: "0.5px",
-                          },
-                        }}
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                );
-              })}
-            </List>
-          </Box>
-        </Drawer>
+          </Toolbar>
+        </Container>
       </AppBar>
 
-      {/* Search Modal */}
+      {/* Drawer para móvil */}
+      <Drawer
+        key={`drawer-${currentEra.id}`}
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        disableScrollLock
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: "background.paper",
+              color: "text.primary",
+            },
+          },
+        }}
+      >
+        <Box
+          sx={{ width: 250 }}
+          role="presentation"
+          onClick={() => setDrawerOpen(false)}
+          onKeyDown={() => setDrawerOpen(false)}
+        >
+          <List>
+            {navigationItems.map((item) => {
+              if (item.hasSubmenu) {
+                return mediaItems.map((subItem) => (
+                  <ListItem key={subItem.href} disablePadding>
+                    <ListItemButton component={Link} href={subItem.href}>
+                      <ListItemText primary={subItem.label} />
+                    </ListItemButton>
+                  </ListItem>
+                ));
+              }
+              return (
+                <ListItem key={item.href} disablePadding>
+                  <ListItemButton component={Link} href={item.href}>
+                    <ListItemText primary={item.label} />
+                  </ListItemButton>
+                </ListItem>
+              );
+            })}
+          </List>
+        </Box>
+      </Drawer>
+
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );

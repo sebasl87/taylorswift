@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import EraSelector from './EraSelector';
 import { EraProvider } from '@/context/EraContext';
 import { ThemeProvider, createTheme } from '@mui/material/styles';

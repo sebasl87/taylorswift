@@ -139,8 +139,8 @@ export function CommentsSection({
               text: customSubtitle || title,
               author: {
                 "@type": "Organization",
-                name: "Megadeth Fan Site",
-                url: "https://megadeth.com.ar",
+                name: "Taylor Swift Fan Site",
+                url: "https://taylorswift.com",
               },
               datePublished:
                 items.length > 0
@@ -153,7 +153,7 @@ export function CommentsSection({
                 author: {
                   "@type": "Person",
                   name: c.name,
-                  url: "https://megadeth.com.ar",
+                  url: "https://taylorswift.com",
                 },
                 dateCreated: c.created_at,
               })),
@@ -173,8 +173,8 @@ export function CommentsSection({
             text: t("subtitle"),
             author: {
               "@type": "Organization",
-              name: "Megadeth Fan Site",
-              url: "https://megadeth.com.ar",
+              name: "Taylor Swift Fan Site",
+              url: "https://taylorswift.com",
             },
             datePublished: new Date().toISOString(),
             commentCount: items.length,
@@ -186,7 +186,7 @@ export function CommentsSection({
                     author: {
                       "@type": "Person",
                       name: c.name,
-                      url: "https://megadeth.com.ar",
+                      url: "https://taylorswift.com",
                     },
                     dateCreated: c.created_at,
                   }))
@@ -206,7 +206,7 @@ export function CommentsSection({
         {/* Banner Header */}
         <Box sx={{ position: "relative", height: { xs: 180, md: 300 } }}>
           <Image
-            src="/images/banners/comentarios.jpg"
+            src="/images/eras/comments.jpg"
             alt={t("title")}
             fill
             style={{ objectFit: "cover", objectPosition: "center 35%" }}

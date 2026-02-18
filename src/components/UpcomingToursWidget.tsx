@@ -19,7 +19,7 @@ interface UpcomingToursWidgetProps {
 }
 
 export default function UpcomingToursWidget({
-  limit = 3,
+  limit = 8,
 }: UpcomingToursWidgetProps) {
   const t = useTranslations("upcomingTours");
   const locale = useLocale() as "es" | "en";
@@ -70,7 +70,7 @@ export default function UpcomingToursWidget({
           }}
         >
           <Image
-            src="/images/cards-home/tourcalendar.jpg"
+            src="/images/cards-home/tourcalendar4.jpg"
             alt={t("title")}
             fill
             style={{ objectFit: "cover" }}

@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { kv } from "@vercel/kv";
-
-export const runtime = "nodejs";
 
 const BASE_URL = "https://api.setlist.fm/rest/1.0";
 
@@ -59,12 +56,17 @@ type NormalizedShow = {
   attribution?: { text: string; url?: string | null };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function normalizeSetlistItem(item: any): NormalizedShow | null {
   const iso = ddmmyyyyToISO(item?.eventDate);
   if (!item?.id || !iso) return null;
 
-  const set0 = item?.sets?.set?.[0];
-  const songsRaw: any[] = Array.isArray(set0?.song) ? set0.song : [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const setsRaw: any[] = Array.isArray(item?.sets?.set) ? item.sets.set : [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const songsRaw: any[] = setsRaw.flatMap((setItem) =>
+    Array.isArray(setItem?.song) ? setItem.song : []
+  );
   const songs = songsRaw
     .map((s) => ({
       name: s?.name ?? "",
@@ -98,6 +100,16 @@ function normalizeSetlistItem(item: any): NormalizedShow | null {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function pickFirstWithSongs(rawList: any[]): NormalizedShow | null {
+  const normalized = rawList
+    .map(normalizeSetlistItem)
+    .filter(Boolean) as NormalizedShow[];
+
+  const withSongs = normalized.find((s) => Array.isArray(s.songs) && s.songs.length > 0);
+  return withSongs ?? normalized[0] ?? null;
+}
+
 function pickClosestInSameMonth(shows: NormalizedShow[], targetISO: string): NormalizedShow | null {
   const target = isoToDate(targetISO);
   if (Number.isNaN(target.getTime())) return null;
@@ -114,6 +126,28 @@ function pickClosestInSameMonth(shows: NormalizedShow[], targetISO: string): Nor
 
   const tms = target.getTime();
   return inMonth
+    .slice()
+    .sort((a, b) => {
+      const da = Math.abs(isoToDate(a.eventDateISO).getTime() - tms);
+      const db = Math.abs(isoToDate(b.eventDateISO).getTime() - tms);
+      return da - db;
+    })[0];
+}
+
+function pickClosestInYear(shows: NormalizedShow[], targetISO: string): NormalizedShow | null {
+  const target = isoToDate(targetISO);
+  if (Number.isNaN(target.getTime())) return null;
+
+  const ty = target.getUTCFullYear();
+  const inYear = shows.filter((s) => {
+    const d = isoToDate(s.eventDateISO);
+    return !Number.isNaN(d.getTime()) && d.getUTCFullYear() === ty;
+  });
+
+  if (!inYear.length) return null;
+
+  const tms = target.getTime();
+  return inYear
     .slice()
     .sort((a, b) => {
       const da = Math.abs(isoToDate(a.eventDateISO).getTime() - tms);
@@ -166,14 +200,12 @@ async function kvSet<T>(key: string, value: T, freshForSeconds: number, keepSeco
 /** =======================
  * Handler
  * ======================= */
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-
-  const mbid = searchParams.get("mbid") || "a9044915-8be3-4c7e-b11f-9e2d2ea0a91e";
-  const yearsAgo = Number(searchParams.get("yearsAgo") || "20");
-
-  // “warm” solo para forzar el segundo fetch si falta cache
-  const warm = searchParams.get("warm") === "1";
+export async function GET(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
+  const mbid = searchParams.get("mbid") || "20244d07-534f-4eff-b4d4-930878889970";
+  const yearsAgo = Number(searchParams.get("yearsAgo") || "5");
+  // const warm = searchParams.get("warm") !== "0"; // Unused in logic but present in original
+  const clear = searchParams.get("clear") === "1";
 
   const latestKey = `setlist:latest:${mbid}:p1`;
   const latestFreshSeconds = 60;     // 1 min fresco
@@ -182,12 +214,45 @@ export async function GET(req: Request) {
   const yearsKeepSeconds = 7 * 24 * 60 * 60; // guardo una semana
   const yearsFreshSeconds = 24 * 60 * 60;    // fresco 24h
 
+  // Mock data if API key is missing
+  if (!process.env.SETLISTFM_API_KEY) {
+    console.warn("Missing SETLISTFM_API_KEY, returning mock data");
+    const mockShow: NormalizedShow = {
+      id: "mock-show-id",
+      eventDate: "04-02-2024",
+      eventDateISO: "2024-02-04",
+      lastUpdated: new Date().toISOString(),
+      tour: "The Eras Tour",
+      venue: { id: "venue-id", name: "Tokyo Dome", url: "https://www.setlist.fm/venue/tokyo-dome-tokyo-japan-7bd61640.html" },
+      city: {
+        name: "Tokyo",
+        state: null,
+        countryCode: "JP",
+        countryName: "Japan",
+        coords: { lat: 35.7056, long: 139.7514 },
+      },
+      songs: [
+        { name: "Miss Americana & the Heartbreak Prince", tape: false, info: "Shortened" },
+        { name: "Cruel Summer", tape: false },
+        { name: "The Man", tape: false },
+        { name: "You Need to Calm Down", tape: false },
+      ],
+      url: "https://www.setlist.fm/setlist/taylor-swift/2024/tokyo-dome-tokyo-japan-33ad0045.html",
+      attribution: { text: "Source: setlist.fm (MOCK)", url: "https://www.setlist.fm" },
+    };
+    return NextResponse.json({ latest: mockShow, yearsAgoPrev: mockShow });
+  }
+
   try {
     /** 1) LATEST desde KV (o upstream) */
     let latestObj: NormalizedShow | null = null;
     const latestCached = await kvGet<NormalizedShow>(latestKey);
 
-    if (latestCached.value) {
+    if (clear) {
+      await kv.del(latestKey);
+    }
+
+    if (latestCached.value && latestCached.value.songs?.length && !clear) {
       latestObj = latestCached.value;
     } else {
       const latestRes = await upstreamFetch(`/artist/${mbid}/setlists?p=1`);
@@ -197,8 +262,9 @@ export async function GET(req: Request) {
           { status: latestRes.status }
         );
       }
-      const latestRaw = latestRes.json?.setlist?.[0];
-      latestObj = normalizeSetlistItem(latestRaw);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const latestRawList: any[] = Array.isArray(latestRes.json?.setlist) ? latestRes.json.setlist : [];
+      latestObj = pickFirstWithSongs(latestRawList);
       if (!latestObj) {
         return NextResponse.json(
           { latest: null, yearsAgoPrev: null, error: "Latest not found/invalid" },
@@ -225,63 +291,75 @@ export async function GET(req: Request) {
 
     // intento KV
     const yearsCached = await kvGet<NormalizedShow | null>(yearsKey);
-    if (yearsCached.value !== null) {
+    if (yearsCached.value !== null && !clear) {
       return NextResponse.json(
         {
           latest: latestObj,
           yearsAgoPrev: yearsCached.value,
-          meta: { targetISO, targetYear, targetMonth, cache: { latestKey, yearsKey }, stale: yearsCached.stale },
-        },
-        { status: 200 }
+          meta: {
+            cachedYears: true,
+            yearsStale: yearsCached.stale,
+            targetISO,
+          },
+        }
       );
     }
 
-    // si no está cacheado y no es warm, no hago 2do request (evita 429)
-    if (!warm) {
-      return NextResponse.json(
-        {
-          latest: latestObj,
-          yearsAgoPrev: null,
-          needsWarm: true,
-          meta: { targetISO, targetYear, targetMonth, hint: "Call same endpoint with ?warm=1 to cache yearsAgoPrev." },
-        },
-        { status: 200 }
-      );
-    }
+    /** 3) Fetch upstream years ago - búsqueda recursiva hacia atrás */
+    let found: NormalizedShow | null = null;
+    let searchYear = parseInt(targetYear);
+    const maxSearchAttempts = 10; // Buscar hasta 10 años hacia atrás
+    let searchedYears: string[] = [];
 
-    /** 3) warm: hago el 2do upstream call */
-    const yearRes = await upstreamFetch(`/search/setlists?artistMbid=${mbid}&year=${targetYear}&p=1`);
+    for (let attempt = 0; attempt < maxSearchAttempts && !found; attempt++) {
+      const currentSearchYear = searchYear - attempt;
+      searchedYears.push(currentSearchYear.toString());
+      
+      const yearsRes = await upstreamFetch(`/search/setlists?artistMbid=${mbid}&year=${currentSearchYear}&p=1`);
 
-    if (!yearRes.ok) {
-      // si rate limited, igual dejo cacheado null “fresco” un rato para no martillar
-      if (yearRes.status === 429) {
-        await kvSet(yearsKey, null, 10 * 60, yearsKeepSeconds); // 10 min
+      if (yearsRes.ok) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const list: any[] = Array.isArray(yearsRes.json?.setlist) ? yearsRes.json.setlist : [];
+        const normalizedList = list.map(normalizeSetlistItem).filter(Boolean) as NormalizedShow[];
+
+        // Para el año objetivo, intentar encontrar el más cercano en fecha
+        if (attempt === 0) {
+          found = pickClosestInSameMonth(normalizedList, targetISO);
+          if (!found) {
+            found = pickClosestInYear(normalizedList, targetISO);
+          }
+        } else {
+          // Para años anteriores, tomar el último show del año (más reciente)
+          const withSongs = normalizedList.filter(s => Array.isArray(s.songs) && s.songs.length > 0);
+          if (withSongs.length > 0) {
+            // El primer elemento debería ser el más reciente ya que la API los ordena por fecha desc
+            found = withSongs[0];
+          }
+        }
+
+        // Salir del loop si encontramos algo
+        if (found) break;
       }
-      return NextResponse.json(
-        { latest: latestObj, yearsAgoPrev: null, error: "Upstream error", details: yearRes.bodyText },
-        { status: yearRes.status }
-      );
     }
 
-    const yearSetlists: any[] = Array.isArray(yearRes.json?.setlist) ? yearRes.json.setlist : [];
-    const normalized = yearSetlists.map(normalizeSetlistItem).filter(Boolean) as NormalizedShow[];
+    // Guardamos en cache con metadata de búsqueda
+    await kvSet(yearsKey, found, yearsFreshSeconds, yearsKeepSeconds);
 
-    const yearsAgoPrev = pickClosestInSameMonth(normalized, targetISO);
-
-    // cacheo (incluso null) por 24h fresco y 7 días retenido
-    await kvSet(yearsKey, yearsAgoPrev ?? null, yearsFreshSeconds, yearsKeepSeconds);
-
-    return NextResponse.json(
-      {
-        latest: latestObj,
-        yearsAgoPrev: yearsAgoPrev ?? null,
-        meta: { targetISO, targetYear, targetMonth, cache: { latestKey, yearsKey }, warmUsed: true },
+    return NextResponse.json({
+      latest: latestObj,
+      yearsAgoPrev: found,
+      meta: {
+        cachedYears: false,
+        targetISO,
+        searchedYears,
+        foundInYear: found?.eventDateISO.slice(0, 4) ?? null,
       },
-      { status: 200 }
-    );
-  } catch (e: any) {
+    });
+
+  } catch (error) {
+    console.error("API Error:", error);
     return NextResponse.json(
-      { latest: null, yearsAgoPrev: null, error: "Unexpected error", details: String(e?.message ?? e) },
+      { error: "Internal Server Error", details: String(error) },
       { status: 500 }
     );
   }

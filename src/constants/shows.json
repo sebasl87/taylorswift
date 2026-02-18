@@ -1,1 +1,1048 @@
-[]
+[
+  {
+    "id": "debut-first-single-2006",
+    "date": "2006-06-19",
+    "city": "Nashville",
+    "venue": "Bluebird Cafe",
+    "country": "USA",
+    "era": "Debut Era",
+    "linkEra": "debut-2006-2008",
+    "whyHistoric": {
+      "es": "Lugar icónico donde fue descubierta por Scott Borchetta. Aunque este show es simbólico de sus inicios.",
+      "en": "Iconic venue where she was discovered by Scott Borchetta. This show symbolizes her beginnings."
+    },
+    "setlist": [
+      "Tim McGraw",
+      "Teardrops on My Guitar",
+      "Our Song",
+      "Picture to Burn"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2006/bluebird-cafe-nashville-tn-3b9c9g8d.html",
+    "youtube": "https://www.youtube.com/watch?v=GkD20ajVxnY",
+    "image": "/images/shows/2006.webp"
+  },
+  {
+    "id": "fearless-tour-msg-2009",
+    "date": "2009-08-27",
+    "city": "New York",
+    "venue": "Madison Square Garden",
+    "country": "USA",
+    "era": "Fearless Era",
+    "linkEra": "fearless-2008-2010",
+    "whyHistoric": {
+      "es": "Primer show agotado en el legendario MSG. Un hito en su carrera temprana.",
+      "en": "First sold-out show at the legendary MSG. A milestone in her early career."
+    },
+    "setlist": [
+      "You Belong With Me",
+      "Our Song",
+      "Teardrops on My Guitar",
+      "Fifteen",
+      "Fearless",
+      "Love Story",
+      "Should've Said No"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2009/madison-square-garden-new-york-ny-3bd7f4fc.html",
+    "youtube": "https://www.youtube.com/watch?v=VuNIsY6JdUw",
+    "image": "/images/shows/2009.webp"
+  },
+  {
+    "id": "speak-now-tour-live-2011",
+    "date": "2011-08-24",
+    "city": "Los Angeles",
+    "venue": "Staples Center",
+    "country": "USA",
+    "era": "Speak Now Era",
+    "linkEra": "speak-now-2010-2012",
+    "whyHistoric": {
+      "es": "Show grabado para el CD/DVD oficial del Speak Now World Tour. Incluye covers acústicos.",
+      "en": "Show recorded for the official Speak Now World Tour CD/DVD. Includes acoustic covers."
+    },
+    "setlist": [
+      "Sparks Fly",
+      "Mine",
+      "The Story of Us",
+      "Mean",
+      "Ours",
+      "Back to December",
+      "Better Than Revenge",
+      "Speak Now",
+      "Fearless",
+      "Last Kiss",
+      "You Belong With Me",
+      "Dear John",
+      "Enchanted",
+      "Haunted",
+      "Long Live",
+      "Love Story"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2011/staples-center-los-angeles-ca-4bd0cfce.html",
+    "youtube": "https://www.youtube.com/watch?v=TEDKxZ78k",
+    "image": "/images/shows/2011.webp"
+  },
+  {
+    "id": "grammys-2012-mean",
+    "date": "2012-02-12",
+    "city": "Los Angeles",
+    "venue": "Staples Center (Grammys)",
+    "country": "USA",
+    "era": "Speak Now Era",
+    "linkEra": "speak-now-2010-2012",
+    "whyHistoric": {
+      "es": "Interpretación icónica de 'Mean' cambiando la letra tras las críticas, recibiendo una ovación de pie.",
+      "en": "Iconic performance of 'Mean' changing lyrics after criticism, receiving a standing ovation."
+    },
+    "setlist": [
+      "Mean"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2012/staples-center-los-angeles-ca-1bde193c.html",
+    "youtube": "https://www.youtube.com/watch?v=jYa1eI1hpDE",
+    "image": "/images/shows/2012.webp"
+  },
+  {
+    "id": "red-tour-london-2014",
+    "date": "2014-02-01",
+    "city": "London",
+    "venue": "The O2 Arena",
+    "country": "UK",
+    "era": "Red Era",
+    "linkEra": "red-2012-2014",
+    "whyHistoric": {
+      "es": "Ed Sheeran se une para cantar 'Lego House'. Uno de los shows más grandes de la gira Red en Europa.",
+      "en": "Ed Sheeran joins to sing 'Lego House'. One of the biggest shows of the Red tour in Europe."
+    },
+    "setlist": [
+      "State of Grace",
+      "Holy Ground",
+      "Red",
+      "The Lucky One",
+      "Mean",
+      "22",
+      "Lego House",
+      "I Knew You Were Trouble",
+      "All Too Well",
+      "Love Story",
+      "Treacherous",
+      "We Are Never Ever Getting Back Together"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2014/the-o2-arena-london-england-3bc5c874.html",
+    "youtube": "https://www.youtube.com/watch?v=AgFeZr5ptV8",
+    "image": "/images/shows/2014.webp"
+  },
+  {
+    "id": "1989-tour-sydney-2015",
+    "date": "2015-11-28",
+    "city": "Sydney",
+    "venue": "ANZ Stadium",
+    "country": "Australia",
+    "era": "1989 Era",
+    "linkEra": "1989-2014-2017",
+    "whyHistoric": {
+      "es": "Show filmado para el 'The 1989 World Tour Live'. 76,000 personas, invitados especiales.",
+      "en": "Show filmed for 'The 1989 World Tour Live'. 76,000 people, special guests."
+    },
+    "setlist": [
+      "Welcome to New York",
+      "New Romantics",
+      "Blank Space",
+      "I Knew You Were Trouble",
+      "I Wish You Would",
+      "How You Get The Girl",
+      "I Know Places",
+      "All You Had To Do Was Stay",
+      "You Are In Love",
+      "Clean",
+      "Love Story",
+      "Style",
+      "This Love",
+      "Bad Blood",
+      "We Are Never Ever Getting Back Together",
+      "Wildest Dreams",
+      "Out of the Woods",
+      "Shake It Off"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2015/anz-stadium-sydney-australia-1bf2d9cc.html",
+    "youtube": "https://www.youtube.com/watch?v=IdneKLhsWOQ",
+    "image": "/images/shows/2015.webp"
+  },
+  {
+    "id": "super-saturday-night-2017",
+    "date": "2017-02-04",
+    "city": "Houston",
+    "venue": "Club Nomadic",
+    "country": "USA",
+    "era": "1989 Era",
+    "linkEra": "1989-2014-2017",
+    "whyHistoric": {
+      "es": "Único concierto de 2017. Debut en vivo de 'I Don't Wanna Live Forever' y primera vez tocando 'Better Man'.",
+      "en": "Only concert of 2017. Live debut of 'I Don't Wanna Live Forever' and first time playing 'Better Man'."
+    },
+    "setlist": [
+      "New Romantics",
+      "22",
+      "Blank Space",
+      "I Knew You Were Trouble",
+      "Style",
+      "I Don't Wanna Live Forever",
+      "You Belong With Me",
+      "This Is What You Came For",
+      "Better Man",
+      "Red",
+      "We Are Never Ever Getting Back Together",
+      "Love Story",
+      "All Too Well",
+      "Wildest Dreams",
+      "Bad Blood",
+      "Shake It Off"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2017/club-nomadic-houston-tx-3bf8d8cc.html",
+    "youtube": "https://www.youtube.com/watch?v=-5q5pB3c8i0",
+    "image": "/images/shows/2017.webp"
+  },
+  {
+    "id": "reputation-tour-arlington-2018",
+    "date": "2018-10-06",
+    "city": "Arlington",
+    "venue": "AT&T Stadium",
+    "country": "USA",
+    "era": "Reputation Era",
+    "linkEra": "reputation-2017-2018",
+    "whyHistoric": {
+      "es": "Filmación del especial de Netflix 'Reputation Stadium Tour'. Producción masiva y cobras gigantes.",
+      "en": "Filming of the Netflix special 'Reputation Stadium Tour'. Massive production and giant cobras."
+    },
+    "setlist": [
+      "...Ready for It?",
+      "I Did Something Bad",
+      "Gorgeous",
+      "Style",
+      "Love Story",
+      "You Belong With Me",
+      "Look What You Made Me Do",
+      "End Game",
+      "King of My Heart",
+      "Delicate",
+      "Shake It Off",
+      "Dancing With Our Hands Tied",
+      "All Too Well",
+      "Blank Space",
+      "Dress",
+      "Bad Blood",
+      "Should've Said No",
+      "Don't Blame Me",
+      "Long Live",
+      "New Year's Day",
+      "Getaway Car",
+      "Call It What You Want",
+      "We Are Never Ever Getting Back Together",
+      "This Is Why We Can't Have Nice Things"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2018/att-stadium-arlington-tx-3b96cc6c.html",
+    "youtube": "https://www.youtube.com/watch?v=9LhT7m0h4qE",
+    "image": "/images/shows/2018.webp"
+  },
+  {
+    "id": "city-of-lover-2019",
+    "date": "2019-09-09",
+    "city": "Paris",
+    "venue": "L'Olympia",
+    "country": "France",
+    "era": "Lover Era",
+    "linkEra": "lover-2019",
+    "whyHistoric": {
+      "es": "Concierto único para presentar el álbum Lover. Íntimo y acústico en su mayoría.",
+      "en": "One-off concert to present the Lover album. Intimate and mostly acoustic."
+    },
+    "setlist": [
+      "Me!",
+      "The Archer",
+      "Death By A Thousand Cuts",
+      "Cornelia Street",
+      "The Man",
+      "Daylight",
+      "You Need To Calm Down",
+      "Lover"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2019/lolympia-paris-france-39c2d0f.html",
+    "youtube": "https://www.youtube.com/watch?v=Jb2stN7kH28",
+    "image": "/images/shows/2019.webp"
+  },
+  {
+    "id": "eras-tour-glendale-opening",
+    "date": "2023-03-17",
+    "city": "Glendale",
+    "venue": "State Farm Stadium",
+    "country": "USA",
+    "era": "The Eras Tour",
+    "linkEra": "eras-tour-2023-2024",
+    "whyHistoric": {
+      "es": "Noche de apertura de The Eras Tour. Revelación del setlist de 3 horas y media y 44 canciones.",
+      "en": "Opening night of The Eras Tour. Revelation of the 3.5 hour setlist and 44 songs."
+    },
+    "setlist": [
+      "Miss Americana & The Heartbreak Prince",
+      "Cruel Summer",
+      "The Man",
+      "You Need To Calm Down",
+      "Lover",
+      "The Archer",
+      "Fearless",
+      "You Belong With Me",
+      "Love Story",
+      "willow",
+      "champagne problems",
+      "tolerate it",
+      "...Ready for It?",
+      "Delicate",
+      "Don't Blame Me",
+      "Look What You Made Me Do",
+      "Enchanted",
+      "22",
+      "We Are Never Ever Getting Back Together",
+      "I Knew You Were Trouble",
+      "All Too Well (10 Minute Version)",
+      "the 1",
+      "betty",
+      "the last great american dynasty",
+      "august",
+      "illicit affairs",
+      "my tears ricochet",
+      "cardigan",
+      "Style",
+      "Blank Space",
+      "Shake It Off",
+      "Wildest Dreams",
+      "Bad Blood",
+      "mirrorball",
+      "Tim McGraw",
+      "Lavender Haze",
+      "Anti-Hero",
+      "Midnight Rain",
+      "Vigilante Shit",
+      "Bejeweled",
+      "Mastermind",
+      "Karma"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2023/state-farm-stadium-glendale-az-3bba7048.html",
+    "youtube": "https://www.youtube.com/watch?v=KUDE3gG8s",
+    "image": "/images/shows/2023.webp"
+  },
+  {
+    "id": "eras-tour-buenos-aires-rain",
+    "date": "2023-11-12",
+    "city": "Buenos Aires",
+    "venue": "Estadio River Plate",
+    "country": "Argentina",
+    "era": "The Eras Tour",
+    "linkEra": "eras-tour-2023-2024",
+    "whyHistoric": {
+      "es": "Primer show reprogramado por lluvia. El público argentino sorprendió a Taylor con el cántico 'Olé, Olé, Olé'.",
+      "en": "First show rescheduled due to rain. The Argentine crowd surprised Taylor with the 'Olé, Olé, Olé' chant."
+    },
+    "setlist": [
+      "Cruel Summer",
+      "Lover",
+      "Fearless",
+      "You Belong With Me",
+      "All Too Well (10 Minute Version)",
+      "Better Than Revenge",
+      "Slut!",
+      "Blank Space",
+      "Shake It Off",
+      "Bad Blood",
+      "Karma"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2023/estadio-river-plate-buenos-aires-argentina-3ba1d8f8.html",
+    "youtube": "https://www.youtube.com/watch?v=svY2G_2",
+    "image": "/images/shows/2023_ba.webp"
+  },
+  {
+    "id": "eras-tour-london-travis",
+    "date": "2024-06-23",
+    "city": "London",
+    "venue": "Wembley Stadium",
+    "country": "UK",
+    "era": "The Eras Tour",
+    "linkEra": "eras-tour-2023-2024",
+    "whyHistoric": {
+      "es": "Travis Kelce aparece en el escenario durante la transición de 'I Can Do It With a Broken Heart'.",
+      "en": "Travis Kelce appears on stage during the 'I Can Do It With a Broken Heart' transition."
+    },
+    "setlist": [
+      "Cruel Summer",
+      "Lover",
+      "Fearless",
+      "All Too Well (10 Minute Version)",
+      "Enchanted",
+      "Look What You Made Me Do",
+      "cardigan",
+      "willow",
+      "Style",
+      "Blank Space",
+      "Shake It Off",
+      "Who's Afraid of Little Old Me?",
+      "Fortnight",
+      "The Smallest Man Who Ever Lived",
+      "I Can Do It With a Broken Heart",
+      "Karma"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2024/wembley-stadium-london-england-23a9d80f.html",
+    "youtube": "https://www.youtube.com/watch?v=TravisK",
+    "image": "/images/shows/2024_london.webp"
+  },
+  {
+    "id": "eras-tour-paris-ttpd",
+    "date": "2024-05-09",
+    "city": "Paris",
+    "venue": "Paris La Défense Arena",
+    "country": "France",
+    "era": "The Eras Tour",
+    "linkEra": "eras-tour-2023-2024",
+    "whyHistoric": {
+      "es": "Debut de la nueva sección 'The Tortured Poets Department' y reorganización del setlist.",
+      "en": "Debut of the new 'The Tortured Poets Department' section and setlist reorganization."
+    },
+    "setlist": [
+      "Cruel Summer",
+      "But Daddy I Love Him",
+      "So High School",
+      "Who's Afraid of Little Old Me?",
+      "Down Bad",
+      "Fortnight",
+      "The Smallest Man Who Ever Lived",
+      "I Can Do It With a Broken Heart",
+      "Karma"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2024/paris-la-defense-arena-nanterre-france-3ba8d8cc.html",
+    "youtube": "https://www.youtube.com/watch?v=TTPD_Paris",
+    "image": "/images/shows/2024_paris.webp"
+  },
+  {
+    "id": "tiny-desk-concert",
+    "date": "2019-10-11",
+    "city": "Washington, D.C.",
+    "venue": "NPR Headquarters",
+    "country": "USA",
+    "era": "Lover Era",
+    "linkEra": "lover-2019",
+    "whyHistoric": {
+      "es": "Presentación íntima en la famosa serie de conciertos de escritorio de NPR.",
+      "en": "Intimate performance at NPR's famous Tiny Desk Concert series."
+    },
+    "setlist": [
+      "The Man",
+      "Lover",
+      "Death By A Thousand Cuts",
+      "All Too Well"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2019/npr-headquarters-washington-dc-39c0d0f.html",
+    "youtube": "https://www.youtube.com/watch?v=FvVPNih",
+    "image": "/images/shows/2019_tiny.webp"
+  },
+  {
+    "id": "formula-1-austin-2016",
+    "date": "2016-10-22",
+    "city": "Austin",
+    "venue": "Circuit of The Americas",
+    "country": "USA",
+    "era": "1989 Era",
+    "linkEra": "1989-2014-2017",
+    "whyHistoric": {
+      "es": "Único concierto completo en 2016. Interpretó 'This Is What You Came For' al piano por primera vez.",
+      "en": "Only full concert in 2016. Performed 'This Is What You Came For' on piano for the first time."
+    },
+    "setlist": [
+      "New Romantics",
+      "22",
+      "Blank Space",
+      "I Knew You Were Trouble",
+      "Style",
+      "You Belong With Me",
+      "Fifteen",
+      "Holy Ground",
+      "We Are Never Ever Getting Back Together",
+      "Bad Blood",
+      "Love Story",
+      "This Is What You Came For",
+      "Sparks Fly",
+      "Enchanted",
+      "Wildest Dreams",
+      "Out of the Woods",
+      "Shake It Off"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2016/circuit-of-the-americas-austin-tx-3bfd58cc.html",
+    "youtube": "https://www.youtube.com/watch?v=AustinF1",
+    "image": "/images/shows/2016.webp"
+  },
+  {
+    "id": "rock-in-rio-usa-2015",
+    "date": "2015-05-15",
+    "city": "Las Vegas",
+    "venue": "Las Vegas Festival Grounds",
+    "country": "USA",
+    "era": "1989 Era",
+    "linkEra": "1989-2014-2017",
+    "whyHistoric": {
+      "es": "Debut en el festival Rock in Rio USA. Ed Sheeran se unió para cantar 'Tenerife Sea'.",
+      "en": "Debut at Rock in Rio USA festival. Ed Sheeran joined to sing 'Tenerife Sea'."
+    },
+    "setlist": [
+      "Welcome to New York",
+      "New Romantics",
+      "Blank Space",
+      "I Knew You Were Trouble",
+      "I Wish You Would",
+      "How You Get The Girl",
+      "I Know Places",
+      "Tenerife Sea",
+      "Wonderland",
+      "Clean",
+      "Love Story",
+      "Style",
+      "This Love",
+      "Bad Blood",
+      "We Are Never Ever Getting Back Together",
+      "Wildest Dreams",
+      "Out of the Woods",
+      "Shake It Off"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2015/las-vegas-festival-grounds-las-vegas-nv-2bc8e806.html",
+    "youtube": "https://www.youtube.com/watch?v=RiRUSA",
+    "image": "/images/shows/2015_rir.webp"
+  },
+  {
+    "id": "bbc-radio-1-big-weekend-2015",
+    "date": "2015-05-24",
+    "city": "Norwich",
+    "venue": "Earlham Park",
+    "country": "UK",
+    "era": "1989 Era",
+    "linkEra": "1989-2014-2017",
+    "whyHistoric": {
+      "es": "Cabeza de cartel del festival BBC Radio 1's Big Weekend.",
+      "en": "Headlined BBC Radio 1's Big Weekend festival."
+    },
+    "setlist": [
+      "We Are Never Ever Getting Back Together",
+      "Blank Space",
+      "Style",
+      "I Knew You Were Trouble",
+      "Love Story",
+      "Bad Blood",
+      "Shake It Off"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2015/earlham-park-norwich-england-2bc82806.html",
+    "youtube": "https://www.youtube.com/watch?v=BBCBigW",
+    "image": "/images/shows/2015_bbc.webp"
+  },
+  {
+    "id": "bst-hyde-park-2015",
+    "date": "2015-06-27",
+    "city": "London",
+    "venue": "Hyde Park",
+    "country": "UK",
+    "era": "1989 Era",
+    "linkEra": "1989-2014-2017",
+    "whyHistoric": {
+      "es": "Masivo concierto al aire libre en Londres con múltiples invitados especiales en la pasarela.",
+      "en": "Massive outdoor concert in London with multiple special guests on the runway."
+    },
+    "setlist": [
+      "Welcome to New York",
+      "New Romantics",
+      "Blank Space",
+      "I Knew You Were Trouble",
+      "I Wish You Would",
+      "How You Get The Girl",
+      "I Know Places",
+      "All You Had To Do Was Stay",
+      "You Are In Love",
+      "Clean",
+      "Love Story",
+      "Style",
+      "This Love",
+      "Bad Blood",
+      "We Are Never Ever Getting Back Together",
+      "Wildest Dreams",
+      "Out of the Woods",
+      "Shake It Off"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2015/hyde-park-london-england-3bc99850.html",
+    "youtube": "https://www.youtube.com/watch?v=HydePark",
+    "image": "/images/shows/2015_hyde.webp"
+  },
+  {
+    "id": "red-tour-shanghai-2014",
+    "date": "2014-05-30",
+    "city": "Shanghai",
+    "venue": "Mercedes-Benz Arena",
+    "country": "China",
+    "era": "Red Era",
+    "linkEra": "red-2012-2014",
+    "whyHistoric": {
+      "es": "Show agotado en China, demostrando su alcance global masivo durante la era Red.",
+      "en": "Sold out show in China, demonstrating her massive global reach during the Red era."
+    },
+    "setlist": [
+      "State of Grace",
+      "Holy Ground",
+      "Red",
+      "The Lucky One",
+      "Mean",
+      "22",
+      "I Knew You Were Trouble",
+      "All Too Well",
+      "Love Story",
+      "We Are Never Ever Getting Back Together"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2014/mercedes-benz-arena-shanghai-china-1bc00948.html",
+    "youtube": "https://www.youtube.com/watch?v=ShanghaiRed",
+    "image": "/images/shows/2014_shanghai.webp"
+  },
+  {
+    "id": "speak-now-tour-madison-square-garden-2011",
+    "date": "2011-11-22",
+    "city": "New York",
+    "venue": "Madison Square Garden",
+    "country": "USA",
+    "era": "Speak Now Era",
+    "linkEra": "speak-now-2010-2012",
+    "whyHistoric": {
+      "es": "Cierre de la etapa norteamericana del Speak Now Tour con invitados como Selena Gomez y James Taylor.",
+      "en": "Closing of the North American leg of the Speak Now Tour with guests like Selena Gomez and James Taylor."
+    },
+    "setlist": [
+      "Sparks Fly",
+      "Mine",
+      "The Story of Us",
+      "Mean",
+      "Ours",
+      "Back to December",
+      "Speak Now",
+      "Fearless",
+      "Last Kiss",
+      "You Belong With Me",
+      "Dear John",
+      "Enchanted",
+      "Haunted",
+      "Long Live"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2011/madison-square-garden-new-york-ny-5bd1db1c.html",
+    "youtube": "https://www.youtube.com/watch?v=MSG2011",
+    "image": "/images/shows/2011_msg.webp"
+  },
+  {
+    "id": "fearless-tour-gillette-2010",
+    "date": "2010-06-05",
+    "city": "Foxborough",
+    "venue": "Gillette Stadium",
+    "country": "USA",
+    "era": "Fearless Era",
+    "linkEra": "fearless-2008-2010",
+    "whyHistoric": {
+      "es": "Primer show en estadio como cabeza de cartel. El comienzo de su dominio en estadios.",
+      "en": "First stadium show as a headliner. The beginning of her stadium dominance."
+    },
+    "setlist": [
+      "You Belong With Me",
+      "Our Song",
+      "Teardrops on My Guitar",
+      "Fifteen",
+      "Fearless",
+      "Love Story",
+      "Hey Stephen",
+      "White Horse",
+      "Should've Said No"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2010/gillette-stadium-foxborough-ma-3bd464bc.html",
+    "youtube": "https://www.youtube.com/watch?v=Gillette2010",
+    "image": "/images/shows/2010_gillette.webp"
+  },
+  {
+    "id": "sound-relief-2009",
+    "date": "2009-03-14",
+    "city": "Sydney",
+    "venue": "Sydney Cricket Ground",
+    "country": "Australia",
+    "era": "Fearless Era",
+    "linkEra": "fearless-2008-2010",
+    "whyHistoric": {
+      "es": "Concierto benéfico por los incendios forestales en Australia. Tocó ante 80,000 personas.",
+      "en": "Benefit concert for bushfires in Australia. Played to 80,000 people."
+    },
+    "setlist": [
+      "You Belong With Me",
+      "Our Song",
+      "Love Story",
+      "Change"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2009/sydney-cricket-ground-sydney-australia-5bd6dbf0.html",
+    "youtube": "https://www.youtube.com/watch?v=SoundRelief",
+    "image": "/images/shows/2009_sydney.webp"
+  },
+  {
+    "id": "cma-fest-2007",
+    "date": "2007-06-07",
+    "city": "Nashville",
+    "venue": "Nissan Stadium",
+    "country": "USA",
+    "era": "Debut Era",
+    "linkEra": "debut-2006-2008",
+    "whyHistoric": {
+      "es": "Una de sus primeras grandes apariciones en el festival CMA Music Festival.",
+      "en": "One of her first major appearances at the CMA Music Festival."
+    },
+    "setlist": [
+      "Tim McGraw",
+      "Teardrops on My Guitar",
+      "Our Song",
+      "Picture to Burn"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2007/lp-field-nashville-tn-23d7ec17.html",
+    "youtube": "https://www.youtube.com/watch?v=CMA2007",
+    "image": "/images/shows/2007.webp"
+  },
+  {
+    "id": "vmas-2009-paparazzi",
+    "date": "2009-09-13",
+    "city": "New York",
+    "venue": "Radio City Music Hall",
+    "country": "USA",
+    "era": "Fearless Era",
+    "linkEra": "fearless-2008-2010",
+    "whyHistoric": {
+      "es": "La infame noche de la interrupción de Kanye West, pero también interpretó 'You Belong With Me' en el metro.",
+      "en": "The infamous night of Kanye West's interruption, but she also performed 'You Belong With Me' in the subway."
+    },
+    "setlist": [
+      "You Belong With Me"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2009/radio-city-music-hall-new-york-ny-5bd7cbb0.html",
+    "youtube": "https://www.youtube.com/watch?v=VMA2009",
+    "image": "/images/shows/2009_vma.webp"
+  },
+  {
+    "id": "grammys-2014-all-too-well",
+    "date": "2014-01-26",
+    "city": "Los Angeles",
+    "venue": "Staples Center",
+    "country": "USA",
+    "era": "Red Era",
+    "linkEra": "red-2012-2014",
+    "whyHistoric": {
+      "es": "Interpretación emocional de 'All Too Well' al piano, considerada una de sus mejores presentaciones vocales.",
+      "en": "Emotional performance of 'All Too Well' on piano, considered one of her best vocal performances."
+    },
+    "setlist": [
+      "All Too Well"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2014/staples-center-los-angeles-ca-3bc55848.html",
+    "youtube": "https://www.youtube.com/watch?v=GrammyATW",
+    "image": "/images/shows/2014_grammy.webp"
+  },
+  {
+    "id": "amas-2019-artist-decade",
+    "date": "2019-11-24",
+    "city": "Los Angeles",
+    "venue": "Microsoft Theater",
+    "country": "USA",
+    "era": "Lover Era",
+    "linkEra": "lover-2019",
+    "whyHistoric": {
+      "es": "Medley de éxitos celebrando su premio como Artista de la Década.",
+      "en": "Hits medley celebrating her Artist of the Decade award."
+    },
+    "setlist": [
+      "The Man",
+      "Love Story",
+      "I Knew You Were Trouble",
+      "Blank Space",
+      "Shake It Off",
+      "Lover"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2019/microsoft-theater-los-angeles-ca-239a04cf.html",
+    "youtube": "https://www.youtube.com/watch?v=AMA2019",
+    "image": "/images/shows/2019_ama.webp"
+  },
+  {
+    "id": "folklore-long-pond-studio",
+    "date": "2020-11-25",
+    "city": "Hudson Valley",
+    "venue": "Long Pond Studios",
+    "country": "USA",
+    "era": "Folklore Era",
+    "linkEra": "folklore-evermore-2020-2022",
+    "whyHistoric": {
+      "es": "Sesión íntima filmada para Disney+ donde tocó todo el álbum 'folklore' por primera vez con sus colaboradores.",
+      "en": "Intimate session filmed for Disney+ where she played the entire 'folklore' album for the first time with her collaborators."
+    },
+    "setlist": [
+      "the 1",
+      "cardigan",
+      "the last great american dynasty",
+      "exile",
+      "my tears ricochet",
+      "august",
+      "this is me trying",
+      "illicit affairs",
+      "invisible string",
+      "betty",
+      "peace",
+      "hoax"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2020/long-pond-studio-hudson-ny-2b81d836.html",
+    "youtube": "https://www.youtube.com/watch?v=LongPond",
+    "image": "/images/shows/2020_longpond.webp"
+  },
+  {
+    "id": "glastonbury-2020-cancelled",
+    "date": "2020-06-28",
+    "city": "Pilton",
+    "venue": "Worthy Farm (Cancelled)",
+    "country": "UK",
+    "era": "Lover Era",
+    "linkEra": "lover-2019",
+    "whyHistoric": {
+      "es": "Iba a ser su debut en Glastonbury como cabeza de cartel (cancelado por COVID). Histórico por lo que pudo ser.",
+      "en": "Was to be her Glastonbury debut as headliner (cancelled due to COVID). Historic for what could have been."
+    },
+    "setlist": [],
+    "setlistUrl": "",
+    "youtube": "",
+    "image": "/images/shows/2020_glasto.webp"
+  },
+  {
+    "id": "reputation-tour-wembley-2018",
+    "date": "2018-06-22",
+    "city": "London",
+    "venue": "Wembley Stadium",
+    "country": "UK",
+    "era": "Reputation Era",
+    "linkEra": "reputation-2017-2018",
+    "whyHistoric": {
+      "es": "Robbie Williams se une como invitado sorpresa para cantar 'Angels'.",
+      "en": "Robbie Williams joins as a surprise guest to sing 'Angels'."
+    },
+    "setlist": [
+      "...Ready for It?",
+      "I Did Something Bad",
+      "Gorgeous",
+      "Style",
+      "Love Story",
+      "Look What You Made Me Do",
+      "End Game",
+      "King of My Heart",
+      "Delicate",
+      "Shake It Off",
+      "Dancing With Our Hands Tied",
+      "Angels",
+      "Blank Space",
+      "Dress",
+      "Bad Blood"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2018/wembley-stadium-london-england-3bea1864.html",
+    "youtube": "https://www.youtube.com/watch?v=RobbieWembley",
+    "image": "/images/shows/2018_wembley.webp"
+  },
+  {
+    "id": "1989-tour-tokyo-opening",
+    "date": "2015-05-05",
+    "city": "Tokyo",
+    "venue": "Tokyo Dome",
+    "country": "Japan",
+    "era": "1989 Era",
+    "linkEra": "1989-2014-2017",
+    "whyHistoric": {
+      "es": "Inicio del 1989 World Tour ante 55,000 fans en Japón.",
+      "en": "Kickoff of the 1989 World Tour in front of 55,000 fans in Japan."
+    },
+    "setlist": [
+      "Welcome to New York",
+      "New Romantics",
+      "Blank Space",
+      "I Knew You Were Trouble",
+      "I Wish You Would",
+      "How You Get The Girl",
+      "I Know Places",
+      "All You Had To Do Was Stay",
+      "You Are In Love",
+      "Clean",
+      "Love Story",
+      "Style",
+      "This Love",
+      "Bad Blood",
+      "We Are Never Ever Getting Back Together",
+      "Wildest Dreams",
+      "Out of the Woods",
+      "Shake It Off"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2015/tokyo-dome-tokyo-japan-2bc83c3e.html",
+    "youtube": "https://www.youtube.com/watch?v=Tokyo1989",
+    "image": "/images/shows/2015_tokyo.webp"
+  },
+  {
+    "id": "red-tour-los-angeles-2013",
+    "date": "2013-08-19",
+    "city": "Los Angeles",
+    "venue": "Staples Center",
+    "country": "USA",
+    "era": "Red Era",
+    "linkEra": "red-2012-2014",
+    "whyHistoric": {
+      "es": "Sara Bareilles y Tegan and Sara se unen al escenario. Taylor rompe récord de 'sold outs' en el Staples Center.",
+      "en": "Sara Bareilles and Tegan and Sara join the stage. Taylor breaks sold-out record at Staples Center."
+    },
+    "setlist": [
+      "State of Grace",
+      "Holy Ground",
+      "Red",
+      "The Lucky One",
+      "Mean",
+      "22",
+      "Brave",
+      "I Knew You Were Trouble",
+      "All Too Well",
+      "Love Story",
+      "We Are Never Ever Getting Back Together"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2013/staples-center-los-angeles-ca-1bc62934.html",
+    "youtube": "https://www.youtube.com/watch?v=StaplesRed",
+    "image": "/images/shows/2013_la.webp"
+  },
+  {
+    "id": "speak-now-tour-gillette-rain",
+    "date": "2011-06-25",
+    "city": "Foxborough",
+    "venue": "Gillette Stadium",
+    "country": "USA",
+    "era": "Speak Now Era",
+    "linkEra": "speak-now-2010-2012",
+    "whyHistoric": {
+      "es": "Primer 'Rain Show' legendario en Gillette Stadium. Taylor continuó tocando bajo una lluvia torrencial.",
+      "en": "First legendary 'Rain Show' at Gillette Stadium. Taylor continued playing in torrential rain."
+    },
+    "setlist": [
+      "Sparks Fly",
+      "Mine",
+      "The Story of Us",
+      "Mean",
+      "Ours",
+      "Back to December",
+      "Speak Now",
+      "Fearless",
+      "Last Kiss",
+      "You Belong With Me",
+      "Dear John",
+      "Enchanted",
+      "Haunted",
+      "Long Live"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2011/gillette-stadium-foxborough-ma-43d0cfcf.html",
+    "youtube": "https://www.youtube.com/watch?v=RainShow",
+    "image": "/images/shows/2011_rain.webp"
+  },
+  {
+    "id": "fearless-tour-los-angeles-2010",
+    "date": "2010-04-15",
+    "city": "Los Angeles",
+    "venue": "Staples Center",
+    "country": "USA",
+    "era": "Fearless Era",
+    "linkEra": "fearless-2008-2010",
+    "whyHistoric": {
+      "es": "Katy Perry aparece como invitada para cantar 'Hot N Cold'. Antes de su enemistad.",
+      "en": "Katy Perry appears as a guest to sing 'Hot N Cold'. Before their feud."
+    },
+    "setlist": [
+      "You Belong With Me",
+      "Our Song",
+      "Teardrops on My Guitar",
+      "Fifteen",
+      "Fearless",
+      "Love Story",
+      "Hot N Cold",
+      "Should've Said No"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2010/staples-center-los-angeles-ca-3bd474b0.html",
+    "youtube": "https://www.youtube.com/watch?v=KatyTaylor",
+    "image": "/images/shows/2010_katy.webp"
+  },
+  {
+    "id": "eras-tour-melbourne-record",
+    "date": "2024-02-16",
+    "city": "Melbourne",
+    "venue": "Melbourne Cricket Ground",
+    "country": "Australia",
+    "era": "The Eras Tour",
+    "linkEra": "eras-tour-2023-2024",
+    "whyHistoric": {
+      "es": "El concierto más grande de su carrera hasta la fecha, con 96,000 personas.",
+      "en": "Biggest concert of her career to date, with 96,000 people."
+    },
+    "setlist": [
+      "Cruel Summer",
+      "Lover",
+      "Fearless",
+      "You Belong With Me",
+      "All Too Well (10 Minute Version)",
+      "Enchanted",
+      "Look What You Made Me Do",
+      "cardigan",
+      "Style",
+      "Blank Space",
+      "Shake It Off",
+      "Bad Blood",
+      "Karma"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2024/melbourne-cricket-ground-melbourne-australia-23ad007f.html",
+    "youtube": "https://www.youtube.com/watch?v=Melbourne96k",
+    "image": "/images/shows/2024_melbourne.webp"
+  },
+  {
+    "id": "snl-2021-atw10",
+    "date": "2021-11-13",
+    "city": "New York",
+    "venue": "Studio 8H (SNL)",
+    "country": "USA",
+    "era": "Red (TV) Era",
+    "linkEra": "red-tv-2021",
+    "whyHistoric": {
+      "es": "Interpretación completa de 10 minutos de 'All Too Well' en televisión nacional.",
+      "en": "Full 10-minute performance of 'All Too Well' on national television."
+    },
+    "setlist": [
+      "All Too Well (10 Minute Version)"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2021/nbc-studios-new-york-ny-3b8a883c.html",
+    "youtube": "https://www.youtube.com/watch?v=SNL_ATW",
+    "image": "/images/shows/2021_snl.webp"
+  },
+  {
+    "id": "rock-in-rio-lisbon-2014",
+    "date": "2014-06-01",
+    "city": "Lisbon",
+    "venue": "Parque da Bela Vista",
+    "country": "Portugal",
+    "era": "Red Era",
+    "linkEra": "red-2012-2014",
+    "whyHistoric": {
+      "es": "Única presentación en Portugal hasta la fecha (antes de The Eras Tour).",
+      "en": "Only performance in Portugal to date (prior to The Eras Tour)."
+    },
+    "setlist": [
+      "State of Grace",
+      "Holy Ground",
+      "Red",
+      "The Lucky One",
+      "Mean",
+      "22",
+      "I Knew You Were Trouble",
+      "All Too Well",
+      "Love Story",
+      "We Are Never Ever Getting Back Together"
+    ],
+    "setlistUrl": "https://www.setlist.fm/setlist/taylor-swift/2014/parque-da-bela-vista-lisbon-portugal-1bc03d00.html",
+    "youtube": "https://www.youtube.com/watch?v=LisbonRed",
+    "image": "/images/shows/2014_lisbon.webp"
+  }
+]

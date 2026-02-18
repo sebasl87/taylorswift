@@ -83,9 +83,11 @@ export default function AlbumCard({ album }: { album: Album }) {
   return (
     <Link
       href={`/discography/${album.id}`}
-      style={{ textDecoration: "none", color: "inherit" }}
+      passHref
+      legacyBehavior
     >
       <Card
+        component="a"
         sx={{
           height: "100%",
           display: "flex",

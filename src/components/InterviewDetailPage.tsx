@@ -14,7 +14,6 @@ import { Launch } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import ContainerGradient from "./atoms/ContainerGradient";
 import Breadcrumb from "@/components/Breadcrumb";
 import {
   Interview,
@@ -438,11 +437,11 @@ export default function InterviewDetailPage({
         )}
 
         {/* Botón de vuelta */}
-        <Box sx={{ mt: 6, textAlign: "center", mb: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
           <Button
             component={Link}
             href="/entrevistas"
-            variant="contained"
+            variant="outlined"
             size="large"
           >
             {t("backToInterviews")}

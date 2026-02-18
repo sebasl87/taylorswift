@@ -1,7 +1,6 @@
 "use client";
 import { useMemo } from "react";
 import {
-  Container,
   Typography,
   Box,
   Card,
@@ -18,6 +17,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import ContainerGradientNoPadding from "./atoms/ContainerGradientNoPadding";
+import { useEra } from "@/context/EraContext";
 import Breadcrumb from "@/components/Breadcrumb";
 import {
   Show,
@@ -31,6 +31,7 @@ import { CommentsSection } from "./CommentsSection";
 
 interface ShowDetailPageProps {
   show: Show;
+  relatedShows?: Show[];
 }
 
 // Componente para YouTube Embed
@@ -156,6 +157,7 @@ function ShowMetadata({ show }: { show: Show }) {
 // Componente para el setlist
 function Setlist({ songs }: { songs: string[] }) {
   const t = useTranslations("shows");
+  const locale = useLocale();
 
   return (
     <Card sx={{ mb: 4 }}>
@@ -236,246 +238,277 @@ function Setlist({ songs }: { songs: string[] }) {
   );
 }
 
-export default function ShowDetailPage({ show }: ShowDetailPageProps) {
+export default function ShowDetailPage({
+  show,
+  relatedShows,
+}: ShowDetailPageProps) {
   const t = useTranslations("shows");
   const tb = useTranslations("breadcrumb");
   const locale = useLocale();
+  const { currentEra } = useEra();
 
   const title = `${show.venue} - ${show.city}`;
 
-  // Obtener otros shows de la misma era/tour
-  const relatedShows = useMemo(() => {
-    const allShows = showsData as Show[];
-    return allShows
-      .filter((s) => s.era === show.era && s.id !== show.id)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-  }, [show.era, show.id]);
+  // Si no se pasan shows relacionados (fallback), mostrar vacío o calcular deterministicamente
+  // Para evitar errores de hidratación, es mejor recibirlos como prop desde getStaticProps
+  const finalRelatedShows = relatedShows || [];
 
   return (
     <ContainerGradientNoPadding>
-      <Box pt={{ xs: 2, md: 4 }} px={{ xs: 2, md: 0 }} pb={{ xs: 2, md: 4 }}>
-        <Breadcrumb
-          items={[{ label: tb("shows"), href: "/shows" }, { label: title }]}
-        />
-      </Box>
-      <Container maxWidth={false} sx={{ maxWidth: 1200, mx: "auto" }}>
-        {/* Header del show */}
-        <Box sx={{ textAlign: "center", mb: 4 }}>
-          <Chip
-            label={show.era}
-            color="primary"
-            variant="filled"
-            sx={{ mb: 2 }}
+      <Box
+        sx={{
+          position: "relative",
+          minHeight: "100vh",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: currentEra.colors.heroOverlay || "rgba(0,0,0,0.2)",
+            pointerEvents: "none",
+            transition: "background 0.5s ease",
+            zIndex: 0,
+          },
+        }}
+      >
+        <Box
+          pt="100px"
+          pb={{ xs: 4, md: 6 }}
+          maxWidth="1440px"
+          mx="auto"
+          sx={{
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          <Breadcrumb
+            items={[{ label: tb("shows"), href: "/shows" }, { label: title }]}
           />
 
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2rem", md: "3rem" },
-              mb: 2,
-              fontWeight: 600,
-            }}
-          >
-            {show.venue}
-          </Typography>
+          {/* Header del show */}
+          <Box sx={{ textAlign: "center", mb: 4, mt: 2 }}>
+            <Chip
+              label={show.era}
+              color="primary"
+              variant="filled"
+              sx={{ mb: 2 }}
+            />
 
-          <Typography
-            variant="h5"
-            sx={{
-              maxWidth: 800,
-              mx: "auto",
-              lineHeight: 1.5,
-              fontSize: { xs: "18px", md: "22px" },
-              color: "text.secondary",
-            }}
-          >
-            {show.city}, {show.country}
-          </Typography>
-
-          <Typography
-            variant="h6"
-            sx={{
-              mt: 1,
-              fontSize: { xs: "16px", md: "18px" },
-              color: "text.secondary",
-            }}
-          >
-            {formatShowDate(show.date, locale)}
-          </Typography>
-        </Box>
-
-        {/* Imagen de portada */}
-        {show.image && (
-          <Box sx={{ mb: 4 }}>
-            <Box
+            <Typography
+              variant="h1"
               sx={{
-                position: "relative",
-                width: "100%",
-                height: { xs: 300, sm: 400, md: 500 },
-                overflow: "hidden",
-                borderRadius: 2,
+                fontFamily: "var(--font-heading)",
+                fontSize: { xs: "2rem", md: "3rem" },
+                mb: 2,
+                fontWeight: 600,
+                color: currentEra.colors.heroText || "#FFFFFF",
+                textShadow: `2px 2px 8px ${currentEra.shadowColor}, 0 0 20px ${currentEra.shadowColor}`,
+                transition: "color 0.5s ease, text-shadow 0.5s ease",
               }}
             >
-              <Image
-                src={show.image}
-                alt={`${show.venue} - ${show.city}`}
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-              />
-            </Box>
-          </Box>
-        )}
+              {show.venue}
+            </Typography>
 
-        {/* 
-        {/* Metadata del show */}
-        <ShowMetadata show={show} />
-
-        {/* Video del show */}
-        <Box sx={{ mb: 4 }}>
-          <YouTubeEmbed url={show.youtube} title={title} />
-
-          <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
-            <Button
-              variant="outlined"
-              startIcon={<Launch />}
-              href={show.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Typography
+              variant="h5"
+              sx={{
+                maxWidth: 800,
+                mx: "auto",
+                lineHeight: 1.5,
+                fontSize: { xs: "18px", md: "22px" },
+                color: "text.secondary",
+              }}
             >
-              {show.youtube.includes("youtube.com/results")
-                ? t("searchOnYouTube")
-                : t("watchOnYouTube")}
-            </Button>
+              {show.city}, {show.country}
+            </Typography>
 
-            {show.setlistUrl && (
+            <Typography
+              variant="h6"
+              sx={{
+                mt: 1,
+                fontSize: { xs: "16px", md: "18px" },
+                color: "text.secondary",
+              }}
+            >
+              {formatShowDate(show.date, locale)}
+            </Typography>
+          </Box>
+
+          {/* Imagen de portada */}
+          {show.image && (
+            <Box sx={{ mb: 4 }}>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: { xs: 300, sm: 400, md: 500 },
+                  overflow: "hidden",
+                  borderRadius: 2,
+                }}
+              >
+                <Image
+                  src={show.image}
+                  alt={`${show.venue} - ${show.city}`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
+                />
+              </Box>
+            </Box>
+          )}
+
+          {/* 
+        {/* Metadata del show */}
+          <ShowMetadata show={show} />
+
+          {/* Video del show */}
+          <Box sx={{ mb: 4 }}>
+            <YouTubeEmbed url={show.youtube} title={title} />
+
+            <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
               <Button
                 variant="outlined"
                 startIcon={<Launch />}
-                href={show.setlistUrl}
+                href={show.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("viewOnSetlistFm")}
+                {show.youtube.includes("youtube.com/results")
+                  ? t("searchOnYouTube")
+                  : t("watchOnYouTube")}
               </Button>
-            )}
+
+              {show.setlistUrl && (
+                <Button
+                  variant="outlined"
+                  startIcon={<Launch />}
+                  href={show.setlistUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t("viewOnSetlistFm")}
+                </Button>
+              )}
+            </Box>
           </Box>
-        </Box>
 
-        {/* Setlist */}
-        <Setlist songs={show.setlist} />
+          {/* Setlist */}
+          <Setlist songs={show.setlist} />
 
-        {/* Shows relacionados de la misma era */}
-        {relatedShows.length > 0 && (
-          <Box sx={{ maxWidth: 900, mx: "auto", mt: 6, mb: 4 }}>
-            <Typography
-              variant="h5"
-              component="h2"
-              sx={{
-                mb: 2,
-                fontWeight: 600,
-                fontSize: { xs: "1.25rem", md: "1.5rem" },
-              }}
-            >
-              {t("otherShowsFromEra") || "Otros shows de la misma era"}
-            </Typography>
-            <Grid container spacing={2}>
-              {relatedShows.map((relatedShow) => (
-                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={relatedShow.id}>
-                  <Link
-                    href={`/shows/${relatedShow.id}`}
-                    passHref
-                    legacyBehavior
-                  >
-                    <Card
-                      component="a"
-                      sx={{
-                        textDecoration: "none",
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        cursor: "pointer",
-                        transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                        "&:hover": {
-                          transform: "translateY(-2px)",
-                          boxShadow: 3,
-                        },
-                      }}
+          {/* Shows relacionados de la misma era */}
+          {finalRelatedShows.length > 0 && (
+            <Box sx={{ maxWidth: 900, mx: "auto", mt: 6, mb: 4 }}>
+              <Typography
+                variant="h5"
+                component="h2"
+                sx={{
+                  mb: 2,
+                  fontWeight: 600,
+                  fontSize: { xs: "1.25rem", md: "1.5rem" },
+                }}
+              >
+                {t("otherShowsFromEra") || "Otros shows de la misma era"}
+              </Typography>
+              <Grid container spacing={2}>
+                {finalRelatedShows.map((relatedShow) => (
+                  <Grid size={{ xs: 12, sm: 6, md: 4 }} key={relatedShow.id}>
+                    <Link
+                      href={`/shows/${relatedShow.id}`}
+                      passHref
+                      legacyBehavior
                     >
-                      <Box
+                      <Card
+                        component="a"
                         sx={{
-                          position: "relative",
-                          width: "100%",
-                          paddingTop: "56.25%",
-                          overflow: "hidden",
+                          textDecoration: "none",
+                          height: "100%",
+                          display: "flex",
+                          flexDirection: "column",
+                          cursor: "pointer",
+                          transition:
+                            "transform 0.2s ease, box-shadow 0.2s ease",
+                          "&:hover": {
+                            transform: "translateY(-2px)",
+                            boxShadow: 3,
+                          },
                         }}
                       >
-                        <Image
-                          src={relatedShow.image}
-                          alt={`${relatedShow.venue} - ${relatedShow.city}`}
-                          fill
-                          style={{ objectFit: "cover" }}
-                        />
-                      </Box>
-                      <CardContent sx={{ p: 1.5, flexGrow: 1 }}>
-                        <Typography
-                          variant="body2"
-                          component="h3"
+                        <Box
                           sx={{
-                            fontWeight: 600,
-                            mb: 0.5,
-                            fontSize: { xs: "0.85rem", md: "0.95rem" },
-                            lineHeight: 1.3,
+                            position: "relative",
+                            width: "100%",
+                            paddingTop: "56.25%",
+                            overflow: "hidden",
                           }}
                         >
-                          {relatedShow.venue}
-                        </Typography>
-                        <Typography
-                          variant="caption"
-                          color="text.secondary"
-                          sx={{
-                            display: "block",
-                            mb: 0.5,
-                            fontSize: { xs: "0.75rem", md: "0.8rem" },
-                          }}
-                        >
-                          {relatedShow.city}, {relatedShow.country}
-                        </Typography>
-                        <Chip
-                          label={formatShowDate(relatedShow.date, locale)}
-                          size="small"
-                          sx={{ fontSize: "0.7rem", height: 20 }}
-                        />
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        )}
+                          <Image
+                            src={relatedShow.image}
+                            alt={`${relatedShow.venue} - ${relatedShow.city}`}
+                            fill
+                            style={{ objectFit: "cover" }}
+                          />
+                        </Box>
+                        <CardContent sx={{ p: 1.5, flexGrow: 1 }}>
+                          <Typography
+                            variant="body2"
+                            component="h3"
+                            sx={{
+                              fontWeight: 600,
+                              mb: 0.5,
+                              fontSize: { xs: "0.85rem", md: "0.95rem" },
+                              lineHeight: 1.3,
+                            }}
+                          >
+                            {relatedShow.venue}
+                          </Typography>
+                          <Typography
+                            variant="caption"
+                            color="text.secondary"
+                            sx={{
+                              display: "block",
+                              mb: 0.5,
+                              fontSize: { xs: "0.75rem", md: "0.8rem" },
+                            }}
+                          >
+                            {relatedShow.city}, {relatedShow.country}
+                          </Typography>
+                          <Chip
+                            label={formatShowDate(relatedShow.date, locale)}
+                            size="small"
+                            sx={{ fontSize: "0.7rem", height: 20 }}
+                          />
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          )}
 
-        {/* Botón de vuelta */}
-        <Box sx={{ mt: 6, textAlign: "center", mb: 4 }}>
-          <Button
-            component={Link}
-            href="/shows"
-            variant="contained"
-            size="large"
-          >
-            {t("backToShows")}
-          </Button>
+          {/* Botón de vuelta */}
+          <Box sx={{ mt: 6, textAlign: "center", mb: 4 }}>
+            <Button
+              component={Link}
+              href="/shows"
+              variant="contained"
+              size="large"
+            >
+              {t("backToShows")}
+            </Button>
+          </Box>
+          <Box my={4}>
+            <RandomSectionBanner currentSection="shows" />
+          </Box>
+          <CommentsSection
+            pageType="article"
+            pageId={show.id}
+            title={show.venue + " - " + show.city + ", " + show.country}
+          />
         </Box>
-        <Box my={4}>
-          <RandomSectionBanner currentSection="shows" />
-        </Box>
-        <CommentsSection
-          pageType="article"
-          pageId={show.id}
-          title={show.venue + " - " + show.city + ", " + show.country}
-        />
-      </Container>
+      </Box>
     </ContainerGradientNoPadding>
   );
 }

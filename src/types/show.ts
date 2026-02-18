@@ -4,7 +4,7 @@ export interface ShowDescription {
   en: string;
 }
 
-// Estructura principal para un show histórico de Megadeth
+// Estructura principal para un show histórico
 export interface Show {
   id: string;
   date: string; // Formato ISO 8601 (YYYY-MM-DD)

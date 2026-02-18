@@ -44,16 +44,11 @@ export default function Footer() {
   const footerLinks = {
     music: [
       { href: "/discography", label: t("discography") },
+      { href: "/era", label: t("eras") },
       { href: "/songs", label: t("songs") },
       { href: "/videos", label: t("videos") },
-      { href: "/dvds", label: t("dvds") },
     ],
-    band: [
-      { href: "/historia", label: t("history") },
-      { href: "/miembros", label: t("members") },
-      { href: "/formaciones", label: t("lineups") },
-      { href: "/entrevistas", label: t("interviews") },
-    ],
+    band: [{ href: "/entrevistas", label: t("interviews") }],
     live: [
       { href: "/tour", label: t("tour") },
       { href: "/shows", label: t("shows") },

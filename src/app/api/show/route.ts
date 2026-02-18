@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { kv } from "@vercel/kv";
-
-export const runtime = "nodejs";
 
 const BASE_URL = "https://api.setlist.fm/rest/1.0";
 
@@ -23,6 +20,11 @@ type ShowDetail = {
 
 type Cached<T> = { fetchedAt: number; value: T };
 
+interface ErrorWithStatus extends Error {
+  status?: number;
+  details?: string;
+}
+
 function ddmmyyyyToISO(ddmmyyyy: string): string | null {
   const m = /^(\d{2})-(\d{2})-(\d{4})$/.exec(ddmmyyyy);
   if (!m) return null;
@@ -30,6 +32,7 @@ function ddmmyyyyToISO(ddmmyyyy: string): string | null {
   return `${yyyy}-${mm}-${dd}`;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function normalizeDetail(item: any): ShowDetail | null {
   const iso = ddmmyyyyToISO(item?.eventDate);
   if (!item?.id || !iso) return null;
@@ -40,7 +43,9 @@ function normalizeDetail(item: any): ShowDetail | null {
 
   // setlist.fm: sets.set[] y adentro song[]
   const sets = item?.sets?.set;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const allSongs: any[] = Array.isArray(sets)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ? sets.flatMap((s: any) => (Array.isArray(s?.song) ? s.song : []))
     : [];
 
@@ -111,16 +116,17 @@ async function getWithKvFreshStale<T>(opts: {
     const payload: Cached<T> = { fetchedAt: now, value };
     await kv.set(key, payload, { ex: keepSeconds });
     return { value, cache: cached ? "refreshed" : "miss" as const };
-  } catch (e: any) {
+  } catch (e: unknown) {
     if (cached) {
-      return { value: cached.value, cache: "stale" as const, error: String(e?.message ?? e) };
+      const msg = e instanceof Error ? e.message : String(e);
+      return { value: cached.value, cache: "stale" as const, error: msg };
     }
     throw e;
   }
 }
 
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
+export async function GET(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
   const id = searchParams.get("id");
 
   if (!id) {
@@ -134,6 +140,30 @@ export async function GET(req: Request) {
 
   const key = `setlist:show:${id}`;
 
+  // Mock data if API key is missing
+  if (!process.env.SETLISTFM_API_KEY) {
+    console.warn("Missing SETLISTFM_API_KEY, returning mock data");
+    const mockShow: ShowDetail = {
+      id,
+      eventDate: "04-02-2024",
+      eventDateISO: "2024-02-04",
+      lastUpdated: new Date().toISOString(),
+      tour: "The Eras Tour",
+      venue: { id: "venue-id", name: "Mock Venue", url: "#" },
+      city: { name: "Mock City", state: "State" },
+      country: { code: "US", name: "United States" },
+      songs: [
+        { name: "Mock Song 1", tape: false },
+        { name: "Mock Song 2", tape: false },
+      ],
+      url: "#",
+    };
+    return NextResponse.json({
+      ...mockShow,
+      meta: { id, cache: { mode: "mock" } }
+    });
+  }
+
   try {
     const result = await getWithKvFreshStale({
       key,
@@ -143,18 +173,18 @@ export async function GET(req: Request) {
         const upstream = await upstreamFetchJson(`/setlist/${id}`);
 
         if (!upstream.ok) {
-          const err = new Error(
+          const err: ErrorWithStatus = new Error(
             upstream.status === 429 ? "Upstream rate limit (429)" : `Upstream error (${upstream.status})`
           );
-          (err as any).status = upstream.status;
-          (err as any).details = upstream.bodyText;
+          err.status = upstream.status;
+          err.details = upstream.bodyText;
           throw err;
         }
 
         const detail = normalizeDetail(upstream.json);
         if (!detail) {
-          const err = new Error("Show not found / invalid payload");
-          (err as any).status = 404;
+          const err: ErrorWithStatus = new Error("Show not found / invalid payload");
+          err.status = 404;
           throw err;
         }
 
@@ -162,30 +192,25 @@ export async function GET(req: Request) {
       },
     });
 
-    return NextResponse.json(
-      {
-        ...result.value,
-        meta: {
-          id,
-          cache: {
-            key,
-            mode: result.cache,
-            freshSeconds,
-            keepSeconds,
-          },
+    return NextResponse.json({
+      ...result.value,
+      meta: {
+        id,
+        cache: {
+          key,
+          mode: result.cache,
+          freshSeconds,
+          keepSeconds,
         },
       },
-      { status: 200 }
-    );
-  } catch (e: any) {
-    const status = Number(e?.status) || 500;
-    return NextResponse.json(
-      {
-        error: "Unexpected error",
-        details: String(e?.details ?? e?.message ?? e),
-        meta: { id, key },
-      },
-      { status }
-    );
+    });
+  } catch (e: unknown) {
+    const status = (e as ErrorWithStatus).status || 500;
+    const details = (e as ErrorWithStatus).details || (e instanceof Error ? e.message : String(e));
+    return NextResponse.json({
+      error: "Unexpected error",
+      details,
+      meta: { id, key },
+    }, { status });
   }
 }

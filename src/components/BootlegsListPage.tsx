@@ -26,7 +26,6 @@ import ContainerGradientNoPadding from "./atoms/ContainerGradientNoPadding";
 import Breadcrumb from "@/components/Breadcrumb";
 import {
   Bootleg,
-  formatBootlegDate,
   generateBootlegSlug,
   getBootlegDescription,
   getBootlegYear,

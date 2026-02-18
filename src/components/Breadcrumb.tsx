@@ -1,7 +1,7 @@
 "use client";
 
 import { Breadcrumbs, Link, Typography, Container } from "@mui/material";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
 import NextLink from "next/link";
@@ -17,25 +17,23 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   const t = useTranslations("breadcrumb");
-  const locale = useLocale();
 
   // Generar datos estructurados JSON-LD para SEO
   const generateSchemaMarkup = () => {
-    const baseUrl = "https://megadeth.com.ar";
-    const localePrefix = locale === "es" ? "" : `/${locale}`;
+    const baseUrl = "https://taylorswift.com";
 
     const itemListElement = [
       {
         "@type": "ListItem",
         position: 1,
         name: t("home"),
-        item: `${baseUrl}${localePrefix}`,
+        item: baseUrl,
       },
       ...items.map((item, index) => {
         const position = index + 2;
-        const itemUrl = item.href
-          ? `${baseUrl}${localePrefix}${item.href}`
-          : null;
+        const href = item.href;
+
+        const itemUrl = href ? `${baseUrl}${href}` : null;
 
         return {
           "@type": "ListItem",
@@ -51,6 +49,11 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       "@type": "BreadcrumbList",
       itemListElement,
     };
+  };
+
+  const getHref = (href?: string) => {
+    if (!href) return "#";
+    return href;
   };
 
   return (
@@ -135,7 +138,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
               <Link
                 key={index}
                 component={NextLink}
-                href={item.href || "#"}
+                href={getHref(item.href)}
                 underline="hover"
                 color="inherit"
                 sx={{

@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
-  
+
   // Optimización de imágenes
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
 
   // Compresión
   compress: true,
-  
+
   // Experimental features para mejor performance
   experimental: {
     optimizePackageImports: ['@mui/material', '@mui/icons-material'],
