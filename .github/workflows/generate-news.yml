@@ -1,55 +1,48 @@
 name: Generate Taylor Swift News
-
+# Ejecutar DIARIAMENTE a las 10:00 AM UTC con rotación automática de feeds
+# Estrategia: 2 feeds/día para mantenerse dentro del límite de 100K tokens/día de Groq
 on:
-  # Ejecutar cada lunes y jueves a las 10:00 UTC
   schedule:
-    - cron: "0 10 * * 1,4"
+    - cron: "0 10 * * *" # Todos los días a las 10:00 UTC
 
-  # Permitir ejecución manual desde GitHub UI
+  # Permitir ejecución manual desde GitHub Actions UI
   workflow_dispatch:
 
 jobs:
-  generate-news:
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 🔄 Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
+      - name: 📦 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
 
-      - name: Install dependencies
+      - name: 📥 Install dependencies
         run: npm ci
 
-      - name: Generate news articles
+      - name: 🛠️ Install tsx for TypeScript execution
+        run: npm install -D tsx
+
+      - name: 🤖 Run news scraper
         env:
-          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node scripts/generate-news.js
+          NEWS_API_URL: ${{ secrets.NEWS_API_URL }}
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: npx tsx scripts/scrape-news.js
 
-      - name: Commit and push if changes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add src/constants/news.json
-          git add public/images/news/
-
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: Update news articles [automated]"
-            git push
-          fi
-
-      - name: Trigger Vercel deployment (opcional)
-        if: env.VERCEL_DEPLOY_HOOK != ''
-        env:
-          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          curl -X POST "$VERCEL_DEPLOY_HOOK"
+      - name: 📊 Upload logs as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: taylor-swift-scraper-logs-${{ github.run_number }}
+          path: |
+            *.log
+          retention-days: 30
