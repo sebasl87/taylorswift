@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Typography, Box, Button, Container } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { getNewsById } from "@/lib/supabase";
 
 // Generate static params for all news
 export async function generateStaticParams() {
@@ -24,7 +25,9 @@ export async function generateMetadata({
 }) {
   const { id } = await params;
   const locale = await getLocale();
-  const article = (newsData as NewsArticle[]).find((a) => a.id === id);
+
+  const article = await getNewsById(id);
+
   if (!article) return {};
 
   const title = article.title[locale as "es" | "en"];
@@ -52,7 +55,7 @@ export default async function NoticiaPage({
 }) {
   const { id } = await params;
   const locale = await getLocale();
-  const article = (newsData as NewsArticle[]).find((a) => a.id === id);
+  const article = await getNewsById(id);
 
   if (!article) {
     notFound();
