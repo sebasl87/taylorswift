@@ -36,13 +36,13 @@ async function retryWithBackoff<T>(
   initialDelay: number = 1000
 ): Promise<T> {
   let lastError: Error;
-  
+
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
       return await fn();
     } catch (error) {
       lastError = error as Error;
-      
+
       if (attempt < maxRetries - 1) {
         const delay = initialDelay * Math.pow(2, attempt);
         console.warn(`⚠️  Groq retry ${attempt + 1}/${maxRetries} after ${delay}ms - Error: ${lastError.message}`);
@@ -50,7 +50,7 @@ async function retryWithBackoff<T>(
       }
     }
   }
-  
+
   throw lastError!;
 }
 
@@ -180,7 +180,7 @@ Responde ÚNICAMENTE con un objeto JSON válido (sin markdown, sin \`\`\`json):
       });
 
       const text = completion.choices[0]?.message?.content;
-      
+
       if (!text) {
         throw new Error("Groq no devolvió contenido");
       }
@@ -201,7 +201,7 @@ Responde ÚNICAMENTE con un objeto JSON válido (sin markdown, sin \`\`\`json):
     };
   } catch (error) {
     console.error("❌ Error procesando con Groq AI después de varios reintentos:", error);
-    
+
     // NO hay fallback: si Groq falla, descartamos la noticia
     // Esto garantiza que NUNCA se muestre contenido mal procesado al usuario
     throw new Error(`Groq AI falló al procesar la noticia: ${error instanceof Error ? error.message : 'Error desconocido'}`);
@@ -267,7 +267,7 @@ Responde ÚNICAMENTE con un objeto JSON:
     });
 
     const text = completion.choices[0]?.message?.content;
-    
+
     if (!text) {
       return false;
     }
@@ -276,8 +276,25 @@ Responde ÚNICAMENTE con un objeto JSON:
     return result.is_relevant === true;
   } catch (error) {
     console.error("❌ Error en filtro de relevancia:", error);
-    // En caso de error, ser conservador y considerar relevante
-    // Mejor procesar una noticia de más que perder una importante
+
+    const err = error as {
+      status?: number;
+      error?: { error?: { message?: string } };
+      message?: string;
+    };
+
+    const status = err.status;
+    const message = err.error?.error?.message ?? err.message ?? "";
+
+    if (
+      status === 401 ||
+      (typeof message === "string" && message.includes("Invalid API Key"))
+    ) {
+      throw new Error(
+        "Groq authentication failed: invalid or misconfigured GROQ_API_KEY",
+      );
+    }
+
     return true;
   }
 }
