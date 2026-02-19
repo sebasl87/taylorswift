@@ -33,32 +33,39 @@ const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 // Definición de todos los feeds disponibles
 const ALL_FEEDS = {
+  // --- FAN SITES CONFIABLES ---
   taylorswiftweb: "https://www.taylorswiftweb.net/feed/",
   swiftagency: "http://theswiftagency.com/feed/",
-  taylorswiftlife: "https://taylorswiftlife.webnode.page/rss/all.xml",
-  tmz: "https://www.tmz.com/rss.xml",
-  hollywoodlife: "https://hollywoodlife.com/feed",
+
+  // --- INDUSTRIA & PRENSA SERIA ---
   variety: "https://variety.com/feed",
-  thehollywoodgossip:
-    "https://feeds.thehollywoodgossip.com/thehollywoodgossip.com",
-  celebmix: "https://celebmix.com/feed",
-  wesmirch: "https://wesmirch.com/feed.xml",
-  celebrityinsider: "https://celebrityinsider.org/feed",
+  billboard: "https://www.billboard.com/feed/",
+  rollingstone: "https://www.rollingstone.com/music/feed/",
+
+  // --- EXCLUSIVAS Y PR ---
+  people: "https://people.com/feed/",
+
+  // --- COMUNIDAD SWIFTIE MODERADA ---
+  reddit: "https://www.reddit.com/r/TaylorSwift/top/.rss?t=day",
+
+  // --- GOOGLE NEWS (El radar global) ---
+  googlenews:
+    "https://news.google.com/rss/search?q=%22Taylor+Swift%22&hl=en-US&gl=US&ceid=US:en",
 };
 
 /**
- * Rotación semanal de feeds (2 por día)
- * Feeds top (taylorswiftweb, swiftagency, hollywoodlife) aparecen 2 veces/semana
- * El resto aparece 1 vez/semana
+ * Rotación semanal de feeds (2 por día = 14 slots semanales)
+ * * Feeds TOP (2 veces/semana): people, googlenews, reddit, billboard, taylorswiftweb, variety
+ * Feeds Secundarios (1 vez/semana): rollingstone, swiftagency
  */
 const FEED_ROTATION = {
-  0: ["taylorswiftweb", "swiftagency"], // Domingo
-  1: ["hollywoodlife", "tmz"], // Lunes
-  2: ["taylorswiftweb", "variety"], // Martes (repite taylorswiftweb)
-  3: ["swiftagency", "wesmirch"], // Miércoles (repite swiftagency)
-  4: ["hollywoodlife", "celebrityinsider"], // Jueves (repite hollywoodlife)
-  5: ["tmz", "thehollywoodgossip"], // Viernes
-  6: ["taylorswiftweb", "celebmix"], // Sábado (3ra vez taylorswiftweb)
+  0: ["people", "taylorswiftweb"], // Domingo: Exclusivas y fandom para cerrar la semana
+  1: ["googlenews", "reddit"], // Lunes: Radar global y lo más votado del finde
+  2: ["billboard", "variety"], // Martes: Noticias de industria y charts
+  3: ["people", "rollingstone"], // Miércoles: Repaso de exclusivas (People 2da vez) + RS
+  4: ["googlenews", "taylorswiftweb"], // Jueves: Radar global (2da vez) y fandom (2da vez)
+  5: ["reddit", "swiftagency"], // Viernes: Previa del finde en Reddit (2da vez) + Fan site
+  6: ["billboard", "variety"], // Sábado: Resumen de industria (2da vez)
 };
 
 /**
@@ -109,7 +116,6 @@ function extractContent(item) {
  * Extrae la imagen del feed item
  */
 function extractImage(item) {
-  // Intentar varias formas de obtener la imagen
   if (item.enclosure?.url) {
     return item.enclosure.url;
   }
@@ -119,14 +125,60 @@ function extractImage(item) {
     if (image) return image.$.url;
   }
 
-  // Buscar en el contenido HTML
   const content = extractContent(item);
-  const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-  if (imgMatch) {
-    return imgMatch[1];
+  const patterns = [
+    /<img[^>]+src=["']([^"'>]+)["']/i,
+    /<img[^>]+data-src=["']([^"'>]+)["']/i,
+    /<img[^>]+data-lazy-src=["']([^"'>]+)["']/i,
+    /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"'>]+)["']/i,
+    /<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"'>]+)["']/i,
+  ];
+
+  for (const pattern of patterns) {
+    const match = content.match(pattern);
+    if (match && match[1]) {
+      return match[1];
+    }
   }
 
   return null;
+}
+
+async function fetchOgImage(url) {
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent":
+          "TaylorSwiftNewsBot/1.0 (+https://taylorswift.com.ar/news-bot)",
+        Accept:
+          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      },
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const html = await response.text();
+    const patterns = [
+      /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"'>]+)["']/i,
+      /<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"'>]+)["']/i,
+      /<meta[^>]+name=["']image["'][^>]+content=["']([^"'>]+)["']/i,
+      /<img[^>]+class=["'][^"']*(?:thumbnail|featured|main)[^"']*["'][^>]+src=["']([^"'>]+)["']/i,
+      /<img[^>]+src=["']([^"'>]+)["']/i,
+    ];
+
+    for (const pattern of patterns) {
+      const match = html.match(pattern);
+      if (match && match[1]) {
+        return match[1];
+      }
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
 }
 
 /**
@@ -246,12 +298,18 @@ async function processFeed(feedUrl) {
 
       if (isRelevant) {
         console.log(`   ✅ Relevante para Taylor Swift`);
+        let image = extractImage(item);
+
+        if (!image && item.link) {
+          image = await fetchOgImage(item.link);
+        }
+
         relevantNews.push({
           title,
           content,
           link: item.link,
           pubDate: item.pubDate,
-          image: extractImage(item),
+          image,
           youtubeId: extractYouTubeId(item),
         });
       } else {
