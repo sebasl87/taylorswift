@@ -18,7 +18,7 @@ import Parser from "rss-parser";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
-import { processNewsWithAI, isRelevantToTaylor } from "../src/lib/ai.ts"; 
+import { processNewsWithAI, isRelevantToTaylor } from "../src/lib/ai.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,31 +33,32 @@ const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 // Definición de todos los feeds disponibles
 const ALL_FEEDS = {
-  blabbermouth: "https://www.blabbermouth.net/feed/",
-  loudwire: "https://loudwire.com/feed/",
-  metalinjection: "https://metalinjection.net/feed",
-  metalsucks: "https://www.metalsucks.net/feed/",
-  bravewords: "https://bravewords.com/rss",
-  loudersound: "https://www.loudersound.com/metal-hammer/feed",
-  revolver: "https://www.revolvermag.com/feed",
-  consequence: "https://consequence.net/category/heavy-consequence/feed/",
-  theprp: "https://www.theprp.com/feed/",
-  mariskalrock: "https://mariskalrock.com/feed",
+  taylorswiftweb: "https://www.taylorswiftweb.net/feed/",
+  swiftagency: "http://theswiftagency.com/feed/",
+  taylorswiftlife: "https://taylorswiftlife.webnode.page/rss/all.xml",
+  tmz: "https://www.tmz.com/rss.xml",
+  hollywoodlife: "https://hollywoodlife.com/feed",
+  variety: "https://variety.com/feed",
+  thehollywoodgossip:
+    "https://feeds.thehollywoodgossip.com/thehollywoodgossip.com",
+  celebmix: "https://celebmix.com/feed",
+  wesmirch: "https://wesmirch.com/feed.xml",
+  celebrityinsider: "https://celebrityinsider.org/feed",
 };
 
 /**
  * Rotación semanal de feeds (2 por día)
- * Feeds top (blabbermouth, loudwire, metalinjection) aparecen 2 veces/semana
+ * Feeds top (taylorswiftweb, swiftagency, hollywoodlife) aparecen 2 veces/semana
  * El resto aparece 1 vez/semana
  */
 const FEED_ROTATION = {
-  0: ["blabbermouth", "metalinjection"], // Domingo
-  1: ["loudwire", "bravewords"], // Lunes
-  2: ["blabbermouth", "loudersound"], // Martes (repite blabbermouth)
-  3: ["metalinjection", "metalsucks"], // Miércoles (repite metalinjection)
-  4: ["loudwire", "consequence"], // Jueves (repite loudwire)
-  5: ["revolver", "theprp"], // Viernes
-  6: ["mariskalrock", "blabbermouth"], // Sábado (3ra vez blabbermouth)
+  0: ["taylorswiftweb", "swiftagency"], // Domingo
+  1: ["hollywoodlife", "tmz"], // Lunes
+  2: ["taylorswiftweb", "variety"], // Martes (repite taylorswiftweb)
+  3: ["swiftagency", "wesmirch"], // Miércoles (repite swiftagency)
+  4: ["hollywoodlife", "celebrityinsider"], // Jueves (repite hollywoodlife)
+  5: ["tmz", "thehollywoodgossip"], // Viernes
+  6: ["taylorswiftweb", "celebmix"], // Sábado (3ra vez taylorswiftweb)
 };
 
 /**
