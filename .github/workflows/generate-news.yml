@@ -36,7 +36,10 @@ jobs:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: npx tsx scripts/scrape-news.js
+        run: npx tsx scripts/scrape-news.js 2>&1 | tee taylor-news-scraper.log
+        # Nota: El scraper ahora evita imágenes proxy de Google (lh3.googleusercontent.com)
+        # y prioriza imágenes OG del artículo original. Se agregaron logs detallados
+        # para depurar el origen y la URL final de cada imagen procesada.
 
       - name: 📊 Upload logs as artifact
         if: always()
@@ -45,4 +48,5 @@ jobs:
           name: taylor-swift-scraper-logs-${{ github.run_number }}
           path: |
             *.log
+            taylor-news-scraper.log
           retention-days: 30

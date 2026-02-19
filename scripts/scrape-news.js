@@ -92,6 +92,7 @@ const parser = new Parser({
   customFields: {
     item: [
       ["media:content", "mediaContent"],
+      ["media:thumbnail", "mediaThumbnail"],
       ["content:encoded", "contentEncoded"],
       ["description", "description"],
     ],
@@ -112,17 +113,36 @@ function extractContent(item) {
   );
 }
 
-/**
- * Extrae la imagen del feed item
- */
-function extractImage(item) {
-  if (item.enclosure?.url) {
-    return item.enclosure.url;
+function isGoogleProxy(url) {
+  if (!url) return false;
+  try {
+    const u = new URL(url);
+    return (
+      u.hostname.endsWith("googleusercontent.com") ||
+      u.hostname.endsWith("gstatic.com")
+    );
+  } catch {
+    return false;
+  }
+}
+
+function extractImageInfo(item) {
+  if (item.mediaContent && Array.isArray(item.mediaContent)) {
+    const image = item.mediaContent.find(
+      (m) => m.$ && m.$.url && !isGoogleProxy(m.$.url),
+    );
+    if (image) return { url: image.$.url, source: "media:content" };
   }
 
-  if (item.mediaContent && Array.isArray(item.mediaContent)) {
-    const image = item.mediaContent.find((m) => m.$ && m.$.url);
-    if (image) return image.$.url;
+  if (item.mediaThumbnail && Array.isArray(item.mediaThumbnail)) {
+    const thumb = item.mediaThumbnail.find(
+      (m) => m.$ && m.$.url && !isGoogleProxy(m.$.url),
+    );
+    if (thumb) return { url: thumb.$.url, source: "media:thumbnail" };
+  }
+
+  if (item.enclosure?.url && !isGoogleProxy(item.enclosure.url)) {
+    return { url: item.enclosure.url, source: "enclosure" };
   }
 
   const content = extractContent(item);
@@ -136,12 +156,16 @@ function extractImage(item) {
 
   for (const pattern of patterns) {
     const match = content.match(pattern);
-    if (match && match[1]) {
-      return match[1];
+    if (match && match[1] && !isGoogleProxy(match[1])) {
+      return { url: match[1], source: "content" };
     }
   }
 
-  return null;
+  if (item.enclosure?.url) {
+    return { url: item.enclosure.url, source: "enclosure-google-proxy" };
+  }
+
+  return { url: null, source: "none" };
 }
 
 async function fetchOgImage(url) {
@@ -171,12 +195,25 @@ async function fetchOgImage(url) {
     for (const pattern of patterns) {
       const match = html.match(pattern);
       if (match && match[1]) {
-        return match[1];
+        const candidate = match[1];
+        if (isGoogleProxy(candidate)) {
+          console.log(
+            `   ⚠️  Imagen OG/HTML es proxy de Google, descartando: ${candidate}`,
+          );
+          continue;
+        }
+        return candidate;
       }
     }
 
+    console.log(
+      "   ⚠️  No se encontró imagen OG/HTML válida (no proxy de Google)",
+    );
     return null;
-  } catch {
+  } catch (error) {
+    console.log(
+      `   ⚠️  Error obteniendo imagen OG desde la fuente: ${error.message}`,
+    );
     return null;
   }
 }
@@ -298,10 +335,35 @@ async function processFeed(feedUrl) {
 
       if (isRelevant) {
         console.log(`   ✅ Relevante para Taylor Swift`);
-        let image = extractImage(item);
+        const imgInfo = extractImageInfo(item);
+        if (imgInfo.url) {
+          console.log(
+            `   🖼️  Imagen detectada (${imgInfo.source}): ${imgInfo.url}`,
+          );
+        } else {
+          console.log(
+            `   🖼️  Sin imagen directa, intentando OG desde la fuente...`,
+          );
+        }
+        let image = imgInfo.url;
 
-        if (!image && item.link) {
-          image = await fetchOgImage(item.link);
+        if ((!image || isGoogleProxy(image)) && item.link) {
+          const og = await fetchOgImage(item.link);
+          if (og) {
+            image = og;
+            console.log(`   🖼️  Imagen OG: ${image}`);
+          } else {
+            console.log(`   ⚠️  No se encontró imagen OG`);
+          }
+        }
+
+        if (
+          image &&
+          typeof image === "string" &&
+          !/^https?:\/\//i.test(image)
+        ) {
+          console.log(`   ⚠️  URL de imagen inválida: ${image}`);
+          image = null;
         }
 
         relevantNews.push({
@@ -403,6 +465,7 @@ async function main() {
 
         console.log(`   📝 Título EN: ${processed.title_en}`);
         console.log(`   📝 Título ES: ${processed.title_es}`);
+        console.log(`   🖼️  Enviando imagen: ${newsData.image_url}`);
 
         // Crear noticia
         const success = await createNews(newsData);
