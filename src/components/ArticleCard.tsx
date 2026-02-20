@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import Image from "next/image";
+import SafeNewsImage from "@/components/SafeNewsImage";
 import Link from "next/link";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
@@ -19,6 +20,7 @@ interface ArticleCardProps {
   imageUrl?: string;
   imageAlt?: string;
   imageCaption?: string;
+  articleId?: string;
   linkUrl?: string;
   linkTarget?: "_blank" | "_self";
   priority?: boolean;
@@ -42,6 +44,7 @@ export default function ArticleCard({
   publishedDate,
   externalLinks,
   youtubeVideoId,
+  articleId,
 }: ArticleCardProps) {
   const locale = useLocale();
 
@@ -199,13 +202,14 @@ export default function ArticleCard({
                 borderRadius: 2,
               }}
             >
-              <Image
-                src={imageUrl}
-                alt={imageAlt}
+              <SafeNewsImage
+                src={imageUrl || "/images/news/default-taylor-swift.jpg"}
+                alt={imageAlt || title}
                 fill
                 style={{ objectFit: "cover" }}
                 priority={priority}
                 sizes="(max-width: 600px) 100vw, 400px"
+                articleId={articleId}
               />
             </Box>
 

@@ -41,7 +41,8 @@
     "terms": "Términos de Servicio",
     "tour": "Tour",
     "videos": "Videos",
-    "history": "Eras"
+    "history": "Eras",
+    "backToNews": "Volver a noticias"
   },
   "comments": {
     "title": "Comentarios",
@@ -188,7 +189,9 @@
     "pageTitle": "Noticias - Taylor Swift",
     "pageDescription": "Últimas noticias, anuncios y actualizaciones de Taylor Swift. Entérate de todo sobre la artista, giras, lanzamientos y más.",
     "latestNews": "Últimas Noticias",
-    "viewAllNews": "Ver todas las noticias"
+    "viewAllNews": "Ver todas las noticias",
+    "subtitle": "Mantente al día con las últimas noticias, anuncios y actualizaciones de Taylor Swift.",
+    "loading": "Cargando noticias..."
   },
   "history": {
     "activeYears": "Años activos",
@@ -238,6 +241,7 @@
     "live": "En Vivo",
     "info": "Información",
     "discography": "Discografía",
+    "eras": "Eras",
     "songs": "Canciones",
     "videos": "Videos",
     "dvds": "DVDs",

@@ -1,21 +1,13 @@
 "use client";
 
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  Grid,
-  Card,
-  CardContent,
-} from "@mui/material";
-import Link from "next/link";
+import { Box, Container, Typography, Grid } from "@mui/material";
 import EraSelector from "./EraSelector";
 import Hero from "./Hero";
 import { useEra } from "@/context/EraContext";
 import LastShowsCards from "./LastShowsCards";
 import TopSongsWidget from "./TopSongsWidget";
 import UpcomingToursWidget from "./UpcomingToursWidget";
+import NewsPreview from "@/components/NewsPreview";
 
 export default function TaylorHero() {
   const { currentEra } = useEra();
@@ -75,6 +67,17 @@ export default function TaylorHero() {
             </Grid>
           </Grid>
         </Box>
+
+        {/* Últimas 8 noticias */}
+        <Box sx={{ mt: 6 }} id="news-preview">
+          <Typography variant="h4" sx={{ mb: 2, fontWeight: 700 }}>
+            {"Noticias"}
+          </Typography>
+
+          <NewsPreview />
+        </Box>
+
+        
       </Container>
     </Box>
   );

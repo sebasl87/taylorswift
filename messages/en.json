@@ -188,7 +188,9 @@
     "pageTitle": "News - Taylor Swift",
     "pageDescription": "Latest news, announcements and updates from Taylor Swift. Find out everything about the artist, tours, releases and more.",
     "latestNews": "Latest News",
-    "viewAllNews": "View all news"
+    "viewAllNews": "View all news",
+    "subtitle": "Stay up to date with the latest news, announcements and updates from Taylor Swift.",
+    "loading": "Loading news..."
   },
   "history": {
     "activeYears": "Active years",
