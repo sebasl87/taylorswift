@@ -11,6 +11,7 @@ import NewsPreview from "@/components/NewsPreview";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import * as mb from "@/providers/musicbrainz";
+import RandomSectionBanner from "./NewsBanner";
 
 export default function TaylorHero() {
   const { currentEra } = useEra();
@@ -120,6 +121,9 @@ export default function TaylorHero() {
             >
               {t("ctaSecondary")}
             </Button>
+          </Box>
+          <Box sx={{ mt: 8, mb: 4 }}>
+            <RandomSectionBanner currentSection="news" />
           </Box>
         </Box>
       </Container>

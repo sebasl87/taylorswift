@@ -82,7 +82,7 @@ export default function ArticleCard({
     >
       <Typography
         variant="h3"
-        sx={{ color: currentEra.colors.text, fontSize: { xs: 18, md: 36 } }}
+        sx={{ color: currentEra.colors.heroText, fontSize: { xs: 18, md: 36 } }}
       >
         {title}
       </Typography>
@@ -90,7 +90,7 @@ export default function ArticleCard({
   ) : (
     <Typography
       variant="h3"
-      sx={{ color: currentEra.colors.text, fontSize: { xs: 18, md: 36 } }}
+      sx={{ color: currentEra.colors.heroText, fontSize: { xs: 18, md: 36 } }}
     >
       {title}
     </Typography>
@@ -150,7 +150,7 @@ export default function ArticleCard({
             sx={{
               fontSize: { xs: 14, md: 18 },
               whiteSpace: "pre-line",
-              color: currentEra.colors.text,
+              color: currentEra.colors.heroText,
             }}
             fontWeight={400}
           >

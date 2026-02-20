@@ -7,6 +7,7 @@ import { Typography, Box } from "@mui/material";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 import Breadcrumb from "@/components/Breadcrumb";
 import { useEra } from "@/context/EraContext";
+import RandomSectionBanner from "@/components/NewsBanner";
 
 interface DiscographyClientProps {
   albums: Album[];
@@ -66,6 +67,9 @@ export default function DiscographyClient({ albums }: DiscographyClientProps) {
           </Typography>
 
           <DiscographyGrid albums={albums} />
+        </Box>
+        <Box pb={4}>
+          <RandomSectionBanner currentSection="discography" />
         </Box>
       </Box>
     </ContainerGradientNoPadding>

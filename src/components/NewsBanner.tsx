@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useEra } from "@/context/EraContext";
 
 interface Section {
   id: string;
@@ -19,7 +20,7 @@ const sections: Section[] = [
     id: "news",
     name: { es: "Noticias", en: "News" },
     route: "/noticias",
-    image: "/images/banners/news.png",
+    image: "/images/banners/news2.png",
     adText: {
       es: "Mantente al día con las últimas novedades",
       en: "Stay up to date with the latest news",
@@ -29,7 +30,7 @@ const sections: Section[] = [
     id: "tour",
     name: { es: "Tour", en: "Tour" },
     route: "/tour",
-    image: "/images/banners/tour.png",
+    image: "/images/banners/tour2.png",
     adText: {
       es: "Conoce las próximas fechas de la gira",
       en: "Discover upcoming tour dates",
@@ -39,7 +40,7 @@ const sections: Section[] = [
     id: "songs",
     name: { es: "Canciones", en: "Songs" },
     route: "/songs",
-    image: "/images/banners/songs.png",
+    image: "/images/banners/songs2.png",
     adText: {
       es: "Descubre todas las canciones, letras y más!",
       en: "Discover all songs, lyrics and more!",
@@ -49,7 +50,7 @@ const sections: Section[] = [
     id: "shows",
     name: { es: "Shows", en: "Shows" },
     route: "/shows",
-    image: "/images/banners/shows.png",
+    image: "/images/banners/shows2.png",
     adText: {
       es: "Revive todos los conciertos históricos",
       en: "Relive all the historic concerts",
@@ -59,20 +60,30 @@ const sections: Section[] = [
     id: "interviews",
     name: { es: "Entrevistas", en: "Interviews" },
     route: "/entrevistas",
-    image: "/images/banners/interviews.png",
+    image: "/images/banners/interviews2.png",
     adText: {
       es: "Lee y mira las entrevistas más interesantes",
       en: "Read the most interesting interviews",
     },
   },
   {
-    id: "bootlegs",
-    name: { es: "Bootlegs", en: "Bootlegs" },
-    route: "/bootlegs",
-    image: "/images/banners/bootlegs.png",
+    id: "era",
+    name: { es: "Eras", en: "Eras" },
+    route: "/era",
+    image: "/images/banners/history2.png",
     adText: {
-      es: "Descubre grabaciones no oficiales, tesoros escondidos para fans",
-      en: "Discover unofficial recordings, hidden treasures for fans",
+      es: "Explora las diferentes eras de su carrera",
+      en: "Explore the different eras of her career",
+    },
+  },
+  {
+    id: "discography",
+    name: { es: "Discografía", en: "Discography" },
+    route: "/discography",
+    image: "/images/banners/discography2.png",
+    adText: {
+      es: "Explora la discografía completa",
+      en: "Explore the complete discography",
     },
   },
 ];
@@ -87,6 +98,7 @@ export default function RandomSectionBanner({
   const router = useRouter();
   const locale = useLocale() as "es" | "en";
   const [randomSection, setRandomSection] = useState<Section | null>(null);
+  const { currentEra } = useEra();
 
   useEffect(() => {
     const availableSections = sections.filter((s) => s.id !== currentSection);
@@ -148,7 +160,7 @@ export default function RandomSectionBanner({
         sx={{
           textAlign: "center",
           mt: 1,
-          color: "text.secondary",
+          color: currentEra.colors.heroText,
           fontStyle: "italic",
         }}
       >
