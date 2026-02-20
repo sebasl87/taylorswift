@@ -2,10 +2,12 @@
 import { Box, Container, Typography, Divider, Grid } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
+import { useEra } from "@/context/EraContext";
 
 export default function Footer() {
   const t = useTranslations("footer");
   const locale = useLocale();
+  const { currentEra } = useEra();
 
   // Schema.org JSON-LD para Organization y WebSite
   const organizationSchema = {
@@ -48,16 +50,19 @@ export default function Footer() {
       { href: "/songs", label: t("songs") },
       { href: "/videos", label: t("videos") },
     ],
-    band: [{ href: "/entrevistas", label: t("interviews") }],
     live: [
       { href: "/tour", label: t("tour") },
       { href: "/shows", label: t("shows") },
-      { href: "/bootlegs", label: t("bootlegs") },
     ],
     info: [
       { href: "/noticias", label: t("news") },
+      { href: "/entrevistas", label: t("interviews") },
+    ],
+    aboutUs: [
       { href: "/faq", label: t("faq") },
       { href: "/contacto", label: t("contact") },
+      { href: "/terminos", label: t("terms") },
+      { href: "/privacidad", label: t("privacy") },
     ],
   };
 
@@ -88,6 +93,7 @@ export default function Footer() {
                 mb: 2,
                 fontSize: { xs: 14, md: 16 },
                 textTransform: "uppercase",
+                color: currentEra.colors.text,
               }}
             >
               {t("music")}
@@ -100,42 +106,7 @@ export default function Footer() {
                   href={link.href}
                   variant="body2"
                   sx={{
-                    color: "text.secondary",
-                    textDecoration: "none",
-                    fontSize: { xs: 13, md: 14 },
-                    "&:hover": {
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  {link.label}
-                </Typography>
-              ))}
-            </Box>
-          </Grid>
-
-          {/* La Banda */}
-          <Grid size={{ xs: 6, sm: 6, md: 3 }}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 700,
-                mb: 2,
-                fontSize: { xs: 14, md: 16 },
-                textTransform: "uppercase",
-              }}
-            >
-              {t("band")}
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-              {footerLinks.band.map((link) => (
-                <Typography
-                  key={link.href}
-                  component={Link}
-                  href={link.href}
-                  variant="body2"
-                  sx={{
-                    color: "text.secondary",
+                    color: currentEra.colors.text,
                     textDecoration: "none",
                     fontSize: { xs: 13, md: 14 },
                     "&:hover": {
@@ -158,6 +129,7 @@ export default function Footer() {
                 mb: 2,
                 fontSize: { xs: 14, md: 16 },
                 textTransform: "uppercase",
+                color: currentEra.colors.text,
               }}
             >
               {t("live")}
@@ -170,11 +142,11 @@ export default function Footer() {
                   href={link.href}
                   variant="body2"
                   sx={{
-                    color: "text.secondary",
+                    color: currentEra.colors.text,
                     textDecoration: "none",
                     fontSize: { xs: 13, md: 14 },
                     "&:hover": {
-                      color: "primary.main",
+                      color: currentEra.colors.text,
                     },
                   }}
                 >
@@ -183,7 +155,6 @@ export default function Footer() {
               ))}
             </Box>
           </Grid>
-
           {/* Información */}
           <Grid size={{ xs: 6, sm: 6, md: 3 }}>
             <Typography
@@ -193,6 +164,7 @@ export default function Footer() {
                 mb: 2,
                 fontSize: { xs: 14, md: 16 },
                 textTransform: "uppercase",
+                color: currentEra.colors.text,
               }}
             >
               {t("info")}
@@ -205,7 +177,43 @@ export default function Footer() {
                   href={link.href}
                   variant="body2"
                   sx={{
-                    color: "text.secondary",
+                    color: currentEra.colors.text,
+                    textDecoration: "none",
+                    fontSize: { xs: 13, md: 14 },
+                    "&:hover": {
+                      color: currentEra.colors.text,
+                    },
+                  }}
+                >
+                  {link.label}
+                </Typography>
+              ))}
+            </Box>
+          </Grid>
+
+          {/* FAQ */}
+          <Grid size={{ xs: 6, sm: 6, md: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 700,
+                mb: 2,
+                fontSize: { xs: 14, md: 16 },
+                textTransform: "uppercase",
+                color: currentEra.colors.text,
+              }}
+            >
+              {t("aboutUs")}
+            </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+              {footerLinks.aboutUs.map((link) => (
+                <Typography
+                  key={link.href}
+                  component={Link}
+                  href={link.href}
+                  variant="body2"
+                  sx={{
+                    color: currentEra.colors.text,
                     textDecoration: "none",
                     fontSize: { xs: 13, md: 14 },
                     "&:hover": {
@@ -231,6 +239,7 @@ export default function Footer() {
               fontSize: 12,
               lineHeight: 1.8,
               textAlign: "justify",
+              color: currentEra.colors.text,
             }}
           >
             {t("seoDescription")}
@@ -238,50 +247,6 @@ export default function Footer() {
         </Box>
 
         <Divider sx={{ mb: 3 }} />
-
-        {/* Descripción y enlaces legales */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            alignItems: { xs: "flex-start", md: "center" },
-            justifyContent: "space-between",
-            gap: 2,
-            mb: 2,
-          }}
-        >
-          <Box sx={{ mb: { xs: 2, md: 0 } }}>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ fontWeight: 500 }}
-            >
-              {t("siteDescription")}
-            </Typography>
-          </Box>
-          <Box component="nav" aria-label="Legal navigation">
-            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-              <Typography
-                component={Link}
-                href="/terminos"
-                variant="body2"
-                color="primary"
-                sx={{ textDecoration: "none", fontWeight: 500 }}
-              >
-                {t("terms")}
-              </Typography>
-              <Typography
-                component={Link}
-                href="/privacidad"
-                variant="body2"
-                color="primary"
-                sx={{ textDecoration: "none", fontWeight: 500 }}
-              >
-                {t("privacy")}
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
 
         {/* Copyright */}
         <Box
@@ -294,7 +259,11 @@ export default function Footer() {
           <Typography
             variant="body2"
             color="text.secondary"
-            sx={{ fontWeight: 400, textAlign: "center" }}
+            sx={{
+              fontWeight: 400,
+              textAlign: "center",
+              color: currentEra.colors.text,
+            }}
           >
             {t("disclaimer", { year: new Date().getFullYear() })}
           </Typography>

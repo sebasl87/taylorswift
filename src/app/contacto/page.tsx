@@ -1,27 +1,26 @@
+"use client";
 import { useTranslations } from "next-intl";
-import { getTranslations, getLocale } from "next-intl/server";
+
 import { Container, Typography, Box, Button } from "@mui/material";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
-import { Metadata } from "next";
-
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "contact" });
-  return {
-    title: `${t("title")} | Taylor Swift Fan Site`,
-    description: t("description"),
-    keywords: "Taylor Swift contact, contact Taylor Swift Fan Site, email Taylor Swift",
-  };
-}
+import { useEra } from "@/context/EraContext";
 
 export default function ContactPage() {
   const t = useTranslations("contact");
   const tb = useTranslations("breadcrumb");
+  const { currentEra } = useEra();
 
   return (
-      <ContainerGradientNoPadding>
-        <Box pt={{ xs: 2, md: 4 }} px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
+    <ContainerGradientNoPadding>
+      <Box
+        sx={{
+          background: currentEra.colors.heroOverlay,
+          minHeight: "100vh",
+          position: "relative",
+        }}
+      >
+        <Box pt="100px" px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
           <Breadcrumb items={[{ label: tb("contact") }]} />
         </Box>
         <Container maxWidth={false} sx={{ maxWidth: 1440, mx: "auto", py: 4 }}>
@@ -29,7 +28,7 @@ export default function ContactPage() {
             variant="h3"
             component="h1"
             gutterBottom
-            color="primary"
+            color={currentEra.colors.heroText}
             fontWeight={700}
             sx={{ fontSize: { xs: "1.75rem", md: "3rem" } }}
           >
@@ -38,7 +37,7 @@ export default function ContactPage() {
           <Box sx={{ mt: 4, mb: 2 }}>
             <Typography
               variant="body1"
-              color="text.secondary"
+              color={currentEra.colors.heroText}
               sx={{ mb: 2, fontSize: { xs: "0.9rem", md: "1rem" } }}
             >
               {t("description")}
@@ -53,6 +52,7 @@ export default function ContactPage() {
             </Button>
           </Box>
         </Container>
-      </ContainerGradientNoPadding>
+      </Box>
+    </ContainerGradientNoPadding>
   );
 }

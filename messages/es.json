@@ -44,6 +44,29 @@
     "history": "Eras",
     "backToNews": "Volver a noticias"
   },
+  "contact": {
+    "title": "Contacto",
+    "description": "¿Tienes dudas, sugerencias o quieres colaborar? Escríbenos a nuestro correo y te responderemos a la brevedad.",
+    "emailButton": "Enviar correo a contact@taylorswiftfan.com"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "body": "Este sitio no recopila datos personales de usuarios. No se usan cookies ni se realiza seguimiento de actividad. El único método de contacto es el correo indicado en la sección de contacto."
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "description": "Preguntas comunes sobre este sitio de fans y cómo usarlo.",
+    "q1": "¿Este sitio es oficial de Taylor Swift?",
+    "a1": "No, es un fan site no oficial dedicado a Taylor Swift.",
+    "q2": "¿Dónde puedo encontrar fechas de la gira?",
+    "a2": "Las fechas se actualizan en la sección 'Gira' y en la página principal.",
+    "q3": "¿Cómo puedo contactar al equipo del sitio?",
+    "a3": "Puedes usar el formulario de contacto o escribir a contact@taylorswiftfan.com."
+  },
+  "terms": {
+    "title": "Términos y condiciones",
+    "body": "Este sitio es un fan site no oficial de Taylor Swift. El contenido es solo informativo y no representa a la banda ni a sus miembros. No se recopilan datos personales ni se realiza venta de productos. El uso del sitio implica la aceptación de estos términos."
+  },
   "comments": {
     "title": "Comentarios",
     "leave": "Deja un comentario",
@@ -242,7 +265,6 @@
     "live": "En Vivo",
     "info": "Información",
     "discography": "Discografía",
-    "eras": "Eras",
     "songs": "Canciones",
     "videos": "Videos",
     "dvds": "DVDs",
@@ -260,7 +282,9 @@
     "siteDescription": "Taylor Swift Fan Site • Creado por fans para fans",
     "terms": "Términos y Condiciones",
     "privacy": "Política de Privacidad",
-    "disclaimer": "© {year} Taylor Swift Fan Site. Todos los derechos reservados. Este es un sitio de fans sin fines de lucro. Taylor Swift, el logo de Taylor Swift y las marcas relacionadas son marcas registradas de TAS Rights Management, LLC."
+    "eras": "Eras",
+    "disclaimer": "© {year} Taylor Swift Fan Site. Todos los derechos reservados. Este es un sitio de fans sin fines de lucro. Taylor Swift, el logo de Taylor Swift y las marcas relacionadas son marcas registradas de TAS Rights Management, LLC.",
+    "aboutUs": "Sobre Nosotros"
   },
   "search": {
     "placeholder": "Buscar canciones, álbumes, shows...",
