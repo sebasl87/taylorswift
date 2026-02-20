@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Container, Typography, Grid } from "@mui/material";
+import { Box, Container, Typography, Grid, Button } from "@mui/material";
 import EraSelector from "./EraSelector";
 import Hero from "./Hero";
 import { useEra } from "@/context/EraContext";
@@ -8,9 +8,13 @@ import LastShowsCards from "./LastShowsCards";
 import TopSongsWidget from "./TopSongsWidget";
 import UpcomingToursWidget from "./UpcomingToursWidget";
 import NewsPreview from "@/components/NewsPreview";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import * as mb from "@/providers/musicbrainz";
 
 export default function TaylorHero() {
   const { currentEra } = useEra();
+  const t = useTranslations("news");
 
   return (
     <Box
@@ -70,14 +74,54 @@ export default function TaylorHero() {
 
         {/* Últimas 8 noticias */}
         <Box sx={{ mt: 6 }} id="news-preview">
-          <Typography variant="h4" sx={{ mb: 2, fontWeight: 700 }}>
-            {"Noticias"}
+          <Typography
+            variant="h4"
+            sx={{
+              mb: 2,
+              fontWeight: 700,
+              fontSize: { xs: 22, md: 48 },
+              color: currentEra.colors.heroText,
+            }}
+          >
+            {t("title")}
           </Typography>
 
           <NewsPreview />
+          <Box
+            display="flex"
+            justifyContent="center"
+            mt={4}
+            mb={8}
+            width="100%"
+          >
+            <Button
+              variant="outlined"
+              size="large"
+              component={Link}
+              href="/noticias"
+              sx={{
+                borderRadius: 3,
+                px: 4,
+                py: 1.5,
+                textTransform: "none",
+                fontSize: "1rem",
+                fontWeight: 600,
+                borderWidth: 2,
+                borderColor: currentEra.colors.heroText,
+                color: currentEra.colors.heroText,
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  borderWidth: 2,
+                  transform: "translateY(-2px)",
+                  backgroundColor: "rgba(255,255,255,0.06)",
+                  backdropFilter: "blur(10px)",
+                },
+              }}
+            >
+              {t("ctaSecondary")}
+            </Button>
+          </Box>
         </Box>
-
-        
       </Container>
     </Box>
   );

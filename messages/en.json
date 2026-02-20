@@ -190,7 +190,8 @@
     "latestNews": "Latest News",
     "viewAllNews": "View all news",
     "subtitle": "Stay up to date with the latest news, announcements and updates from Taylor Swift.",
-    "loading": "Loading news..."
+    "loading": "Loading news...",
+    "ctaSecondary": "View all news"
   },
   "history": {
     "activeYears": "Active years",

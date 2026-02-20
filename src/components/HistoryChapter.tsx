@@ -7,6 +7,7 @@ import { useTheme } from "@mui/material/styles";
 import { useLocale } from "next-intl";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 import { useEra } from "@/context/EraContext";
+import Breadcrumb from "./Breadcrumb";
 
 interface HistoryChapterComponentProps {
   chapter: HistoryChapter;
@@ -213,6 +214,17 @@ export default function HistoryChapterComponent({
         }}
       >
         <Box width="100%" pt="100px" maxWidth={1440}>
+          <Box px={{ xs: 2, md: 0 }} pb={{ xs: 2, md: 4 }}>
+            <Breadcrumb
+              items={[
+                {
+                  label: locale === "es" ? "Historia" : "History",
+                  href: "/era",
+                },
+                { label: chapterTitle },
+              ]}
+            />
+          </Box>
           {/* Header del capítulo */}
           <Box
             sx={{

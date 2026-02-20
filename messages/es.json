@@ -191,7 +191,8 @@
     "latestNews": "Últimas Noticias",
     "viewAllNews": "Ver todas las noticias",
     "subtitle": "Mantente al día con las últimas noticias, anuncios y actualizaciones de Taylor Swift.",
-    "loading": "Cargando noticias..."
+    "loading": "Cargando noticias...",
+    "ctaSecondary": "Ver todas las noticias"
   },
   "history": {
     "activeYears": "Años activos",
