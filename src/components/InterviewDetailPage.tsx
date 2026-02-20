@@ -24,6 +24,7 @@ import {
 import ContainerGradientNoPadding from "./atoms/ContainerGradientNoPadding";
 import RandomSectionBanner from "./NewsBanner";
 import { CommentsSection } from "./CommentsSection";
+import { useEra } from "@/context/EraContext";
 
 interface InterviewDetailPageProps {
   interview: Interview;
@@ -33,7 +34,7 @@ interface InterviewDetailPageProps {
 function YouTubeEmbed({ url, title }: { url: string; title: string }) {
   const getYouTubeEmbedUrl = (url: string) => {
     const videoId = url.match(
-      /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/,
     )?.[1];
     return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
   };
@@ -97,13 +98,13 @@ function processMarkdownText(text: string) {
         // Negrita
         const boldText = matchedText.slice(2, -2);
         parts.push(
-          <strong key={`${lineIndex}-${match.index}-bold`}>{boldText}</strong>
+          <strong key={`${lineIndex}-${match.index}-bold`}>{boldText}</strong>,
         );
       } else if (matchedText.startsWith("*") && matchedText.endsWith("*")) {
         // Cursiva
         const italicText = matchedText.slice(1, -1);
         parts.push(
-          <em key={`${lineIndex}-${match.index}-italic`}>{italicText}</em>
+          <em key={`${lineIndex}-${match.index}-italic`}>{italicText}</em>,
         );
       }
 
@@ -326,136 +327,119 @@ export default function InterviewDetailPage({
   const title = getInterviewTitle(interview, locale);
   const description = getInterviewDescription(interview, locale);
   const content = interview.content?.[locale as "es" | "en"] || [];
+  const { currentEra } = useEra();
 
   return (
     <ContainerGradientNoPadding>
-      <Box pt={{ xs: 2, md: 4 }} px={{ xs: 2, md: 0 }} pb={{ xs: 2, md: 4 }}>
-        <Breadcrumb
-          items={[
-            { label: tb("interviews"), href: "/entrevistas" },
-            { label: title },
-          ]}
-        />
-      </Box>
-      <Container maxWidth={false} sx={{ maxWidth: 1200, mx: "auto" }}>
-        {/* Header de la entrevista */}
-        <Box sx={{ textAlign: "center", mb: 4 }}>
-          <Chip
-            label={interview.type === "video" ? t("video") : t("text")}
-            color={interview.type === "video" ? "primary" : "secondary"}
-            variant="filled"
-            sx={{ mb: 2 }}
+      <Box
+        sx={{
+          background: currentEra.colors.heroOverlay,
+          minHeight: "100vh",
+          position: "relative",
+        }}
+      >
+        <Box pt="100px" px={{ xs: 2, md: 0 }} pb={{ xs: 2, md: 4 }}>
+          <Breadcrumb
+            items={[
+              { label: tb("interviews"), href: "/entrevistas" },
+              { label: title },
+            ]}
           />
-
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2rem", md: "3rem" },
-              mb: 2,
-              fontWeight: 600,
-            }}
-          >
-            {title}
-          </Typography>
-
-          <Typography
-            variant="h6"
-            sx={{
-              maxWidth: 800,
-              mx: "auto",
-              lineHeight: 1.5,
-              fontSize: { xs: "16px", md: "18px" },
-            }}
-          >
-            {description}
-          </Typography>
         </Box>
-
-        {/* Imagen de portada */}
-        {interview.content?.cover_image && (
+        <Box sx={{ maxWidth: 1440, mx: "auto", px: { xs: 2, md: 4 }, py: 4 }}>
+          {/* Header de la entrevista */}
           <Box sx={{ textAlign: "center", mb: 4 }}>
-            <Box
+            <Chip
+              label={interview.type === "video" ? t("video") : t("text")}
+              color={interview.type === "video" ? "primary" : "secondary"}
+              variant="filled"
+              sx={{ mb: 2 }}
+            />
+
+            <Typography
+              variant="h1"
               sx={{
-                position: "relative",
-                width: { xs: 300, sm: 400, md: 500 },
-                height: { xs: 300, sm: 400, md: 500 },
-                mx: "auto",
-                overflow: "hidden",
+                fontSize: { xs: "2rem", md: "3rem" },
+                mb: 2,
+                fontWeight: 600,
               }}
             >
-              <Image
-                src={interview.content.cover_image}
-                alt={`Portada de la entrevista: ${title}`}
-                fill
-                style={{ objectFit: "contain" }}
-                priority
-              />
-            </Box>
+              {title}
+            </Typography>
+
+            <Typography
+              variant="h6"
+              sx={{
+                maxWidth: 800,
+                mx: "auto",
+                lineHeight: 1.5,
+                fontSize: { xs: "16px", md: "18px" },
+              }}
+            >
+              {description}
+            </Typography>
           </Box>
-        )}
 
-        {/* Metadata de la entrevista */}
-        <InterviewMetadata interview={interview} />
-
-        {/* Contenido principal */}
-        {interview.type === "video" ? (
-          // Layout para entrevista en video
-          <Box>
-            {interview.youtube_url && (
-              <YouTubeEmbed url={interview.youtube_url} title={title} />
-            )}
-
-            {interview.youtube_url && (
-              <Box sx={{ textAlign: "center", mb: 3 }}>
-                <Button
-                  variant="outlined"
-                  startIcon={<Launch />}
-                  href={interview.youtube_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t("originalSource")}
-                </Button>
+          {/* Imagen de portada */}
+          {interview.content?.cover_image && (
+            <Box sx={{ textAlign: "center", mb: 4 }}>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: { xs: 300, sm: 400, md: 500 },
+                  height: { xs: 300, sm: 400, md: 500 },
+                  mx: "auto",
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src={interview.content.cover_image}
+                  alt={`Portada de la entrevista: ${title}`}
+                  fill
+                  style={{ objectFit: "contain" }}
+                  priority
+                />
               </Box>
-            )}
-          </Box>
-        ) : (
-          // Layout para entrevista de texto con Q&A
-          <Box>
-            {content.length > 0 ? (
-              content.map((item, index) => (
-                <QuestionAnswer key={index} item={item} />
-              ))
-            ) : (
-              <Paper sx={{ p: 4, textAlign: "center" }}>
-                <Typography variant="body1" color="text.secondary">
-                  Contenido no disponible
-                </Typography>
-              </Paper>
-            )}
-          </Box>
-        )}
+            </Box>
+          )}
 
-        {/* Botón de vuelta */}
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-          <Button
-            component={Link}
-            href="/entrevistas"
-            variant="outlined"
-            size="large"
-          >
-            {t("backToInterviews")}
-          </Button>
+          {/* Metadata de la entrevista */}
+          <InterviewMetadata interview={interview} />
+
+          {/* Contenido principal */}
+          {interview.type === "video" ? (
+            // Layout para entrevista en video
+            <Box mb={2}>
+              {interview.youtube_url && (
+                <YouTubeEmbed url={interview.youtube_url} title={title} />
+              )}
+            </Box>
+          ) : (
+            // Layout para entrevista de texto con Q&A
+            <Box>
+              {content.length > 0 ? (
+                content.map((item, index) => (
+                  <QuestionAnswer key={index} item={item} />
+                ))
+              ) : (
+                <Paper sx={{ p: 4, textAlign: "center" }}>
+                  <Typography variant="body1" color="text.secondary">
+                    Contenido no disponible
+                  </Typography>
+                </Paper>
+              )}
+            </Box>
+          )}
+          <Box mt={4}>
+            <RandomSectionBanner currentSection="interviews" />
+          </Box>
+          <CommentsSection
+            pageType="article"
+            pageId={interview.id}
+            title={title}
+          />
         </Box>
-        <Box mb={4}>
-          <RandomSectionBanner currentSection="interviews" />
-        </Box>
-        <CommentsSection
-          pageType="article"
-          pageId={interview.id}
-          title={title}
-        />
-      </Container>
+      </Box>
     </ContainerGradientNoPadding>
   );
 }
