@@ -10,8 +10,9 @@ import UpcomingToursWidget from "./UpcomingToursWidget";
 import NewsPreview from "@/components/NewsPreview";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import * as mb from "@/providers/musicbrainz";
 import RandomSectionBanner from "./NewsBanner";
+import siteUpdatesData from "@/constants/site-updates.json";
+import SiteUpdatesBanner from "./SiteUpdatesBanner";
 
 export default function TaylorHero() {
   const { currentEra } = useEra();
@@ -60,6 +61,13 @@ export default function TaylorHero() {
         <Box sx={{ mt: 4 }} id="shows">
           <LastShowsCards />
         </Box>
+
+        {/* Banner de actualizaciones del sitio */}
+        {siteUpdatesData.length > 0 && (
+          <Box sx={{ width: "100%", mb: 4 }}>
+            <SiteUpdatesBanner updates={siteUpdatesData} />
+          </Box>
+        )}
 
         {/* Widgets de Top Songs y Upcoming Tours */}
         <Box sx={{ mt: 4, mb: 4 }}>

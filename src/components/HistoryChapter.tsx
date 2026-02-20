@@ -212,6 +212,7 @@ export default function HistoryChapterComponent({
           justifyContent: "center",
           display: "flex",
         }}
+        pb={6}
       >
         <Box width="100%" pt="100px" maxWidth={1440}>
           <Box px={{ xs: 2, md: 0 }} pb={{ xs: 2, md: 4 }}>

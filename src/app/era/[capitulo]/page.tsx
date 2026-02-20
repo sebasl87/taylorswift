@@ -2,7 +2,13 @@ import { getLocale } from "next-intl/server";
 import HistoryChapterComponent from "@/components/HistoryChapter";
 import historiaData from "@/constants/historia.json";
 import HistoryNavigation from "@/components/HistoryNavigation";
-import { HistoryData, findChapterBySlug, getNextChapter, getPreviousChapter, getText } from "@/types/historia";
+import {
+  HistoryData,
+  findChapterBySlug,
+  getNextChapter,
+  getPreviousChapter,
+  getText,
+} from "@/types/historia";
 import { notFound } from "next/navigation";
 
 // Generate static params for all chapters
@@ -134,6 +140,7 @@ export default async function CapituloPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HistoryChapterComponent chapter={chapter} />
+
       <HistoryNavigation
         currentChapter={chapter}
         previousChapter={previousChapter}

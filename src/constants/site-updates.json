@@ -1,1 +1,102 @@
-[]
+[
+  {
+    "id": "new-section-songs",
+    "title": {
+      "es": "Nueva Sección: Canciones",
+      "en": "New Section: Songs"
+    },
+    "description": {
+      "es": "Explora todas las canciones de Taylor Swift: setlists completos, estadísticas y momentos históricos de todas las épocas. Estaré actualizando constantemente.",
+      "en": "Explore all of Taylor Swift's songs: complete setlists, statistics, and historic moments from all eras. I will be constantly updating."
+    },
+    "imageUrl": "/images/banners/songs2.png",
+    "linkUrl": "/songs",
+    "linkText": {
+      "es": "Explorar Canciones",
+      "en": "Explore Songs"
+    },
+    "publishedDate": "2026-02-20",
+    "updatedDate": "2026-02-20",
+    "active": true
+  },
+  {
+    "id": "shows-section-launch",
+    "title": {
+      "es": "Nueva Sección: Shows Históricos",
+      "en": "New Section: Historic Shows"
+    },
+    "description": {
+      "es": "Explora los conciertos más legendarios de Taylor Swift: setlists completos, videos y momentos históricos de todas las épocas.",
+      "en": "Explore Taylor Swift's most legendary concerts: complete setlists, videos and historic moments of all eras."
+    },
+    "imageUrl": "/images/banners/shows2.png",
+    "linkUrl": "/shows",
+    "linkText": {
+      "es": "Explorar Shows",
+      "en": "Explore Shows"
+    },
+    "publishedDate": "2026-01-01",
+    "updatedDate": "2026-01-01",
+    "active": true
+  },
+  {
+    "id": "discography-section-launch",
+    "title": {
+      "es": "Conoce la Discografía Completa de Taylor Swift",
+      "en": "Discover Taylor Swift's Complete Discography"
+    },
+    "description": {
+      "es": "Explora la discografía completa de Taylor Swift: álbumes, canciones, colaboraciones y momentos históricos de todas las épocas.",
+      "en": "Explore Taylor Swift's complete discography: albums, songs, collaborations, and historic moments from all eras."
+    },
+    "imageUrl": "/images/banners/discography2.png",
+    "linkUrl": "/discography",
+    "linkText": {
+      "es": "Explorar Discografía",
+      "en": "Explore Discography"
+    },
+    "publishedDate": "2026-01-01",
+    "updatedDate": "2026-01-04",
+    "active": true
+  },
+  {
+    "id": "tour-section-update",
+    "title": {
+      "es": "Actualización: Sección de Gira Mejorada la experiencia",
+      "en": "Update: Enhanced Tour Section Experience"
+    },
+    "description": {
+      "es": "Nuevas fechas agregadas y mejoras funcionales en la sección de gira. Encuentra fácilmente los próximos conciertos de Taylor Swift.",
+      "en": "New dates added and functional improvements in the tour section. Easily find Taylor Swift's upcoming concerts."
+    },
+    "imageUrl": "/images/banners/tour2.png",
+    "linkUrl": "/tour",
+    "linkText": {
+      "es": "Ver Fechas",
+      "en": "View Dates"
+    },
+    "publishedDate": "2026-02-01",
+    "updatedDate": "2026-02-01",
+    "active": true
+  },
+  {
+    "id": "new-section-update",
+    "title": {
+      "es": "Actualización: Nueva sección de Noticias",
+      "en": "Update: New News Section"
+    },
+    "description": {
+      "es": "Mejoramos nuestra sección de noticias para mantenerte al día con las últimas novedades de Taylor Swift. En nuestra home veras las últimas cinco y en Noticias veras todo el historico",
+      "en": "We have improved our news section to keep you up to date with the latest Taylor Swift news. On our homepage, you will see the latest five, and in News, you will see the entire history."
+    },
+    "imageUrl": "/images/banners/news2.png",
+    "linkUrl": "/noticias",
+    "linkText": {
+      "es": "Ver Noticias",
+      "en": "View News"
+    },
+    "publishedDate": "2025-12-20",
+    "updatedDate": "2025-12-20",
+    "active": true
+  }
+]
