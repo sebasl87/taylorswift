@@ -49,7 +49,6 @@ export default function HistoriaClient() {
           alignItems="center"
           width={"100%"}
           flexDirection={"column"}
-          mb={4}
         >
           <Box sx={{ maxWidth: "1392px", padding: 0 }} width={"100%"}>
             {/* Hero Section */}
