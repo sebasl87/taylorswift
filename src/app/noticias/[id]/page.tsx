@@ -162,14 +162,23 @@ export default async function NoticiaPage({
               )}
 
               {article.imageUrl && !article.youtubeVideoId && (
-                <Box sx={{ mb: 4, position: "relative", width: "100%" }}>
+                <Box
+                  sx={{
+                    mb: 4,
+                    position: "relative",
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
                   <SafeNewsImage
                     src={article.imageUrl}
                     alt={imageAlt}
-                    width={1200}
-                    height={675}
+                    width={800}
+                    height={400}
                     style={{
-                      width: "100%",
+                      width: "52%",
                       height: "auto",
                       borderRadius: 8,
                     }}
