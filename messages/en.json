@@ -6,7 +6,11 @@
     "suggestions": "You may have mistyped the address or the page may have been removed.",
     "goHome": "Go to home",
     "goDiscography": "View discography",
-    "contact": "Contact"
+    "contact": "Contact",
+    "songHeading": "Sorry, the selected song was not found",
+    "songMessage": "If you believe this is an error, please contact us in the contact section.",
+    "songSuggestions": "Otherwise, please try again later.",
+    "backToSongs": "Back to songs"
   },
   "albumDetail": {
     "releaseDate": "Release Date",

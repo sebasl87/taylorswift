@@ -6,7 +6,11 @@
     "suggestions": "Puede que hayas escrito mal la dirección o que la página se haya eliminado.",
     "goHome": "Volver al inicio",
     "goDiscography": "Ver discografía",
-    "contact": "Contactar"
+    "contact": "Contactar",
+    "songHeading": "Lo sentimos, la canción seleccionada no fue encontrada",
+    "songMessage": "Si crees que esto es un error, contáctanos en la sección de contacto.",
+    "songSuggestions": "De lo contrario, por favor intenta de nuevo más tarde.",
+    "backToSongs": "Volver a canciones"
   },
   "albumDetail": {
     "releaseDate": "Fecha de Lanzamiento",
