@@ -8,10 +8,12 @@ import {
   Button,
 } from "@mui/material";
 import Image from "next/image";
+import SafeNewsImage from "@/components/SafeNewsImage";
 import Link from "next/link";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { useLocale } from "next-intl";
+import { useEra } from "@/context/EraContext";
 
 interface ArticleCardProps {
   title: string;
@@ -19,6 +21,7 @@ interface ArticleCardProps {
   imageUrl?: string;
   imageAlt?: string;
   imageCaption?: string;
+  articleId?: string;
   linkUrl?: string;
   linkTarget?: "_blank" | "_self";
   priority?: boolean;
@@ -42,8 +45,10 @@ export default function ArticleCard({
   publishedDate,
   externalLinks,
   youtubeVideoId,
+  articleId,
 }: ArticleCardProps) {
   const locale = useLocale();
+  const { currentEra } = useEra();
 
   // Formatear la fecha para mostrarla de manera legible según el idioma actual
   // Evita problemas de zona horaria parseando la fecha manualmente
@@ -75,12 +80,18 @@ export default function ArticleCard({
         },
       }}
     >
-      <Typography variant="h3" sx={{ fontSize: { xs: 22, md: 48 } }}>
+      <Typography
+        variant="h3"
+        sx={{ color: currentEra.colors.heroText, fontSize: { xs: 18, md: 36 } }}
+      >
         {title}
       </Typography>
     </MuiLink>
   ) : (
-    <Typography variant="h3" sx={{ fontSize: { xs: 22, md: 48 } }}>
+    <Typography
+      variant="h3"
+      sx={{ color: currentEra.colors.heroText, fontSize: { xs: 18, md: 36 } }}
+    >
       {title}
     </Typography>
   );
@@ -96,7 +107,7 @@ export default function ArticleCard({
             gap: 1,
             mt: 1,
             mb: 2,
-            color: "text.secondary",
+            color: currentEra.colors.heroText || "text.secondary",
           }}
         >
           <CalendarTodayIcon sx={{ fontSize: { xs: 16, md: 18 } }} />
@@ -136,7 +147,11 @@ export default function ArticleCard({
         <Box width="100%" maxWidth={900}>
           <Typography
             variant="body1"
-            sx={{ fontSize: { xs: 14, md: 18 }, whiteSpace: "pre-line" }}
+            sx={{
+              fontSize: { xs: 14, md: 18 },
+              whiteSpace: "pre-line",
+              color: currentEra.colors.heroText,
+            }}
             fontWeight={400}
           >
             {description}
@@ -160,7 +175,7 @@ export default function ArticleCard({
                     textTransform: "none",
                     fontSize: { xs: 14, md: 16 },
                     fontWeight: 500,
-                    borderColor: "primary.main",
+                    borderColor: currentEra.colors.primary || "primary.main",
                     color: "primary.main",
                     width: "fit-content",
 
@@ -199,13 +214,14 @@ export default function ArticleCard({
                 borderRadius: 2,
               }}
             >
-              <Image
-                src={imageUrl}
-                alt={imageAlt}
+              <SafeNewsImage
+                src={imageUrl || "/images/news/default-taylor-swift.jpg"}
+                alt={imageAlt || title}
                 fill
                 style={{ objectFit: "cover" }}
                 priority={priority}
                 sizes="(max-width: 600px) 100vw, 400px"
+                articleId={articleId}
               />
             </Box>
 

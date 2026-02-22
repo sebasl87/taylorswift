@@ -1,11 +1,9 @@
-import { getTranslations, getLocale } from "next-intl/server";
-import { Box } from "@mui/material";
+import { getLocale } from "next-intl/server";
 import HistoryChapterComponent from "@/components/HistoryChapter";
 import historiaData from "@/constants/historia.json";
 import HistoryNavigation from "@/components/HistoryNavigation";
 import {
   HistoryData,
-  HistoryChapter,
   findChapterBySlug,
   getNextChapter,
   getPreviousChapter,
@@ -88,9 +86,6 @@ export default async function CapituloPage({
   const nextChapter = getNextChapter(data.chapters, capitulo);
   const allChapters = data.chapters;
 
-  const t = await getTranslations({ locale, namespace: "chapterPage" });
-  const tb = await getTranslations({ locale, namespace: "breadcrumb" });
-
   const chapterTitle = getText(chapter.title, locale as "es" | "en");
   const chapterSummary = getText(chapter.summary, locale as "es" | "en");
 
@@ -145,6 +140,7 @@ export default async function CapituloPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HistoryChapterComponent chapter={chapter} />
+
       <HistoryNavigation
         currentChapter={chapter}
         previousChapter={previousChapter}

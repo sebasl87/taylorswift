@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getTranslations, getLocale } from "next-intl/server";
 import SongDetailPage from "@/components/SongDetailPage";
-import { getAllSongs, Song } from "@/utils/songs";
+import { getAllSongs } from "@/utils/songs";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 
 export async function generateStaticParams() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Typography, Button, Chip } from "@mui/material";
+import { Box, Typography, Chip } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import HistoryTimeline from "@/components/HistoryTimeline";
 import historiaData from "@/constants/historia.json";
@@ -49,7 +49,6 @@ export default function HistoriaClient() {
           alignItems="center"
           width={"100%"}
           flexDirection={"column"}
-          mb={4}
         >
           <Box sx={{ maxWidth: "1392px", padding: 0 }} width={"100%"}>
             {/* Hero Section */}

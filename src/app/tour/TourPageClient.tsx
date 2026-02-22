@@ -86,7 +86,7 @@ export default function TourPageClient() {
   };
 
   // Filtrar y ordenar conciertos
-  const { upcoming, past } = useMemo(() => {
+  const { upcoming } = useMemo(() => {
     const sorted = [...tourDates].sort((a, b) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();

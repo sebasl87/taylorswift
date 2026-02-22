@@ -103,9 +103,8 @@ export default function Hero() {
               fontWeight: 700,
               fontSize: { xs: "2.5rem", sm: "3rem", md: "4rem" },
               lineHeight: 1.2,
-              color: "#FFFFFF",
-              textShadow:
-                "2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)",
+              color: currentEra.colors.heroText,
+              textShadow: `2px 2px 8px ${currentEra.shadowColor}, 0 0 20px rgba(0,0,0,0.5)`,
             }}
           >
             {t("title")}
@@ -115,8 +114,8 @@ export default function Hero() {
           <Typography
             variant="h6"
             sx={{
-              color: "#FFFFFF",
-              textShadow: "1px 1px 4px rgba(0,0,0,0.8)",
+              color: currentEra.colors.heroText,
+              textShadow: `1px 1px 4px ${currentEra.shadowColor}`,
               fontSize: { xs: "1rem", md: "1.25rem" },
               lineHeight: 1.7,
               fontWeight: 400,
@@ -162,13 +161,13 @@ export default function Hero() {
                 fontSize: "1rem",
                 fontWeight: 600,
                 borderWidth: 2,
-                borderColor: "#FFFFFF",
-                color: "#FFFFFF",
+                borderColor: currentEra.colors.heroText,
+                color: currentEra.colors.heroText,
                 transition: "all 0.3s ease",
                 "&:hover": {
                   borderWidth: 2,
                   transform: "translateY(-2px)",
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  backgroundColor: "rgba(255,255,255,0.06)",
                   backdropFilter: "blur(10px)",
                 },
               }}
@@ -186,14 +185,14 @@ export default function Hero() {
               onClick={(e) => handleSmoothScroll(e, "eras")}
               clickable
               sx={{
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                backgroundColor: "rgba(0,0,0,0.15)",
                 backdropFilter: "blur(10px)",
-                color: "#FFFFFF",
+                color: currentEra.colors.heroText,
                 fontWeight: 500,
-                border: "1px solid rgba(255, 255, 255, 0.3)",
+                border: `1px solid ${currentEra.colors.heroText}`,
                 transition: "all 0.3s ease",
                 "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  backgroundColor: "rgba(0,0,0,0.2)",
                   transform: "translateY(-2px)",
                 },
               }}
@@ -205,14 +204,14 @@ export default function Hero() {
               onClick={(e) => handleSmoothScroll(e, "tour")}
               clickable
               sx={{
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                backgroundColor: "rgba(0,0,0,0.15)",
                 backdropFilter: "blur(10px)",
-                color: "#FFFFFF",
+                color: currentEra.colors.heroText,
                 fontWeight: 500,
-                border: "1px solid rgba(255, 255, 255, 0.3)",
+                border: `1px solid ${currentEra.colors.heroText}`,
                 transition: "all 0.3s ease",
                 "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  backgroundColor: "rgba(0,0,0,0.2)",
                   transform: "translateY(-2px)",
                 },
               }}
@@ -223,14 +222,14 @@ export default function Hero() {
               href="/era"
               clickable
               sx={{
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                backgroundColor: "rgba(0,0,0,0.15)",
                 backdropFilter: "blur(10px)",
-                color: "#FFFFFF",
+                color: currentEra.colors.heroText,
                 fontWeight: 500,
-                border: "1px solid rgba(255, 255, 255, 0.3)",
+                border: `1px solid ${currentEra.colors.heroText}`,
                 transition: "all 0.3s ease",
                 "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  backgroundColor: "rgba(0,0,0,0.2)",
                   transform: "translateY(-2px)",
                 },
               }}

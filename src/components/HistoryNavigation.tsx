@@ -122,7 +122,7 @@ export default function HistoryNavigation({
         }}
       >
         {/* Botón anterior */}
-        {currentChapter.id === "origenes" ? (
+        {currentChapter.id === "debut" ? (
           <Box></Box>
         ) : (
           <Button
@@ -133,7 +133,7 @@ export default function HistoryNavigation({
             sx={{
               minWidth: "120px",
               borderColor: currentEra.colors.primary,
-              color: currentEra.colors.heroText,
+              color: currentEra.colors.text,
               "&:hover": {
                 borderColor: currentEra.colors.primary,
                 backgroundColor: `${currentEra.colors.primary}20`,
@@ -165,7 +165,7 @@ export default function HistoryNavigation({
 
         {/* Botón siguiente */}
 
-        {currentChapter.id === "actualidad-despedida" ? (
+        {currentChapter.id === "midnights" ? (
           <Box></Box>
         ) : (
           <Button
@@ -176,7 +176,7 @@ export default function HistoryNavigation({
             sx={{
               minWidth: "120px",
               borderColor: currentEra.colors.primary,
-              color: currentEra.colors.heroText,
+              color: currentEra.colors.text,
               "&:hover": {
                 borderColor: currentEra.colors.primary,
                 backgroundColor: `${currentEra.colors.primary}20`,

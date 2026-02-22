@@ -4,10 +4,15 @@ import {
   createContext,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState,
   ReactNode,
 } from "react";
 import { Era, ERAS } from "@/constants/eras";
+
+// useLayoutEffect en browser (corre antes del paint), useEffect en servidor (SSR-safe)
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 interface EraContextType {
   currentEra: Era;
@@ -17,9 +22,9 @@ interface EraContextType {
 const EraContext = createContext<EraContextType | undefined>(undefined);
 
 export function EraProvider({ children }: { children: ReactNode }) {
-  const [currentEra, setCurrentEra] = useState<Era>(ERAS[0]); // Default to Taylor Swift (Debut)
+  const [currentEra, setCurrentEra] = useState<Era>(ERAS[0]);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const savedEraId = localStorage.getItem("taylor-era");
     if (savedEraId) {
       const foundEra = ERAS.find((e) => e.id === savedEraId);
@@ -36,14 +41,6 @@ export function EraProvider({ children }: { children: ReactNode }) {
       localStorage.setItem("taylor-era", eraId);
     }
   };
-
-  // Avoid hydration mismatch by rendering children only after mount,
-  // or accept that the initial render might differ.
-  // For themes, it's better to render immediately to avoid flash,
-  // but with localStorage we need to wait for mount or use a cookie.
-  // Using a default era and updating is fine for now,
-  // or we can just return children directly and let the effect update the state.
-  // However, `currentEra` changes will trigger re-renders.
 
   return (
     <EraContext.Provider value={{ currentEra, setEra }}>

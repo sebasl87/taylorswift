@@ -1,16 +1,11 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Box,
-  Chip,
-} from "@mui/material";
+import React from "react";
+import { Card, CardContent, Typography, Box, Chip } from "@mui/material";
 import { NewsArticle } from "@/types/news";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import SafeNewsImage from "@/components/SafeNewsImage";
 
 interface NewsCardProps {
   article: NewsArticle;
@@ -26,15 +21,14 @@ export default function NewsCard({ article }: NewsCardProps) {
   );
 
   const hasYouTube = !!article.youtubeVideoId;
-  const hasImage = !!article.imageUrl;
 
   // Determinar imagen a mostrar (siempre muestra algo)
-  const imageToShow =
-    article.imageUrl ||
-    (hasYouTube
-      ? `https://img.youtube.com/vi/${article.youtubeVideoId}/hqdefault.jpg`
-      : null) ||
-    "/images/news/default-taylor-swift.jpg";
+  const defaultLocal = "/images/news/default-taylor-swift.jpg";
+  const youtubeThumb = hasYouTube
+    ? `https://img.youtube.com/vi/${article.youtubeVideoId}/hqdefault.jpg`
+    : null;
+
+  const imageToShow = article.imageUrl || youtubeThumb || defaultLocal;
 
   return (
     <Card
@@ -52,13 +46,16 @@ export default function NewsCard({ article }: NewsCardProps) {
         },
       }}
     >
-      <CardMedia
-        component="img"
-        height="200"
-        image={imageToShow}
-        alt={article.imageAlt?.[locale] || article.title[locale]}
-        sx={{ objectFit: "cover" }}
-      />
+      <Box sx={{ position: "relative", width: "100%", height: 200 }}>
+        <SafeNewsImage
+          src={imageToShow}
+          alt={article.imageAlt?.[locale] || article.title[locale]}
+          fill
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          sizes="(max-width: 600px) 100vw, 400px"
+          articleId={article.id}
+        />
+      </Box>
       <CardContent
         sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}
       >

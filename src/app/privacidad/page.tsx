@@ -1,24 +1,25 @@
+"use client";
+
 import { useTranslations } from "next-intl";
-import { getTranslations, getLocale } from "next-intl/server";
 import { Container, Typography, Box } from "@mui/material";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
-import { Metadata } from "next";
-
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "privacy" });
-  return {
-    title: `${t("title")} | Taylor Swift`,
-  };
-}
+import { useEra } from "@/context/EraContext";
 
 export default function PrivacyPage() {
   const t = useTranslations("privacy");
   const tb = useTranslations("breadcrumb");
+  const { currentEra } = useEra();
   return (
     <ContainerGradientNoPadding>
-        <Box pt={{ xs: 2, md: 4 }} px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
+      <Box
+        sx={{
+          background: currentEra.colors.heroOverlay,
+          minHeight: "100vh",
+          position: "relative",
+        }}
+      >
+        <Box pt="100px" px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
           <Breadcrumb items={[{ label: tb("privacy") }]} />
         </Box>
         <Container maxWidth={false} sx={{ maxWidth: 1440, mx: "auto", py: 4 }}>
@@ -26,7 +27,7 @@ export default function PrivacyPage() {
             variant="h3"
             component="h1"
             gutterBottom
-            color="primary"
+            color={currentEra.colors.heroText}
             fontWeight={700}
             sx={{ fontSize: { xs: "1.75rem", md: "3rem" } }}
           >
@@ -35,13 +36,14 @@ export default function PrivacyPage() {
           <Box sx={{ mt: 4 }}>
             <Typography
               variant="body1"
-              color="text.secondary"
+              color={currentEra.colors.heroText}
               sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}
             >
               {t("body")}
             </Typography>
           </Box>
         </Container>
+      </Box>
     </ContainerGradientNoPadding>
   );
 }

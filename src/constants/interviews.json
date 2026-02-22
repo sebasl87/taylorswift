@@ -1,1 +1,250 @@
-[]
+[
+  {
+    "id": "vogue-2016",
+    "title": {
+      "es": "73 Preguntas con Taylor Swift | Vogue 2016",
+      "en": "73 Questions with Taylor Swift | Vogue 2016"
+    },
+    "date": "2016-01-01",
+    "media": {
+      "name": "Vogue",
+      "type": "Media",
+      "country": "US"
+    },
+    "interviewees": [
+      {
+        "name": "Taylor Swift",
+        "role": "Taylor Swift",
+        "id": "taylor-swift"
+      }
+    ],
+    "interviewer": {
+      "name": "Vogue Interviewer"
+    },
+    "type": "video",
+    "language": "en",
+    "youtube_url": "https://www.youtube.com/watch?v=-gl9TZL_MM8",
+    "duration": "9:38",
+    "summary": {
+      "es": "Entrevista histórica de 73 preguntas con Taylor Swift.",
+      "en": "Historic 73 Questions interview with Taylor Swift."
+    }
+  },
+  {
+    "id": "katie-couric-2012",
+    "title": {
+      "es": "Entrevista con Katie Couric | 2012",
+      "en": "Interview with Katie Couric | 2012"
+    },
+    "date": "2012-01-01",
+    "media": {
+      "name": "Katie Couric",
+      "type": "Media",
+      "country": "US"
+    },
+    "interviewees": [
+      {
+        "name": "Taylor Swift",
+        "role": "Taylor Swift",
+        "id": "taylor-swift"
+      }
+    ],
+    "interviewer": {
+      "name": "Katie Couric"
+    },
+    "type": "video",
+    "language": "en",
+    "youtube_url": "https://www.youtube.com/watch?v=kwYXMXSL5bc",
+    "duration": "19:20",
+    "summary": {
+      "es": "El entrevista es de 2012, cuando Red salió a la venta. Como Taylor está de descanso no hay material nuevo así que voy a subtitular entrevistas mas antiguas que me parecen interesantes y que dejan un mensaje o una lección de Taylor.",
+      "en": "The interview is from 2012, when Red was released. Since Taylor is on a break, there is no new material, so I will subtitle older interviews that I find interesting and that convey a message or lesson from Taylor."
+    }
+  },
+  {
+    "id": "late-night-with-seth-meyers-2025",
+    "title": {
+      "es": "Late Night con Seth Meyers",
+      "en": "Late Night with Seth Meyers"
+    },
+    "date": "2025-10-10",
+    "media": {
+      "name": "Late Night with Seth Meyers",
+      "type": "Media",
+      "country": "US"
+    },
+    "interviewees": [
+      {
+        "name": "Taylor Swift",
+        "role": "Taylor Swift",
+        "id": "taylor-swift"
+      }
+    ],
+    "interviewer": {
+      "name": "Seth Meyers"
+    },
+    "type": "video",
+    "language": "en",
+    "youtube_url": "https://www.youtube.com/watch?v=Wd7S1wZqkbI",
+    "duration": "27:43",
+    "summary": {
+      "es": "Taylor Swift visita Late Night con Seth Meyers para hablar sobre el lanzamiento de su álbum The Life of a Showgirl, su compromiso con Travis Kelce y la vez que Zoë Kravitz perdió una serpiente en su casa.",
+      "en": "Taylor Swift stops by Late Night with Seth Meyers to talk about releasing her album The Life of a Showgirl, her engagement to Travis Kelce and the time Zoë Kravitz lost a snake in her house."
+    }
+  },
+  {
+    "id": "good-morning-america-2004",
+    "title": {
+      "es": "Good Morning America",
+      "en": "Good Morning America"
+    },
+    "date": "2004-10-10",
+    "media": {
+      "name": "Good Morning America",
+      "type": "Media",
+      "country": "US"
+    },
+    "interviewees": [
+      {
+        "name": "Taylor Swift",
+        "role": "Taylor Swift",
+        "id": "taylor-swift"
+      }
+    ],
+    "interviewer": {
+      "name": "Good Morning America Interviewer"
+    },
+    "type": "video",
+    "language": "en",
+    "youtube_url": "https://www.youtube.com/watch?v=hpx1nFctZJU",
+    "duration": "20:27",
+    "summary": {
+      "es": "Antes de las giras por estadios, los álbumes que encabezaron las listas y la superestrella global, \"Good Morning America\" se sentó con Taylor Swift en 2004 como parte de un reportaje sobre músicos emergentes en Nashville. En esta rara entrevista temprana, Swift habla sobre su mudanza a Nashville, su trayectoria como compositora y las esperanzas que tenía para su futuro.",
+      "en": "Before the stadium tours, chart-topping albums, and global superstardom, \"Good Morning America\" sat down with Taylor Swift in 2004 as part of a piece profiling up-and-coming musicians in Nashville. In this rare early interview, Swift opens up about her move to Nashville, her songwriting journey, and the hopes she held for her future."
+    }
+  },
+  {
+    "id": "honorary-doctorate-nyu-2021",
+    "title": {
+      "es": "Doctorado Honorario de Bellas Artes en la NYU",
+      "en": "Honorary Doctorate of Fine Arts at NYU"
+    },
+    "date": "2021-10-10",
+    "media": {
+      "name": "New York University",
+      "type": "Media",
+      "country": "US"
+    },
+    "interviewees": [
+      {
+        "name": "Taylor Swift",
+        "role": "Taylor Swift",
+        "id": "taylor-swift"
+      }
+    ],
+    "interviewer": {
+      "name": "New York University Representative"
+    },
+    "type": "video",
+    "language": "en",
+    "youtube_url": "https://www.youtube.com/watch?v=rL1HhTB4GyU",
+    "duration": "23:48",
+    "summary": {
+      "es": "Discurso de aceptación del doctorado honorario de Bellas Artes de Taylor Swift en la NYU en 2021. En este emotivo discurso, Taylor reflexiona sobre su viaje desde sus humildes comienzos hasta convertirse en una de las artistas más influyentes del mundo, y comparte valiosas lecciones sobre la perseverancia, la autenticidad y el poder de la música para conectar a las personas.",
+      "en": "Taylor Swift's acceptance speech for the Honorary Doctorate of Fine Arts at NYU in 2021. In this heartfelt speech, Taylor reflects on her journey from humble beginnings to becoming one of the world's most influential artists, sharing valuable lessons on perseverance, authenticity, and the power of music to connect people."
+    }
+  },
+  {
+    "id": "ellen-degeneres-show-2019",
+    "title": {
+      "es": "The Ellen DeGeneres Show",
+      "en": "The Ellen DeGeneres Show"
+    },
+    "date": "2019-05-18",
+    "media": {
+      "name": "The Ellen DeGeneres Show",
+      "type": "Media",
+      "country": "US"
+    },
+    "interviewees": [
+      {
+        "name": "Taylor Swift",
+        "role": "Taylor Swift",
+        "id": "taylor-swift"
+      }
+    ],
+    "interviewer": {
+      "name": "Ellen DeGeneres"
+    },
+    "type": "video",
+    "language": "en",
+    "youtube_url": "https://www.youtube.com/watch?v=on4bHNdUm-I",
+    "duration": "18:45",
+    "summary": {
+      "es": "Taylor Swift regresa a 'The Ellen DeGeneres Show' para hablar sobre los huevos de Pascua en sus videos musicales y canciones, su último sencillo 'Me!' y prepararse para la adaptación cinematográfica del musical 'Cats'. Además, Ellen pone a Taylor en el asiento caliente para responder algunas de sus 'Preguntas Ardientes'.",
+      "en": "From singing with Zac Efron to getting scared in a bathroom, Taylor Swift has had some unforgettable moments on the show, and now she’s back! The superstar opened up about the Easter eggs in her music videos and songs, her latest single, “Me!”, and preparing for the movie adaptation of the musical “Cats.” Plus, Ellen put Taylor in the hot seat to answer some of her \"Burning Questions\"!"
+    }
+  },
+  {
+    "id": "los-40-music-awards-2013",
+    "title": {
+      "es": "Los 40 Music Awards",
+      "en": "Los 40 Music Awards"
+    },
+    "date": "2013-11-08",
+    "media": {
+      "name": "Los 40 Music Awards",
+      "type": "Media",
+      "country": "US"
+    },
+    "interviewees": [
+      {
+        "name": "Taylor Swift",
+        "role": "Taylor Swift",
+        "id": "taylor-swift"
+      }
+    ],
+    "interviewer": {
+      "name": "Music Awards"
+    },
+    "type": "video",
+    "language": "en",
+    "youtube_url": "https://www.youtube.com/watch?v=JnyjKNYIXxI",
+    "duration": "9:52",
+    "summary": {
+      "es": "Taylor Swift en Los 40 Music Awards 2013",
+      "en": "Taylor Swift at the 40 Music Awards 2013"
+    }
+  },
+  {
+    "id": "the-graham-norton-show-2016",
+    "title": {
+      "es": "The Graham Norton Show",
+      "en": "The Graham Norton Show"
+    },
+    "date": "2016-11-08",
+    "media": {
+      "name": "The Graham Norton Show",
+      "type": "Media",
+      "country": "US"
+    },
+    "interviewees": [
+      {
+        "name": "Taylor Swift",
+        "role": "Taylor Swift",
+        "id": "taylor-swift"
+      }
+    ],
+    "interviewer": {
+      "name": "Graham Norton"
+    },
+    "type": "video",
+    "language": "en",
+    "youtube_url": "https://www.youtube.com/watch?v=Q9C4qCAjODc",
+    "duration": "4:23",
+    "summary": {
+      "es": "Taylor Swift en The Graham Norton Show",
+      "en": "Taylor Swift at The Graham Norton Show"
+    }
+  }
+]

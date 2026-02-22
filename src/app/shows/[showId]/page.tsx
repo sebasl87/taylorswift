@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, getLocale } from "next-intl/server";
 import ShowDetailPage from "@/components/ShowDetailPage";
 import showsData from "@/constants/shows.json";
-import { Show, generateShowSlug } from "@/types/show";
+import { Show } from "@/types/show";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 
 function getShowById(id: string): Show | undefined {
@@ -52,9 +52,5 @@ export default async function ShowPage({
     notFound();
   }
 
-  return (
-    <ContainerGradientNoPadding>
-      <ShowDetailPage show={show} />
-    </ContainerGradientNoPadding>
-  );
+  return <ShowDetailPage show={show} />;
 }

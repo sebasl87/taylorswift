@@ -1,5 +1,4 @@
 import { getTranslations, getLocale } from "next-intl/server";
-import { useTranslations } from "next-intl";
 import HistoriaClient from "./HistoriaClient";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 
