@@ -18,10 +18,11 @@ export default function ThemeRegistry({
 }) {
   const cache = React.useMemo(() => createEmotionCache(), []);
   const { currentEra } = useEra();
+  const theme = React.useMemo(() => makeTheme(currentEra), [currentEra]);
 
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider theme={makeTheme(currentEra)}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         {children}
       </ThemeProvider>

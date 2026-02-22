@@ -52,9 +52,5 @@ export default async function ShowPage({
     notFound();
   }
 
-  return (
-    <ContainerGradientNoPadding>
-      <ShowDetailPage show={show} />
-    </ContainerGradientNoPadding>
-  );
+  return <ShowDetailPage show={show} />;
 }
