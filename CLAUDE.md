@@ -8,18 +8,20 @@ Sitio fan-made de Taylor Swift. Next.js 15 App Router con TypeScript, MUI v7, in
 
 ## Comandos
 
+El proyecto usa **Yarn 3** como package manager (`packageManager: "yarn@3.6.4"` en package.json).
+
 ```bash
-npm run dev          # Servidor de desarrollo (localhost:3000)
-npm run build        # Build de producción + SSG
-npm run lint         # ESLint check
-npm run start        # Servidor de producción
-npx vitest           # Ejecutar tests
-npx vitest run <archivo>  # Ejecutar un test específico
+yarn dev             # Servidor de desarrollo (localhost:3000)
+yarn build           # Build de producción + SSG
+yarn lint            # ESLint check
+yarn start           # Servidor de producción
+yarn vitest          # Ejecutar tests
+yarn vitest run <archivo>  # Ejecutar un test específico
 
 # Scripts de sincronización de datos
-npm run sync:backfill   # Setlist.fm sync completo
-npm run sync:update     # Setlist.fm sync incremental
-npm run sync:fix        # Corregir conteos de canciones
+yarn sync:backfill   # Setlist.fm sync completo
+yarn sync:update     # Setlist.fm sync incremental
+yarn sync:fix        # Corregir conteos de canciones
 ```
 
 ## Stack
@@ -99,6 +101,17 @@ KV_REST_API_TOKEN
 NEWS_API_URL
 NEWS_API_KEY
 ```
+
+### Pipeline de Noticias Automatizado
+
+`scripts/scrape-news.js` es ejecutado diariamente a las 10:00 UTC por GitHub Actions (`.github/workflows/generate-news.yml`). El flujo es:
+
+1. Lee 2 feeds RSS por día (rotación semanal entre People, Google News, Reddit, Billboard, Variety, Rolling Stone, etc.)
+2. Filtra artículos con `isRelevantToTaylor()` (Groq, temperatura 0.1)
+3. Procesa con `processNewsWithAI()` (Groq Llama 3.3 70B, genera contenido bilingüe EN/ES)
+4. Publica via `POST /api/news/create` con `X-API-Key` header
+
+La rotación de 2 feeds/día respeta el límite de ~100K tokens/día de Groq.
 
 ## Estado actual
 
