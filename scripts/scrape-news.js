@@ -279,6 +279,9 @@ function stripHtml(html) {
 /**
  * Crea una noticia vía API
  */
+/**
+ * @returns {'created'|'duplicate'|'error'}
+ */
 async function createNews(newsData) {
   try {
     const response = await fetch(API_URL, {
@@ -290,22 +293,33 @@ async function createNews(newsData) {
       body: JSON.stringify(newsData),
     });
 
-    const result = await response.json();
+    const text = await response.text();
+    let result;
+    try {
+      result = JSON.parse(text);
+    } catch {
+      console.error("❌ Error de conexión: respuesta no es JSON:", text.substring(0, 120));
+      return "error";
+    }
 
     if (!response.ok) {
+      // 409 = duplicado esperado
+      if (response.status === 409) {
+        return "duplicate";
+      }
       console.error("❌ Error creando noticia:", result.error);
       if (result.validation_errors) {
         result.validation_errors.forEach((err) => {
           console.error(`  • ${err.field}: ${err.message}`);
         });
       }
-      return false;
+      return "error";
     }
 
-    return true;
+    return "created";
   } catch (error) {
     console.error("❌ Error de conexión:", error.message);
-    return false;
+    return "error";
   }
 }
 
@@ -410,7 +424,8 @@ async function main() {
 
   let totalFound = 0;
   let totalCreated = 0;
-  let totalSkipped = 0;
+  let totalDuplicates = 0;
+  let totalErrors = 0;
 
   // Procesar todos los feeds
   for (const feedUrl of RSS_FEEDS) {
@@ -468,14 +483,17 @@ async function main() {
         console.log(`   🖼️  Enviando imagen: ${newsData.image_url}`);
 
         // Crear noticia
-        const success = await createNews(newsData);
+        const result = await createNews(newsData);
 
-        if (success) {
+        if (result === "created") {
           console.log(`   ✅ Noticia creada exitosamente`);
           totalCreated++;
+        } else if (result === "duplicate") {
+          console.log(`   ⏭️  Duplicada, omitiendo`);
+          totalDuplicates++;
         } else {
-          console.log(`   ⚠️  No se pudo crear (posiblemente duplicada)`);
-          totalSkipped++;
+          console.log(`   ❌ Error al crear noticia`);
+          totalErrors++;
         }
 
         // Pausa para no saturar la API
@@ -487,7 +505,7 @@ async function main() {
         console.log(
           `   ℹ️  Esta noticia NO se guardará (solo contenido correctamente procesado)`,
         );
-        totalSkipped++;
+        totalErrors++;
       }
     }
   }
@@ -498,8 +516,15 @@ async function main() {
   console.log("╚═══════════════════════════════════════════════╝");
   console.log(`📊 Noticias relevantes encontradas: ${totalFound}`);
   console.log(`✅ Noticias creadas exitosamente:   ${totalCreated}`);
-  console.log(`⏭️  Noticias descartadas (duplicadas/errores): ${totalSkipped}`);
+  console.log(`⏭️  Duplicadas omitidas:             ${totalDuplicates}`);
+  console.log(`❌ Errores:                          ${totalErrors}`);
   console.log(`\n🎉 Proceso completado a las ${new Date().toLocaleString()}`);
+
+  // Fallar el Action si hubo errores reales y no se creó ninguna noticia
+  if (totalErrors > 0 && totalCreated === 0 && totalFound > 0) {
+    console.error(`\n💥 FALLO: Se encontraron ${totalFound} noticias pero ninguna pudo crearse (${totalErrors} errores). Revisar API o credenciales.`);
+    process.exit(1);
+  }
 }
 
 // Ejecutar

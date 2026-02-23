@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { kv } from "@vercel/kv";
 import { createClient } from "@supabase/supabase-js";
 
-// Initialize Supabase
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+function getSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  );
+}
 
 // Helper functions
 function pageVersionKey(pageType: string, pageId: string) {
@@ -48,7 +50,7 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("comments")
     .select("id,page_type,page_id,name,content,created_at")
     .eq("page_type", pageType)
@@ -91,7 +93,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Insert into Supabase
-    const { data, error } = await supabase
+    const { data, error } = await getSupabase()
       .from("comments")
       .insert({
         page_type: pageType,
