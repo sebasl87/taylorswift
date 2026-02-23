@@ -37,6 +37,14 @@ export async function generateMetadata({
       description: `${t("showIn")} ${show.city}, ${show.country} - ${show.venue}`,
       type: "article",
     },
+    twitter: {
+      card: "summary",
+      title,
+      description: `${t("showIn")} ${show.city}, ${show.country} - ${show.venue}`,
+    },
+    alternates: {
+      canonical: `/shows/${showId}`,
+    },
   };
 }
 

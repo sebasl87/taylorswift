@@ -3,7 +3,25 @@ import TaylorHero from "@/components/TaylorHero";
 
 export const metadata: Metadata = {
   title: "Taylor Swift: The Eras Tour, Noticias, Álbumes",
-  description: "Todo sobre Taylor Swift: The Eras Tour, noticias, discografía, letras y más. Sitio de fans.",
+  description:
+    "Todo sobre Taylor Swift: The Eras Tour, noticias, discografía, letras y más. El sitio de fans más completo en español e inglés.",
+  openGraph: {
+    title: "Taylor Swift: The Eras Tour, Noticias, Álbumes",
+    description:
+      "Todo sobre Taylor Swift: The Eras Tour, noticias, discografía, letras y más.",
+    type: "website",
+    url: "https://taylorswift.com.ar",
+    images: [{ url: "/icon.webp", width: 512, height: 512, alt: "Taylor Swift Fan Site" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Taylor Swift: The Eras Tour, Noticias, Álbumes",
+    description:
+      "Todo sobre Taylor Swift: The Eras Tour, noticias, discografía, letras y más.",
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function HomePage() {

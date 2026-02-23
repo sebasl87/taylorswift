@@ -45,9 +45,16 @@ export async function generateMetadata({
       description: description,
       type: "article",
       publishedTime: article.publishedDate,
-      images: article.imageUrl
-        ? [`https://taylorswift.com${article.imageUrl}`]
-        : [],
+      images: article.imageUrl ? [article.imageUrl] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Taylor Swift`,
+      description: description,
+      images: article.imageUrl ? [article.imageUrl] : [],
+    },
+    alternates: {
+      canonical: `/noticias/${id}`,
     },
   };
 }

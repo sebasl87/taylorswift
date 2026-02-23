@@ -25,10 +25,38 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Taylor Swift",
-  description: "Taylor Swift Fan Site",
+  metadataBase: new URL("https://taylorswift.com.ar"),
+  title: {
+    default: "Taylor Swift Fan Site | Discografía, Noticias y más",
+    template: "%s",
+  },
+  description:
+    "Todo sobre Taylor Swift: discografía, noticias, letras, shows y más. El sitio de fans más completo en español.",
+  keywords: [
+    "Taylor Swift",
+    "Taylor Swift fan site",
+    "discografía Taylor Swift",
+    "letras Taylor Swift",
+    "noticias Taylor Swift",
+    "Eras Tour",
+    "Taylor Swift Argentina",
+  ],
   icons: {
     icon: "/icon.webp",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Taylor Swift Fan Site",
+    locale: "es_AR",
+    alternateLocale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@taylorswift13",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -45,6 +73,17 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3K73MS3');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -54,6 +93,16 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://img.youtube.com" />
       </head>
       <body className={`${playfairDisplay.variable} ${montserrat.variable}`}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N3K73MS3"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         {/* Script for color mode */}
         <script
           dangerouslySetInnerHTML={{

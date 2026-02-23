@@ -14,6 +14,14 @@ export async function generateMetadata() {
       description: t("description"),
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t("title")} | Taylor Swift`,
+      description: t("description"),
+    },
+    alternates: {
+      canonical: "/shows",
+    },
   };
 }
 

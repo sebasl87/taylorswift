@@ -31,6 +31,15 @@ export async function generateMetadata({
       title: `${song.title} | Taylor Swift`,
       description: `${t("about")} ${song.title} - ${song.album.title}`,
       type: "music.song",
+      images: [song.album.cover],
+    },
+    twitter: {
+      card: "summary",
+      title: `${song.title} | Taylor Swift`,
+      description: `${t("about")} ${song.title} - ${song.album.title}`,
+    },
+    alternates: {
+      canonical: `/songs/${songId}`,
     },
   };
 }

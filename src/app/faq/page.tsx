@@ -1,127 +1,71 @@
-"use client";
-import { useTranslations } from "next-intl";
-import { Container, Typography, Box } from "@mui/material";
-import Breadcrumb from "@/components/Breadcrumb";
-import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
-import { useEra } from "@/context/EraContext";
+import { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
+import FaqPageContent from "./FaqPageContent";
 
-export default function FAQPage() {
-  const t = useTranslations("faq");
-  const tb = useTranslations("breadcrumb");
-  const { currentEra } = useEra();
-  // Server-side JSON-LD construction
-  const faqJsonLd = {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "faq" });
+
+  const title = t("title");
+  const description =
+    locale === "es"
+      ? "Preguntas frecuentes sobre Taylor Swift: discografía, conciertos, letras y más."
+      : "Frequently asked questions about Taylor Swift: discography, concerts, lyrics and more.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+    },
+    alternates: {
+      canonical: "/faq",
+    },
+  };
+}
+
+// JSON-LD estructurado (server-side para mejor SEO)
+async function FaqJsonLd() {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "faq" });
+
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
       {
         "@type": "Question",
         name: t("q1"),
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: t("a1"),
-        },
+        acceptedAnswer: { "@type": "Answer", text: t("a1") },
       },
       {
         "@type": "Question",
         name: t("q2"),
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: t("a2"),
-        },
+        acceptedAnswer: { "@type": "Answer", text: t("a2") },
       },
       {
         "@type": "Question",
         name: t("q3"),
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: t("a3"),
-        },
+        acceptedAnswer: { "@type": "Answer", text: t("a3") },
       },
     ],
   };
 
   return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+export default async function FAQPage() {
+  return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <ContainerGradientNoPadding>
-        <Box
-          sx={{
-            background: currentEra.colors.heroOverlay,
-            minHeight: "100vh",
-            position: "relative",
-          }}
-        >
-          <Box pt="100px" px={{ xs: 2, md: 0 }} pb={{ xs: 0, md: 0 }}>
-            <Breadcrumb items={[{ label: tb("faq") }]} />
-          </Box>
-          <Container
-            maxWidth={false}
-            sx={{ maxWidth: 1440, mx: "auto", py: 4 }}
-          >
-            <Typography
-              variant="h3"
-              component="h1"
-              gutterBottom
-              color={currentEra.colors.heroText}
-              fontWeight={700}
-              sx={{ fontSize: { xs: "1.75rem", md: "3rem" } }}
-            >
-              {t("title")}
-            </Typography>
-            <Box sx={{ mt: 4 }}>
-              <Typography
-                variant="h6"
-                color={currentEra.colors.heroText}
-                fontWeight={600}
-                sx={{ fontSize: { xs: "1.1rem", md: "1.25rem" } }}
-              >
-                {t("q1")}
-              </Typography>
-              <Typography
-                variant="body1"
-                color={currentEra.colors.heroText}
-                sx={{ mb: 3, fontSize: { xs: "0.9rem", md: "1rem" } }}
-              >
-                {t("a1")}
-              </Typography>
-              <Typography
-                variant="h6"
-                color="text.primary"
-                fontWeight={600}
-                sx={{ fontSize: { xs: "1.1rem", md: "1.25rem" } }}
-              >
-                {t("q2")}
-              </Typography>
-              <Typography
-                variant="body1"
-                color={currentEra.colors.heroText}
-                sx={{ mb: 3, fontSize: { xs: "0.9rem", md: "1rem" } }}
-              >
-                {t("a2")}
-              </Typography>
-              <Typography
-                variant="h6"
-                color={currentEra.colors.heroText}
-                fontWeight={600}
-                sx={{ fontSize: { xs: "1.1rem", md: "1.25rem" } }}
-              >
-                {t("q3")}
-              </Typography>
-              <Typography
-                variant="body1"
-                color={currentEra.colors.heroText}
-                sx={{ mb: 3, fontSize: { xs: "0.9rem", md: "1rem" } }}
-              >
-                {t("a3")}
-              </Typography>
-            </Box>
-          </Container>
-        </Box>
-      </ContainerGradientNoPadding>
+      <FaqJsonLd />
+      <FaqPageContent />
     </>
   );
 }
