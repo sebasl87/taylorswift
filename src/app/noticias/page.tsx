@@ -13,6 +13,14 @@ export async function generateMetadata() {
       description: t("pageDescription"),
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: t("pageTitle"),
+      description: t("pageDescription"),
+    },
+    alternates: {
+      canonical: "/noticias",
+    },
   };
 }
 

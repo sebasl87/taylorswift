@@ -43,6 +43,15 @@ export async function generateMetadata({
       type: "article",
       images: [bootleg.image || "/images/bootlegs/default-bootleg.jpg"],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description: description,
+      images: [bootleg.image || "/images/bootlegs/default-bootleg.jpg"],
+    },
+    alternates: {
+      canonical: `/bootlegs/${bootlegId}`,
+    },
   };
 }
 

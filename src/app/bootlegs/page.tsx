@@ -6,13 +6,21 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "bootlegs" });
   return {
-    title: `${t('listTitle')} | Taylor Swift`,
-    description: t('listDescription'),
+    title: `${t("listTitle")} | Taylor Swift`,
+    description: t("listDescription"),
     openGraph: {
-        title: `${t('listTitle')} | Taylor Swift`,
-        description: t('listDescription'),
-        type: "website",
-    }
+      title: `${t("listTitle")} | Taylor Swift`,
+      description: t("listDescription"),
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t("listTitle")} | Taylor Swift`,
+      description: t("listDescription"),
+    },
+    alternates: {
+      canonical: "/bootlegs",
+    },
   };
 }
 

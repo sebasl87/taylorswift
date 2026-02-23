@@ -60,6 +60,9 @@ export async function generateMetadata({
           "/images/entrevistas/taylor-default.jpg",
       ],
     },
+    alternates: {
+      canonical: `/entrevistas/${interviewId}`,
+    },
   };
 }
 

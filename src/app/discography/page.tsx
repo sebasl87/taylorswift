@@ -11,10 +11,18 @@ export async function generateMetadata(): Promise<Metadata> {
     title: `${t("title")} | Taylor Swift`,
     description: t("description"),
     openGraph: {
-        title: `${t("title")} | Taylor Swift`,
-        description: t("description"),
-        type: "website",
-    }
+      title: `${t("title")} | Taylor Swift`,
+      description: t("description"),
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t("title")} | Taylor Swift`,
+      description: t("description"),
+    },
+    alternates: {
+      canonical: "/discography",
+    },
   };
 }
 

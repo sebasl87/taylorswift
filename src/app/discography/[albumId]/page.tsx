@@ -59,7 +59,17 @@ export async function generateMetadata({
     openGraph: {
       title: `${album.title} (${album.year})`,
       description: albumDescription,
+      type: "music.album",
       images: [album.cover],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${album.title} (${album.year}) | Taylor Swift`,
+      description: albumDescription,
+      images: [album.cover],
+    },
+    alternates: {
+      canonical: `/discography/${albumId}`,
     },
   };
 }

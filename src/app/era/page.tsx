@@ -23,7 +23,7 @@ export async function generateMetadata() {
       images: ["/images/historia/eras-timeline-hero.jpg"],
     },
     alternates: {
-      canonical: "/historia",
+      canonical: "/era",
     },
   };
 }
