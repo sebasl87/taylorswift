@@ -31,12 +31,13 @@ const API_URL =
 const API_KEY = process.env.NEWS_API_KEY;
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
-// Validar que NEWS_API_URL apunta a la API, no a la homepage
+// Validar que NEWS_API_URL apunta al endpoint correcto
 if (!process.env.NEWS_API_URL) {
   console.warn("⚠️  NEWS_API_URL no configurada, usando localhost (solo para desarrollo)");
-} else if (!process.env.NEWS_API_URL.includes("/api/")) {
-  console.error(`❌ ERROR: NEWS_API_URL parece apuntar a la homepage, no al API: ${process.env.NEWS_API_URL}`);
-  console.error("   Debe ser: https://taylorswift.com.ar/api/news/create");
+} else if (!process.env.NEWS_API_URL.includes("news/create")) {
+  console.error(`❌ ERROR: NEWS_API_URL no apunta al endpoint correcto.`);
+  console.error(`   Valor actual: ${process.env.NEWS_API_URL}`);
+  console.error("   Debe ser exactamente: https://taylorswift.com.ar/api/news/create");
   process.exit(1);
 }
 
@@ -307,14 +308,18 @@ async function createNews(newsData) {
     try {
       result = JSON.parse(text);
     } catch {
-      const preview = text.substring(0, 120);
+      const preview = text.substring(0, 200).replace(/\n/g, " ");
       const isHtml = text.trimStart().startsWith("<!DOCTYPE") || text.trimStart().startsWith("<html");
       if (isHtml) {
-        console.error(`❌ La API devolvió HTML en lugar de JSON. URL usada: ${API_URL}`);
+        console.error(`❌ La API devolvió HTML en lugar de JSON.`);
+        console.error(`   HTTP status: ${response.status} ${response.statusText}`);
+        console.error(`   URL usada: ${API_URL}`);
+        console.error(`   Respuesta (primeros 200 chars): ${preview}`);
         console.error("   Posible causa: NEWS_API_URL apunta a la homepage o a una URL incorrecta.");
+        console.error("   Debe ser: https://taylorswift.com.ar/api/news/create");
         console.error("   Verificar el secret NEWS_API_URL en GitHub → Settings → Secrets.");
       } else {
-        console.error("❌ Respuesta no es JSON:", preview);
+        console.error(`❌ Respuesta no es JSON (HTTP ${response.status}):`, preview);
       }
       return "error";
     }
