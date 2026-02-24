@@ -9,7 +9,8 @@
     "lint": "eslint",
     "sync:backfill": "node src/scripts/setlist-sync.mjs backfill",
     "sync:update": "node src/scripts/setlist-sync.mjs update",
-    "sync:fix": "node src/scripts/fix-song-counts.mjs"
+    "sync:fix": "node src/scripts/fix-song-counts.mjs",
+    "sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

@@ -31,6 +31,15 @@ const API_URL =
 const API_KEY = process.env.NEWS_API_KEY;
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
+// Validar que NEWS_API_URL apunta a la API, no a la homepage
+if (!process.env.NEWS_API_URL) {
+  console.warn("⚠️  NEWS_API_URL no configurada, usando localhost (solo para desarrollo)");
+} else if (!process.env.NEWS_API_URL.includes("/api/")) {
+  console.error(`❌ ERROR: NEWS_API_URL parece apuntar a la homepage, no al API: ${process.env.NEWS_API_URL}`);
+  console.error("   Debe ser: https://taylorswift.com.ar/api/news/create");
+  process.exit(1);
+}
+
 // Definición de todos los feeds disponibles
 const ALL_FEEDS = {
   // --- FAN SITES CONFIABLES ---
@@ -298,7 +307,15 @@ async function createNews(newsData) {
     try {
       result = JSON.parse(text);
     } catch {
-      console.error("❌ Error de conexión: respuesta no es JSON:", text.substring(0, 120));
+      const preview = text.substring(0, 120);
+      const isHtml = text.trimStart().startsWith("<!DOCTYPE") || text.trimStart().startsWith("<html");
+      if (isHtml) {
+        console.error(`❌ La API devolvió HTML en lugar de JSON. URL usada: ${API_URL}`);
+        console.error("   Posible causa: NEWS_API_URL apunta a la homepage o a una URL incorrecta.");
+        console.error("   Verificar el secret NEWS_API_URL en GitHub → Settings → Secrets.");
+      } else {
+        console.error("❌ Respuesta no es JSON:", preview);
+      }
       return "error";
     }
 
@@ -420,7 +437,8 @@ async function main() {
   }
 
   console.log(`📅 Fecha: ${new Date().toISOString()}`);
-  console.log(`🎯 Feeds a procesar: ${RSS_FEEDS.length}\n`);
+  console.log(`🎯 Feeds a procesar: ${RSS_FEEDS.length}`);
+  console.log(`🔗 API URL: ${API_URL}\n`);
 
   let totalFound = 0;
   let totalCreated = 0;
