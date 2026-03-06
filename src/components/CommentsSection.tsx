@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   Box,
   Card,
@@ -36,6 +37,8 @@ export function CommentsSection({
 }) {
   const t = useTranslations("comments");
   const locale = useLocale();
+  const pathname = usePathname();
+  const pageUrl = `https://taylorswift.com.ar${pathname}`;
 
   const [items, setItems] = useState<CommentItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -127,7 +130,7 @@ export function CommentsSection({
 
   return (
     <Box sx={{ mt: 6, mb: 6 }}>
-      {/* JSON-LD Structured Data */}
+      {/* JSON-LD Structured Data — solo cuando hay comentarios */}
       {items.length > 0 && (
         <script
           type="application/ld+json"
@@ -135,17 +138,16 @@ export function CommentsSection({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "DiscussionForumPosting",
-              headline: title,
-              text: customSubtitle || title,
+              url: pageUrl,
+              headline: title || "",
+              text: customSubtitle || title || "",
               author: {
                 "@type": "Organization",
-                name: "Taylor Swift Fan Site",
-                url: "https://taylorswift.com",
+                name: "taylorswift.com.ar",
+                url: "https://taylorswift.com.ar",
               },
-              datePublished:
-                items.length > 0
-                  ? items[items.length - 1].created_at
-                  : new Date().toISOString(),
+              datePublished: items[0].created_at,
+              dateModified: items[items.length - 1].created_at,
               commentCount: items.length,
               comment: items.map((c) => ({
                 "@type": "Comment",
@@ -153,7 +155,6 @@ export function CommentsSection({
                 author: {
                   "@type": "Person",
                   name: c.name,
-                  url: "https://taylorswift.com",
                 },
                 dateCreated: c.created_at,
               })),
@@ -162,45 +163,10 @@ export function CommentsSection({
         />
       )}
 
-      {/* JSON-LD para el formulario de comentarios */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "DiscussionForumPosting",
-            headline: `${t("leave")} "${title}"`,
-            text: t("subtitle"),
-            author: {
-              "@type": "Organization",
-              name: "Taylor Swift Fan Site",
-              url: "https://taylorswift.com",
-            },
-            datePublished: new Date().toISOString(),
-            commentCount: items.length,
-            comment:
-              items.length > 0
-                ? items.slice(0, 3).map((c) => ({
-                    "@type": "Comment",
-                    text: c.content,
-                    author: {
-                      "@type": "Person",
-                      name: c.name,
-                      url: "https://taylorswift.com",
-                    },
-                    dateCreated: c.created_at,
-                  }))
-                : [],
-          }),
-        }}
-      />
-
       {/* Card principal que contiene todo */}
       <Card
         component="section"
         aria-labelledby="comments-section-title"
-        itemScope
-        itemType="https://schema.org/DiscussionForumPosting"
         sx={{ overflow: "hidden" }}
       >
         {/* Banner Header */}
@@ -228,7 +194,6 @@ export function CommentsSection({
               variant="h4"
               component="h2"
               id="comments-section-title"
-              itemProp="headline"
               sx={{
                 color: "white",
                 fontWeight: 500,
@@ -257,8 +222,6 @@ export function CommentsSection({
           <Box
             component="form"
             onSubmit={submit}
-            itemScope
-            itemType="https://schema.org/CommentAction"
             aria-label={t("subtitle") + " " + title}
             sx={{ display: "flex", flexDirection: "column", gap: 2, mb: 4 }}
           >
@@ -341,7 +304,6 @@ export function CommentsSection({
             <Typography
               variant="h6"
               component="h3"
-              itemProp="commentCount"
               sx={{
                 mb: 3,
                 fontSize: { xs: "1.1rem", md: "1.25rem" },
