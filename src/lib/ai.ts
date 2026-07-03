@@ -3,7 +3,7 @@ import { z } from "zod";
 
 /**
  * Cliente de Groq AI para procesamiento de noticias
- * Modelo: Llama 3.1 70B Versatile
+ * Modelo: openai/gpt-oss-120b
  * Con retry logic y validación estricta
  */
 
@@ -167,7 +167,7 @@ Responde ÚNICAMENTE con un objeto JSON válido (sin markdown, sin \`\`\`json):
     // Usar retry con backoff para llamada a Groq
     const parsed = await retryWithBackoff(async () => {
       const completion = await groq.chat.completions.create({
-        model: "llama-3.3-70b-versatile",
+        model: "openai/gpt-oss-120b",
         messages: [
           {
             role: "user",
@@ -176,6 +176,7 @@ Responde ÚNICAMENTE con un objeto JSON válido (sin markdown, sin \`\`\`json):
         ],
         temperature: 0.3, // Más determinista para periodismo
         max_tokens: 5000, // Dentro del límite free tier (6000/min)
+        reasoning_effort: "low", // Obligatorio: sin esto el razonamiento agota max_tokens y corta el JSON
         response_format: { type: "json_object" }, // Forzar JSON válido
       });
 
@@ -225,17 +226,15 @@ Analiza esta noticia y determina si es DIRECTAMENTE relevante para fans de Taylo
 CRITERIOS PARA SER RELEVANTE (debe cumplir AL MENOS UNO):
 
 ✅ ES RELEVANTE si habla de:
-- Taylor Swift directamente (banda, álbumes, canciones, giras)
-- Miembros actuales: Kiko Loureiro, James LoMenzo, Dirk Verbeuren
-- Ex-miembros importantes: Marty Friedman, David Ellefson, Nick Menza, Chris Poland
-- Colaboraciones o proyectos relacionados con Taylor Swift
-- Metallica SI y SOLO SI menciona la conexión con Swift/Taylor Swift
+- Taylor Swift directamente (álbumes, canciones, giras, apariciones públicas)
+- Personas de su círculo cercano relevante para la noticia: pareja, familia, colaboradores musicales, productores habituales (ej. Jack Antonoff, Aaron Dessner)
+- Proyectos, colaboraciones o negocios directamente relacionados con Taylor Swift (Eras Tour, regrabaciones "Taylor's Version", marcas asociadas, etc.)
+- Menciones de otros artistas SI Y SOLO SI la noticia trata sobre su conexión/interacción con Taylor Swift
 
 ❌ NO ES RELEVANTE si:
-- Solo menciona Taylor Swift de pasada en una lista
-- Es sobre otras bandas sin conexión directa
-- Es sobre el género thrash metal en general sin mencionar Taylor Swift
-- Metallica sin conexión con Swift/Taylor Swift 
+- Solo menciona a Taylor Swift de pasada en una lista o ranking
+- Es sobre otros artistas o bandas sin conexión directa con Taylor Swift
+- Es sobre el género pop en general sin mencionar a Taylor Swift
 
 ---
 
@@ -254,7 +253,7 @@ Responde ÚNICAMENTE con un objeto JSON:
 
   try {
     const completion = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "openai/gpt-oss-120b",
       messages: [
         {
           role: "user",
@@ -262,7 +261,8 @@ Responde ÚNICAMENTE con un objeto JSON:
         },
       ],
       temperature: 0.1, // Muy determinista para filtrado
-      max_tokens: 100,
+      max_tokens: 1000, // Con reasoning_effort, 100 no alcanza para razonar + escribir el JSON
+      reasoning_effort: "low", // Obligatorio: sin esto el razonamiento agota max_tokens y cae al catch (falso positivo)
       response_format: { type: "json_object" },
     });
 
