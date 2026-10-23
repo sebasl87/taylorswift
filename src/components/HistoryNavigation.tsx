@@ -3,7 +3,7 @@
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { HistoryChapter, getText } from "@/types/historia";
-import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useEra } from "@/context/EraContext";
 
@@ -21,7 +21,6 @@ export default function HistoryNavigation({
   allChapters,
 }: HistoryNavigationProps) {
   const theme = useTheme();
-  const router = useRouter();
   const locale = useLocale() as "es" | "en";
   const t = useTranslations("history");
   const { setEra, currentEra } = useEra();
@@ -31,21 +30,15 @@ export default function HistoryNavigation({
   );
   const progress = ((currentIndex + 1) / allChapters.length) * 100;
 
+  // La navegación la hace el <a> real (component={Link}); el onClick solo
+  // cambia el theme a la era de destino.
   const handlePrevious = () => {
-    if (previousChapter) {
-      setEra(previousChapter.slug);
-      router.push(`/era/${previousChapter.slug}`);
-    }
+    if (previousChapter) setEra(previousChapter.slug);
   };
 
   const handleNext = () => {
-    if (nextChapter) {
-      setEra(nextChapter.slug);
-      router.push(`/era/${nextChapter.slug}`);
-    }
+    if (nextChapter) setEra(nextChapter.slug);
   };
-
-  console.log(currentChapter.id, "currentChapter");
 
   return (
     <Box
@@ -128,6 +121,8 @@ export default function HistoryNavigation({
           <Button
             variant="outlined"
             startIcon={<ArrowBack />}
+            component={Link}
+            href={previousChapter ? `/era/${previousChapter.slug}` : "#"}
             onClick={handlePrevious}
             disabled={!previousChapter}
             sx={{
@@ -171,6 +166,8 @@ export default function HistoryNavigation({
           <Button
             variant="outlined"
             endIcon={<ArrowForward />}
+            component={Link}
+            href={nextChapter ? `/era/${nextChapter.slug}` : "#"}
             onClick={handleNext}
             disabled={!nextChapter}
             sx={{

@@ -229,12 +229,14 @@ export default function InterviewsListPage() {
                     <TableRow
                       key={interview.id}
                       hover
-                      sx={{ cursor: "pointer", height: 55 }}
-                      onClick={() =>
-                        (window.location.href = `/entrevistas/${slug}`)
-                      }
+                      sx={{ cursor: "pointer", height: 55, position: "relative" }}
                     >
                       <TableCell>
+                        <Link
+                          href={`/entrevistas/${slug}`}
+                          aria-label={title}
+                          style={{ position: "absolute", inset: 0 }}
+                        />
                         <Typography variant="body2">
                           {formatDate(interview.date, locale)}
                         </Typography>

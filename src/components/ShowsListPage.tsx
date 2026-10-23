@@ -206,10 +206,14 @@ export default function ShowsListPage() {
                     <TableRow
                       key={show.id}
                       hover
-                      sx={{ cursor: "pointer", height: 55 }}
-                      onClick={() => (window.location.href = `/shows/${slug}`)}
+                      sx={{ cursor: "pointer", height: 55, position: "relative" }}
                     >
                       <TableCell>
+                        <Link
+                          href={`/shows/${slug}`}
+                          aria-label={show.venue}
+                          style={{ position: "absolute", inset: 0 }}
+                        />
                         <Typography variant="body2">
                           {formatShowDate(show.date, locale)}
                         </Typography>

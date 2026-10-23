@@ -9,7 +9,7 @@ import {
   Chip,
 } from "@mui/material";
 import { HistoryChapter, getText } from "@/types/historia";
-import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import { useEra } from "@/context/EraContext";
@@ -24,17 +24,15 @@ export default function HistoryTimeline({
   currentChapter,
 }: HistoryTimelineProps) {
   const theme = useTheme();
-  const router = useRouter();
   const locale = useLocale() as "es" | "en";
   const { setEra } = useEra();
   const [hoveredChapter, setHoveredChapter] = useState<string | null>(null);
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
+  // La navegación la hace el <a> real de cada elemento (component={Link});
+  // el click solo cambia el theme a la era seleccionada.
   const handleChapterClick = (chapterSlug: string) => {
-    // Cambiar el theme a la era seleccionada
     setEra(chapterSlug);
-    // Navegar a la página de la era
-    router.push(`/era/${chapterSlug}`);
   };
 
   const getChapterColor = (chapter: HistoryChapter, index: number) => {
@@ -79,11 +77,15 @@ export default function HistoryTimeline({
           return (
             <Box
               key={chapter.id}
+              component={Link}
+              href={`/era/${chapter.slug}`}
               sx={{
                 display: "flex",
                 mb: 4,
                 position: "relative",
                 cursor: "pointer",
+                textDecoration: "none",
+                color: "inherit",
               }}
               onClick={() => handleChapterClick(chapter.slug)}
               onMouseEnter={() => setHoveredChapter(chapter.slug)}
@@ -269,7 +271,11 @@ export default function HistoryTimeline({
                     "all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
                   transform: isHovered ? "scale(1.5)" : "scale(1)",
                   zIndex: 2,
+                  display: "block",
                 }}
+                component={Link}
+                href={`/era/${chapter.slug}`}
+                aria-label={getText(chapter.title, locale)}
                 onClick={() => handleChapterClick(chapter.slug)}
                 onMouseEnter={() => setHoveredChapter(chapter.slug)}
                 onMouseLeave={() => setHoveredChapter(null)}
@@ -290,7 +296,12 @@ export default function HistoryTimeline({
                     ? `translateY(${isTop ? "-10px" : "10px"}) scale(1.05)`
                     : "translateY(0) scale(1)",
                   zIndex: 3,
+                  display: "block",
+                  textDecoration: "none",
+                  color: "inherit",
                 }}
+                component={Link}
+                href={`/era/${chapter.slug}`}
                 onClick={() => handleChapterClick(chapter.slug)}
                 onMouseEnter={() => setHoveredChapter(chapter.slug)}
                 onMouseLeave={() => setHoveredChapter(null)}

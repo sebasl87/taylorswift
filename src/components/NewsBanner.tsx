@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -95,7 +95,6 @@ interface RandomSectionBannerProps {
 export default function RandomSectionBanner({
   currentSection,
 }: RandomSectionBannerProps) {
-  const router = useRouter();
   const locale = useLocale() as "es" | "en";
   const [randomSection, setRandomSection] = useState<Section | null>(null);
   const { currentEra } = useEra();
@@ -108,10 +107,6 @@ export default function RandomSectionBanner({
 
   if (!randomSection) return null;
 
-  const handleClick = () => {
-    router.push(randomSection.route);
-  };
-
   return (
     <Box
       sx={{
@@ -121,9 +116,11 @@ export default function RandomSectionBanner({
       }}
     >
       <Box
-        onClick={handleClick}
+        component={Link}
+        href={randomSection.route}
         sx={{
           position: "relative",
+          display: "block",
           width: "100%",
           cursor: "pointer",
           overflow: "hidden",

@@ -2,7 +2,7 @@
 
 import { Box, Typography, Button, IconButton } from "@mui/material";
 import { useLocale } from "next-intl";
-import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -26,7 +26,6 @@ interface SiteUpdatesBannerProps {
 
 export default function SiteUpdatesBanner({ updates }: SiteUpdatesBannerProps) {
   const locale = useLocale() as "es" | "en";
-  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -59,12 +58,6 @@ export default function SiteUpdatesBanner({ updates }: SiteUpdatesBannerProps) {
 
   const handleDotClick = (index: number) => {
     setCurrentIndex(index);
-  };
-
-  const handleClick = () => {
-    if (currentUpdate.linkUrl) {
-      router.push(currentUpdate.linkUrl);
-    }
   };
 
   return (
@@ -253,7 +246,8 @@ export default function SiteUpdatesBanner({ updates }: SiteUpdatesBannerProps) {
         {currentUpdate.linkUrl && (
           <Button
             variant="contained"
-            onClick={handleClick}
+            component={Link}
+            href={currentUpdate.linkUrl}
             sx={{
               background: (theme) =>
                 theme.palette.mode === "dark"

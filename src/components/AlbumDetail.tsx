@@ -367,9 +367,21 @@ export default function AlbumDetail({ album }: AlbumDetailProps) {
                               >
                                 {track.n}
                               </Typography>
+                              {/* Mismo id que getAllSongs() (slugify del
+                                  título) — nunca un regex casero */}
                               <Typography
+                                component={Link}
+                                href={`/songs/${slugify(track.title)}`}
                                 variant="body1"
-                                sx={{ fontWeight: 500 }}
+                                sx={{
+                                  fontWeight: 500,
+                                  color: "text.primary",
+                                  textDecoration: "none",
+                                  "&:hover": {
+                                    color: "primary.main",
+                                    textDecoration: "underline",
+                                  },
+                                }}
                               >
                                 {track.title}
                               </Typography>
@@ -422,28 +434,25 @@ export default function AlbumDetail({ album }: AlbumDetailProps) {
                           }
                         />
                         {track.lyrics && (
-                          <Link
-                            href={`/songs/${track.title
-                              .toLowerCase()
-                              .replace(/[^a-z0-9 ]/gi, "")
-                              .replace(/ /g, "-")}`}
-                            passHref
-                            legacyBehavior
+                          <Tooltip
+                            title={
+                              t("viewSongDetails") ||
+                              "Ver detalle de la canción"
+                            }
                           >
-                            <Tooltip
-                              title={
-                                t("viewSongDetails") ||
-                                "Ver detalle de la canción"
-                              }
+                            <Box
+                              component={Link}
+                              href={`/songs/${slugify(track.title)}`}
+                              aria-label={track.title}
+                              padding="4px"
+                              sx={{ cursor: "pointer", display: "block" }}
                             >
-                              <Box padding="4px" sx={{ cursor: "pointer" }}>
                                 <InfoIcon
                                   fontSize="large"
                                   sx={{ color: "primary.main" }}
                                 />
-                              </Box>
-                            </Tooltip>
-                          </Link>
+                            </Box>
+                          </Tooltip>
                         )}
                       </ListItem>
                       {index < (album.tracks?.length || 0) - 1 && <Divider />}

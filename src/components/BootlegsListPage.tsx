@@ -184,10 +184,14 @@ export default function BootlegsListPage() {
                   <TableRow
                     key={bootleg.id}
                     hover
-                    sx={{ cursor: "pointer", height: 55 }}
-                    onClick={() => (window.location.href = `/bootlegs/${slug}`)}
+                    sx={{ cursor: "pointer", height: 55, position: "relative" }}
                   >
                     <TableCell>
+                      <Link
+                        href={`/bootlegs/${slug}`}
+                        aria-label={bootleg.title}
+                        style={{ position: "absolute", inset: 0 }}
+                      />
                       <Typography variant="body2" fontWeight={600}>
                         {year}
                       </Typography>
