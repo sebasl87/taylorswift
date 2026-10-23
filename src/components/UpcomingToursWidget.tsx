@@ -9,7 +9,7 @@ import {
   Chip,
 } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { tourDates } from "@/constants/tourDates";
 import LocationOnIcon from "@mui/icons-material/LocationOn";

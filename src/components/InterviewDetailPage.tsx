@@ -11,7 +11,7 @@ import {
   Paper,
 } from "@mui/material";
 import { Launch } from "@mui/icons-material";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import Breadcrumb from "@/components/Breadcrumb";

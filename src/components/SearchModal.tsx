@@ -16,7 +16,7 @@ import {
 import { Search as SearchIcon, Close as CloseIcon } from "@mui/icons-material";
 import { useTranslations, useLocale } from "next-intl";
 import { useEra } from "@/context/EraContext";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { getAllSongs } from "@/utils/songs";
 import discographyData from "@/constants/discography.json";

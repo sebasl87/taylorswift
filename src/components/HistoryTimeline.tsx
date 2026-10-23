@@ -9,7 +9,7 @@ import {
   Chip,
 } from "@mui/material";
 import { HistoryChapter, getText } from "@/types/historia";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import { useEra } from "@/context/EraContext";

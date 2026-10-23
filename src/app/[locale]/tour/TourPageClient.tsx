@@ -13,7 +13,7 @@ import {
   TextField,
   InputAdornment,
 } from "@mui/material";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";

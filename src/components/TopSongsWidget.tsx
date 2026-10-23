@@ -2,7 +2,7 @@
 
 import { Box, Typography, Card, CardContent, Divider } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import songsCountsData from "@/constants/songs.counts.fixed.json";
 

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import newsData from "@/constants/news.json";
 import { NewsArticle } from "@/types/news";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import NoticiasEraStyler from "@/components/NoticiasEraStyler";
 import { Typography, Box, Container, Chip } from "@mui/material";
 import { getNewsById } from "@/lib/supabase";

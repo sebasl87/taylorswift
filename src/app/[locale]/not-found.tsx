@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Container, Typography, Box, Button } from "@mui/material";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
 import { useEra } from "@/context/EraContext";
@@ -85,6 +86,7 @@ export default function NotFound() {
           </Typography>
 
           <Button
+            component={Link}
             variant="contained"
             color="primary"
             href="/"

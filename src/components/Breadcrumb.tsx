@@ -1,10 +1,11 @@
 "use client";
 
 import { Breadcrumbs, Link, Typography, Container } from "@mui/material";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
-import NextLink from "next/link";
+import { Link as NextLink } from "@/i18n/navigation";
+import { absoluteUrl } from "@/utils/absoluteUrl";
 
 interface BreadcrumbItem {
   label: string;
@@ -17,23 +18,22 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   const t = useTranslations("breadcrumb");
+  const locale = useLocale();
 
   // Generar datos estructurados JSON-LD para SEO
   const generateSchemaMarkup = () => {
-    const baseUrl = "https://taylorswift.com";
-
     const itemListElement = [
       {
         "@type": "ListItem",
         position: 1,
         name: t("home"),
-        item: baseUrl,
+        item: absoluteUrl("/", locale),
       },
       ...items.map((item, index) => {
         const position = index + 2;
         const href = item.href;
 
-        const itemUrl = href ? `${baseUrl}${href}` : null;
+        const itemUrl = href ? absoluteUrl(href, locale) : null;
 
         return {
           "@type": "ListItem",

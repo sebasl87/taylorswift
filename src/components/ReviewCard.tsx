@@ -10,7 +10,7 @@ import {
   Chip,
 } from "@mui/material";
 import { Review } from "@/types/review";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import StarIcon from "@mui/icons-material/Star";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 

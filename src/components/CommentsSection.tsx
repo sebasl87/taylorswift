@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+// Intencional: usePathname de next/navigation (NO el de @/i18n/navigation).
+// Se usa para el `url` del schema DiscussionForumPosting, que tiene que
+// incluir el prefijo /es — el de next-intl devuelve la ruta sin prefijo.
 import { usePathname } from "next/navigation";
 import {
   Box,

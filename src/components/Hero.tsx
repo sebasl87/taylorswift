@@ -2,7 +2,7 @@
 
 import { Box, Typography, Button, Chip, Stack, Container } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useEra } from "@/context/EraContext";
 

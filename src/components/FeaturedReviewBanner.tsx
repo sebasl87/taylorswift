@@ -3,7 +3,7 @@
 import { Box, Card, Typography, Button } from "@mui/material";
 import { useLocale } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import bannerData from "@/constants/featured-banner.json";
 
 export default function FeaturedReviewBanner() {

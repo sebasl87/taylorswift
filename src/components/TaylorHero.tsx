@@ -9,7 +9,7 @@ import TopSongsWidget from "./TopSongsWidget";
 import UpcomingToursWidget from "./UpcomingToursWidget";
 import NewsPreview from "@/components/NewsPreview";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import RandomSectionBanner from "./NewsBanner";
 import siteUpdatesData from "@/constants/site-updates.json";
 import SiteUpdatesBanner from "./SiteUpdatesBanner";

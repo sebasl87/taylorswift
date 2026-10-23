@@ -20,7 +20,7 @@ import {
   CardContent,
 } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useState, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useEra } from "@/context/EraContext";

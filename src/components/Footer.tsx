@@ -1,7 +1,7 @@
 "use client";
 import { Box, Container, Typography, Divider, Grid } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEra } from "@/context/EraContext";
 
 export default function Footer() {

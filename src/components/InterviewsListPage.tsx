@@ -21,7 +21,7 @@ import {
   Button,
 } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import interviewsData from "@/constants/interviews.json";
 import ContainerGradientNoPadding from "./atoms/ContainerGradientNoPadding";
 import Breadcrumb from "@/components/Breadcrumb";

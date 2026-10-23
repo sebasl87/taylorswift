@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Box, Typography, Button, Container } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEra } from "@/context/EraContext";
 import Breadcrumb from "@/components/Breadcrumb";
 

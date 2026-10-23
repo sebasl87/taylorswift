@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Link } from "@/i18n/navigation";
 import {
   Container,
   Typography,
@@ -271,7 +272,7 @@ export default function BootlegsListPage() {
             return (
               <Grid size={{ xs: 12 }} key={bootleg.id}>
                 <Card>
-                  <CardActionArea href={`/bootlegs/${slug}`}>
+                  <CardActionArea component={Link} href={`/bootlegs/${slug}`}>
                     <CardContent>
                       <Typography
                         variant="h6"

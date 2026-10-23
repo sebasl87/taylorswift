@@ -20,7 +20,7 @@ import {
   Button,
 } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import showsData from "@/constants/shows.json";
 import ContainerGradientNoPadding from "./atoms/ContainerGradientNoPadding";
 import { useEra } from "@/context/EraContext";

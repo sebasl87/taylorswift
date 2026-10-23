@@ -17,7 +17,7 @@ import {
 import { useTranslations, useLocale } from "next-intl";
 import { getAllSongs } from "@/utils/songs";
 import songsCountData from "@/constants/songs.counts.fixed.json";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import membersData from "@/constants/members.json";
 import Breadcrumb from "./Breadcrumb";

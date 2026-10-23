@@ -12,7 +12,7 @@ import {
 import { PlayArrow } from "@mui/icons-material";
 import { useLocale } from "next-intl";
 import DVDImage from "./DVDImage";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import type { DVD } from "@/types/dvd";
 import { getDVDShortDescription, generateDVDSlug } from "@/types/dvd";
 

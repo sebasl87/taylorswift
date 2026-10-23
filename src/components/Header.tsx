@@ -25,8 +25,7 @@ import { ERAS } from "@/constants/eras";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
-import Link from "next/link";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import dynamic from "next/dynamic";
 
 // Lazy load del SearchModal para mejor performance inicial
@@ -105,9 +104,8 @@ export default function Header() {
     handleEraClose();
   };
 
-  const handleLanguageChange = (newLocale: string) => {
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
-    router.refresh();
+  const handleLanguageChange = (newLocale: "en" | "es") => {
+    router.replace(pathname, { locale: newLocale });
     handleLanguageClose();
   };
 
