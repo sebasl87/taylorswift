@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import DiscographyClient from "./DiscographyClient";
 import discographyData from "@/constants/discography.json";
 import { Album } from "@/types/album";
+import { i18nAlternates } from "@/utils/i18nAlternates";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -20,9 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: `${t("title")} | Taylor Swift`,
       description: t("description"),
     },
-    alternates: {
-      canonical: "/discography",
-    },
+    alternates: i18nAlternates("/discography", locale),
   };
 }
 

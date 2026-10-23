@@ -1,30 +1,56 @@
 import { Metadata } from 'next';
 import TaylorHero from "@/components/TaylorHero";
+import { i18nAlternates } from "@/utils/i18nAlternates";
+import { absoluteUrl } from "@/utils/absoluteUrl";
 
-export const metadata: Metadata = {
-  title: "Taylor Swift: The Eras Tour, Noticias, Álbumes",
-  description:
-    "Todo sobre Taylor Swift: The Eras Tour, noticias, discografía, letras y más. El sitio de fans más completo en español e inglés.",
-  openGraph: {
+const homeMeta = {
+  es: {
     title: "Taylor Swift: The Eras Tour, Noticias, Álbumes",
     description:
-      "Todo sobre Taylor Swift: The Eras Tour, noticias, discografía, letras y más.",
-    type: "website",
-    url: "https://taylorswift.com.ar",
-    images: [{ url: "/icon.webp", width: 512, height: 512, alt: "Taylor Swift Fan Site" }],
+      "Todo sobre Taylor Swift: The Eras Tour, noticias, discografía, letras y más. El sitio de fans más completo en español e inglés.",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Taylor Swift: The Eras Tour, Noticias, Álbumes",
+  en: {
+    title: "Taylor Swift: The Eras Tour, News, Albums & Lyrics",
     description:
-      "Todo sobre Taylor Swift: The Eras Tour, noticias, discografía, letras y más.",
-  },
-  alternates: {
-    canonical: "/",
+      "Everything Taylor Swift: The Eras Tour, daily news, full discography, lyrics, shows and more. Unofficial fan site in English and Spanish.",
   },
 };
 
-export default function HomePage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const meta = locale === "es" ? homeMeta.es : homeMeta.en;
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      type: "website",
+      url: absoluteUrl("/", locale),
+      locale: locale === "es" ? "es_AR" : "en_US",
+      images: [{ url: "/icon.webp", width: 512, height: 512, alt: "Taylor Swift Fan Site" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+    },
+    alternates: i18nAlternates("/", locale),
+  };
+}
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
   return (
     <>
       <script
@@ -60,8 +86,10 @@ export default function HomePage() {
                 "https://www.youtube.com/taylorswift",
                 "https://en.wikipedia.org/wiki/Taylor_Swift",
               ],
-              // Description should be localized, but for now hardcoded or passed via props/messages
-              // Ideally useTranslations here if client component or getTranslations if server
+              description:
+                locale === "es"
+                  ? "Taylor Swift es una cantautora estadounidense nacida en 1989 en West Reading, Pensilvania. Con 12 álbumes de estudio y The Eras Tour, la gira más taquillera de la historia, es una de las artistas más influyentes de su generación."
+                  : "Taylor Swift is an American singer-songwriter born in 1989 in West Reading, Pennsylvania. With 12 studio albums and The Eras Tour, the highest-grossing tour of all time, she is one of the most influential artists of her generation.",
             }),
           }}
         />

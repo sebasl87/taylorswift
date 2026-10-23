@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import ContactoPageContent from "./ContactoPageContent";
+import { i18nAlternates } from "@/utils/i18nAlternates";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -17,9 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: "website",
     },
-    alternates: {
-      canonical: "/contacto",
-    },
+    alternates: i18nAlternates("/contacto", locale),
   };
 }
 

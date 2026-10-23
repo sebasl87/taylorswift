@@ -2,6 +2,7 @@
 import { Box, Container, Typography, Divider, Grid } from "@mui/material";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { absoluteUrl } from "@/utils/absoluteUrl";
 import { useEra } from "@/context/EraContext";
 
 export default function Footer() {
@@ -10,37 +11,25 @@ export default function Footer() {
   const { currentEra } = useEra();
 
   // Schema.org JSON-LD para Organization y WebSite
+  // Organization = este fan site (no la artista): url/logo propios, sin
+  // sameAs a las redes oficiales de Taylor Swift. Sin SearchAction porque el
+  // sitio no tiene una página /search que reciba ?q=.
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Taylor Swift Fan Site",
-    url: "https://taylorswift.com",
+    url: "https://taylorswift.com.ar",
     description: t("seoDescription"),
-    logo: "https://taylorswift.com/images/logo.png",
-    sameAs: [
-      "https://www.taylorswift.com",
-      "https://www.facebook.com/TaylorSwift",
-      "https://twitter.com/taylorswift13",
-      "https://www.instagram.com/taylorswift/",
-      "https://www.youtube.com/user/taylorswift",
-    ],
+    logo: "https://taylorswift.com.ar/icon.webp",
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Taylor Swift Fan Site",
-    url: "https://taylorswift.com",
+    url: absoluteUrl("/", locale),
     description: t("seoDescription"),
     inLanguage: locale,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: "https://taylorswift.com/search?q={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 
   const footerLinks = {

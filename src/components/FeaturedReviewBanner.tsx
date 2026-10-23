@@ -20,8 +20,8 @@ export default function FeaturedReviewBanner() {
     "@type": "PromotionCard",
     name: bannerData.title[locale],
     description: bannerData.subtitle[locale],
-    url: `https://taylorswift.com${bannerData.link}`,
-    image: `https://taylorswift.com${bannerData.imageUrl}`,
+    url: `https://taylorswift.com.ar${bannerData.link}`,
+    image: `https://taylorswift.com.ar${bannerData.imageUrl}`,
     inLanguage: locale,
   };
 

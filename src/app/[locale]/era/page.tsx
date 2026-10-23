@@ -1,6 +1,7 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import HistoriaClient from "./HistoriaClient";
 import ContainerGradientNoPadding from "@/components/atoms/ContainerGradientNoPadding";
+import { i18nAlternates } from "@/utils/i18nAlternates";
 
 export async function generateMetadata() {
   const locale = await getLocale();
@@ -22,9 +23,7 @@ export async function generateMetadata() {
       description: t("description"),
       images: ["/images/historia/eras-timeline-hero.jpg"],
     },
-    alternates: {
-      canonical: "/era",
-    },
+    alternates: i18nAlternates("/era", locale),
   };
 }
 

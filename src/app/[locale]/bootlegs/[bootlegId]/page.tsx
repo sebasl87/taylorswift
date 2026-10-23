@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import BootlegDetailPage from "@/components/BootlegDetailPage";
 import bootlegsData from "@/constants/bootlegs.json";
 import { Bootleg, generateBootlegSlug, getBootlegYear } from "@/types/bootleg";
+import { i18nAlternates } from "@/utils/i18nAlternates";
 
 function findBootlegBySlug(slug: string): Bootleg | null {
   const bootleg = (bootlegsData as Bootleg[]).find((b) => {
@@ -49,9 +50,7 @@ export async function generateMetadata({
       description: description,
       images: [bootleg.image || "/images/bootlegs/default-bootleg.jpg"],
     },
-    alternates: {
-      canonical: `/bootlegs/${bootlegId}`,
-    },
+    alternates: i18nAlternates(`/bootlegs/${bootlegId}`, locale),
   };
 }
 

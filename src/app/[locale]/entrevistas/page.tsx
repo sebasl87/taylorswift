@@ -1,6 +1,8 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import { Metadata } from "next";
 import InterviewsListPage from "@/components/InterviewsListPage";
+import { i18nAlternates } from "@/utils/i18nAlternates";
+import { absoluteUrl } from "@/utils/absoluteUrl";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -12,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
         title: `${t("listTitle")} | Taylor Swift`,
         description: t("listDescription"),
-        url: "/entrevistas",
+        url: absoluteUrl("/entrevistas", locale),
         type: "website",
         images: ["/images/entrevistas/og-interviews.jpg"],
     },
@@ -21,7 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
         title: `${t("listTitle")} | Taylor Swift`,
         description: t("listDescription"),
         images: ["/images/entrevistas/og-interviews.jpg"],
-    }
+    },
+    alternates: i18nAlternates("/entrevistas", locale),
   };
 }
 

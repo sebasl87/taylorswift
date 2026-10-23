@@ -8,6 +8,7 @@ import {
   getInterviewTitle,
   getInterviewDescription,
 } from "@/types/interview";
+import { i18nAlternates } from "@/utils/i18nAlternates";
 
 export async function generateStaticParams() {
   const interviews = interviewsData as Interview[];
@@ -60,9 +61,7 @@ export async function generateMetadata({
           "/images/entrevistas/taylor-default.jpg",
       ],
     },
-    alternates: {
-      canonical: `/entrevistas/${interviewId}`,
-    },
+    alternates: i18nAlternates(`/entrevistas/${interviewId}`, locale),
   };
 }
 

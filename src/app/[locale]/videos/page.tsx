@@ -2,6 +2,8 @@ import { getTranslations, getLocale } from "next-intl/server";
 import VideosPageClient from "./VideosPageClient";
 import videosData from "@/constants/videos.json";
 import type { Video } from "@/types/video";
+import { i18nAlternates } from "@/utils/i18nAlternates";
+import { absoluteUrl } from "@/utils/absoluteUrl";
 
 // Datos estructurados para SEO (Server Side)
 function generateStructuredData(locale: string) {
@@ -50,7 +52,7 @@ function generateStructuredData(locale: string) {
     description:
       descriptionByLocale[locale as keyof typeof descriptionByLocale] ||
       descriptionByLocale.es,
-    url: "https://taylorswift.com.ar/videos",
+    url: absoluteUrl("/videos", locale),
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: videosData.length,
@@ -100,7 +102,9 @@ export async function generateMetadata() {
         descriptionByLocale[locale as keyof typeof descriptionByLocale] ||
         descriptionByLocale.es,
       type: "website",
+      url: absoluteUrl("/videos", locale),
     },
+    alternates: i18nAlternates("/videos", locale),
   };
 }
 

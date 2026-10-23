@@ -30,6 +30,7 @@ import {
   getMusicianInstrument,
 } from "@/utils/albumHelpers";
 import { slugify } from "@/utils/slugify";
+import { absoluteUrl } from "@/utils/absoluteUrl";
 import { renderLyricsWithBold } from "@/utils/renderLyrics";
 import LyricsIcon from "@mui/icons-material/MusicNote";
 import InfoIcon from "@mui/icons-material/Info";
@@ -102,7 +103,8 @@ export default function AlbumDetail({ album }: AlbumDetailProps) {
       },
       datePublished: album.releaseDate || `${album.year}-01-01`,
       genre: ["Pop", "Country", "Alternative"],
-      image: `https://taylorswift.com${album.cover}`,
+      image: `https://taylorswift.com.ar${album.cover}`,
+      url: absoluteUrl(`/discography/${album.id}`, locale),
       ...(album.label && { recordLabel: album.label }),
       ...(album.producers &&
         album.producers.length > 0 && {
@@ -117,7 +119,9 @@ export default function AlbumDetail({ album }: AlbumDetailProps) {
             "@type": "MusicRecording",
             name: track.title,
             position: track.n,
-            ...(track.duration && { duration: track.duration }),
+            ...(track.duration && {
+              duration: `PT${track.duration.replace(":", "M")}S`,
+            }),
             ...(track.writers &&
               track.writers.length > 0 && {
                 composer: track.writers.map((w) => ({
@@ -129,7 +133,7 @@ export default function AlbumDetail({ album }: AlbumDetailProps) {
           numTracks: album.tracks.length,
         }),
     };
-  }, [album]);
+  }, [album, locale]);
 
   return (
     <ContainerGradientNoPadding>

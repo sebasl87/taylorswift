@@ -7,6 +7,8 @@ import compilationsData from "@/constants/compilations.json";
 import epsData from "@/constants/eps.json";
 import type { Album } from "@/types/album";
 import { getAlbumDescription } from "@/utils/albumHelpers";
+import { i18nAlternates } from "@/utils/i18nAlternates";
+import { absoluteUrl } from "@/utils/absoluteUrl";
 
 function getAlbumById(id: string): Album | undefined {
   const studioList = discographyData as unknown as Album[];
@@ -54,10 +56,14 @@ export async function generateMetadata({
     `Taylor Swift Album ${album.year}`;
 
   return {
-    title: `${album.title} (${album.year}) - Taylor Swift Fan`,
+    title:
+      locale === "es"
+        ? `${album.title} de Taylor Swift (${album.year}): canciones, letras y créditos`
+        : `${album.title} by Taylor Swift (${album.year}): Tracklist, Lyrics & Credits`,
     description: `${album.title} - ${albumDescription}`,
     openGraph: {
       title: `${album.title} (${album.year})`,
+      url: absoluteUrl(`/discography/${albumId}`, locale),
       description: albumDescription,
       type: "music.album",
       images: [album.cover],
@@ -68,9 +74,7 @@ export async function generateMetadata({
       description: albumDescription,
       images: [album.cover],
     },
-    alternates: {
-      canonical: `/discography/${albumId}`,
-    },
+    alternates: i18nAlternates(`/discography/${albumId}`, locale),
   };
 }
 

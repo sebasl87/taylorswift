@@ -10,6 +10,8 @@ import {
   getText,
 } from "@/types/historia";
 import { notFound } from "next/navigation";
+import { i18nAlternates } from "@/utils/i18nAlternates";
+import { absoluteUrl } from "@/utils/absoluteUrl";
 
 // Generate static params for all chapters
 export async function generateStaticParams() {
@@ -39,7 +41,7 @@ export async function generateMetadata({
     description: chapterSummary,
     keywords: [
       `Taylor Swift ${chapterTitle}`,
-      `Historia ${chapter.period}`,
+      locale === "es" ? `Historia ${chapter.period}` : `History ${chapter.period}`,
       "Taylor Swift",
       "Pop",
       "Country",
@@ -64,6 +66,7 @@ export async function generateMetadata({
         chapter.coverImage?.src || "/images/historia/eras-default-chapter.jpg",
       ],
     },
+    alternates: i18nAlternates(`/era/${capitulo}`, locale),
   };
 }
 
@@ -95,41 +98,38 @@ export default async function CapituloPage({
     "@type": "Article",
     headline: `${chapterTitle} (${chapter.period})`,
     description: chapterSummary,
-    image:
-      chapter.coverImage?.src || "/images/historia/eras-default-chapter.jpg",
+    image: `https://taylorswift.com.ar${
+      chapter.coverImage?.src || "/images/historia/eras-default-chapter.jpg"
+    }`,
+    url: absoluteUrl(`/era/${capitulo}`, locale),
+    inLanguage: locale,
+    // Autor/publisher = este fan site, no la artista (el contenido no es
+    // oficial; atribuírselo a Taylor Swift sería engañoso).
     author: {
-      "@type": "Person",
-      name: "Taylor Swift",
-      url: "https://taylorswift.com",
+      "@type": "Organization",
+      name: "Taylor Swift Fan Site",
+      url: "https://taylorswift.com.ar",
     },
     publisher: {
       "@type": "Organization",
-      name: "Taylor Swift Official",
+      name: "Taylor Swift Fan Site",
       logo: {
         "@type": "ImageObject",
-        url: "/images/taylor-logo.png",
+        url: "https://taylorswift.com.ar/icon.webp",
       },
     },
     datePublished: "2025-01-01T00:00:00.000Z",
     dateModified: "2025-01-01T00:00:00.000Z",
-    articleSection: "Historia",
+    articleSection: locale === "es" ? "Historia" : "History",
     about: {
       "@type": "MusicGroup",
       name: "Taylor Swift",
       genre: "Pop / Country / Folk",
       foundingDate: "2006",
       description:
-        "Cantautora estadounidense conocida por su narrativa musical",
-    },
-    mainEntity: {
-      "@type": "CreativeWork",
-      name: `Historia: ${chapter.title}`,
-      description: chapter.summary,
-      creator: {
-        "@type": "Person",
-        name: "Taylor Swift",
-        jobTitle: "Cantautora",
-      },
+        locale === "es"
+          ? "Cantautora estadounidense conocida por su narrativa musical"
+          : "American singer-songwriter known for her narrative songwriting",
     },
   };
 

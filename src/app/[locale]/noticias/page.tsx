@@ -1,5 +1,6 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import NoticiasClient from "./NoticiasClient";
+import { i18nAlternates } from "@/utils/i18nAlternates";
 
 export async function generateMetadata() {
   const locale = await getLocale();
@@ -18,9 +19,7 @@ export async function generateMetadata() {
       title: t("pageTitle"),
       description: t("pageDescription"),
     },
-    alternates: {
-      canonical: "/noticias",
-    },
+    alternates: i18nAlternates("/noticias", locale),
   };
 }
 

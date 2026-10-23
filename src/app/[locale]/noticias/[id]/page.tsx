@@ -13,6 +13,7 @@ import YouTubeEmbed from "@/components/YouTubeEmbed";
 import RandomSectionBanner from "@/components/NewsBanner";
 import { CommentsSection } from "@/components/CommentsSection";
 import Breadcrumb from "@/components/Breadcrumb";
+import { i18nAlternates } from "@/utils/i18nAlternates";
 
 // Generate static params for all news
 export async function generateStaticParams() {
@@ -53,9 +54,7 @@ export async function generateMetadata({
       description: description,
       images: article.imageUrl ? [article.imageUrl] : [],
     },
-    alternates: {
-      canonical: `/noticias/${id}`,
-    },
+    alternates: i18nAlternates(`/noticias/${id}`, locale),
   };
 }
 
