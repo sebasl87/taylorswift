@@ -4,29 +4,19 @@ import videosData from "@/constants/videos.json";
 import type { Video } from "@/types/video";
 import { i18nAlternates } from "@/utils/i18nAlternates";
 import { absoluteUrl } from "@/utils/absoluteUrl";
+import { slugify } from "@/utils/slugify";
 
 // Datos estructurados para SEO (Server Side)
 function generateStructuredData(locale: string) {
+  // Lista de enlaces, no de VideoObject: esta página es una galería de
+  // tarjetas, no una página de visualización. El VideoObject completo vive
+  // en cada /videos/[slug], que sí tiene el reproductor. Declararlo también
+  // acá hace que Google vea los videos alojados en la galería y no
+  // encuentre su watch page.
   const videoList = videosData.map((video: Video) => ({
-    "@type": "VideoObject",
+    "@type": "ListItem",
     name: video.title,
-    description:
-      video.description[locale as keyof typeof video.description] ||
-      video.description.es,
-    thumbnailUrl: `https://img.youtube.com/vi/${
-      video.youtube.split("v=")[1]?.split("&")[0]
-    }/hqdefault.jpg`,
-    uploadDate: `${video.year}-01-01`,
-    duration: "PT3M30S", // Duración promedio estimada
-    contentUrl: video.youtube,
-    embedUrl: `https://www.youtube.com/embed/${
-      video.youtube.split("v=")[1]?.split("&")[0]
-    }`,
-    creator: {
-      "@type": "MusicGroup",
-      name: "Taylor Swift",
-      genre: "Pop",
-    },
+    url: absoluteUrl(`/videos/${slugify(video.title)}`, locale),
   }));
 
   const titleByLocale = {
@@ -57,9 +47,8 @@ function generateStructuredData(locale: string) {
       "@type": "ItemList",
       numberOfItems: videosData.length,
       itemListElement: videoList.map((video, index) => ({
-        "@type": "ListItem",
+        ...video,
         position: index + 1,
-        item: video,
       })),
     },
     about: {

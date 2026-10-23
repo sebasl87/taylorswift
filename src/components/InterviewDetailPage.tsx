@@ -25,6 +25,23 @@ import ContainerGradientNoPadding from "./atoms/ContainerGradientNoPadding";
 import RandomSectionBanner from "./NewsBanner";
 import { CommentsSection } from "./CommentsSection";
 import { useEra } from "@/context/EraContext";
+import RelatedInterviews from "./RelatedInterviews";
+import interviewsData from "@/constants/interviews.json";
+
+// Las 4 entrevistas más cercanas en fecha a la actual (antes o después),
+// sin filtrar por era: así la más vieja y la más nueva también tienen 4.
+function getRelatedInterviews(current: Interview): Interview[] {
+  const currentTime = new Date(current.date).getTime();
+
+  return (interviewsData as Interview[])
+    .filter((iv) => iv.id !== current.id)
+    .sort(
+      (a, b) =>
+        Math.abs(new Date(a.date).getTime() - currentTime) -
+        Math.abs(new Date(b.date).getTime() - currentTime),
+    )
+    .slice(0, 4);
+}
 
 interface InterviewDetailPageProps {
   interview: Interview;
@@ -430,6 +447,10 @@ export default function InterviewDetailPage({
               )}
             </Box>
           )}
+          <RelatedInterviews
+            interviews={getRelatedInterviews(interview)}
+            heading={locale === "es" ? "Otras entrevistas" : "More interviews"}
+          />
           <Box mt={4}>
             <RandomSectionBanner currentSection="interviews" />
           </Box>

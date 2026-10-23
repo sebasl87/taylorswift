@@ -262,7 +262,7 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
                 }}
               >
                 <Link
-                  href={`/discography/${slugify(song.album.title)}`}
+                  href={`/discography/${song.album.id}`}
                   passHref
                 >
                   <Image
@@ -299,7 +299,7 @@ export default function SongDetailPage({ songId }: SongDetailPageProps) {
               </Box>
               <Box pt={2}>
                 <Link
-                  href={`/discography/${slugify(song.album.title)}`}
+                  href={`/discography/${song.album.id}`}
                   passHref
                 >
                   <Chip label={song.album.title} sx={{ mr: 1, mb: 1 }} />

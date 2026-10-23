@@ -7,6 +7,8 @@ import showsData from "@/constants/shows.json";
 import interviewsData from "@/constants/interviews.json";
 import bootlegsData from "@/constants/bootlegs.json";
 import historiaData from "@/constants/historia.json";
+import videosData from "@/constants/videos.json";
+import { slugify } from "@/utils/slugify";
 import { getAllSongs } from "@/utils/songs";
 import { getAllNews } from "@/lib/supabase";
 import type { HistoryData } from "@/types/historia";
@@ -131,6 +133,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
+    });
+  }
+
+  // Watch pages de videos (mismo slug que videos/[slug]/generateStaticParams)
+  for (const video of videosData as { title: string }[]) {
+    pushBilingual(`/videos/${slugify(video.title)}`, {
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.6,
     });
   }
 

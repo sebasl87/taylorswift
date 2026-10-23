@@ -39,7 +39,15 @@ yarn sync:fix        # Corregir conteos de canciones
 
 ### Internacionalización (i18n)
 
-Todas las páginas viven bajo `/src/app/[locale]/`. El locale se detecta automáticamente por URL. Las traducciones están en `/messages/`:
+Todas las páginas viven bajo `/src/app/[locale]/`. El locale sale **solo de la URL**: raíz = inglés (sin prefijo), `/es/*` = español (`src/i18n/routing.ts`, `localePrefix: "as-needed"`, `localeDetection: false` — el header/cookie del navegador no cambia el idioma). Reglas:
+
+- Links internos con `Link` / `useRouter` / `usePathname` de `@/i18n/navigation`, nunca `next/link` ni `window.location.href` (la navegación a contenido tiene que ser un `<a href>` real para los crawlers). Excepción: `CommentsSection` usa `usePathname` de `next/navigation` a propósito (necesita el prefijo `/es` para el schema).
+- En Server Components no usar `component={Link}` (crashea en runtime, el build no lo detecta): poner `<Link>` como padre.
+- Cada `generateMetadata` lleva `alternates: i18nAlternates(path, locale)`; las URLs absolutas de JSON-LD van con `absoluteUrl(path, locale)`.
+- `src/app/sitemap.ts` arma cada URL en los dos idiomas (`pushBilingual`) usando las mismas funciones de slug que las páginas.
+- Validación: `node scripts/validate-i18n.mjs --port <p>` (muestra) y `node scripts/check-all-sitemap.mjs --port <p> --concurrency 4` (todo el sitemap), con el server corriendo.
+
+Las traducciones están en `/messages/`:
 
 - `en.json` / `es.json` — traducciones principales
 - `contact.{en,es}.json`, `faq.{en,es}.json`, `privacy.{en,es}.json`, `terms.{en,es}.json` — secciones separadas

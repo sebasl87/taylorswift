@@ -10,8 +10,35 @@ import {
   getText,
 } from "@/types/historia";
 import { notFound } from "next/navigation";
+import { Box } from "@mui/material";
+import interviewsData from "@/constants/interviews.json";
+import { Interview } from "@/types/interview";
+import RelatedInterviews from "@/components/RelatedInterviews";
 import { i18nAlternates } from "@/utils/i18nAlternates";
 import { absoluteUrl } from "@/utils/absoluteUrl";
+
+// Entrevistas cuyo año cae dentro del rango del capítulo. El primer y el
+// último capítulo quedan abiertos hacia afuera, para no perder entrevistas
+// previas al debut ni posteriores a la fecha de cierre de historia.json.
+// getUTCFullYear(): las fechas "YYYY-01-01" son medianoche UTC, en zonas
+// UTC-negativas getFullYear() devolvería el año anterior.
+function getRelatedInterviews(
+  chapter: HistoryData["chapters"][number],
+  allChapters: HistoryData["chapters"],
+): Interview[] {
+  const isFirstChapter =
+    chapter.yearStart === Math.min(...allChapters.map((c) => c.yearStart));
+  const isLatestChapter =
+    chapter.yearEnd === Math.max(...allChapters.map((c) => c.yearEnd));
+
+  return (interviewsData as Interview[]).filter((interview) => {
+    const year = new Date(interview.date).getUTCFullYear();
+    return (
+      (isFirstChapter || year >= chapter.yearStart) &&
+      (isLatestChapter || year <= chapter.yearEnd)
+    );
+  });
+}
 
 // Generate static params for all chapters
 export async function generateStaticParams() {
@@ -140,6 +167,18 @@ export default async function CapituloPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HistoryChapterComponent chapter={chapter} />
+
+      {/* Entrevistas de esta era — interlinking automático por año */}
+      <Box px={{ xs: 2, md: 4 }}>
+        <RelatedInterviews
+          interviews={getRelatedInterviews(chapter, data.chapters)}
+          heading={
+            locale === "es"
+              ? "Entrevistas de esta era"
+              : "Interviews from this era"
+          }
+        />
+      </Box>
 
       <HistoryNavigation
         currentChapter={chapter}

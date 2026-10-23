@@ -364,5 +364,10 @@
     "title": "Upcoming Shows",
     "nextShow": "Next show",
     "viewAll": "View all dates"
+  },
+  "video": {
+    "defaultTitle": "YouTube video",
+    "loading": "Loading video...",
+    "error": "Error loading video"
   }
 }

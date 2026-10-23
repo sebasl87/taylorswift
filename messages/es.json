@@ -365,5 +365,10 @@
     "title": "Próximas fechas",
     "nextShow": "Próximo show",
     "viewAll": "Ver todas las fechas"
+  },
+  "video": {
+    "defaultTitle": "Video de YouTube",
+    "loading": "Cargando video...",
+    "error": "Error al cargar el video"
   }
 }
