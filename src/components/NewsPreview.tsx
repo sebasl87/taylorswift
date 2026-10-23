@@ -16,7 +16,7 @@ export default function NewsPreview() {
     let mounted = true;
     async function fetchNews() {
       try {
-        const res = await fetch("/noticias/api/news");
+        const res = await fetch("/api/news");
         if (!res.ok) throw new Error("Failed to fetch news");
         const data = await res.json();
         if (!mounted) return;

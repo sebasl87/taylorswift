@@ -1,27 +1,20 @@
-import {getRequestConfig} from 'next-intl/server';
-import {headers} from 'next/headers';
- 
-export default getRequestConfig(async () => {
-  // Detectar idioma del navegador
-  const headersList = await headers();
-  const acceptLanguage = headersList.get('accept-language') || '';
-  
-  // Default inglés, cambiar a español si se detecta
-  let locale = 'en';
-  if (acceptLanguage.includes('es')) {
-    locale = 'es';
-  }
-  
-  // Revisar si hay preferencia guardada en cookie
-  const cookieHeader = headersList.get('cookie') || '';
-  if (cookieHeader.includes('NEXT_LOCALE=es')) {
-    locale = 'es';
-  } else if (cookieHeader.includes('NEXT_LOCALE=en')) {
-    locale = 'en';
-  }
- 
+import { getRequestConfig } from "next-intl/server";
+import { routing } from "./routing";
+
+export default getRequestConfig(async ({ requestLocale }) => {
+  // La URL (vía middleware) determina el locale, no accept-language/cookie
+  // como en la versión anterior. `hasLocale` no está disponible como export
+  // público en next-intl@4.3.9 — se valida manualmente contra
+  // `routing.locales`.
+  const requested = await requestLocale;
+  const locale = routing.locales.includes(
+    requested as (typeof routing.locales)[number],
+  )
+    ? (requested as (typeof routing.locales)[number])
+    : routing.defaultLocale;
+
   return {
     locale,
-    messages: (await import(`../../messages/${locale}.json`)).default
+    messages: (await import(`../../messages/${locale}.json`)).default,
   };
 });

@@ -28,7 +28,7 @@ export default function NoticiasClient() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("/noticias/api/news");
+        const res = await fetch("/api/news");
         if (!res.ok) throw new Error("Error al obtener noticias");
         const data = await res.json();
         setNews(data);
